@@ -35,7 +35,8 @@ class RequirementInitSteps: En, CucumberStepsDefinition() {
     private fun initRequirements(paramsList: List<RequirementInitParams>) {
         paramsList.associate { params -> params.identifier to params.toRequirement() }
             .also(context.requirements::putAll)
-            .also(DeprecatedRequirementFinderService.AVAILABLE_REQUIREMENTS::putAll) // TODO remove this when requirements will be saved in db
+            // TODO remove this when requirements will be saved in db
+            .also(DeprecatedRequirementFinderService.AVAILABLE_REQUIREMENTS::putAll)
     }
 
     private fun RequirementInitParams.toRequirement() = DataTest.informationRequirement(

@@ -14,7 +14,13 @@ import s2.spring.automate.executor.S2AutomateExecutorSpring
 class EvidenceTypeListAutomateConfig(
 	private val automateExecutor: EvidenceTypeListAutomateExecutor,
 	repository: EvidenceTypeListRepository
-): S2SpringDataReactiveConfigurerAdapter<EvidenceTypeListState, EvidenceTypeListId, EvidenceTypeListEntity, EvidenceTypeListAutomateExecutor>(repository) {
+): S2SpringDataReactiveConfigurerAdapter<
+		EvidenceTypeListState,
+		EvidenceTypeListId,
+		EvidenceTypeListEntity,
+		EvidenceTypeListAutomateExecutor
+		>(repository)
+{
 	override fun automate() = s2EvidenceTypeList
 	override fun executor() = automateExecutor
 }
