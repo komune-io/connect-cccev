@@ -5,8 +5,7 @@ plugins {
 }
 
 dependencies {
+	implementation(project(":api-commons"))
 	api(project(":cccev-s2:request:request-domain"))
 	api(project(":cccev-dsl:dsl-model"))
-
-	Dependencies.Jvm.s2Mongo(::api)
 }

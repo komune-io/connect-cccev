@@ -6,4 +6,6 @@ plugins {
 
 dependencies {
 	api(project(":cccev-s2:unit:unit-domain"))
+
+	implementation(project(":api-commons"))
 }
