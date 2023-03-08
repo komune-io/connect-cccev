@@ -10,6 +10,7 @@ import s2.dsl.automate.WithId
 import s2.dsl.automate.builder.s2
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import s2.dsl.automate.model.WithS2Id
 
 /**
  * @d2 model
@@ -44,4 +45,4 @@ interface RequirementCommand: S2Command<RequirementId>
 
 @JsExport
 @JsName("RequirementEvent")
-interface RequirementEvent: Evt, WithId<RequirementId>
+interface RequirementEvent: Evt, WithS2Id<RequirementId>

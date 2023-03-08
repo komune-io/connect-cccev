@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
-	implementation(project(":api-commons"))
+	Dependencies.Jvm.s2EventSouringBc(::implementation)
 	api(project(":cccev-s2:requirement:requirement-domain"))
+	api(project(":cccev-projection:projection-api"))
 }

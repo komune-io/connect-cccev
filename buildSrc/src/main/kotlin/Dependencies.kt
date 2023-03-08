@@ -48,6 +48,11 @@ object Dependencies {
 			"city.smartb.s2:s2-spring-boot-starter-utils-logger:${Versions.s2}"
 		)
 
+		fun s2EventSouringBc(scope: Scope) = scope.add(
+			"city.smartb.s2:s2-spring-boot-starter-sourcing-ssm:${Versions.s2}",
+			"city.smartb.s2:s2-spring-boot-starter-utils-logger:${Versions.s2}"
+		)
+
 		fun coroutines(scope: Scope) = FixersDependencies.Jvm.Kotlin.coroutines(scope)
 		fun cucumber(scope: Scope) = FixersDependencies.Jvm.Test.cucumber(scope).also {
 			scope.add("io.cucumber:cucumber-spring:${Versions.cucumber}")

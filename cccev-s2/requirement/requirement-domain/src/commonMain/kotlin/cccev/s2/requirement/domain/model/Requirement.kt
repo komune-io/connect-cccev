@@ -5,7 +5,10 @@ import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.Requirement
 import cccev.s2.requirement.domain.D2RequirementPage
 import cccev.s2.requirement.domain.RequirementId
+import cccev.s2.requirement.domain.RequirementState
 import kotlinx.serialization.Serializable
+import s2.dsl.automate.model.WithS2Id
+import s2.dsl.automate.model.WithS2State
 
 typealias RequirementIdentifier = String
 
@@ -86,5 +89,13 @@ data class Requirement(
      * This list represents an OR-relation, i.e. only one of the specified evidence lists has to be fully provided.
      * @example [["dc006198-067e-4a58-8672-7d5377ae022b"]]
      */
-    val hasEvidenceTypeList: List<EvidenceTypeListId>
-)
+    val hasEvidenceTypeList: List<EvidenceTypeListId>,
+    /**
+     * The state of the requirement.
+     * @example ["CREATED"]
+     */
+    val state: RequirementState
+): WithS2Id<RequirementId>, WithS2State<RequirementState> {
+    override fun s2Id() = id
+    override fun s2State() = state
+}

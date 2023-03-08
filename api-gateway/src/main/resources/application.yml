@@ -18,3 +18,8 @@ spring:
     mongodb:
       uri: mongodb://admin:admin@localhost:27017/cccev?authSource=admin
       auto-index-creation: true
+  neo4j:
+    uri: neo4j://localhost:7687
+    authentication:
+      username: neo4j
+      password: smartbsmartb

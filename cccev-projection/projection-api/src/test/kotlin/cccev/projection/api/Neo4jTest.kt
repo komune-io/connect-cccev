@@ -3,6 +3,9 @@ package cccev.projection.api
 import cccev.projection.api.entity.requirement.RequirementEntity
 import cccev.projection.api.entity.requirement.RequirementRepository
 import cccev.s2.requirement.domain.model.RequirementKind
+import kotlinx.coroutines.reactor.awaitSingle
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.extension.ExtendWith
@@ -19,11 +22,22 @@ class Neo4jTest {
     private lateinit var requirementRepository: RequirementRepository
 
     @Test
-    fun test() {
+    fun test() = runTest {
+        val requirementPoP = RequirementEntity().apply {
+            kind = RequirementKind.INFORMATION
+            identifier = "PoP"
+            name = "Protocol"
+        }
+        val requirementPoP2 = RequirementEntity().apply {
+            kind = RequirementKind.INFORMATION
+            identifier = "PoP2"
+            name = "Protocol"
+        }
         val requirement = RequirementEntity().apply {
             kind = RequirementKind.INFORMATION
             identifier = "P"
             name = "Protocol"
+//            hasRequirement = listOf("PoP", "PoP2")
             hasRequirement = listOf(
                 RequirementEntity().apply {
                     kind = RequirementKind.INFORMATION
@@ -39,6 +53,6 @@ class Neo4jTest {
                 }
             )
         }
-        requirementRepository.save(requirement)
+        requirementRepository.save(requirement).awaitSingle()
     }
 }

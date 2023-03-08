@@ -5,7 +5,7 @@ import cccev.s2.concept.api.entity.InformationConceptRepository
 import cccev.s2.concept.domain.InformationConceptId
 import cccev.s2.concept.domain.InformationConceptState
 import cccev.s2.unit.domain.DataUnitId
-import cccev.test.AssertionMongoEntity
+import cccev.test.AssertionCrudEntity
 import fixers.bdd.assertion.AssertionBdd
 import org.assertj.core.api.Assertions
 
@@ -13,7 +13,7 @@ fun AssertionBdd.informationConcept(conceptRepository: InformationConceptReposit
 
 class AssertionInformationConcept(
     override val repository: InformationConceptRepository
-): AssertionMongoEntity<InformationConceptEntity, InformationConceptId, AssertionInformationConcept.InformationConceptAssert>() {
+): AssertionCrudEntity<InformationConceptEntity, InformationConceptId, AssertionInformationConcept.InformationConceptAssert>() {
 
     override suspend fun assertThat(entity: InformationConceptEntity) = InformationConceptAssert(entity)
 

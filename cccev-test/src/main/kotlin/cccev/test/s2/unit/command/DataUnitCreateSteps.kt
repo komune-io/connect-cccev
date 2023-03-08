@@ -64,7 +64,7 @@ class DataUnitCreateSteps: En, CccevCucumberStepsDefinition() {
         Then("The data unit should be created") {
             step {
                 val unitId = context.unitIds.lastUsed
-                AssertionBdd.dataUnit(dataUnitRepository).assertThat(unitId).hasFields(
+                AssertionBdd.dataUnit(dataUnitRepository).assertThatId(unitId).hasFields(
                     status = DataUnitState.EXISTS,
                     name = command.name,
                     description = command.description,

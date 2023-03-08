@@ -6,6 +6,7 @@ import cccev.s2.requirement.domain.D2RequirementPage
 import cccev.s2.requirement.domain.RequirementEvent
 import cccev.s2.requirement.domain.RequirementId
 import cccev.s2.requirement.domain.RequirementInitCommand
+import cccev.s2.requirement.domain.model.Requirement
 import cccev.s2.requirement.domain.model.RequirementKind
 import kotlin.js.JsExport
 import kotlin.js.JsName
@@ -98,7 +99,7 @@ interface RequirementCreatedEventDTO: RequirementEvent {
     /**
      * Identifier of the created requirement.
      */
-    override val id: RequirementId
+    val requirement: Requirement
 }
 
 /**
@@ -107,5 +108,7 @@ interface RequirementCreatedEventDTO: RequirementEvent {
  */
 @Serializable
 data class RequirementCreatedEvent(
-    override val id: RequirementId,
-): RequirementCreatedEventDTO
+    override val requirement: Requirement,
+): RequirementCreatedEventDTO {
+    override fun s2Id() = requirement.id
+}

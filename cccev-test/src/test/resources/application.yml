@@ -4,5 +4,28 @@ spring:
       uri: mongodb://admin:admin@localhost:27017/cccev-test?authSource=admin
       auto-index-creation: true
 
+  neo4j:
+    uri: neo4j://localhost:7687
+    authentication:
+      username: neo4j
+      password: smartbsmartb
+
+ssm:
+  signer:
+    user:
+      name: ssm-admin
+      key: user/ssm-admin
+    admin:
+      name: ssm-admin
+      key: user/ssm-admin
+  couchdb:
+    url: http://localhost:5984
+    username: couchdb
+    password: couchdb
+    serviceName: s2-sample-did
+  chaincode:
+    url: http://localhost:9090
+
+
 i2:
   issuers:

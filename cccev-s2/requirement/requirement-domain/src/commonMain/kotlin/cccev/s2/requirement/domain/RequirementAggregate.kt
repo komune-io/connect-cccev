@@ -4,8 +4,9 @@ import cccev.s2.requirement.domain.command.RequirementCreateCommand
 import cccev.s2.requirement.domain.command.RequirementCreatedEvent
 import cccev.s2.requirement.domain.command.RequirementUpdateCommand
 import cccev.s2.requirement.domain.command.RequirementUpdatedEvent
+import s2.sourcing.dsl.Decide
 
 interface RequirementAggregate {
-	suspend fun create(command: RequirementCreateCommand): RequirementCreatedEvent
-	suspend fun update(command: RequirementUpdateCommand): RequirementUpdatedEvent
+	fun create(): Decide<RequirementCreateCommand, RequirementCreatedEvent>
+	fun update(): Decide<RequirementUpdateCommand, RequirementUpdatedEvent>
 }

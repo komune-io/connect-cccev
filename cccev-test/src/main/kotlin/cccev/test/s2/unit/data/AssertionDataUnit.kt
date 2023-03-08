@@ -5,7 +5,7 @@ import cccev.s2.unit.api.entity.DataUnitRepository
 import cccev.s2.unit.domain.DataUnitId
 import cccev.s2.unit.domain.DataUnitState
 import cccev.s2.unit.domain.model.DataUnitType
-import cccev.test.AssertionMongoEntity
+import cccev.test.AssertionCrudEntity
 import fixers.bdd.assertion.AssertionBdd
 import org.assertj.core.api.Assertions
 
@@ -13,7 +13,7 @@ fun AssertionBdd.dataUnit(unitRepository: DataUnitRepository) = AssertionDataUni
 
 class AssertionDataUnit(
     override val repository: DataUnitRepository
-): AssertionMongoEntity<DataUnitEntity, DataUnitId, AssertionDataUnit.DataUnitAssert>() {
+): AssertionCrudEntity<DataUnitEntity, DataUnitId, AssertionDataUnit.DataUnitAssert>() {
 
     override suspend fun assertThat(entity: DataUnitEntity) = DataUnitAssert(entity)
 

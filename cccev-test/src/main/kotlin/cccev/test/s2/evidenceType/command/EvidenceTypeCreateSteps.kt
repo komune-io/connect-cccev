@@ -62,7 +62,7 @@ class EvidenceTypeCreateSteps: En, CccevCucumberStepsDefinition() {
         Then("The evidence type should be created") {
             step {
                 val evidenceTypeId = context.evidenceTypeIds.lastUsed
-                AssertionBdd.evidenceType(evidenceTypeRepository).assertThat(evidenceTypeId).hasFields(
+                AssertionBdd.evidenceType(evidenceTypeRepository).assertThatId(evidenceTypeId).hasFields(
                     status = EvidenceTypeState.EXISTS,
                     name = command.name,
                     description = command.description,

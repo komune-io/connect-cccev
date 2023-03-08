@@ -1,7 +1,5 @@
 package cccev.s2.requirement.domain.command
 
-import cccev.dsl.model.EvidenceTypeListId
-import cccev.s2.concept.domain.InformationConceptId
 import cccev.s2.requirement.domain.D2RequirementPage
 import cccev.s2.requirement.domain.RequirementCommand
 import cccev.s2.requirement.domain.RequirementEvent
@@ -41,24 +39,24 @@ interface RequirementUpdateCommandDTO: RequirementCommand {
      */
     val description: String?
 
-    /**
-     * Sub-requirements that must be fulfilled for the requirement to be validated.
-     * @example [cccev.s2.requirement.domain.model.Requirement.hasRequirement]
-     */
-    val hasRequirement: List<RequirementId>
-
-    /**
-     * Concepts used by the requirement
-     * @example [cccev.s2.requirement.domain.model.Requirement.hasConcept]
-     */
-    val hasConcept: List<InformationConceptId>
-
-    /**
-     * Evidences that must be provided for the requirement to be validated. <br/>
-     * This list represents an OR-relation, i.e. only one of the specified evidence lists has to be fully provided.
-     * @example [cccev.s2.requirement.domain.model.Requirement.hasEvidenceTypeList]
-     */
-    val hasEvidenceTypeList: List<EvidenceTypeListId>
+//    /**
+//     * Sub-requirements that must be fulfilled for the requirement to be validated.
+//     * @example [cccev.s2.requirement.domain.model.Requirement.hasRequirement]
+//     */
+//    val hasRequirement: List<RequirementId>
+//
+//    /**
+//     * Concepts used by the requirement
+//     * @example [cccev.s2.requirement.domain.model.Requirement.hasConcept]
+//     */
+//    val hasConcept: List<InformationConceptId>
+//
+//    /**
+//     * Evidences that must be provided for the requirement to be validated. <br/>
+//     * This list represents an OR-relation, i.e. only one of the specified evidence lists has to be fully provided.
+//     * @example [cccev.s2.requirement.domain.model.Requirement.hasEvidenceTypeList]
+//     */
+//    val hasEvidenceTypeList: List<EvidenceTypeListId>
 }
 
 /**
@@ -70,9 +68,9 @@ data class RequirementUpdateCommand(
     override val id: RequirementId,
     override val name: String?,
     override val description: String?,
-    override val hasRequirement: List<RequirementId>,
-    override val hasConcept: List<InformationConceptId>,
-    override val hasEvidenceTypeList: List<EvidenceTypeListId>
+//    override val hasRequirement: List<RequirementId>,
+//    override val hasConcept: List<InformationConceptId>,
+//    override val hasEvidenceTypeList: List<EvidenceTypeListId>
 ): RequirementUpdateCommandDTO
 
 @JsExport
@@ -81,7 +79,9 @@ interface RequirementUpdatedEventDTO: RequirementEvent {
     /**
      * Identifier of the updated requirement.
      */
-    override val id: RequirementId
+    val id: RequirementId
+    val name: String?
+    val description: String?
 }
 
 /**
@@ -91,4 +91,8 @@ interface RequirementUpdatedEventDTO: RequirementEvent {
 @Serializable
 data class RequirementUpdatedEvent(
     override val id: RequirementId,
-): RequirementUpdatedEventDTO
+    override val name: String?,
+    override val description: String?,
+): RequirementUpdatedEventDTO {
+    override fun s2Id() = id
+}

@@ -2,14 +2,14 @@ package cccev.test
 
 import kotlinx.coroutines.reactor.awaitSingle
 import org.assertj.core.api.Assertions
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository
-import s2.spring.utils.data.EntityBase
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-abstract class AssertionMongoEntity<Entity: EntityBase, ID: Any, Asserter> {
-    protected abstract val repository: ReactiveMongoRepository<Entity, ID>
+abstract class AssertionCrudEntity<Entity, ID: Any, Asserter> {
+    protected abstract val repository: ReactiveCrudRepository<Entity, ID>
 
     suspend fun exists(id: ID) {
-        Assertions.assertThat(existsById(id)).isTrue
+        val entity = existsById(id)
+        Assertions.assertThat(entity).isTrue
     }
 
     suspend fun notExists(id: ID) {
@@ -20,7 +20,7 @@ abstract class AssertionMongoEntity<Entity: EntityBase, ID: Any, Asserter> {
         return repository.existsById(id).awaitSingle()
     }
 
-    suspend fun assertThat(id: ID): Asserter {
+    suspend fun assertThatId(id: ID): Asserter {
         exists(id)
         val entity = repository.findById(id).awaitSingle()
         return assertThat(entity)

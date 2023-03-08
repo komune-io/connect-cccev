@@ -1,9 +1,8 @@
 package cccev.s2.requirement.api
 
 import cccev.dsl.model.EvidenceTypeId
+import cccev.projection.api.entity.requirement.RequirementRepository
 import cccev.s2.concept.domain.InformationConceptId
-import cccev.s2.requirement.api.entity.RequirementEntity
-import cccev.s2.requirement.api.entity.RequirementRepository
 import cccev.s2.requirement.api.entity.toRequirement
 import cccev.s2.requirement.domain.RequirementFinder
 import cccev.s2.requirement.domain.RequirementId
@@ -11,8 +10,10 @@ import cccev.s2.requirement.domain.model.Requirement
 import cccev.s2.requirement.domain.model.RequirementIdentifier
 import f2.spring.exception.NotFoundException
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.reactive.asFlow
+import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.stereotype.Service
 
@@ -45,7 +46,8 @@ class RequirementFinderService(
         evidenceType: EvidenceTypeId?
     ): Flow<Requirement> {
         val requirements = isRequirementOf?.let {
-            requirementRepository.findAllByIsRequirementOf(isRequirementOf).asFlow()
+            requirementRepository.findByIdentifier(isRequirementOf).awaitSingle().hasRequirement.asFlow()
+//            requirementRepository.findAllByIsRequirementOf(isRequirementOf).asFlow()
         } ?: requirementRepository.findAll().asFlow()
 
         return requirements.map { it.toRequirement() }

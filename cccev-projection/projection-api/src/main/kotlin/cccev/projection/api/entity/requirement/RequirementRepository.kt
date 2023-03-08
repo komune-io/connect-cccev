@@ -1,6 +1,13 @@
 package cccev.projection.api.entity.requirement
 
 import cccev.s2.requirement.domain.RequirementId
-import org.springframework.data.neo4j.repository.Neo4jRepository
+import cccev.s2.requirement.domain.model.RequirementIdentifier
+import org.springframework.data.neo4j.repository.ReactiveNeo4jRepository
+import org.springframework.stereotype.Repository
+import reactor.core.publisher.Mono
 
-interface RequirementRepository: Neo4jRepository<RequirementEntity, RequirementId>
+@Repository
+interface RequirementRepository: ReactiveNeo4jRepository<RequirementEntity, RequirementId> {
+    fun findByIdentifier(id: RequirementIdentifier): Mono<RequirementEntity>
+//    fun findAllByIsRequirementOf(id: RequirementId): Mono<RequirementEntity>
+}

@@ -63,7 +63,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
         Then("The information concept should be created") {
             step {
                 val conceptId = context.conceptIds.lastUsed
-                AssertionBdd.informationConcept(informationConceptRepository).assertThat(conceptId).hasFields(
+                AssertionBdd.informationConcept(informationConceptRepository).assertThatId(conceptId).hasFields(
                     status = InformationConceptState.EXISTS,
                     name = command.name,
                     unitId = command.unitId,
