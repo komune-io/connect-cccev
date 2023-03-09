@@ -6,6 +6,6 @@ plugins {
 
 dependencies {
 	api(project(":cccev-s2:unit:unit-domain"))
-
-	implementation(project(":api-commons"))
+	api(project(":cccev-projection:projection-api"))
+	Dependencies.Jvm.s2EventSouringBc(::implementation)
 }

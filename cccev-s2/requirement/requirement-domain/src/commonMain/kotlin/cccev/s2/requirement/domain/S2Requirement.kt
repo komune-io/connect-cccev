@@ -13,9 +13,7 @@ import kotlin.js.JsName
 import s2.dsl.automate.model.WithS2Id
 
 /**
- * @d2 model
- * @parent [D2RequirementPage]
- * @order 15
+ * @d2 hidden
  * @visual json "5b3cc623-52bc-409f-a048-02a9b5f433d6"
  */
 typealias RequirementId = String
@@ -28,6 +26,11 @@ val s2Requirement = s2 {
 	}
 }
 
+/**
+ * @d2 model
+ * @parent [D2RequirementPage]
+ * @order 15
+ */
 enum class RequirementState(override var position: Int): S2State {
 	CREATED(0)
 }

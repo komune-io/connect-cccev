@@ -16,7 +16,7 @@ class InformationConceptF2AggregateService(
 ) {
     suspend fun create(command: InformationConceptCreateCommand): InformationConceptCreatedEvent {
         checkConceptsExist(command.dependsOn)
-        checkUnitExists(command.unitId)
+        checkUnitExists(command.hasUnit)
         return informationConceptAggregateService.create(command)
     }
 

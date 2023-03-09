@@ -1,9 +1,8 @@
 package cccev.s2.evidence.api
 
-import cccev.s2.evidence.api.entity.list.EvidenceTypeListRepository
+import cccev.projection.api.entity.evidencetype.EvidenceTypeRepository
+import cccev.projection.api.entity.evidencetypelist.EvidenceTypeListRepository
 import cccev.s2.evidence.api.entity.list.toEvidenceTypeList
-import cccev.s2.evidence.api.entity.type.EvidenceTypeEntity
-import cccev.s2.evidence.api.entity.type.EvidenceTypeRepository
 import cccev.s2.evidence.api.entity.type.toEvidenceType
 import cccev.s2.evidence.domain.EvidenceTypeFinder
 import cccev.s2.evidence.domain.EvidenceTypeId
@@ -11,7 +10,6 @@ import cccev.s2.evidence.domain.EvidenceTypeListId
 import cccev.s2.evidence.domain.model.EvidenceType
 import cccev.s2.evidence.domain.model.EvidenceTypeList
 import f2.spring.exception.NotFoundException
-import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.stereotype.Service
 
@@ -31,15 +29,9 @@ class EvidenceTypeFinderService(
     }
 
     override suspend fun getListOrNull(id: EvidenceTypeListId): EvidenceTypeList? {
-        val list = evidenceTypeListRepository.findById(id).awaitSingleOrNull()
-            ?: return null
-
-        val evidenceTypes = evidenceTypeRepository.findAllById(list.specifiesEvidenceType)
-            .collectList()
-            .awaitSingle()
-            .map(EvidenceTypeEntity::toEvidenceType)
-
-        return list.toEvidenceTypeList(evidenceTypes)
+        return evidenceTypeListRepository.findById(id)
+            .awaitSingleOrNull()
+            ?.toEvidenceTypeList()
     }
 
     override suspend fun getList(id: EvidenceTypeListId): EvidenceTypeList {

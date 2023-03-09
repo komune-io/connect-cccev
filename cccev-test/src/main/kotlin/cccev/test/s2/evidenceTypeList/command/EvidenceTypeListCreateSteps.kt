@@ -1,7 +1,7 @@
 package cccev.test.s2.evidenceTypeList.command
 
+import cccev.projection.api.entity.evidencetypelist.EvidenceTypeListRepository
 import cccev.s2.evidence.api.EvidenceTypeAggregateService
-import cccev.s2.evidence.api.entity.list.EvidenceTypeListRepository
 import cccev.s2.evidence.domain.EvidenceTypeListState
 import cccev.s2.evidence.domain.command.list.EvidenceTypeListCreateCommand
 import cccev.test.CccevCucumberStepsDefinition
@@ -83,7 +83,7 @@ class EvidenceTypeListCreateSteps: En, CccevCucumberStepsDefinition() {
                     name = params.name ?: evidenceTypeList.name,
                     description = params.description ?: evidenceTypeList.description,
                     specifiesEvidenceType = params.specifiesEvidenceType?.map { context.evidenceTypeIds.safeGet(it) }
-                        ?: evidenceTypeList.specifiesEvidenceType
+                        ?: evidenceTypeList.specifiesEvidenceType.map { it.id }
                 )
             }
         }

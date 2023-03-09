@@ -38,10 +38,10 @@ class RequirementEntity: WithS2Id<RequirementId>, WithS2State<RequirementState> 
     lateinit var hasRequirement: List<RequirementEntity>
 
 //    @Relationship(type = Relation.IS_REQUIREMENT_OF, direction = Relationship.Direction.INCOMING)
-//    lateinit var isRequirementOf: List<RequirementId>
+//    lateinit var isRequirementOf: List<RequirementEntity>
 
     @Relationship(type = Relation.HAS_QUALIFIED_RELATION, direction = Relationship.Direction.OUTGOING)
-    lateinit var hasQualifiedRelation: List<RequirementId>
+    lateinit var hasQualifiedRelation: List<RequirementEntity>
 
     @Relationship(type = Relation.HAS_CONCEPT, direction = Relationship.Direction.OUTGOING)
     lateinit var hasConcept: List<InformationConceptEntity>
@@ -50,7 +50,7 @@ class RequirementEntity: WithS2Id<RequirementId>, WithS2State<RequirementState> 
     lateinit var hasEvidenceTypeList: List<EvidenceTypeListEntity>
 
     lateinit var status: RequirementState
-    override fun s2Id() = id
 
+    override fun s2Id() = id
     override fun s2State() = status
 }

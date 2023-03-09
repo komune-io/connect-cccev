@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service
 class RequirementF2AggregateService(
     private val requirementAggregateService: RequirementAggregateService
 ) {
-    private val createFunction = requirementAggregateService.create()
-    private val updateFunction = requirementAggregateService.update()
     suspend fun create(command: ConstraintCreateCommandDTOBase): RequirementCreatedEvent {
         return RequirementCreateCommand(
             identifier = command.identifier,
@@ -27,9 +25,8 @@ class RequirementF2AggregateService(
             hasRequirement = command.hasRequirement,
             hasConcept = command.hasConcept,
             hasEvidenceTypeList = command.hasEvidenceTypeList,
-            isRequirementOf = command.isRequirementOf,
             hasQualifiedRelation = command.hasQualifiedRelation,
-        ).let { it.invokeWith(createFunction) }
+        ).let { requirementAggregateService.create(it) }
     }
 
     suspend fun create(command: CriterionCreateCommandDTOBase): RequirementCreatedEvent {
@@ -41,9 +38,8 @@ class RequirementF2AggregateService(
             hasRequirement = command.hasRequirement,
             hasConcept = command.hasConcept,
             hasEvidenceTypeList = command.hasEvidenceTypeList,
-            isRequirementOf = command.isRequirementOf,
             hasQualifiedRelation = command.hasQualifiedRelation,
-        ).let { it.invokeWith(createFunction) }
+        ).let { requirementAggregateService.create(it) }
     }
 
     suspend fun create(command: InformationRequirementCreateCommandDTOBase): RequirementCreatedEvent {
@@ -55,12 +51,11 @@ class RequirementF2AggregateService(
             hasRequirement = command.hasRequirement,
             hasConcept = command.hasConcept,
             hasEvidenceTypeList = command.hasEvidenceTypeList,
-            isRequirementOf = command.isRequirementOf,
             hasQualifiedRelation = command.hasQualifiedRelation,
-        ).let { it.invokeWith(createFunction) }
+        ).let { requirementAggregateService.create(it) }
     }
 
     suspend fun update(command: RequirementUpdateCommand): RequirementUpdatedEvent {
-        return command.invokeWith(updateFunction)
+        return requirementAggregateService.update(command)
     }
 }

@@ -1,7 +1,7 @@
 package cccev.test.s2.concept.command
 
+import cccev.projection.api.entity.concept.InformationConceptRepository
 import cccev.s2.concept.api.InformationConceptAggregateService
-import cccev.s2.concept.api.entity.InformationConceptRepository
 import cccev.s2.concept.domain.InformationConceptState
 import cccev.s2.concept.domain.command.InformationConceptCreateCommand
 import cccev.test.CccevCucumberStepsDefinition
@@ -66,7 +66,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
                 AssertionBdd.informationConcept(informationConceptRepository).assertThatId(conceptId).hasFields(
                     status = InformationConceptState.EXISTS,
                     name = command.name,
-                    unitId = command.unitId,
+                    hasUnit = command.hasUnit,
                     description = command.description,
                     expressionOfExpectedValue = command.expressionOfExpectedValue,
                     dependsOn = command.dependsOn,
@@ -83,10 +83,10 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
                 AssertionBdd.informationConcept(informationConceptRepository).assertThat(concept!!).hasFields(
                     status = InformationConceptState.EXISTS,
                     name = params.name ?: concept.name,
-                    unitId = params.unit?.let(context.unitIds::safeGet) ?: concept.unitId,
+                    hasUnit = params.unit?.let(context.unitIds::safeGet) ?: concept.hasUnit.id,
                     description = params.description ?: concept.description,
                     expressionOfExpectedValue = params.expressionOfExpectedValue.parseNullableOrDefault(concept.expressionOfExpectedValue),
-                    dependsOn = params.dependsOn ?: concept.dependsOn,
+                    dependsOn = params.dependsOn ?: concept.dependsOn.map { it.id },
                 )
             }
         }
@@ -95,7 +95,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
     private suspend fun createInformationConcept(params: InformationConceptCreateParams) = context.conceptIds.register(params.identifier) {
         command = InformationConceptCreateCommand(
             name = params.name,
-            unitId = context.unitIds[params.unit] ?: params.unit,
+            hasUnit = context.unitIds[params.unit] ?: params.unit,
             description = params.description,
             expressionOfExpectedValue = params.expressionOfExpectedValue,
             dependsOn = params.dependsOn

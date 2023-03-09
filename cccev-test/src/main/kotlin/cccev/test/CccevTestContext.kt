@@ -4,6 +4,7 @@ import cccev.s2.concept.domain.InformationConceptId
 import cccev.s2.evidence.domain.EvidenceTypeId
 import cccev.s2.evidence.domain.EvidenceTypeListId
 import cccev.s2.requirement.domain.RequirementId
+import cccev.s2.requirement.domain.model.RequirementIdentifier
 import cccev.s2.unit.domain.DataUnitId
 import fixers.bdd.data.TestContext
 import fixers.bdd.data.TestContextKey
@@ -15,8 +16,7 @@ class CccevTestContext: TestContext() {
     val evidenceTypeIds = testEntities<TestContextKey, EvidenceTypeId>("EvidenceType")
     val evidenceTypeListIds = testEntities<TestContextKey, EvidenceTypeListId>("EvidenceTypeList")
     val requirementIds = testEntities<TestContextKey, RequirementId>("Requirement")
-    val isRequirementOf = testEntities<TestContextKey, RequirementId>("IsRequirementOf")
-    val hasQualifiedRelation = testEntities<TestContextKey, RequirementId>("HasQualifiedRelation")
+    val requirementIdentifiers = testEntities<TestContextKey, RequirementIdentifier>("Requirement with identifier")
     val unitIds = testEntities<TestContextKey, DataUnitId>("DataUnit")
 
     final var fetched = FetchContext()

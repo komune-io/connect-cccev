@@ -17,6 +17,7 @@ import io.cucumber.java8.En
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.assertj.core.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired
+import java.util.UUID
 
 class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
 
@@ -65,8 +66,8 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
 
         Then("The requirement should be created") {
             step {
-                val conceptId = context.conceptIds.lastUsed
-                AssertionBdd.requirement(requirementRepository).assertThatId(conceptId).hasFields(
+                val requirementId = context.requirementIds.lastUsed
+                AssertionBdd.requirement(requirementRepository).assertThatId(requirementId).hasFields(
                     status = RequirementState.CREATED,
                     kind = command.kind,
                     name = command.name,
@@ -99,19 +100,19 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
         }
     }
 
-    private suspend fun createRequirement(params: RequirementCreateParams) = context.conceptIds.register(params.identifier) {
+    private suspend fun createRequirement(params: RequirementCreateParams) = context.requirementIds.register(params.identifier) {
         command = RequirementCreateCommand(
-            identifier = params.identifier,
+            identifier = "${params.identifier}_${UUID.randomUUID()}",
             kind = params.kind,
             name = params.name,
             description = params.description,
-            hasRequirement = params.hasRequirement.map { context.requirementIds[it] ?: it },
+            hasRequirement = params.hasRequirement.map { context.requirementIdentifiers[it] ?: it },
+            hasQualifiedRelation = params.hasQualifiedRelation.map { context.requirementIdentifiers[it] ?: it },
             hasConcept = params.hasConcept.map { context.conceptIds[it] ?: it },
             hasEvidenceTypeList = params.hasEvidenceTypeList.map { context.evidenceTypeListIds[it] ?: it },
-            isRequirementOf = params.isRequirementOf.map { context.isRequirementOf[it] ?: it },
-            hasQualifiedRelation = params.hasQualifiedRelation.map { context.hasQualifiedRelation[it] ?: it },
         )
-        requirementAggregateService.create().invoke(command).s2Id()
+        context.requirementIdentifiers[params.identifier] = command.identifier
+        requirementAggregateService.create(command).id
     }
 
     private fun requirementCreateParams(entry: Map<String, String>?) = RequirementCreateParams(

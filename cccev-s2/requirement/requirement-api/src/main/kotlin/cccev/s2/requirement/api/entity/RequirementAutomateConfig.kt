@@ -1,15 +1,14 @@
-package cccev.s2.requirement.api.config
+package cccev.s2.requirement.api.entity
 
-import cccev.s2.requirement.api.view.RequirementView
-import cccev.s2.requirement.api.entity.RequirementSnapRepository
+import cccev.projection.api.entity.requirement.RequirementEntity
+import cccev.projection.api.entity.requirement.RequirementEvolver
+import cccev.projection.api.entity.requirement.RequirementSnapRepository
 import cccev.s2.requirement.domain.RequirementEvent
 import cccev.s2.requirement.domain.RequirementId
 import cccev.s2.requirement.domain.RequirementState
 import cccev.s2.requirement.domain.command.RequirementCreatedEvent
 import cccev.s2.requirement.domain.command.RequirementUpdatedEvent
-import cccev.s2.requirement.domain.model.Requirement
 import cccev.s2.requirement.domain.s2Requirement
-import kotlin.reflect.KClass
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
@@ -21,18 +20,20 @@ import ssm.chaincode.dsl.model.Agent
 import ssm.chaincode.dsl.model.uri.ChaincodeUri
 import ssm.chaincode.dsl.model.uri.from
 import ssm.sdk.sign.extention.loadFromFile
+import kotlin.reflect.KClass
 
 @Configuration
 class RequirementAutomateConfig(
 	automateExecutor: RequirementAutomateExecutor,
-	snapRepository: RequirementSnapRepository,
+	requirementEvolver: RequirementEvolver,
+	requirementSnapRepository: RequirementSnapRepository,
 ): S2SourcingSsmAdapter<
-		Requirement,
+		RequirementEntity,
 		RequirementState,
 		RequirementEvent,
 		RequirementId,
 		RequirementAutomateExecutor
-	>(automateExecutor, RequirementView(), snapRepository) {
+	>(automateExecutor, requirementEvolver, requirementSnapRepository) {
 	override fun automate() = s2Requirement
 	override fun entityType(): KClass<RequirementEvent> {
 		return RequirementEvent::class
@@ -61,4 +62,4 @@ class RequirementAutomateConfig(
 }
 
 @Service
-class RequirementAutomateExecutor: S2AutomateDeciderSpring<Requirement, RequirementState, RequirementEvent, RequirementId>()
+class RequirementAutomateExecutor: S2AutomateDeciderSpring<RequirementEntity, RequirementState, RequirementEvent, RequirementId>()

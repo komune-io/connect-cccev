@@ -14,6 +14,6 @@ fun RequirementEntity.toRequirement() = Requirement(
     hasEvidenceTypeList = hasEvidenceTypeList.map { it.id },
 //    isRequirementOf = isRequirementOf,
     isRequirementOf = emptyList(),
-    hasQualifiedRelation = hasQualifiedRelation,
+    hasQualifiedRelation = hasQualifiedRelation.map { it.id },
     state = status
 )

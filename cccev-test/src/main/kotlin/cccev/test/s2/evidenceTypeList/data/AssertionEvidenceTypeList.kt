@@ -1,7 +1,7 @@
 package cccev.test.s2.evidenceTypeList.data
 
-import cccev.s2.evidence.api.entity.list.EvidenceTypeListEntity
-import cccev.s2.evidence.api.entity.list.EvidenceTypeListRepository
+import cccev.projection.api.entity.evidencetypelist.EvidenceTypeListEntity
+import cccev.projection.api.entity.evidencetypelist.EvidenceTypeListRepository
 import cccev.s2.evidence.domain.EvidenceTypeId
 import cccev.s2.evidence.domain.EvidenceTypeListId
 import cccev.s2.evidence.domain.EvidenceTypeListState
@@ -26,13 +26,14 @@ class AssertionEvidenceTypeList(
             status: EvidenceTypeListState = evidenceTypeList.status,
             name: String = evidenceTypeList.name,
             description: String = evidenceTypeList.description,
-            specifiesEvidenceType: List<EvidenceTypeId> = evidenceTypeList.specifiesEvidenceType,
+            specifiesEvidenceType: List<EvidenceTypeId> = evidenceTypeList.specifiesEvidenceType.map { it.id },
         ) = also {
             Assertions.assertThat(evidenceTypeList.id).isEqualTo(id)
             Assertions.assertThat(evidenceTypeList.status).isEqualTo(status)
             Assertions.assertThat(evidenceTypeList.name).isEqualTo(name)
             Assertions.assertThat(evidenceTypeList.description).isEqualTo(description)
-            Assertions.assertThat(evidenceTypeList.specifiesEvidenceType).containsExactlyInAnyOrderElementsOf(specifiesEvidenceType)
+            Assertions.assertThat(evidenceTypeList.specifiesEvidenceType.map { it.id })
+                .containsExactlyInAnyOrderElementsOf(specifiesEvidenceType)
         }
     }
 }

@@ -8,6 +8,7 @@ import s2.dsl.automate.S2Role
 import s2.dsl.automate.S2State
 import s2.dsl.automate.WithId
 import s2.dsl.automate.builder.s2
+import s2.dsl.automate.model.WithS2Id
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
@@ -45,4 +46,4 @@ interface InformationConceptCommand: S2Command<InformationConceptId>
 
 @JsExport
 @JsName("InformationConceptEvent")
-interface InformationConceptEvent: Evt, WithId<InformationConceptId>
+interface InformationConceptEvent: Evt, WithS2Id<InformationConceptId>

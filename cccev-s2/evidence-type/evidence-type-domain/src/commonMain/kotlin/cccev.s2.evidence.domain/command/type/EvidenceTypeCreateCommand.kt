@@ -4,6 +4,7 @@ import cccev.s2.evidence.domain.D2EvidenceTypePage
 import cccev.s2.evidence.domain.EvidenceTypeEvent
 import cccev.s2.evidence.domain.EvidenceTypeId
 import cccev.s2.evidence.domain.EvidenceTypeInitCommand
+import cccev.s2.evidence.domain.EvidenceTypeState
 import kotlin.js.JsExport
 import kotlin.js.JsName
 import kotlinx.serialization.Serializable
@@ -55,7 +56,27 @@ interface EvidenceTypeCreatedEventDTO: EvidenceTypeEvent {
     /**
      * Identifier of the created evidence type.
      */
-    override val id: EvidenceTypeId
+    val id: EvidenceTypeId
+
+    /**
+     * Name of the evidence type.
+     * @example [cccev.s2.evidence.domain.model.EvidenceType.name]
+     */
+    val name: String
+
+    /**
+     * Description of the evidence type.
+     * @example [cccev.s2.evidence.domain.model.EvidenceType.description]
+     */
+    val description: String
+
+    /**
+     * How long (in milliseconds) an evidence of this type is considered as valid after it has been issued, if applicable.
+     * @example [cccev.s2.evidence.domain.model.EvidenceType.validityPeriodConstraint]
+     */
+    val validityPeriodConstraint: Long?
+
+    val status: EvidenceTypeState
 }
 
 /**
@@ -64,5 +85,11 @@ interface EvidenceTypeCreatedEventDTO: EvidenceTypeEvent {
  */
 @Serializable
 data class EvidenceTypeCreatedEvent(
-    override val id: EvidenceTypeId
-): EvidenceTypeCreatedEventDTO
+    override val id: EvidenceTypeId,
+    override val name: String,
+    override val description: String,
+    override val validityPeriodConstraint: Long?,
+    override val status: EvidenceTypeState
+): EvidenceTypeCreatedEventDTO {
+    override fun s2Id() = id
+}

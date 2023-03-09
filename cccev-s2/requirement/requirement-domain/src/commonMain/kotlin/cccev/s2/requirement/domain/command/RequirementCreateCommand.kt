@@ -6,7 +6,8 @@ import cccev.s2.requirement.domain.D2RequirementPage
 import cccev.s2.requirement.domain.RequirementEvent
 import cccev.s2.requirement.domain.RequirementId
 import cccev.s2.requirement.domain.RequirementInitCommand
-import cccev.s2.requirement.domain.model.Requirement
+import cccev.s2.requirement.domain.RequirementState
+import cccev.s2.requirement.domain.model.RequirementIdentifier
 import cccev.s2.requirement.domain.model.RequirementKind
 import kotlin.js.JsExport
 import kotlin.js.JsName
@@ -57,18 +58,8 @@ data class RequirementCreateCommand(
      * Sub-requirements that must be fulfilled for the requirement to be validated.
      * @example [cccev.s2.requirement.domain.model.Requirement.hasRequirement]
      */
-    val hasRequirement: List<RequirementId>,
+    val hasRequirement: List<RequirementIdentifier>,
 
-    /**
-     * A reference between a sub-Requirement and its parent Requirement.
-     * The relation between a parent Requirement and a sub-Requirement can be complex.
-     * Therefore, qualified relations (see `hasQualifiedRelation`) can be used to represent
-     * this relationship on its own and qualify it with additional information such as a date, a place.
-     * This is left to implementers. In the case where the purpose is to link the two Requirements
-     * without additional information, the simple relationship as proposed here can be directly used.
-     *  @example [["b25975b6-f4ff-4773-b535-9a18192b30de"]]
-     */
-    var isRequirementOf: List<RequirementId>?,
     /**
      * Described and/or categorised relation to another Requirement. <br/>
      * This property leaves the possiblity to define a qualified relation from Requirement
@@ -77,7 +68,7 @@ data class RequirementCreateCommand(
      * in Member States' specific requirements.
      * @example [["baee57d9-7f0a-4cb0-92e5-402b80c18c74"]]
      */
-    var hasQualifiedRelation: List<RequirementId>?,
+    var hasQualifiedRelation: List<RequirementIdentifier>?,
 
     /**
      * Concepts used by the requirement
@@ -97,9 +88,55 @@ data class RequirementCreateCommand(
 @JsName("RequirementCreatedEventDTO")
 interface RequirementCreatedEventDTO: RequirementEvent {
     /**
-     * Identifier of the created requirement.
+     * Identifier of the created requirement
      */
-    val requirement: Requirement
+    val id: RequirementId
+
+    /**
+     * @ref [RequirementCreateCommand.identifier]
+     */
+    val identifier: RequirementIdentifier?
+
+    /**
+     * @ref [RequirementCreateCommand.kind]
+     */
+    val kind: RequirementKind
+
+    /**
+     * @ref [RequirementCreateCommand.name]
+     */
+    val name: String?
+
+    /**
+     * @ref [RequirementCreateCommand.description]
+     */
+    val description: String?
+
+    /**
+     * @ref [RequirementCreateCommand.hasRequirement]
+     */
+    val hasRequirement: List<RequirementIdentifier>
+
+    /**
+     * @ref [RequirementCreateCommand.hasQualifiedRelation]
+     */
+    val hasQualifiedRelation: List<RequirementIdentifier>?
+
+    /**
+     * @ref [RequirementCreateCommand.hasConcept]
+     */
+    val hasConcept: List<InformationConceptId>
+
+    /**
+     * @ref [RequirementCreateCommand.hasEvidenceTypeList]
+     */
+    val hasEvidenceTypeList: List<EvidenceTypeListId>
+
+    /**
+     * State of the created requirement
+     * @example "CREATED"
+     */
+    val status: RequirementState
 }
 
 /**
@@ -108,7 +145,16 @@ interface RequirementCreatedEventDTO: RequirementEvent {
  */
 @Serializable
 data class RequirementCreatedEvent(
-    override val requirement: Requirement,
+    override val id: RequirementId,
+    override val identifier: RequirementIdentifier?,
+    override val kind: RequirementKind,
+    override val name: String?,
+    override val description: String?,
+    override val hasRequirement: List<RequirementId>,
+    override val hasQualifiedRelation: List<RequirementId>?,
+    override val hasConcept: List<InformationConceptId>,
+    override val hasEvidenceTypeList: List<EvidenceTypeListId>,
+    override val status: RequirementState
 ): RequirementCreatedEventDTO {
-    override fun s2Id() = requirement.id
+    override fun s2Id() = id
 }

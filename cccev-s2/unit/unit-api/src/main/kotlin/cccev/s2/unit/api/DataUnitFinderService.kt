@@ -1,6 +1,6 @@
 package cccev.s2.unit.api
 
-import cccev.s2.unit.api.entity.DataUnitRepository
+import cccev.projection.api.entity.unit.DataUnitRepository
 import cccev.s2.unit.api.entity.toDataUnit
 import cccev.s2.unit.domain.DataUnitFinder
 import cccev.s2.unit.domain.DataUnitId

@@ -8,6 +8,7 @@ import s2.dsl.automate.S2Role
 import s2.dsl.automate.S2State
 import s2.dsl.automate.WithId
 import s2.dsl.automate.builder.s2
+import s2.dsl.automate.model.WithS2Id
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
@@ -44,4 +45,4 @@ interface DataUnitCommand: S2Command<DataUnitId>
 
 @JsExport
 @JsName("DataUnitEvent")
-interface DataUnitEvent: Evt, WithId<DataUnitId>
+interface DataUnitEvent: Evt, WithS2Id<DataUnitId>

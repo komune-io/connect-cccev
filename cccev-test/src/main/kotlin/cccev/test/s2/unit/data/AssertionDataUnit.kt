@@ -1,7 +1,7 @@
 package cccev.test.s2.unit.data
 
-import cccev.s2.unit.api.entity.DataUnitEntity
-import cccev.s2.unit.api.entity.DataUnitRepository
+import cccev.projection.api.entity.unit.DataUnitEntity
+import cccev.projection.api.entity.unit.DataUnitRepository
 import cccev.s2.unit.domain.DataUnitId
 import cccev.s2.unit.domain.DataUnitState
 import cccev.s2.unit.domain.model.DataUnitType

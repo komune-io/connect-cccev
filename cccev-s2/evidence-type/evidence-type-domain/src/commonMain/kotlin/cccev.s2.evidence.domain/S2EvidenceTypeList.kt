@@ -8,6 +8,7 @@ import s2.dsl.automate.S2InitCommand
 import s2.dsl.automate.S2State
 import s2.dsl.automate.WithId
 import s2.dsl.automate.builder.s2
+import s2.dsl.automate.model.WithS2Id
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
@@ -45,4 +46,4 @@ interface EvidenceTypeListCommand: S2Command<EvidenceTypeListId>
 
 @JsExport
 @JsName("EvidenceTypeListEvent")
-interface EvidenceTypeListEvent: Evt, WithId<EvidenceTypeListId>
+interface EvidenceTypeListEvent: Evt, WithS2Id<EvidenceTypeListId>
