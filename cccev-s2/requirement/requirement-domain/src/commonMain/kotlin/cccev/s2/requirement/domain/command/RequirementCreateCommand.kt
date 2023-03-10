@@ -90,7 +90,7 @@ interface RequirementCreatedEventDTO: RequirementEvent {
     /**
      * Identifier of the created requirement
      */
-    val id: RequirementId
+    override val id: RequirementId
 
     /**
      * @ref [RequirementCreateCommand.identifier]
@@ -155,6 +155,4 @@ data class RequirementCreatedEvent(
     override val hasConcept: List<InformationConceptId>,
     override val hasEvidenceTypeList: List<EvidenceTypeListId>,
     override val status: RequirementState
-): RequirementCreatedEventDTO {
-    override fun s2Id() = id
-}
+): RequirementCreatedEventDTO

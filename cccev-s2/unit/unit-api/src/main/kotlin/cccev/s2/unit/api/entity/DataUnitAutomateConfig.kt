@@ -38,6 +38,8 @@ class DataUnitAutomateConfig(
 		return DataUnitEvent::class
 	}
 
+	override var permisive: Boolean = true
+
 	override fun json(): Json = Json {
 		serializersModule = SerializersModule {
 			polymorphic(DataUnitEvent::class) {

@@ -6,7 +6,9 @@ import cccev.projection.api.entity.evidencetypelist.EvidenceTypeListSnapReposito
 import cccev.s2.evidence.domain.EvidenceTypeListEvent
 import cccev.s2.evidence.domain.EvidenceTypeListId
 import cccev.s2.evidence.domain.EvidenceTypeListState
+import cccev.s2.evidence.domain.command.list.EvidenceTypeListAddedEvidenceTypesEvent
 import cccev.s2.evidence.domain.command.list.EvidenceTypeListCreatedEvent
+import cccev.s2.evidence.domain.command.list.EvidenceTypeListRemovedEvidenceTypesEvent
 import cccev.s2.evidence.domain.s2EvidenceTypeList
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
@@ -38,10 +40,14 @@ class EvidenceTypeListAutomateConfig(
 		return EvidenceTypeListEvent::class
 	}
 
+	override var permisive: Boolean = true
+
 	override fun json(): Json = Json {
 		serializersModule = SerializersModule {
 			polymorphic(EvidenceTypeListEvent::class) {
 				subclass(EvidenceTypeListCreatedEvent::class, EvidenceTypeListCreatedEvent.serializer())
+				subclass(EvidenceTypeListAddedEvidenceTypesEvent::class, EvidenceTypeListAddedEvidenceTypesEvent.serializer())
+				subclass(EvidenceTypeListRemovedEvidenceTypesEvent::class, EvidenceTypeListRemovedEvidenceTypesEvent.serializer())
 			}
 		}
 	}

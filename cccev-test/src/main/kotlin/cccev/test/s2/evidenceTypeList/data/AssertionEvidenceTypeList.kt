@@ -35,5 +35,13 @@ class AssertionEvidenceTypeList(
             Assertions.assertThat(evidenceTypeList.specifiesEvidenceType.map { it.id })
                 .containsExactlyInAnyOrderElementsOf(specifiesEvidenceType)
         }
+
+        fun specifiesEvidenceTypes(ids: Collection<EvidenceTypeId>) {
+            Assertions.assertThat(evidenceTypeList.specifiesEvidenceType.map { it.id }).containsAll(ids)
+        }
+
+        fun doesNotSpecifiesEvidenceTypes(ids: Collection<EvidenceTypeId>) {
+            Assertions.assertThat(evidenceTypeList.specifiesEvidenceType.map { it.id }).doesNotContainAnyElementsOf(ids)
+        }
     }
 }

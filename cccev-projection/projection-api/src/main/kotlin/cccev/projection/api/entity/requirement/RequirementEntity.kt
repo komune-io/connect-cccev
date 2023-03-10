@@ -1,6 +1,7 @@
 package cccev.projection.api.entity.requirement
 
 import cccev.dsl.model.EvidenceTypeListId
+import cccev.projection.api.entity.EntityBase
 import cccev.projection.api.entity.Relation
 import cccev.projection.api.entity.concept.InformationConceptEntity
 import cccev.projection.api.entity.evidencetypelist.EvidenceTypeListEntity
@@ -17,40 +18,32 @@ import s2.dsl.automate.model.WithS2Id
 import s2.dsl.automate.model.WithS2State
 
 @Node("Requirement")
-class RequirementEntity: WithS2Id<RequirementId>, WithS2State<RequirementState> {
-    @Id
-    var id: RequirementId = UUID.randomUUID().toString()
-
+class RequirementEntity: EntityBase<RequirementId, RequirementState>() {
     var identifier: String? = null
 
     lateinit var kind: RequirementKind
 
-    var description: String? = null
-
     var name: String? = null
+
+    var description: String? = null
 
     var type: String? = null
 
     @Relationship(type = Relation.IS_DERIVED_FROM)
     lateinit var isDerivedFrom: List<ReferenceFrameworkEntity>
 
-    @Relationship(type = Relation.HAS_REQUIREMENT, direction = Relationship.Direction.INCOMING)
-    lateinit var hasRequirement: List<RequirementEntity>
+    @Relationship(type = Relation.HAS_REQUIREMENT)
+    lateinit var hasRequirement: MutableList<RequirementEntity>
 
 //    @Relationship(type = Relation.IS_REQUIREMENT_OF, direction = Relationship.Direction.INCOMING)
 //    lateinit var isRequirementOf: List<RequirementEntity>
 
-    @Relationship(type = Relation.HAS_QUALIFIED_RELATION, direction = Relationship.Direction.OUTGOING)
-    lateinit var hasQualifiedRelation: List<RequirementEntity>
+    @Relationship(type = Relation.HAS_QUALIFIED_RELATION)
+    lateinit var hasQualifiedRelation: MutableList<RequirementEntity>
 
-    @Relationship(type = Relation.HAS_CONCEPT, direction = Relationship.Direction.OUTGOING)
-    lateinit var hasConcept: List<InformationConceptEntity>
+    @Relationship(type = Relation.HAS_CONCEPT)
+    lateinit var hasConcept: MutableList<InformationConceptEntity>
 
-    @Relationship(type = Relation.HAS_EVIDENCE_TYPE_LIST, direction = Relationship.Direction.OUTGOING)
-    lateinit var hasEvidenceTypeList: List<EvidenceTypeListEntity>
-
-    lateinit var status: RequirementState
-
-    override fun s2Id() = id
-    override fun s2State() = status
+    @Relationship(type = Relation.HAS_EVIDENCE_TYPE_LIST)
+    lateinit var hasEvidenceTypeList: MutableList<EvidenceTypeListEntity>
 }

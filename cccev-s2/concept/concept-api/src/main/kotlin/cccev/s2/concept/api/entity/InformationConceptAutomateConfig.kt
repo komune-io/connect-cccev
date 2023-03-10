@@ -38,6 +38,8 @@ class InformationConceptAutomateConfig(
 		return InformationConceptEvent::class
 	}
 
+	override var permisive: Boolean = true
+
 	override fun json(): Json = Json {
 		serializersModule = SerializersModule {
 			polymorphic(InformationConceptEvent::class) {

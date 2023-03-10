@@ -41,5 +41,29 @@ class AssertionRequirement(
             Assertions.assertThat(requirement.hasConcept.map { it.id }).containsExactlyInAnyOrderElementsOf(hasConcept)
             Assertions.assertThat(requirement.hasEvidenceTypeList.map { it.id }).containsExactlyInAnyOrderElementsOf(hasEvidenceTypeList)
         }
+
+        fun hasRequirements(ids: Collection<RequirementId>) {
+            Assertions.assertThat(requirement.hasRequirement.map { it.id }).containsAll(ids)
+        }
+
+        fun doesNotHaveRequirements(ids: Collection<RequirementId>) {
+            Assertions.assertThat(requirement.hasRequirement.map { it.id }).doesNotContainAnyElementsOf(ids)
+        }
+
+        fun hasConcepts(ids: Collection<InformationConceptId>) {
+            Assertions.assertThat(requirement.hasConcept.map { it.id }).containsAll(ids)
+        }
+
+        fun doesNotHaveConcepts(ids: Collection<InformationConceptId>) {
+            Assertions.assertThat(requirement.hasConcept.map { it.id }).doesNotContainAnyElementsOf(ids)
+        }
+
+        fun hasEvidenceTypeLists(ids: Collection<EvidenceTypeListId>) {
+            Assertions.assertThat(requirement.hasEvidenceTypeList.map { it.id }).containsAll(ids)
+        }
+
+        fun doesNotHaveEvidenceTypeLists(ids: Collection<EvidenceTypeListId>) {
+            Assertions.assertThat(requirement.hasEvidenceTypeList.map { it.id }).doesNotContainAnyElementsOf(ids)
+        }
     }
 }

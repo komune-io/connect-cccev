@@ -79,7 +79,7 @@ interface RequirementUpdatedEventDTO: RequirementEvent {
     /**
      * Identifier of the updated requirement.
      */
-    val id: RequirementId
+    override val id: RequirementId
     val name: String?
     val description: String?
 }

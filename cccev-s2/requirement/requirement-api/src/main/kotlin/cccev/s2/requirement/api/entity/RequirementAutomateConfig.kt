@@ -6,7 +6,13 @@ import cccev.projection.api.entity.requirement.RequirementSnapRepository
 import cccev.s2.requirement.domain.RequirementEvent
 import cccev.s2.requirement.domain.RequirementId
 import cccev.s2.requirement.domain.RequirementState
+import cccev.s2.requirement.domain.command.RequirementAddedConceptsEvent
+import cccev.s2.requirement.domain.command.RequirementAddedEvidenceTypeListsEvent
+import cccev.s2.requirement.domain.command.RequirementAddedRequirementsEvent
 import cccev.s2.requirement.domain.command.RequirementCreatedEvent
+import cccev.s2.requirement.domain.command.RequirementRemovedConceptsEvent
+import cccev.s2.requirement.domain.command.RequirementRemovedEvidenceTypeListsEvent
+import cccev.s2.requirement.domain.command.RequirementRemovedRequirementsEvent
 import cccev.s2.requirement.domain.command.RequirementUpdatedEvent
 import cccev.s2.requirement.domain.s2Requirement
 import kotlinx.serialization.json.Json
@@ -39,11 +45,19 @@ class RequirementAutomateConfig(
 		return RequirementEvent::class
 	}
 
+	override var permisive: Boolean = true
+
 	override fun json(): Json = Json {
 		serializersModule = SerializersModule {
 			polymorphic(RequirementEvent::class) {
 				subclass(RequirementCreatedEvent::class, RequirementCreatedEvent.serializer())
 				subclass(RequirementUpdatedEvent::class, RequirementUpdatedEvent.serializer())
+				subclass(RequirementAddedRequirementsEvent::class, RequirementAddedRequirementsEvent.serializer())
+				subclass(RequirementRemovedRequirementsEvent::class, RequirementRemovedRequirementsEvent.serializer())
+				subclass(RequirementAddedConceptsEvent::class, RequirementAddedConceptsEvent.serializer())
+				subclass(RequirementRemovedConceptsEvent::class, RequirementRemovedConceptsEvent.serializer())
+				subclass(RequirementAddedEvidenceTypeListsEvent::class, RequirementAddedEvidenceTypeListsEvent.serializer())
+				subclass(RequirementRemovedEvidenceTypeListsEvent::class, RequirementRemovedEvidenceTypeListsEvent.serializer())
 			}
 		}
 	}
@@ -58,7 +72,6 @@ class RequirementAutomateConfig(
 	override fun signerAgent(): Agent {
 		return Agent.loadFromFile("ssm-admin","user/ssm-admin")
 	}
-
 }
 
 @Service

@@ -8,7 +8,6 @@ import cccev.s2.requirement.domain.model.RequirementKind
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.s2.requirement.data.extractRequirementKind
 import cccev.test.s2.requirement.data.requirement
-import f2.dsl.fnc.invoke
 import fixers.bdd.assertion.AssertionBdd
 import fixers.bdd.data.TestContextKey
 import fixers.bdd.data.parser.extractList
@@ -81,8 +80,8 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
 
         Then("The requirement should be created:") { params: RequirementAssertParams ->
             step {
-                val conceptId = context.conceptIds.safeGet(params.identifier)
-                val requirement = requirementRepository.findById(conceptId).awaitSingleOrNull()
+                val requirementId = context.requirementIds.safeGet(params.identifier)
+                val requirement = requirementRepository.findById(requirementId).awaitSingleOrNull()
                 Assertions.assertThat(requirement).isNotNull
 
                 AssertionBdd.requirement(requirementRepository).assertThat(requirement!!).hasFields(

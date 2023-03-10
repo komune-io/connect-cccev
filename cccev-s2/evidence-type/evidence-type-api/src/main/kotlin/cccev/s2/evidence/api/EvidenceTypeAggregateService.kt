@@ -6,8 +6,12 @@ import cccev.s2.evidence.domain.EvidenceTypeAggregate
 import cccev.s2.evidence.domain.EvidenceTypeId
 import cccev.s2.evidence.domain.EvidenceTypeListState
 import cccev.s2.evidence.domain.EvidenceTypeState
+import cccev.s2.evidence.domain.command.list.EvidenceTypeListAddEvidenceTypesCommand
+import cccev.s2.evidence.domain.command.list.EvidenceTypeListAddedEvidenceTypesEvent
 import cccev.s2.evidence.domain.command.list.EvidenceTypeListCreateCommand
 import cccev.s2.evidence.domain.command.list.EvidenceTypeListCreatedEvent
+import cccev.s2.evidence.domain.command.list.EvidenceTypeListRemoveEvidenceTypesCommand
+import cccev.s2.evidence.domain.command.list.EvidenceTypeListRemovedEvidenceTypesEvent
 import cccev.s2.evidence.domain.command.list.EvidenceTypeListUpdateCommand
 import cccev.s2.evidence.domain.command.list.EvidenceTypeListUpdatedEvent
 import cccev.s2.evidence.domain.command.type.EvidenceTypeCreateCommand
@@ -51,6 +55,20 @@ class EvidenceTypeAggregateService(
 //        it.specifiesEvidenceType = command.specifiesEvidenceType
 
         EvidenceTypeListUpdatedEvent(command.id)
+    }
+
+    override suspend fun addEvidenceTypes(command: EvidenceTypeListAddEvidenceTypesCommand) = listAutomate.transition(command) {
+        EvidenceTypeListAddedEvidenceTypesEvent(
+            id = command.id,
+            evidenceTypeIds = command.evidenceTypeIds
+        )
+    }
+
+    override suspend fun removeEvidenceTypes(command: EvidenceTypeListRemoveEvidenceTypesCommand) = listAutomate.transition(command) {
+        EvidenceTypeListRemovedEvidenceTypesEvent(
+            id = command.id,
+            evidenceTypeIds = command.evidenceTypeIds
+        )
     }
 
     private suspend fun checkEvidenceTypesExist(ids: Collection<EvidenceTypeId>) {

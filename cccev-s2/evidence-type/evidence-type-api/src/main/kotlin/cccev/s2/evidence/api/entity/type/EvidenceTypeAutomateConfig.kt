@@ -38,6 +38,8 @@ class EvidenceTypeAutomateConfig(
 		return EvidenceTypeEvent::class
 	}
 
+	override var permisive: Boolean = true
+
 	override fun json(): Json = Json {
 		serializersModule = SerializersModule {
 			polymorphic(EvidenceTypeEvent::class) {

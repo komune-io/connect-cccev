@@ -1,6 +1,7 @@
 package cccev.s2.unit.domain
 
 import cccev.s2.unit.domain.command.DataUnitCreateCommand
+import cccev.s2.unit.domain.command.DataUnitCreatedEvent
 import s2.dsl.automate.Evt
 import s2.dsl.automate.S2Command
 import s2.dsl.automate.S2InitCommand
@@ -8,6 +9,7 @@ import s2.dsl.automate.S2Role
 import s2.dsl.automate.S2State
 import s2.dsl.automate.WithId
 import s2.dsl.automate.builder.s2
+import s2.dsl.automate.builder.s2Sourcing
 import s2.dsl.automate.model.WithS2Id
 import kotlin.js.JsExport
 import kotlin.js.JsName
@@ -20,9 +22,9 @@ import kotlin.js.JsName
  */
 typealias DataUnitId = String
 
-val s2DataUnit = s2 {
+val s2DataUnit = s2Sourcing {
 	name = "DataUnitS2"
-	init<DataUnitCreateCommand> {
+	init<DataUnitCreateCommand, DataUnitCreatedEvent> {
 		to = DataUnitState.EXISTS
 		role = EditorRole
 	}
