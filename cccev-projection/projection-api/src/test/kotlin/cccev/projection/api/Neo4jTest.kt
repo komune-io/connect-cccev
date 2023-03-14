@@ -3,6 +3,7 @@ package cccev.projection.api
 import cccev.projection.api.entity.requirement.RequirementEntity
 import cccev.projection.api.entity.requirement.RequirementRepository
 import cccev.s2.requirement.domain.model.RequirementKind
+import java.util.UUID
 import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
@@ -36,17 +37,20 @@ class Neo4jTest {
         val requirement = RequirementEntity().apply {
             kind = RequirementKind.INFORMATION
             identifier = "P"
+            id = UUID.randomUUID().toString()
             name = "Protocol"
 //            hasRequirement = listOf("PoP", "PoP2")
-            hasRequirement = listOf(
+            hasRequirement = mutableListOf(
                 RequirementEntity().apply {
                     kind = RequirementKind.INFORMATION
                     identifier = "PoP"
+                    id = UUID.randomUUID().toString()
                     name = "ProtocolOfProtocol"
-                    hasRequirement = listOf(
+                    hasRequirement = mutableListOf(
                         RequirementEntity().apply {
                             kind = RequirementKind.INFORMATION
                             identifier = "PoPinP"
+                            id = UUID.randomUUID().toString()
                             name = "ProtocolOfProtocolInProtocol"
                         }
                     )

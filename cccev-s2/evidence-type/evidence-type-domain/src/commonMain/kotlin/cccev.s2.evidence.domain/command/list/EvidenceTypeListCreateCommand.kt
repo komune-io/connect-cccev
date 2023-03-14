@@ -57,7 +57,7 @@ interface EvidenceTypeListCreatedEventDTO: EvidenceTypeListEvent {
     /**
      * Identifier of the created evidence type list.
      */
-    val id: EvidenceTypeListId
+    override val id: EvidenceTypeListId
 
     /**
      * Name of the evidence type list.

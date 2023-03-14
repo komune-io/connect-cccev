@@ -62,7 +62,7 @@ interface EvidenceTypeListUpdatedEventDTO: EvidenceTypeListEvent {
     /**
      * Identifier of the updated evidence type list.
      */
-    val id: EvidenceTypeListId
+    override val id: EvidenceTypeListId
 }
 
 /**

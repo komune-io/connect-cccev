@@ -614,7 +614,7 @@ style:
     excludeAnnotatedClasses: []
     allowVars: false
   UseIfInsteadOfWhen:
-    active: true
+    active: false
   UseRequire:
     active: false
   UselessCallOnNotNull:
