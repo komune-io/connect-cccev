@@ -62,4 +62,9 @@ class InformationConceptAutomateConfig(
 }
 
 @Service
-class InformationConceptAutomateExecutor: S2AutomateDeciderSpring<InformationConceptEntity, InformationConceptState, InformationConceptEvent, InformationConceptId>()
+class InformationConceptAutomateExecutor
+	: S2AutomateDeciderSpring<
+		InformationConceptEntity,
+		InformationConceptState,
+		InformationConceptEvent,
+		InformationConceptId>()

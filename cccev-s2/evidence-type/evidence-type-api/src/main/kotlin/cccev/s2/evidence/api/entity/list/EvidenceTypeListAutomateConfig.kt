@@ -66,4 +66,9 @@ class EvidenceTypeListAutomateConfig(
 }
 
 @Service
-class EvidenceTypeListAutomateExecutor: S2AutomateDeciderSpring<EvidenceTypeListEntity, EvidenceTypeListState, EvidenceTypeListEvent, EvidenceTypeListId>()
+class EvidenceTypeListAutomateExecutor
+	: S2AutomateDeciderSpring<
+		EvidenceTypeListEntity,
+		EvidenceTypeListState,
+		EvidenceTypeListEvent,
+		EvidenceTypeListId>()
