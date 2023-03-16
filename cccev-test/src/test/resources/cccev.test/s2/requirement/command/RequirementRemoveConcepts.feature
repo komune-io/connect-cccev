@@ -1,7 +1,8 @@
 Feature: RequirementRemoveConcepts
 
   Scenario: I want to remove information concepts from a requirement
-    Given Some information concepts are created:
+    Given A data unit is created
+    And Some information concepts are created:
       | identifier |
       | ic1        |
       | ic2        |
@@ -12,6 +13,6 @@ Feature: RequirementRemoveConcepts
       | concepts |
       | ic1      |
     Then The requirement should not contain the information concepts
-    And The requirement should not contain the information concepts:
-      | identifier |
-      | ic2        |
+    And The requirement should contain the information concepts:
+      | concepts |
+      | ic2      |

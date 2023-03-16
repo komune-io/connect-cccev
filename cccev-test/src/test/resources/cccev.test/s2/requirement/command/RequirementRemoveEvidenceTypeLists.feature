@@ -12,6 +12,6 @@ Feature: RequirementRemoveEvidenceTypeLists
       | evidenceTypeLists |
       | etl1              |
     Then The requirement should not contain the evidence type lists
-    And The requirement should not contain the evidence type lists:
-      | identifier |
-      | etl2       |
+    And The requirement should contain the evidence type lists:
+      | evidenceTypeLists |
+      | etl2              |

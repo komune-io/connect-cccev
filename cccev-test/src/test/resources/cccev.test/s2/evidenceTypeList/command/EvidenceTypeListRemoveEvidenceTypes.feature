@@ -13,5 +13,5 @@ Feature: EvidenceTypeListRemoveEvidenceTypes
       | et1           |
     Then The evidence type list should not contain the evidence types
     Then The evidence type list should contain the evidence types:
-      | identifier |
+      | evidenceTypes |
       | et2        |

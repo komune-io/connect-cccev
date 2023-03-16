@@ -3,6 +3,8 @@ package fixers.bdd
 import city.smartb.i2.spring.boot.auth.config.WebSecurityConfig
 import f2.dsl.cqrs.exception.F2Exception
 import fixers.bdd.data.TestContext
+import io.cucumber.core.backend.CucumberInvocationTargetException
+import io.cucumber.datatable.CucumberDataTableException
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -49,6 +51,16 @@ abstract class CucumberStepsDefinition {
         runBlocking(GlobalScope.newCoroutineContext(authedContext())) {
             try {
                 block()
+            } catch (e: CucumberDataTableException) {
+                val actualException = (e.cause as? CucumberInvocationTargetException)
+                    ?.invocationTargetExceptionCause
+                    ?: e
+                actualException.printStackTrace()
+                throw actualException
+            } catch (e: CucumberInvocationTargetException) {
+                val actualException = e.invocationTargetExceptionCause ?: e
+                actualException.printStackTrace()
+                throw actualException
             } catch (e: Exception) {
                 e.printStackTrace()
                 context.errors.add(e)

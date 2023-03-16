@@ -1,7 +1,8 @@
 Feature: RequirementAddConcepts
 
   Scenario: I want to add information concepts to a requirement
-    Given Some information concepts are created:
+    Given A data unit is created
+    And Some information concepts are created:
       | identifier |
       | ic1        |
       | ic2        |
