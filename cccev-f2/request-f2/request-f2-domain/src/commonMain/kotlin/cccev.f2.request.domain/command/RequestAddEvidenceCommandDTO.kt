@@ -4,6 +4,7 @@ import cccev.s2.evidence.domain.EvidenceTypeId
 import cccev.s2.request.domain.command.RequestAddedEvidenceEvent
 import cccev.s2.request.domain.model.RequestId
 import f2.dsl.fnc.F2Function
+import io.ktor.http.content.PartData
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
@@ -15,7 +16,7 @@ import kotlin.js.JsName
  * @child [cccev.s2.request.domain.command.RequestAddedEvidenceEventDTO]
  * @order 40
  */
-typealias RequestAddEvidenceFunction = F2Function<RequestAddEvidenceCommandDTOBase, RequestAddedEvidenceEvent>
+typealias RequestAddEvidenceFunction = F2Function<Pair<RequestAddEvidenceCommandDTOBase, ByteArray>, RequestAddedEvidenceEvent>
 
 /**
  * @d2 command

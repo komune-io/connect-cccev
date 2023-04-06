@@ -8,6 +8,8 @@ import cccev.f2.concept.client.InformationConceptClient
 import cccev.f2.concept.client.informationConceptClient
 import cccev.f2.evidence.type.client.EvidenceTypeClient
 import cccev.f2.evidence.type.client.evidenceTypeClient
+import cccev.f2.request.client.RequestClient
+import cccev.f2.request.client.requestClient
 import cccev.f2.requirement.domain.command.RequirementCreateCommandDTOBase
 import cccev.f2.unit.client.DataUnitClient
 import cccev.f2.unit.client.dataUnitClient
@@ -42,6 +44,7 @@ import kotlinx.coroutines.flow.map
 class CCCEVClient(
     val evidenceType: EvidenceTypeClient,
     val informationConcept: InformationConceptClient,
+    val request: RequestClient,
     val requirement: RequirementClient,
     val dataUnit: DataUnitClient
 ) {
@@ -51,6 +54,7 @@ class CCCEVClient(
             return CCCEVClient(
                 f2Client.evidenceTypeClient().invoke(),
                 f2Client.informationConceptClient().invoke(),
+                f2Client.requestClient().invoke(),
                 f2Client.requirementClient().invoke(),
                 f2Client.dataUnitClient().invoke()
             )

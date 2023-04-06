@@ -9,6 +9,7 @@ dependencies {
     commonMainApi(project(":cccev-f2:concept-f2:concept-f2-domain"))
     commonMainApi(project(":cccev-f2:evidence-f2:evidence-f2-domain"))
     commonMainApi(project(":cccev-s2:request:request-domain"))
+    commonMainApi("io.ktor:ktor-http:2.2.4")
 
     Dependencies.Mpp.fs(::commonMainApi)
 }

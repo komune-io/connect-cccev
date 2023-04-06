@@ -7,4 +7,5 @@ plugins {
 dependencies {
 	commonMainApi(project(":cccev-f2:request-f2:request-f2-domain"))
 	commonMainApi("city.smartb.f2:f2-client-ktor:${Versions.f2}")
+	Dependencies.Jvm.jackson(::jvmMainApi)
 }
