@@ -6,17 +6,9 @@ import cccev.dsl.model.Criterion
 import cccev.dsl.model.InformationRequirement
 import cccev.dsl.model.Requirement
 
-//data class RequirementsLinked (
-//    val isRequirementOf: List<Requirement>,
-//    val hasRequirement: List<Requirement>,
-//    val hasQualifiedRelation: List<Requirement>
-//)
 class RequirementsLinkedBuilder {
 
     private var requirements = mutableListOf<Requirement>()
-//    protected var isRequirementOf = mutableListOf<Requirement>()
-//    protected var hasRequirement = mutableListOf<Requirement>()
-//    protected var hasQualifiedRelation = mutableListOf<Requirement>()
     fun criterion(
     init: CriterionBuilder.() -> Unit,
     ) {

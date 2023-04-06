@@ -2,11 +2,11 @@ package cccev.dsl.model.builder
 
 import cccev.dsl.model.Code
 import cccev.dsl.model.EvidenceTypeListBase
+import cccev.dsl.model.InformationConcept
 import cccev.dsl.model.InformationConceptBase
 import cccev.dsl.model.ReferenceFramework
 import cccev.dsl.model.Requirement
 import cccev.dsl.model.RequirementId
-
 
 interface RequirementBuilder<T : Requirement> {
     var description: String?
@@ -14,7 +14,7 @@ interface RequirementBuilder<T : Requirement> {
     var name: String?
     var type: Code?
 
-    var hasConcept: List<InformationConceptBase>?
+    var hasConcept: MutableList<InformationConcept>
     var hasEvidenceTypeList: List<EvidenceTypeListBase>?
 
     @Deprecated("Use isRequirementOf, hasRequirement or hasQualifiedRelation")
@@ -30,6 +30,7 @@ interface RequirementBuilder<T : Requirement> {
     fun hasRequirement(lambda: RequirementsLinkedBuilder.() -> Unit)
     fun hasQualifiedRelation(lambda: RequirementsLinkedBuilder.() -> Unit)
     fun isDerivedFrom(lambda: ReferenceFrameworkListBuilder.() -> Unit)
+    fun hasConcept(lambda: InformationConceptListBuilder.() -> Unit)
     fun build(): Requirement
 }
 abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<T> {
@@ -37,7 +38,7 @@ abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<
     override var identifier: RequirementId? = null
     override var name: String? = null
     override var type: Code? = null
-    override var hasConcept: List<InformationConceptBase>? = null
+    override var hasConcept: MutableList<InformationConcept> = mutableListOf()
     override var hasEvidenceTypeList: List<EvidenceTypeListBase>? = null
 
     protected var isDerivedFrom = mutableListOf<ReferenceFramework>()
@@ -85,6 +86,11 @@ abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<
 
     override fun isDerivedFrom(lambda: ReferenceFrameworkListBuilder.() -> Unit) {
         val list = ReferenceFrameworkListBuilder().apply(lambda).build()
-        isDerivedFrom.addAll(ReferenceFrameworkListBuilder().apply(lambda).build())
+        isDerivedFrom.addAll(list)
+    }
+
+    override fun hasConcept(lambda: InformationConceptListBuilder.() -> Unit) {
+        val list = InformationConceptListBuilder().apply(lambda).build()
+        hasConcept.addAll(list)
     }
 }

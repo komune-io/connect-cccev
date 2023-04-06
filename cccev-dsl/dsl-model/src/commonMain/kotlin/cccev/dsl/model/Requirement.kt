@@ -23,7 +23,7 @@ sealed interface Requirement {
     var isRequirementOf: List<Requirement>?
     var hasQualifiedRelation: List<Requirement>?
 
-    val hasConcept: List<InformationConceptBase>?
+    val hasConcept: List<InformationConcept>?
     val hasEvidenceTypeList: List<EvidenceTypeListBase>?
 }
 
@@ -37,7 +37,7 @@ open class Criterion(
     val weight: Double? = null,
     val weightingConsiderationDescription: String? = null,
     val weightingType: Code? = null,
-    override val hasConcept: List<InformationConceptBase>? = emptyList(),
+    override val hasConcept: List<InformationConcept>? = emptyList(),
     override val hasRequirement: List<Requirement>? = emptyList(),
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
@@ -70,7 +70,7 @@ open class InformationRequirement(
     override val identifier: RequirementId?,
     override val name: String?,
     override val type: Code?,
-    override val hasConcept: List<InformationConceptBase>? = emptyList(),
+    override val hasConcept: List<InformationConcept>? = emptyList(),
     override val hasRequirement: List<Requirement>? = emptyList(),
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
@@ -99,7 +99,7 @@ open class Constraint(
     override val identifier: RequirementId?,
     override val name: String?,
     override val type: Code?,
-    override val hasConcept: List<InformationConceptBase>? = emptyList(),
+    override val hasConcept: List<InformationConcept>? = emptyList(),
     override val hasRequirement: List<Requirement>? = emptyList(),
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
