@@ -2,7 +2,7 @@ package cccev.projection.api.converter
 
 import cccev.commons.utils.parseJsonTo
 import cccev.commons.utils.toJson
-import city.smartb.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePath
 import org.neo4j.driver.Value
 import org.neo4j.driver.internal.value.StringValue
 import org.springframework.core.convert.TypeDescriptor

@@ -9,7 +9,7 @@ import cccev.core.certification.command.CertificationFillValuesCommand
 import cccev.core.certification.command.CertificationFilledValuesEvent
 import cccev.core.certification.command.CertificationRemoveRequirementsCommand
 import cccev.core.certification.command.CertificationRemovedRequirementsEvent
-import city.smartb.fs.s2.file.client.FileClient
+import io.komune.fs.s2.file.client.FileClient
 import org.springframework.stereotype.Service
 
 @Service
