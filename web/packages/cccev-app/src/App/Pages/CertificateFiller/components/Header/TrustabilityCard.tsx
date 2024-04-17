@@ -1,5 +1,5 @@
 import { Paper, Divider, Typography, styled, Stack } from '@mui/material'
-import { ProgressIndicator } from '@smartb/g2-notifications'
+import { ProgressIndicator } from '@komune-io/g2-notifications'
 import { WomanCheckingIllustration } from './WomanCheckingIllustration'
 import { useTranslation } from "react-i18next"
 

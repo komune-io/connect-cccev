@@ -3,10 +3,11 @@ import {create} from "@storybook/theming";
 import logo from "../assets/logo.png";
 
 addons.setConfig({
-  theme: create({
-    base: 'light',
-    brandTitle: 'SmartB CCCEV',
-    brandUrl: 'https://docs.smartb.city/cccev',
-    brandImage: logo,
-  }),
+    theme: create({
+        base: 'light',
+        brandTitle: 'Connect CCCEV',
+        brandUrl: "https://komune-io.github.io/connect-cccev/",
+        brandImage: logo,
+    }),
+    showToolbar: false
 });

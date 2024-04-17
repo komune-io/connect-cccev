@@ -2,7 +2,7 @@ import { ExpandMoreRounded } from '@mui/icons-material'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material'
 import { useMemo, useState } from 'react'
 import { CcevForm, CcevFormField } from '../CcevForm'
-import { FormState } from '@smartb/g2-forms'
+import { FormState } from '@komune-io/g2-forms'
 
 export type Category = {
     key: string

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
-import { PopUp, Action } from '@smartb/g2'
-import { Select, Option } from '@smartb/g2-forms'
-import { useTheme } from '@smartb/g2-themes'
+import { PopUp, Action } from '@komune-io/g2'
+import { Select, Option } from '@komune-io/g2-forms'
+import { useTheme } from '@komune-io/g2-themes'
 import { Typography } from '@mui/material'
 import { EvidenceTypeDTO } from 'datahub'
 
