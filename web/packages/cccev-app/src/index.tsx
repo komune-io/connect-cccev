@@ -2,7 +2,7 @@ import React from "react";
 import reportWebVitals from "reportWebVitals";
 import { Languages, languages } from "i18n";
 import { store } from "store";
-import { ThemeContextProvider, AppProvider, ReduxProvider } from "@smartb/g2";
+import { ThemeContextProvider, AppProvider, ReduxProvider } from "@komune-io/g2";
 import { LoadingComponent } from "components";
 import { muiTheme, theme } from "Themes";
 import App from "App";

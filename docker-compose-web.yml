@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
   cccev-web:
-    image: smartbcity/cccev-web-app:experimental
+    image: ghcr.io/komune-io/cccev-web-app:experimental
     container_name: cccev-web
     ports:
-      - 0000:0000
+      - "0000:0000"
     networks:
       - nginx-proxy
 

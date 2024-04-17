@@ -4,21 +4,30 @@ WORKDIR /app
 
 COPY web ./
 
-ARG CI_NPM_AUTH_TOKEN
-RUN echo -e "\
-access=public \n\
- @smartb:registry=https://gitlab.smartb.city/api/v4/projects/127/packages/npm/ \n\
-//gitlab.smartb.city/api/v4/projects/127/packages/npm/:_authToken=${CI_NPM_AUTH_TOKEN} \n\
-" > .npmrc
+ARG NPM_AUTH_TOKEN
+RUN printf "\
+@komune-io:registry=https://npm.pkg.github.com\n\
+//npm.pkg.github.com/:_authToken=%s\n\
+" "${NPM_AUTH_TOKEN}" > .npmrc
 
 RUN yarn install
 ENV PATH /app/node_modules/.bin:$PATH
 RUN yarn workspace cccev-app build
 
-FROM nginx:1.17.0-alpine
+FROM nginx:1.25.4-alpine
+
+LABEL org.opencontainers.image.source="https://github.com/komune-io/connect-cccev"
 
 COPY --from=build /app/packages/cccev-app/build /var/www
 COPY infra/docker/cccev-web-app/nginx.conf /etc/nginx/nginx.conf
+
+RUN chown -R nginx:nginx /var/cache/nginx && \
+    chown -R nginx:nginx /var/log/nginx && \
+    chown -R nginx:nginx /etc/nginx/conf.d
+
+RUN touch /var/run/nginx.pid && \
+        chown -R nginx:nginx /var/run/nginx.pid
+USER nginx
 
 EXPOSE 80
 

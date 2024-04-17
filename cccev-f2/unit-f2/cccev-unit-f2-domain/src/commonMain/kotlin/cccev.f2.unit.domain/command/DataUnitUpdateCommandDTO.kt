@@ -5,8 +5,8 @@ import cccev.s2.unit.domain.DataUnitId
 import cccev.s2.unit.domain.DataUnitIdentifier
 import cccev.s2.unit.domain.DataUnitOptionIdentifier
 import cccev.s2.unit.domain.command.DataUnitUpdatedEvent
-import city.smartb.fs.s2.file.domain.model.FilePath
-import city.smartb.fs.s2.file.domain.model.FilePathDTO
+import io.komune.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePathDTO
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport

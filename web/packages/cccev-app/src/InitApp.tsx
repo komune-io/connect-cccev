@@ -1,5 +1,5 @@
 // import { parse } from 'qs'
-// import { NoMatchPage } from '@smartb/g2-providers'
+// import { NoMatchPage } from '@komune-io/g2-providers'
 // import { useMemo } from 'react'
 
 interface InitAppProps {

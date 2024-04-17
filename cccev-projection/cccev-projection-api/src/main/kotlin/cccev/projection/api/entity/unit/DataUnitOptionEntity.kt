@@ -2,7 +2,7 @@ package cccev.projection.api.entity.unit
 
 import cccev.s2.unit.domain.DataUnitOptionId
 import cccev.s2.unit.domain.DataUnitOptionIdentifier
-import city.smartb.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePath
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate

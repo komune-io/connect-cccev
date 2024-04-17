@@ -9,7 +9,7 @@ import cccev.f2.certification.domain.command.CertificationFillValuesFunction
 import cccev.f2.certification.domain.command.CertificationRemoveRequirementsFunction
 import cccev.f2.certification.domain.query.CertificationGetFunction
 import cccev.f2.certification.domain.query.CertificationGetResult
-import city.smartb.fs.s2.file.client.FileClient
+import io.komune.fs.s2.file.client.FileClient
 import f2.dsl.fnc.f2Function
 import org.springframework.context.annotation.Bean
 import org.springframework.web.bind.annotation.RequestMapping

@@ -1,7 +1,7 @@
 plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
-    id("city.smartb.fixers.gradle.kotlin.jvm")
+    id("io.komune.fixers.gradle.kotlin.jvm")
     kotlin("plugin.spring")
 }
 
@@ -27,6 +27,4 @@ dependencies {
     implementation(project(Modules.cccev.core))
 }
 
-tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {
-    imageName.set("smartbcity/cccev-gateway:${this.project.version}")
-}
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {}

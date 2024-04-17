@@ -1,4 +1,4 @@
-import { Router } from "@smartb/g2-providers";
+import { Router } from "@komune-io/g2-providers";
 import CertificateFiller from "App/Pages/CertificateFiller";
 import { ReactFlowTest } from "App/Pages/ReactFlowTest";
 import { Route } from "react-router-dom";

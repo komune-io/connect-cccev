@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-	implementation("city.smartb.fixers.gradle:dependencies:0.16.0")
+	implementation("io.komune.fixers.gradle:dependencies:0.18.0-SNAPSHOT")
 }

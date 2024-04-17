@@ -2,9 +2,9 @@
   "name": "datahub",
   "version": "1.0.0",
   "description": "Plateform components",
-  "author": "SmartB",
+  "author": "Komune",
   "license": "",
-  "repository": "SmartB/components",
+  "repository": "Komune/components",
   "main": "src/index.ts",
   "source": "src/index.ts",
   "types": "src/index.ts"

@@ -3,7 +3,7 @@ package cccev.projection.api.entity.certification
 import cccev.dsl.model.EvidenceId
 import cccev.projection.api.entity.concept.InformationConceptEntity
 import cccev.projection.api.entity.evidencetype.EvidenceTypeEntity
-import city.smartb.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePath
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.annotation.Version

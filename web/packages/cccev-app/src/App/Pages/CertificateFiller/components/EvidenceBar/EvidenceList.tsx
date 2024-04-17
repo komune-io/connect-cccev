@@ -1,5 +1,5 @@
 import { Divider, Stack, Typography } from '@mui/material'
-import { Button } from '@smartb/g2-components'
+import { Button } from '@komune-io/g2-components'
 import { DropFileIcon } from './DropFileIcon'
 import { Title } from './Title'
 import { EvidenceTypeListDisplayer } from 'components'

@@ -1,7 +1,7 @@
 import { NetworkCell } from '@mui/icons-material'
 import { Divider, Stack, styled, Typography } from '@mui/material'
-import { Form, FormField, FormProps } from '@smartb/g2-forms'
-import { Tooltip } from '@smartb/g2-notifications'
+import { Form, FormField, FormProps } from '@komune-io/g2-forms'
+import { Tooltip } from '@komune-io/g2-notifications'
 import { useMemo } from 'react'
 import { EvidenceBounded, EvidenceNotBounded } from '../../icons'
 import { useTranslation } from "react-i18next"

@@ -6,14 +6,14 @@ plugins {
 
 	id("org.springframework.boot") version PluginVersions.springBoot apply false
 
-	id("city.smartb.fixers.gradle.config") version PluginVersions.fixers
-	id("city.smartb.fixers.gradle.d2") version PluginVersions.d2
-	id("city.smartb.fixers.gradle.publish") version PluginVersions.fixers apply false
-	id("city.smartb.fixers.gradle.sonar") version PluginVersions.fixers
+	id("io.komune.fixers.gradle.config") version PluginVersions.fixers
+	id("io.komune.fixers.gradle.d2") version PluginVersions.d2
+	id("io.komune.fixers.gradle.publish") version PluginVersions.fixers apply false
+//	id("io.komune.fixers.gradle.check") version PluginVersions.fixers
 }
 
 allprojects {
-	group = "city.smartb.cccev"
+	group = "io.komune.cccev"
 	version = System.getenv("VERSION") ?: "experimental-SNAPSHOT"
 	repositories {
 		mavenLocal()
@@ -29,7 +29,7 @@ fixers {
 		id = "cccev"
 		name = "CCCEV"
 		description = "Kotlin implementation of Core Criterion and Core Evidence Vocabulary"
-		url = "https://gitlab.smartb.city/fixers/cccev"
+		url = "https://github.com/komune-io/connect-cccev"
 	}
 	d2 {
 		outputDirectory = file("storybook/stories/d2/")

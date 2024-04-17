@@ -2,8 +2,8 @@ package cccev.f2.unit.domain.model
 
 import cccev.s2.unit.domain.DataUnitOptionId
 import cccev.s2.unit.domain.DataUnitOptionIdentifier
-import city.smartb.fs.s2.file.domain.model.FilePath
-import city.smartb.fs.s2.file.domain.model.FilePathDTO
+import io.komune.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePathDTO
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
