@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "author": "SmartB",
+  "author": "Komune",
   "license": "none",
   "private": true,
   "workspaces": [

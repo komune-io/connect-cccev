@@ -16,6 +16,6 @@ class OpenapiConfig {
             .components(Components())
             .info(
                 Info().title("CCCEV Demo").version("0.1.0")
-                    .license(License().name("Apache 2.0").url("http://smartb.city")));
+                    .license(License().name("Apache 2.0").url("http://komune.io")));
     }
 }

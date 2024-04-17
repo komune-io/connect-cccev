@@ -18,14 +18,14 @@ spring:
     uri: neo4j://localhost:7687
     authentication:
       username: neo4j
-      password: smartbsmartb
+      password: komunekomune
 
 fs:
   url: http://localhost:8090
   auth:
-    url: https://auth.dev.connect.smart-b.io
+    url: https://auth.dev.connect.komune.io
     realm: sb-dev
-    clientId: tr-smartb-registry-script-api-key
+    clientId: tr-komune-registry-script-api-key
     clientSecret: 703ece3d-82bc-4747-8840-96c1c3431079
 
 ssm:

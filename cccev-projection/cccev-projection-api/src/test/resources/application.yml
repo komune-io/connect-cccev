@@ -3,4 +3,4 @@ spring:
     uri: neo4j://localhost:7687
     authentication:
       username: neo4j
-      password: smartbsmartb
+      password: komunekomune

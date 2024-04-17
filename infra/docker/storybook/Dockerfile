@@ -22,7 +22,7 @@ RUN if [ ! -d "./storybook-static" ]; then \
 
 FROM nginx:1.25.4-alpine
 
-LABEL org.opencontainers.image.source="https://github.com/komune-io/fixers-c2"
+LABEL org.opencontainers.image.source="https://github.com/komune-io/connect-cccev"
 
 COPY --from=build /app/storybook/storybook-static /var/www
 COPY infra/docker/storybook/nginx.conf /etc/nginx/nginx.conf
@@ -34,7 +34,6 @@ RUN chown -R nginx:nginx /var/cache/nginx && \
 RUN touch /var/run/nginx.pid && \
         chown -R nginx:nginx /var/run/nginx.pid
 USER nginx
-
 
 EXPOSE 80
 
