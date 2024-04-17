@@ -1,4 +1,4 @@
-version: "3.3"
+version: '3.8'
 
 services:
   neo4j:
@@ -11,3 +11,8 @@ services:
       - "7474:7474"  # browser interface (localhost:7474)
     volumes:
       - ./infra/dev/neo4j/data:/data
+
+networks:
+  net:
+    name: ${DOCKER_NETWORK}
+    external: true

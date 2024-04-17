@@ -27,6 +27,4 @@ dependencies {
     implementation(project(Modules.cccev.core))
 }
 
-tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {
-    imageName.set("komune-io/cccev-gateway:${this.project.version}")
-}
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {}
