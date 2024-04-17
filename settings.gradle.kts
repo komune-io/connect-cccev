@@ -7,7 +7,7 @@ pluginManagement {
 	}
 }
 
-rootProject.name = "cccev"
+rootProject.name = "connect-cccev"
 
 include(
 	"cccev-dsl:cccev-dsl-model",
