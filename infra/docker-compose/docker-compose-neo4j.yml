@@ -7,7 +7,7 @@ services:
       - NEO4J_AUTH=neo4j/smartbsmartb
       - NEO4J_PLUGINS=["apoc"]
     ports:
-      - 7687:7687
-      - 7474:7474  # browser interface (localhost:7474)
+      - "7687:7687"
+      - "7474:7474"  # browser interface (localhost:7474)
     volumes:
       - ./infra/dev/neo4j/data:/data

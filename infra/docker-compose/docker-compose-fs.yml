@@ -2,7 +2,7 @@ version: "3.7"
 services:
   fs-gateway:
     container_name: fs-cccev
-    image: smartbcity/fs-gateway:next-SNAPSHOT
+    image: ghcr.io/komune-io/fs-gateway:next-SNAPSHOT
     environment:
       - fs_s3_internal-url=http://minio:9000
       - fs_s3_external-url=http://localhost:9000

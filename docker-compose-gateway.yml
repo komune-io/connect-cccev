@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
   cccev-api:
-    image: smartbcity/cccev-gateway:experimental
+    image: ghcr.io/komune-io/cccev-gateway:experimental
     container_name: cccev-api
     ports:
-      - 8083:8083
+      - "8083:8083"
     networks:
       - nginx-proxy
 

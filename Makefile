@@ -1,15 +1,15 @@
 FRONT_CCCEV_DOCKERFILE	:= infra/docker/cccev-web-app/Dockerfile
-FRONT_CCCEV_NAME	    := smartbcity/cccev-web-app
+FRONT_CCCEV_NAME	    := komune-io/cccev-web-app
 FRONT_CCCEV_IMG	    	:= ${FRONT_CCCEV_NAME}:${VERSION}
 FRONT_CCCEV_LATEST		:= ${FRONT_CCCEV_NAME}:latest
 
-CCCEV_APP_NAME	   	 	:= smartbcity/cccev-gateway
+CCCEV_APP_NAME	   	 	:= komune-io/cccev-gateway
 CCCEV_APP_IMG	    	:= ${CCCEV_APP_NAME}:${VERSION}
 CCCEV_APP_LATEST		:= ${CCCEV_APP_NAME}:latest
 CCCEV_APP_PACKAGE	   	:= :api-gateway
 
 STORYBOOK_DOCKERFILE	:= infra/docker/storybook/Dockerfile
-STORYBOOK_NAME	   	 	:= smartbcity/cccev-storybook
+STORYBOOK_NAME	   	 	:= komune-io/cccev-storybook
 STORYBOOK_IMG	    	:= ${STORYBOOK_NAME}:${VERSION}
 
 libs: package-kotlin
