@@ -8,16 +8,17 @@ import s2.sourcing.dsl.snap.SnapRepository
 abstract class SnapRepositoryBase<ENTITY, ID>: SnapRepository<ENTITY, ID> {
     protected abstract val repository: ReactiveNeo4jRepository<ENTITY, ID>
 
-    override suspend fun get(id: ID): ENTITY? {
+    override suspend fun get(id: ID & Any): ENTITY? {
+
         return repository.findById(id).awaitSingleOrNull()
     }
 
-    override suspend fun remove(id: ID): Boolean {
+    override suspend fun remove(id: ID & Any): Boolean {
         repository.deleteById(id).awaitSingle()
         return true
     }
 
-    override suspend fun save(entity: ENTITY): ENTITY {
+    override suspend fun save(entity: ENTITY & Any): ENTITY {
         return repository.save(entity).awaitSingle()
     }
 }
