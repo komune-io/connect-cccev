@@ -33,7 +33,7 @@ object Versions {
 object Repo {
 	val snapshot: List<String> = listOf(
 		// For fixers
-		"https://oss.sonatype.org/content/repositories/snapshots",
+		"https://s01.oss.sonatype.org/content/repositories/snapshots",
 	)
 }
 

@@ -4,6 +4,7 @@
 .env
 storybook-static
 infra/dev
+infra/docker-compose/infra/
 
 ### STS ###
 .apt_generated
