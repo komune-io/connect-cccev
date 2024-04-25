@@ -45,5 +45,5 @@ docker-script-publish:
 	@docker push ghcr.io/komune-io/${CCCEV_APP_IMG}
 
 docker-script-promote:
-	@docker tag ${FRONT_CCCEV_IMG} docker.io/komune-io/${FRONT_CCCEV_IMG}
+	@docker tag ${FRONT_CCCEV_IMG} docker.io/komune/${FRONT_CCCEV_IMG}
 	@docker push docker.io/komune/${FRONT_CCCEV_IMG}
