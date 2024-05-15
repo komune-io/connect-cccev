@@ -18,6 +18,7 @@ object PluginVersions {
 
 object Versions {
 	val fs = Framework.connect
+	val f2 =  Framework.fixers
 	val s2 =  Framework.fixers
 	val springBoot = PluginVersions.springBoot
 
@@ -46,13 +47,17 @@ object Dependencies {
 			.also(::junit)
 
 		fun f2(scope: Scope) = scope.add(
-			"io.komune.f2:f2-spring-boot-starter-function:${Framework.fixers}",
-			"io.komune.f2:f2-spring-boot-exception-http:${Framework.fixers}"
+			"io.komune.f2:f2-spring-boot-starter-function:${Versions.f2}",
+			"io.komune.f2:f2-spring-boot-exception-http:${Versions.f2}"
+		)
+
+		fun f2Auth(scope: Scope) = scope.add(
+			"io.komune.f2:f2-spring-boot-starter-auth-tenant:${Versions.f2}"
 		)
 
 		fun f2Http(scope: Scope) = scope.add(
-			"io.komune.f2:f2-spring-boot-starter-function-http:${Framework.fixers}",
-			"io.komune.f2:f2-spring-boot-openapi:${Framework.fixers}"
+			"io.komune.f2:f2-spring-boot-starter-function-http:${Versions.f2}",
+			"io.komune.f2:f2-spring-boot-openapi:${Versions.f2}"
 		)
 
 		fun s2EventSouringBc(scope: Scope) = scope.add(

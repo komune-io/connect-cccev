@@ -28,5 +28,6 @@ ssm:
   chaincode:
     url: http://localhost:9090
 
-i2:
-  issuers:
+f2:
+  tenant:
+    issuer-base-uri:
