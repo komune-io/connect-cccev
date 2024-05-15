@@ -4,10 +4,12 @@ VERSION = $(shell cat VERSION)
 
 lint:
 	@echo 'No Lint'
+
 build:
 	./gradlew build publishToMavenLocal -x test
 test:
 	@echo 'No Tests'
+
 publish:
 	VERSION=$(VERSION) PKG_MAVEN_REPO=github ./gradlew publish --info
 

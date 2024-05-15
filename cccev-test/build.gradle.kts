@@ -25,7 +25,9 @@ dependencies {
 
 	implementation(project(Modules.cccev.core))
 
+	Dependencies.Jvm.neo4j(::api)
 	Dependencies.Jvm.f2Http(::api)
+	Dependencies.Jvm.f2Auth(::api)
 	Dependencies.Jvm.s2Bdd(::api)
 	Dependencies.Jvm.Test.dataFaker(::implementation)
 
