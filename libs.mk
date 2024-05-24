@@ -11,7 +11,8 @@ test:
 	@echo 'No Tests'
 
 publish:
-	VERSION=$(VERSION) PKG_MAVEN_REPO=github ./gradlew publish --info
+	@echo 'No publish'
+	#VERSION=$(VERSION) PKG_MAVEN_REPO=github ./gradlew publish --info
 
 promote:
 	VERSION=$(VERSION) PKG_MAVEN_REPO=sonatype_oss ./gradlew publish
