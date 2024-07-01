@@ -22,7 +22,7 @@ promote: docker-cccev-api-promote
 
 # docker-cccev-api
 docker-cccev-api-build:
-	VERSION=${VERSION} ./gradlew build ${CCCEV_APP_PACKAGE}:bootBuildImage --imageName ${CCCEV_APP_IMG}  -x test -x jvmTest
+	VERSION=${VERSION} ./gradlew build ${CCCEV_APP_PACKAGE}:bootBuildImage --imageName ${CCCEV_APP_IMG}  -Dorg.gradle.parallel=true -x test -x jvmTest
 
 docker-cccev-api-publish:
 	@docker tag ${CCCEV_APP_IMG} ghcr.io/komune-io/${CCCEV_APP_IMG}
