@@ -33,6 +33,7 @@ jobs:
       contents: read
       packages: write
     with:
+      on-tag: 'publish_promote'
       make-file: 'docker.mk'
       with-docker-registry-login: 'true'
     secrets:
