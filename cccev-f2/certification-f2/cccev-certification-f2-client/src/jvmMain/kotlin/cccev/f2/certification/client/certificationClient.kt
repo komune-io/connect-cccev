@@ -11,17 +11,6 @@ import io.ktor.client.request.forms.formData
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 
-actual fun F2Client.certificationClient(): F2SupplierSingle<CertificationClient> = f2SupplierSingle {
-    CertificationClient(this)
-}
-
-actual fun certificationClient(
-    urlBase: String
-): F2SupplierSingle<CertificationClient> = f2SupplierSingle {
-    CertificationClient(
-        F2ClientBuilder.get(urlBase)
-    )
-}
 
 //fun CertificationClient.certificationAddEvidence(): CertificationAddEvidenceFunction = F2Function { msgs ->
 //    msgs.map { (cmd, file) ->

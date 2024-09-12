@@ -6,7 +6,6 @@ import cccev.s2.requirement.domain.RequirementState
 import cccev.s2.requirement.domain.command.RequirementCreateCommand
 import cccev.s2.requirement.domain.model.RequirementKind
 import cccev.test.CccevCucumberStepsDefinition
-import cccev.test.s2.requirement.data.extractRequirementKind
 import cccev.test.s2.requirement.data.requirement
 import io.cucumber.datatable.DataTable
 import io.cucumber.java8.En
@@ -16,6 +15,7 @@ import org.assertj.core.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.data.TestContextKey
+import s2.bdd.data.parser.extract
 import s2.bdd.data.parser.extractList
 
 class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
@@ -126,18 +126,18 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
         val fakerRestaurant = Faker().restaurant()
         return RequirementCreateParams(
             identifier = entry?.get("identifier").orRandom(),
-            kind = entry?.extractRequirementKind("kind") ?: RequirementKind.INFORMATION,
+            kind = entry?.extract<RequirementKind>("kind") ?: RequirementKind.INFORMATION,
             name = entry?.get("name") ?: fakerRestaurant.name(),
             description = entry?.get("description") ?: fakerRestaurant.description(),
             type = entry?.get("type") ?: fakerRestaurant.type(),
-            isDerivedFrom = entry?.extractList("isDerivedFrom").orEmpty(),
-            hasRequirement = entry?.extractList("hasRequirement").orEmpty(),
-            hasConcept = entry?.extractList("hasConcept").orEmpty(),
-            hasEvidenceTypeList = entry?.extractList("hasEvidenceTypeList").orEmpty(),
-            isRequirementOf = entry?.extractList("isRequirementOf").orEmpty(),
-            hasQualifiedRelation = entry?.extractList("hasQualifiedRelation").orEmpty(),
+            isDerivedFrom = entry?.extractList("isDerivedFrom") ?: emptyList(),
+            hasRequirement = entry?.extractList("hasRequirement") ?: emptyList(),
+            hasConcept = entry?.extractList("hasConcept") ?: emptyList(),
+            hasEvidenceTypeList = entry?.extractList("hasEvidenceTypeList") ?: emptyList(),
+            isRequirementOf = entry?.extractList("isRequirementOf") ?: emptyList(),
+            hasQualifiedRelation = entry?.extractList("hasQualifiedRelation") ?: emptyList(),
             validatingCondition = entry?.get("validatingCondition"),
-            validatingConditionDependencies = entry?.extractList("validatingConditionDependencies").orEmpty()
+            validatingConditionDependencies = entry?.extractList("validatingConditionDependencies") ?: emptyList(),
         )
     }
 
@@ -159,7 +159,7 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
 
     private fun requirementAssertParams(entry: Map<String, String>) = RequirementAssertParams(
         identifier = entry["identifier"] ?: context.conceptIds.lastUsedKey,
-        kind = entry.extractRequirementKind("kind"),
+        kind = entry.extract("kind"),
         name = entry["name"],
         description = entry["description"],
         type = entry["type"],

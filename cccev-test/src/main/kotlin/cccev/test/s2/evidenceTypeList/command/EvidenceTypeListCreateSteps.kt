@@ -105,7 +105,7 @@ class EvidenceTypeListCreateSteps: En, CccevCucumberStepsDefinition() {
         identifier = entry?.get("identifier").orRandom(),
         name = entry?.get("name").orRandom(),
         description = entry?.get("description").orRandom(),
-        specifiesEvidenceType = entry?.extractList("specifiesEvidenceType").orEmpty(),
+        specifiesEvidenceType = entry?.extractList("specifiesEvidenceType") ?: emptyList(),
     )
 
     private data class EvidenceTypeListCreateParams(

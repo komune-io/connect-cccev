@@ -7,12 +7,21 @@ import cccev.f2.concept.domain.query.InformationConceptGetByIdentifierFunction
 import cccev.f2.concept.domain.query.InformationConceptGetFunction
 import f2.client.F2Client
 import f2.client.function
+import f2.client.ktor.F2ClientBuilder
 import f2.dsl.fnc.F2SupplierSingle
+import f2.dsl.fnc.f2SupplierSingle
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
-expect fun F2Client.informationConceptClient(): F2SupplierSingle<InformationConceptClient>
-expect fun informationConceptClient(urlBase: String): F2SupplierSingle<InformationConceptClient>
+fun F2Client.informationConceptClient(): F2SupplierSingle<InformationConceptClient> = f2SupplierSingle {
+    InformationConceptClient(this)
+}
+
+fun informationConceptClient(urlBase: String): F2SupplierSingle<InformationConceptClient> = f2SupplierSingle {
+    InformationConceptClient(
+        F2ClientBuilder.get(urlBase)
+    )
+}
 
 @JsExport
 @JsName("InformationConceptClient")

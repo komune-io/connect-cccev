@@ -110,7 +110,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
         unit = entry?.get("unit") ?: context.unitIds.lastUsedKey,
         description = entry?.get("description").orRandom(),
         expressionOfExpectedValue = entry?.get("expressionOfExpectedValue"),
-        dependsOn = entry?.extractList("dependsOn").orEmpty()
+        dependsOn = entry?.extractList("dependsOn") ?: emptyList()
     )
 
     private data class InformationConceptCreateParams(

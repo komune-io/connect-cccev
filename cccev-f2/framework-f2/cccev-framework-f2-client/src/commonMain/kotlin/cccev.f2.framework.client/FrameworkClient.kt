@@ -6,13 +6,21 @@ import cccev.f2.framework.domain.query.FrameworkGetByIdentifierFunction
 import cccev.f2.framework.domain.query.FrameworkGetFunction
 import f2.client.F2Client
 import f2.client.function
+import f2.client.ktor.F2ClientBuilder
 import f2.dsl.fnc.F2SupplierSingle
+import f2.dsl.fnc.f2SupplierSingle
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
-expect fun F2Client.frameworkClient(): F2SupplierSingle<FrameworkClient>
-expect fun frameworkClient(urlBase: String): F2SupplierSingle<FrameworkClient>
+fun F2Client.frameworkClient(): F2SupplierSingle<FrameworkClient> = f2SupplierSingle {
+    FrameworkClient(this)
+}
 
+fun frameworkClient(urlBase: String): F2SupplierSingle<FrameworkClient> = f2SupplierSingle {
+    FrameworkClient(
+        F2ClientBuilder.get(urlBase)
+    )
+}
 @JsExport
 @JsName("FrameworkClient")
 open class FrameworkClient constructor(private val client: F2Client): FrameworkApi {

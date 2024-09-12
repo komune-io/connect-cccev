@@ -81,7 +81,7 @@ class CertificationCreateSteps: En, CccevCucumberStepsDefinition() {
 
     private fun certificationCreateParams(entry: Map<String, String>?) = CertificationCreateParams(
         identifier = entry?.get("identifier").orRandom(),
-        requirements = entry?.extractList("requirements").orEmpty()
+        requirements = entry?.extractList("requirements") ?: emptyList()
     )
 
     private data class CertificationCreateParams(

@@ -10,12 +10,21 @@ import cccev.f2.evidence.type.domain.query.EvidenceTypeListGetByIdentifierFuncti
 import cccev.f2.evidence.type.domain.query.EvidenceTypeListGetFunction
 import f2.client.F2Client
 import f2.client.function
+import f2.client.ktor.F2ClientBuilder
 import f2.dsl.fnc.F2SupplierSingle
+import f2.dsl.fnc.f2SupplierSingle
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
-expect fun F2Client.evidenceTypeClient(): F2SupplierSingle<EvidenceTypeClient>
-expect fun evidenceTypeClient(urlBase: String): F2SupplierSingle<EvidenceTypeClient>
+fun F2Client.evidenceTypeClient(): F2SupplierSingle<EvidenceTypeClient> = f2SupplierSingle {
+    EvidenceTypeClient(this)
+}
+
+fun evidenceTypeClient(urlBase: String): F2SupplierSingle<EvidenceTypeClient> = f2SupplierSingle {
+    EvidenceTypeClient(
+        F2ClientBuilder.get(urlBase)
+    )
+}
 
 @JsName("EvidenceTypeClient")
 @JsExport
