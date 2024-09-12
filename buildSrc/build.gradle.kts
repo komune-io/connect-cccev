@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-	implementation("io.komune.fixers.gradle:dependencies:0.18.0")
+	implementation("io.komune.fixers.gradle:dependencies:0.20.0")
 }
