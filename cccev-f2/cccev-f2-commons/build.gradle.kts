@@ -1,14 +1,15 @@
 plugins {
-    id("io.komune.fixers.gradle.kotlin.jvm")
-    kotlin("plugin.spring")
+    id("io.komune.fixers.gradle.kotlin.mpp")
+    id("io.komune.fixers.gradle.publish")
+    kotlin("plugin.serialization")
 }
 
 dependencies {
-    api(project(Modules.cccev.f2.certification.domain))
-    api(project(Modules.cccev.f2.concept.domain))
-    api(project(Modules.cccev.f2.evidence.domain))
-    api(project(Modules.cccev.f2.evidenceType.domain))
-    api(project(Modules.cccev.f2.framework.domain))
-    api(project(Modules.cccev.f2.requirement.domain))
-    api(project(Modules.cccev.f2.unit.domain))
+    commonMainApi(project(Modules.cccev.f2.certification.domain))
+    commonMainApi(project(Modules.cccev.f2.concept.domain))
+    commonMainApi(project(Modules.cccev.f2.evidence.domain))
+    commonMainApi(project(Modules.cccev.f2.evidenceType.domain))
+    commonMainApi(project(Modules.cccev.f2.framework.domain))
+    commonMainApi(project(Modules.cccev.f2.requirement.domain))
+    commonMainApi(project(Modules.cccev.f2.unit.domain))
 }
