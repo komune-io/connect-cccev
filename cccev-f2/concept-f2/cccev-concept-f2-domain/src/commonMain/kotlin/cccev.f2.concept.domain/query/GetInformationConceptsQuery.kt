@@ -1,6 +1,6 @@
 package cccev.f2.concept.domain.query
 
-import cccev.core.certification.model.CertificationId
+import cccev.dsl.model.CertificationId
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.RequirementId
 import cccev.f2.concept.domain.model.RequestInformationConceptDTO

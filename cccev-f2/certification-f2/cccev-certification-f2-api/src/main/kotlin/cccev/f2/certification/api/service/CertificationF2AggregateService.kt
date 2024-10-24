@@ -1,14 +1,14 @@
 package cccev.f2.certification.api.service
 
 import cccev.core.certification.CertificationAggregateService
-import cccev.core.certification.command.CertificationAddRequirementsCommand
-import cccev.core.certification.command.CertificationAddedRequirementsEvent
-import cccev.core.certification.command.CertificationCreateCommand
-import cccev.core.certification.command.CertificationCreatedEvent
-import cccev.core.certification.command.CertificationFillValuesCommand
-import cccev.core.certification.command.CertificationFilledValuesEvent
-import cccev.core.certification.command.CertificationRemoveRequirementsCommand
-import cccev.core.certification.command.CertificationRemovedRequirementsEvent
+import cccev.f2.certification.domain.command.CertificationAddRequirementsCommand
+import cccev.f2.certification.domain.command.CertificationAddedRequirementsEvent
+import cccev.f2.certification.domain.command.CertificationCreateCommand
+import cccev.f2.certification.domain.command.CertificationCreatedEvent
+import cccev.f2.certification.domain.command.CertificationFillValuesCommand
+import cccev.f2.certification.domain.command.CertificationFilledValuesEvent
+import cccev.f2.certification.domain.command.CertificationRemoveRequirementsCommand
+import cccev.f2.certification.domain.command.CertificationRemovedRequirementsEvent
 import io.komune.fs.s2.file.client.FileClient
 import org.springframework.stereotype.Service
 

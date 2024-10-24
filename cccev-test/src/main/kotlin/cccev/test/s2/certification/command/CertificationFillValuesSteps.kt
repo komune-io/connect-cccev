@@ -1,7 +1,7 @@
 package cccev.test.s2.certification.command
 
 import cccev.core.certification.CertificationAggregateService
-import cccev.core.certification.command.CertificationFillValuesCommand
+import cccev.f2.certification.domain.command.CertificationFillValuesCommand
 import cccev.test.CccevCucumberStepsDefinition
 import io.cucumber.datatable.DataTable
 import io.cucumber.java8.En

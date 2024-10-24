@@ -1,115 +1,117 @@
 package cccev.dsl.client.model
 
-import cccev.commons.utils.toJson
-import cccev.core.certification.entity.Certification
-import cccev.core.certification.entity.RequirementCertification
-import cccev.core.certification.entity.SupportedValue
+import cccev.f2.certification.domain.model.Certification
 import cccev.f2.certification.domain.model.CertificationFlat
+import cccev.f2.certification.domain.model.RequirementCertification
 import cccev.f2.certification.domain.model.RequirementCertificationFlat
+import cccev.f2.certification.domain.model.SupportedValue
 import cccev.f2.certification.domain.model.SupportedValueFlat
 import cccev.f2.certification.domain.query.CertificationGetResult
 import cccev.f2.commons.CertificationFlatGraph
 import cccev.f2.concept.domain.model.InformationConceptFlat
 import cccev.f2.requirement.domain.model.RequirementFlat
 import cccev.f2.unit.domain.model.DataUnitFlat
-import cccev.projection.api.entity.concept.InformationConceptEntity
-import cccev.projection.api.entity.requirement.RequirementEntity
-import cccev.projection.api.entity.unit.DataUnitEntity
-import cccev.projection.api.entity.unit.DataUnitOptionEntity
+import cccev.f2.unit.domain.model.DataUnitOption
+import cccev.s2.concept.domain.model.InformationConcept
+import cccev.s2.requirement.domain.RequirementState
+import cccev.s2.requirement.domain.model.Requirement
 import cccev.s2.requirement.domain.model.RequirementKind
+import cccev.s2.unit.domain.model.DataUnit
 import cccev.s2.unit.domain.model.DataUnitType
-import f2.spring.exception.NotFoundException
+
+class NotFoundException(type: String, id: String) : RuntimeException("Not found $type with id $id")
 
 fun CertificationFlat.unflatten(graph: CertificationFlatGraph): Certification {
-    return Certification().also { certification ->
-        certification.id = id
-        requirementCertificationIds.forEach { requirementCertificationId ->
-            val requirementCertification = graph.requirementCertifications[requirementCertificationId]
-                ?.unflatten(graph)
-                ?: throw NotFoundException("RequirementCertification", requirementCertificationId)
-
-            certification.requirementCertifications.add(requirementCertification)
-        }
+    val requirementCertifications = requirementCertificationIds.map { requirementCertificationId ->
+        graph.requirementCertifications[requirementCertificationId]
+            ?.unflatten(graph)
+            ?: throw NotFoundException("RequirementCertification", requirementCertificationId)
     }
+    return Certification(
+        id = id,
+        requirementCertifications = requirementCertifications,
+    )
 }
 
 fun RequirementCertificationFlat.unflatten(graph: CertificationFlatGraph): RequirementCertification {
-    return RequirementCertification().also { requirementCertification ->
-        requirementCertification.id = id
-        requirementCertification.requirement = graph.requirements[requirementIdentifier]
+    val requirement = graph.requirements[requirementIdentifier]
+        ?.unflatten(graph)
+        ?: throw NotFoundException("Requirement", requirementIdentifier)
+    val requirementCertification = subCertificationIds.map { subCertificationId ->
+        graph.requirementCertifications[subCertificationId]
             ?.unflatten(graph)
-            ?: throw NotFoundException("Requirement", requirementIdentifier)
-
-        subCertificationIds.forEach { subCertificationId ->
-            val subCertification = graph.requirementCertifications[subCertificationId]
-                ?.unflatten(graph)
-                ?: throw NotFoundException("RequirementCertification", subCertificationId)
-
-            requirementCertification.subCertifications.add(subCertification)
-        }
-
-        valueIds.forEach { valueId ->
-            val value = graph.supportedValues[valueId]
-                ?.unflatten(graph)
-                ?: throw NotFoundException("SupportedValue", valueId)
-
-            requirementCertification.values.add(value)
-        }
-
-        requirementCertification.isEnabled = isEnabled
-        requirementCertification.isValidated = isValidated
-        requirementCertification.isFulfilled = isFulfilled
-        requirementCertification.hasAllValues = hasAllValues
+            ?: throw NotFoundException("RequirementCertification", subCertificationId)
     }
+    val values = valueIds.map { valueId ->
+        graph.supportedValues[valueId]
+            ?.unflatten(graph)
+            ?: throw NotFoundException("SupportedValue", valueId)
+
+    }
+    return RequirementCertification(
+        id = id,
+        requirement = TODO(),
+        subCertifications = requirementCertification,
+        values = TODO(),
+        isEnabled = isEnabled,
+        isValidated = isValidated,
+        isFulfilled = isFulfilled,
+        hasAllValues = hasAllValues
+    )
 }
 
 fun SupportedValueFlat.unflatten(graph: CertificationFlatGraph): SupportedValue {
-    return SupportedValue().also { supportedValue ->
-        supportedValue.id = id
-        supportedValue.value = value
-        supportedValue.concept = graph.concepts[conceptIdentifier]
-            ?.unflatten(graph)
-            ?: throw NotFoundException("InformationConcept", conceptIdentifier)
-    }
+    val concept = graph.concepts[conceptIdentifier]
+        ?.unflatten(graph)
+        ?: throw NotFoundException("InformationConcept", conceptIdentifier)
+    return SupportedValue(
+        id = id,
+        value = value,
+        concept = concept,
+    )
 }
 
-fun InformationConceptFlat.unflatten(graph: CertificationFlatGraph): InformationConceptEntity {
-    return InformationConceptEntity().also { concept ->
-        concept.id = id
-        concept.identifier = identifier
-        concept.name = name
-        concept.hasUnit = graph.units[unitIdentifier]
+fun InformationConceptFlat.unflatten(graph: CertificationFlatGraph): InformationConcept {
+   val unit = graph.units[unitIdentifier]
+       ?.unflatten(graph)
+       ?: throw NotFoundException("DataUnit", unitIdentifier)
+    val dependsOn = dependsOn?.map { dependencyIdentifier ->
+        graph.concepts[dependencyIdentifier]
             ?.unflatten(graph)
-            ?: throw NotFoundException("DataUnit", unitIdentifier)
-        concept.description = description
-        concept.expressionOfExpectedValue = expressionOfExpectedValue
-        concept.dependsOn = dependsOn?.map { dependencyIdentifier ->
-            graph.concepts[dependencyIdentifier]
-                ?.unflatten(graph)
-                ?: throw NotFoundException("InformationConcept", dependencyIdentifier)
-        }
-    }
+            ?: throw NotFoundException("InformationConcept", dependencyIdentifier)
+    }?.map { it.id }
+    return InformationConcept(
+        id = id,
+        identifier = identifier,
+        name = name,
+        unit = unit,
+        description = description,
+        expressionOfExpectedValue = expressionOfExpectedValue,
+        dependsOn = dependsOn
+    )
 }
 
-fun RequirementFlat.unflatten(graph: CertificationFlatGraph): RequirementEntity {
+fun RequirementFlat.unflatten(graph: CertificationFlatGraph): Requirement {
     val subRequirements = hasRequirement.map {
         graph.requirements[it]?.unflatten(graph)
             ?: throw NotFoundException("Requirement", it)
     }
+    val hasConcept = hasConcept.map {
+        graph.concepts[it]?.unflatten(graph)
+            ?: throw NotFoundException("InformationConcept", it)
+    }.toMutableList()
 
-    return RequirementEntity(
+
+    return Requirement(
         id = id,
         identifier = identifier,
         kind = RequirementKind.valueOf(kind),
         description = description,
         type = type,
         name = name,
-        hasQualifiedRelation = mutableMapOf(RequirementEntity.HAS_REQUIREMENT to subRequirements.toMutableList()),
-        hasConcept = hasConcept.map {
-            graph.concepts[it]?.unflatten(graph)
-                ?: throw NotFoundException("InformationConcept", it)
-        }.toMutableList(),
-        hasEvidenceTypeList = mutableListOf(), // TODO
+        hasQualifiedRelation = emptyMap(),
+        hasConcept = hasConcept,
+        hasEvidenceTypeList = mutableListOf(),
         enablingCondition = enablingCondition,
         enablingConditionDependencies = enablingConditionDependencies.map {
             graph.concepts[it]?.unflatten(graph)
@@ -122,30 +124,35 @@ fun RequirementFlat.unflatten(graph: CertificationFlatGraph): RequirementEntity 
                 ?: throw NotFoundException("InformationConcept", it)
         },
         order = order,
-        properties = properties?.toJson(),
-    ).also { requirement ->
-        requirement.hasRequirementTmp = subRequirements.toMutableList()
-    }
+        properties = properties,
+        hasRequirement = subRequirements,
+        isDerivedFrom = emptyList(),
+        isRequirementOf = emptyList(),
+        state = RequirementState.CREATED
+    )
 }
 
-fun DataUnitFlat.unflatten(graph: CertificationFlatGraph): DataUnitEntity {
-    return DataUnitEntity(
+
+fun DataUnitFlat.unflatten(graph: CertificationFlatGraph): DataUnit {
+
+    val options = optionIdentifiers?.map {
+        graph.unitOptions[it]
+            ?.unflatten(graph)
+            ?: throw NotFoundException("DataUnitOption", it)
+    }?.toMutableList()
+    return DataUnit(
         id = id,
         identifier = identifier,
         name = name,
         description = description,
         notation = notation,
         type = DataUnitType.valueOf(type),
-        options = optionIdentifiers?.map {
-            graph.unitOptions[it]
-                ?.unflatten(graph)
-                ?: throw NotFoundException("DataUnitOption", it)
-        }?.toMutableList()
+        options = options
     )
 }
 
-fun cccev.f2.unit.domain.model.DataUnitOption.unflatten(graph: CertificationFlatGraph): DataUnitOptionEntity {
-    return DataUnitOptionEntity(
+fun DataUnitOption.unflatten(graph: CertificationFlatGraph): cccev.s2.unit.domain.model.DataUnitOption {
+    return cccev.s2.unit.domain.model.DataUnitOption(
         id = id,
         identifier = identifier,
         name = name,

@@ -2,8 +2,8 @@ package cccev.test.s2.certification.command
 
 import au.com.origin.snapshots.Expect
 import cccev.core.certification.CertificationAggregateService
-import cccev.core.certification.command.CertificationCreateCommand
 import cccev.core.certification.entity.CertificationRepository
+import cccev.f2.certification.domain.command.CertificationCreateCommand
 import cccev.test.CccevCucumberStepsDefinition
 import io.cucumber.datatable.DataTable
 import io.cucumber.java8.En

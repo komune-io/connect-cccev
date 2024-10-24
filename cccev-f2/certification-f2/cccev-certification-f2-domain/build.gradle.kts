@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    commonMainApi(project(Modules.cccev.core))
+//    commonMainApi(project(Modules.cccev.core))
     commonMainApi(project(Modules.cccev.f2.concept.domain))
     commonMainApi(project(Modules.cccev.f2.evidence.domain))
     commonMainApi(project(Modules.cccev.f2.requirement.domain))

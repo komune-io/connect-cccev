@@ -1,7 +1,7 @@
 package cccev.f2.commons
 
-import cccev.core.certification.model.RequirementCertificationId
-import cccev.core.certification.model.SupportedValueId
+import cccev.dsl.model.RequirementCertificationId
+import cccev.dsl.model.SupportedValueId
 import cccev.f2.certification.domain.model.CertificationFlat
 import cccev.f2.certification.domain.model.RequirementCertificationFlat
 import cccev.f2.certification.domain.model.SupportedValueFlat
