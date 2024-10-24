@@ -1,6 +1,6 @@
 plugins {
     id("io.komune.fixers.gradle.kotlin.mpp")
-    kotlin("plugin.spring")
+    id("io.komune.fixers.gradle.publish")
     kotlin("plugin.serialization")
 }
 
