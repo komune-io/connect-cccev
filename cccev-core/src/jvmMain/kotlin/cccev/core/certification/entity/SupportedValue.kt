@@ -1,7 +1,7 @@
 package cccev.core.certification.entity
 
 import cccev.core.certification.model.SupportedValueId
-import cccev.projection.api.entity.concept.InformationConceptEntity
+import cccev.core.concept.entity.InformationConcept
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
@@ -19,7 +19,7 @@ class SupportedValue {
     var value: String? = null
 
     @Relationship(PROVIDES_VALUE_FOR)
-    lateinit var concept: InformationConceptEntity
+    lateinit var concept: InformationConcept
 
     @Version
     var version: Long? = null

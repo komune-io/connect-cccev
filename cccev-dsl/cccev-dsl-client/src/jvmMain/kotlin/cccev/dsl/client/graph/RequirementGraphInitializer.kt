@@ -1,10 +1,10 @@
 package cccev.dsl.client.graph
 
+import cccev.core.requirement.model.RequirementId
 import cccev.dsl.model.Requirement
 import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.requirement.domain.query.RequirementGetByIdentifierQueryDTOBase
 import cccev.s2.requirement.client.RequirementClient
-import cccev.s2.requirement.domain.RequirementId
 import f2.dsl.fnc.invokeWith
 
 class RequirementGraphInitializer(
@@ -15,7 +15,6 @@ class RequirementGraphInitializer(
     override fun getNodeDependencies(node: Requirement): List<RequirementIdentifier> {
         val dependencies = buildList {
             node.hasRequirement?.let { addAll(it) }
-            node.hasQualifiedRelation?.values?.forEach { addAll(it) }
             node.isRequirementOf?.let { addAll(it) }
         }
         return dependencies.map { it.identifier }.distinct()

@@ -30,7 +30,6 @@ sealed interface Requirement {
     val kind: String
     val hasRequirement: List<Requirement>?
     var isRequirementOf: List<Requirement>?
-    var hasQualifiedRelation: Map<String, List<Requirement>>?
     val hasConcept: List<InformationConcept>?
     val hasEvidenceTypeList: List<EvidenceTypeListBase>?
     val enablingCondition: String?
@@ -57,7 +56,6 @@ open class Criterion(
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
-    override var hasQualifiedRelation: Map<String, List<Requirement>>? = emptyMap(),
     override val enablingCondition: String?,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>,
     override val required: Boolean,
@@ -82,7 +80,6 @@ open class Criterion(
                 "hasEvidenceTypeList=$hasEvidenceTypeList, " +
                 "isDerivedFrom=$isDerivedFrom, " +
                 "isRequirementOf=$isRequirementOf, " +
-                "hasQualifiedRelation=$hasQualifiedRelation" +
                 ")"
     }
 }
@@ -98,7 +95,6 @@ open class InformationRequirement(
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
-    override var hasQualifiedRelation: Map<String, List<Requirement>>? = emptyMap(),
     override val enablingCondition: String?,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>,
     override val required: Boolean,
@@ -119,7 +115,6 @@ open class InformationRequirement(
                 "hasEvidenceTypeList=$hasEvidenceTypeList, " +
                 "isDerivedFrom=$isDerivedFrom, " +
                 "isRequirementOf=$isRequirementOf, " +
-                "hasQualifiedRelation=$hasQualifiedRelation" +
                 ")"
     }
 }
@@ -135,7 +130,6 @@ open class Constraint(
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
-    override var hasQualifiedRelation: Map<String, List<Requirement>>? = emptyMap(),
     override val enablingCondition: String?,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>,
     override val required: Boolean,
@@ -156,7 +150,6 @@ open class Constraint(
                 "hasEvidenceTypeList=$hasEvidenceTypeList, " +
                 "isDerivedFrom=$isDerivedFrom, " +
                 "isRequirementOf=$isRequirementOf, " +
-                "hasQualifiedRelation=$hasQualifiedRelation" +
                 ")"
     }
 }
@@ -171,7 +164,6 @@ open class RequirementRef(
     override val type: Code? = null
     override val hasRequirement: List<Requirement>? = null
     override var isRequirementOf: List<Requirement>? = null
-    override var hasQualifiedRelation: Map<String, List<Requirement>>? = null
     override val hasConcept: List<InformationConcept>? = null
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = null
     override val enablingCondition: String? = null
@@ -200,7 +192,6 @@ open class PartialRequirement(
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
-    override var hasQualifiedRelation: Map<String, List<Requirement>>? = emptyMap(),
     override val enablingCondition: String?,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>,
     override val required: Boolean,

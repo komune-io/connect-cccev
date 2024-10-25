@@ -60,7 +60,6 @@ class CriterionBuilder : AbstractRequirementBuilder<Criterion>() {
 
         isDerivedFrom = isDerivedFrom,
         hasRequirement = hasRequirement,
-        hasQualifiedRelation = hasQualifiedRelation,
         isRequirementOf = isRequirementOf,
         enablingCondition = enablingCondition,
         enablingConditionDependencies = enablingConditionDependencies,
@@ -83,7 +82,6 @@ class InformationRequirementBuilder : RequirementBuilder<InformationRequirement>
         hasEvidenceTypeList = hasEvidenceTypeList,
         isDerivedFrom = isDerivedFrom,
         hasRequirement = hasRequirement,
-        hasQualifiedRelation = hasQualifiedRelation,
         isRequirementOf = isRequirementOf,
         enablingCondition = enablingCondition,
         enablingConditionDependencies = enablingConditionDependencies,
@@ -105,7 +103,6 @@ class ConstraintBuilder: RequirementBuilder<Constraint>, AbstractRequirementBuil
         hasEvidenceTypeList = hasEvidenceTypeList,
         isDerivedFrom = isDerivedFrom,
         hasRequirement = hasRequirement,
-        hasQualifiedRelation = hasQualifiedRelation,
         isRequirementOf = isRequirementOf,
         enablingCondition = enablingCondition,
         enablingConditionDependencies = enablingConditionDependencies,

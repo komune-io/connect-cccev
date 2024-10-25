@@ -2,13 +2,23 @@ package cccev.core.certification.command
 
 import cccev.core.certification.model.CertificationId
 import cccev.core.certification.model.RequirementCertificationId
-import cccev.s2.requirement.domain.model.RequirementIdentifier
+import cccev.core.requirement.model.RequirementIdentifier
+import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
 
 /**
+ * Add requirements to fulfill in a certification.
+ * @d2 function
+ * @parent [cccev.f2.certification.domain.D2CertificationApiPage]
+ * @order 20
+ */
+typealias CertificationAddRequirementsFunction = F2Function<CertificationAddRequirementsCommand, CertificationAddedRequirementsEvent>
+
+/**
  * @d2 command
+ * @parent [CertificationAddRequirementsFunction]
  */
 @JsExport
 @JsName("CertificationAddRequirementsCommandDTO")
@@ -41,6 +51,7 @@ data class CertificationAddRequirementsCommand(
 
 /**
  * @d2 event
+ * @parent [CertificationAddRequirementsFunction]
  */
 @JsExport
 @JsName("CertificationAddedRequirementsEventDTO")

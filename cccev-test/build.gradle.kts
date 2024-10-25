@@ -4,26 +4,10 @@ plugins {
 }
 
 dependencies {
-	implementation(project(Modules.cccev.dsl.model))
-
 	implementation(project(Modules.api.config))
-
-	implementation(project(Modules.cccev.f2.concept.api))
-	implementation(project(Modules.cccev.f2.evidence.api))
-	implementation(project(Modules.cccev.f2.evidenceType.api))
-	implementation(project(Modules.cccev.f2.framework.api))
-	implementation(project(Modules.cccev.f2.certification.api))
-	implementation(project(Modules.cccev.f2.requirement.api))
-	implementation(project(Modules.cccev.f2.unit.api))
-
-	// TODO SHOULD BE DELETED
-	implementation(project(Modules.cccev.s2.concept.api))
-	implementation(project(Modules.cccev.s2.evidenceType.api))
-	implementation(project(Modules.cccev.s2.framework.api))
-	implementation(project(Modules.cccev.s2.requirement.api))
-	implementation(project(Modules.cccev.s2.unit.api))
-
+	implementation(project(Modules.cccev.dsl.model))
 	implementation(project(Modules.cccev.core))
+	implementation(project(Modules.cccev.f2))
 
 	Dependencies.Jvm.neo4j(::api)
 	Dependencies.Jvm.f2Http(::api)

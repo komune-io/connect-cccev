@@ -2,12 +2,22 @@ package cccev.core.certification.command
 
 import cccev.core.certification.model.CertificationId
 import cccev.core.certification.model.RequirementCertificationId
-import cccev.s2.concept.domain.InformationConceptIdentifier
+import cccev.core.concept.model.InformationConceptIdentifier
+import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
 /**
+ * Provide data for the information concepts specified in the requirements a certification has to fulfill.
+ * @d2 function
+ * @parent [cccev.f2.certification.domain.D2CertificationApiPage]
+ * @order 30
+ */
+typealias CertificationFillValuesFunction = F2Function<CertificationFillValuesCommand, CertificationFilledValuesEvent>
+
+/**
  * @d2 command
+ * @parent [CertificationFillValuesFunction]
  */
 @JsExport
 interface CertificationFillValuesCommandDTO {
@@ -43,6 +53,7 @@ data class CertificationFillValuesCommand(
 
 /**
  * @d2 event
+ * @parent [CertificationFillValuesFunction]
  */
 @JsExport
 interface CertificationFilledValuesEventDTO {

@@ -13,10 +13,11 @@ import cccev.core.certification.entity.CertificationRepository
 import cccev.core.certification.entity.RequirementCertification
 import cccev.core.certification.entity.isFulfilled
 import cccev.core.certification.service.CertificationValuesFillerService
-import cccev.core.requirement.RequirementRepository2
+import cccev.core.requirement.entity.Requirement
+import cccev.core.requirement.entity.RequirementRepository
+import cccev.core.requirement.model.RequirementIdentifier
+import cccev.infra.neo4j.checkNotExists
 import cccev.infra.neo4j.session
-import cccev.projection.api.entity.requirement.RequirementEntity
-import f2.spring.exception.ConflictException
 import f2.spring.exception.NotFoundException
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher
@@ -28,15 +29,12 @@ class CertificationAggregateService(
     private val applicationEventPublisher: ApplicationEventPublisher,
     private val certificationRepository: CertificationRepository,
     private val certificationValuesFillerService: CertificationValuesFillerService,
-    private val requirementRepository: RequirementRepository2,
+    private val requirementRepository: RequirementRepository,
     private val sessionFactory: SessionFactory
 ) {
     suspend fun create(command: CertificationCreateCommand): CertificationCreatedEvent = sessionFactory.session { session ->
-        command.id?.let {
-            val existingCertification = session.load(Certification::class.java, command.id as String, 0)
-            if (existingCertification != null) {
-                throw ConflictException("Certification", "id", command.id)
-            }
+        command.id?.let { id ->
+            session.checkNotExists<Certification>(id, "Certification")
         }
 
         val requirements = command.requirementIdentifiers.map { requirementIdentifier ->
@@ -105,15 +103,22 @@ class CertificationAggregateService(
         TODO()
     }
 
-    private suspend fun RequirementEntity.toEmptyCertification(): RequirementCertification = RequirementCertification().apply {
-        id = UUID.randomUUID().toString()
-        requirement = this@toEmptyCertification
-        hasRequirementTmp.forEach { requirement ->
-            subCertifications.add(requirement.toEmptyCertification())
-        }
-        isEnabled = enablingCondition == null
-        isValidated = validatingCondition == null
-        hasAllValues = !requirementRepository.hasAnyConcept(identifier!!)
-        isFulfilled = isFulfilled()
+    private suspend fun Requirement.toEmptyCertification(
+        existingCertifications: MutableMap<RequirementIdentifier, RequirementCertification> = mutableMapOf()
+    ): RequirementCertification {
+        return existingCertifications[identifier]
+            ?: RequirementCertification().also { certification ->
+                existingCertifications[identifier] = certification
+
+                certification.id = UUID.randomUUID().toString()
+                certification.requirement = this
+                subRequirements.forEach { requirement ->
+                    certification.subCertifications.add(requirement.toEmptyCertification(existingCertifications))
+                }
+                certification.isEnabled = enablingCondition == null
+                certification.isValidated = validatingCondition == null
+                certification.hasAllValues = !requirementRepository.hasAnyConcept(identifier)
+                certification.isFulfilled = certification.isFulfilled()
+            }
     }
 }

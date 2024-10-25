@@ -7,12 +7,12 @@ import cccev.core.certification.entity.SupportedValue
 import cccev.core.certification.entity.isFulfilled
 import cccev.core.certification.model.CertificationId
 import cccev.core.certification.model.RequirementCertificationId
-import cccev.core.concept.InformationConceptRepository2
+import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.entity.InformationConceptRepository
+import cccev.core.concept.model.InformationConceptIdentifier
+import cccev.core.unit.model.DataUnitType
 import cccev.infra.neo4j.session
 import cccev.infra.neo4j.transaction
-import cccev.projection.api.entity.concept.InformationConceptEntity
-import cccev.s2.concept.domain.InformationConceptIdentifier
-import cccev.s2.unit.domain.model.DataUnitType
 import f2.spring.exception.NotFoundException
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.toLocalDate
@@ -25,7 +25,7 @@ import java.util.UUID
 @Service
 class CertificationValuesFillerService(
     private val certificationRepository: CertificationRepository,
-    private val informationConceptRepository: InformationConceptRepository2,
+    private val informationConceptRepository: InformationConceptRepository,
     private val sessionFactory: SessionFactory
 ) {
     companion object {
@@ -47,7 +47,7 @@ class CertificationValuesFillerService(
         }
 
         certificationRepository.findAllSupportedValues(context.certificationId, context.rootRequirementCertificationId)
-            .forEach { context.knownValues[it.concept.identifier] = it.value.convertTo(it.concept.hasUnit!!.type) }
+            .forEach { context.knownValues[it.concept.identifier] = it.value.convertTo(it.concept.unit.type) }
 
         computeValuesOfConsumersOf(values.keys, context)
     }
@@ -61,7 +61,7 @@ class CertificationValuesFillerService(
             ?: throw NotFoundException("InformationConcept", informationConceptIdentifier)
 
         // will throw if conversion is impossible
-        value.convertTo(informationConcept.hasUnit?.type ?: DataUnitType.STRING)
+        value.convertTo(informationConcept.unit.type)
 
         val supportedValue = SupportedValue().apply {
             this.id = UUID.randomUUID().toString()
@@ -96,15 +96,15 @@ class CertificationValuesFillerService(
         val consumers = informationConceptIdentifiers.mapAsync { informationConceptIdentifier ->
             informationConceptRepository.findDependingOn(informationConceptIdentifier)
         }.flatten()
-            .distinctBy(InformationConceptEntity::identifier)
+            .distinctBy(InformationConcept::identifier)
 
         consumers.computeValues(context)
     }
 
-    private suspend fun List<InformationConceptEntity>.computeValues(context: Context) {
+    private suspend fun List<InformationConcept>.computeValues(context: Context) {
         val computableConcepts = this.filter { concept ->
             concept.expressionOfExpectedValue != null
-                    && concept.dependsOn.orEmpty().all { it.identifier in context.knownValues }
+                    && concept.dependencies.all { it.identifier in context.knownValues }
         }
 
         val expressionContext = StandardEvaluationContext().apply {
@@ -119,7 +119,7 @@ class CertificationValuesFillerService(
             )
 
             val value = spelParser.parseExpression(concept.expressionOfExpectedValue!!)
-                .getValue(expressionContext, concept.hasUnit!!.type.klass())
+                .getValue(expressionContext, concept.unit.type.klass())
                 .also { context.knownValues[concept.identifier] = it }
                 .let {
                     SupportedValue().apply {
@@ -138,24 +138,21 @@ class CertificationValuesFillerService(
         var changed: Boolean
 
         val mappedValues = values.associate {
-            val parsedValue = it.concept.hasUnit?.type?.let { type ->
-                it.value.convertTo(type)
-            }
-            it.concept.identifier to parsedValue
+            it.concept.identifier to it.value.convertTo(it.concept.unit.type)
         }
 
-        hasAllValues = requirement.hasConcept.all { mappedValues[it.identifier] != null }
+        hasAllValues = requirement.concepts.all { mappedValues[it.identifier] != null }
             .also { changed = it != hasAllValues }
 
         isEnabled = evaluateBooleanExpression(
             requirement.enablingCondition,
-            requirement.enablingConditionDependencies.map(InformationConceptEntity::identifier).toSet(),
+            requirement.enablingConditionDependencies.map(InformationConcept::identifier).toSet(),
             mappedValues
         ).also { changed = changed || it != isEnabled }
 
         isValidated = evaluateBooleanExpression(
             requirement.validatingCondition,
-            requirement.validatingConditionDependencies.map(InformationConceptEntity::identifier).toSet(),
+            requirement.validatingConditionDependencies.map(InformationConcept::identifier).toSet(),
             mappedValues
         ).also { changed = changed || it != isValidated }
 

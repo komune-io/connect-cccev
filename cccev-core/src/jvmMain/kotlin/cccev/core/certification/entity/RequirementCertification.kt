@@ -1,7 +1,7 @@
 package cccev.core.certification.entity
 
 import cccev.core.certification.model.RequirementCertificationId
-import cccev.projection.api.entity.requirement.RequirementEntity
+import cccev.core.requirement.entity.Requirement
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
@@ -21,7 +21,7 @@ class RequirementCertification {
     lateinit var id: RequirementCertificationId
 
     @Relationship(CERTIFIES)
-    lateinit var requirement: RequirementEntity
+    lateinit var requirement: Requirement
 
     @Relationship(IS_CERTIFIED_BY)
     var subCertifications: MutableList<RequirementCertification> = mutableListOf()

@@ -1,10 +1,10 @@
 package cccev.dsl.client.graph
 
+import cccev.core.concept.model.InformationConceptId
 import cccev.dsl.model.InformationConcept
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.f2.concept.client.InformationConceptClient
 import cccev.f2.concept.domain.query.InformationConceptGetByIdentifierQueryDTOBase
-import cccev.s2.concept.domain.InformationConceptId
 import f2.dsl.fnc.invokeWith
 
 class InformationConceptGraphInitializer(

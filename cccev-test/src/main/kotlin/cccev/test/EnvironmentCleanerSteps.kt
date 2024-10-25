@@ -1,15 +1,14 @@
 package cccev.test
 
+import cccev.infra.neo4j.session
 import io.cucumber.java8.En
 import kotlinx.coroutines.runBlocking
-import org.neo4j.driver.Driver
-import org.springframework.data.neo4j.core.Neo4jClient
+import org.neo4j.ogm.session.SessionFactory
 import s2.bdd.data.TestContext
 
 class EnvironmentCleanerSteps(
     private val context: TestContext,
-    private val driver: Driver,
-    private val neo4jClient: Neo4jClient = Neo4jClient.create(driver)
+    private val sessionFactory: SessionFactory
 ): En {
     init {
         Before { _ ->
@@ -29,6 +28,8 @@ class EnvironmentCleanerSteps(
 //    }
 
     private fun cleanDb() = runBlocking {
-        neo4jClient.query("MATCH (n) DETACH DELETE n").run()
+        sessionFactory.session { session ->
+            session.query("MATCH (n) DETACH DELETE n", emptyMap<String, Any>())
+        }
     }
 }

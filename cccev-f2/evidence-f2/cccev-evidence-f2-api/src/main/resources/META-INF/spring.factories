@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cccev.f2.evidence.api.EvidenceApiEndpoint

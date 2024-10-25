@@ -2,11 +2,11 @@ package cccev.core.certification.entity
 
 import cccev.core.certification.model.CertificationId
 import cccev.core.certification.model.RequirementCertificationId
+import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.model.InformationConceptIdentifier
+import cccev.core.requirement.entity.Requirement
+import cccev.core.unit.entity.DataUnit
 import cccev.infra.neo4j.session
-import cccev.projection.api.entity.concept.InformationConceptEntity
-import cccev.projection.api.entity.requirement.RequirementEntity
-import cccev.projection.api.entity.unit.DataUnitEntity
-import cccev.s2.concept.domain.InformationConceptIdentifier
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.stereotype.Service
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service
 class CertificationRepository(
     private val sessionFactory: SessionFactory
 ) {
-    suspend fun findById(id: String): Certification? = sessionFactory.session { session ->
+    suspend fun findById(id: CertificationId): Certification? = sessionFactory.session { session ->
         session.queryForObject(
             Certification::class.java,
             "MATCH (c:${Certification.LABEL} {id: \$id})" +
@@ -23,6 +23,18 @@ class CertificationRepository(
                     "\nRETURN nodes, relationships",
             mapOf("id" to id)
         )
+    }
+    suspend fun findRequirementCertificationById(
+        id: RequirementCertificationId
+    ): RequirementCertification? = sessionFactory.session { session ->
+        session.query(
+            "MATCH (rc:${RequirementCertification.LABEL} {id: \$id})" +
+                    "\nCALL apoc.path.subgraphAll(rc, {})" +
+                    "\nYIELD nodes, relationships" +
+                    "\nRETURN rc, nodes, relationships",
+            mapOf("id" to id)
+        ).map { it["rc"] as RequirementCertification }
+            .firstOrNull()
     }
 
     suspend fun hasRequirementCertification(
@@ -44,23 +56,16 @@ class CertificationRepository(
         informationConceptIdentifier: InformationConceptIdentifier
     ): List<RequirementCertification> = sessionFactory.session { session ->
         session.query(
-            "MATCH (c:${Certification.LABEL} {id: \$cId})" +
+            "MATCH (:${Certification.LABEL} {id: \$cId})" +
                     (if (rootRequirementCertificationId != null) {
                         "-[:${RequirementCertification.IS_CERTIFIED_BY}*1..]->(:${RequirementCertification.LABEL} {id: \$rcId})"
                     } else { "" }) +
                     "-[:${RequirementCertification.IS_CERTIFIED_BY}*0..]->(rc:${RequirementCertification.LABEL})" +
-                    "-[certifies:${RequirementCertification.CERTIFIES}]->(r:${RequirementEntity.LABEL})" +
-                    "-->(:${InformationConceptEntity.LABEL} {identifier: \$icId})" +
-                    "\nOPTIONAL MATCH (rc)" +
-                    "-[uses_value:${RequirementCertification.USES_VALUE}]->(sv:${SupportedValue.LABEL})" +
-                    "-[provides_value_for:${SupportedValue.PROVIDES_VALUE_FOR}]->(ic:${InformationConceptEntity.LABEL})" +
-                    "\nOPTIONAL MATCH (rc)" +
-                    "-[is_certified_by:${RequirementCertification.IS_CERTIFIED_BY}*0..]->(dependency:${RequirementCertification.LABEL})" +
-                    "-[dependency_certifies:${RequirementCertification.CERTIFIES}]->(dependency_requirement:${RequirementEntity.LABEL})" +
-                    "\nOPTIONAL MATCH (r)-[r_uses_concept]->(r_ic:${InformationConceptEntity.LABEL})" +
-                    "\nRETURN rc, collect(certifies), collect(r), collect(is_certified_by), collect(dependency), collect(uses_value), " +
-                    "collect(sv), collect(provides_value_for), collect(ic), collect(r_uses_concept), collect(r_ic), " +
-                    "collect(dependency_certifies), collect(dependency_requirement)",
+                    "-[:${RequirementCertification.CERTIFIES}]->(:${Requirement.LABEL})" +
+                    "-->(:${InformationConcept.LABEL} {identifier: \$icId})" +
+                    "\nCALL apoc.path.subgraphAll(rc, {})" +
+                    "\nYIELD nodes, relationships" +
+                    "\nRETURN distinct rc, nodes, relationships",
             mapOf("cId" to certificationId, "rcId" to rootRequirementCertificationId, "icId" to informationConceptIdentifier),
         ).map { it["rc"] as RequirementCertification }
     }
@@ -69,19 +74,11 @@ class CertificationRepository(
         requirementCertificationId: RequirementCertificationId
     ): List<RequirementCertification> = sessionFactory.session { session ->
         session.query(
-            "MATCH (rc:${RequirementCertification.LABEL} {id: \$rcId})" +
+            "MATCH (:${RequirementCertification.LABEL} {id: \$rcId})" +
                     "<-[:${RequirementCertification.IS_CERTIFIED_BY}]-(parent:${RequirementCertification.LABEL})" +
-                    "\nMATCH (parent)" +
-                    "-[is_certified_by:${RequirementCertification.IS_CERTIFIED_BY}]->(child:${RequirementCertification.LABEL})" +
-                    "\nMATCH (parent)-[certifies:${RequirementCertification.CERTIFIES}]->(r:${RequirementEntity.LABEL})" +
-                    "\nOPTIONAL MATCH (r)-[r_has_concept:${RequirementEntity.HAS_CONCEPT}]->(r_ic:${InformationConceptEntity.LABEL})" +
-                    "\nMATCH (child)-[child_certifies:${RequirementCertification.CERTIFIES}]->(child_r:${RequirementEntity.LABEL})" +
-                    "\nOPTIONAL MATCH (rc)" +
-                    "-[uses_value:${RequirementCertification.USES_VALUE}]->(sv:${SupportedValue.LABEL})" +
-                    "-[provides_value_for:${SupportedValue.PROVIDES_VALUE_FOR}]->(ic:${InformationConceptEntity.LABEL})" +
-                    "\nRETURN parent, collect(certifies), collect(r), collect(is_certified_by), collect(child), collect(uses_value), " +
-                    "collect(sv), collect(provides_value_for), collect(ic), collect(child_certifies), collect(child_r), " +
-                    "collect(r_has_concept), collect(r_ic)",
+                    "\nCALL apoc.path.subgraphAll(parent, {})" +
+                    "\nYIELD nodes, relationships" +
+                    "\nRETURN parent, nodes, relationships",
             mapOf("rcId" to requirementCertificationId)
         ).map { it["parent"] as RequirementCertification }
     }
@@ -97,9 +94,9 @@ class CertificationRepository(
                     } else { "" }) +
                     "-[:${RequirementCertification.IS_CERTIFIED_BY}*0..]->(rc:${RequirementCertification.LABEL})" +
                     "-[uses_value:${RequirementCertification.USES_VALUE}]->(sv:${SupportedValue.LABEL})" +
-                    "-[provides_value_for:${SupportedValue.PROVIDES_VALUE_FOR}]->(ic:${InformationConceptEntity.LABEL})" +
-                    "-[has_unit:${InformationConceptEntity.HAS_UNIT}]->(du:${DataUnitEntity.LABEL})" +
-                    "\nRETURN sv, collect(provides_value_for), collect(ic), collect(has_unit), collect(du)",
+                    "-[provides_value_for:${SupportedValue.PROVIDES_VALUE_FOR}]->(ic:${InformationConcept.LABEL})" +
+                    "-[has_unit:${InformationConcept.HAS_UNIT}]->(du:${DataUnit.LABEL})" +
+                    "\nRETURN distinct sv, collect(provides_value_for), collect(distinct, ic), collect(has_unit), collect(distinct du)",
             mapOf("cId" to certificationId, "rcId" to rootRequirementCertificationId)
         ).map { it["sv"] as SupportedValue }
     }
@@ -109,6 +106,6 @@ class CertificationRepository(
     }
 
     suspend fun save(entity: RequirementCertification, depth: Int = -1) = sessionFactory.session { session ->
-        session.save(entity)
+        session.save(entity, depth)
     }
 }
