@@ -7,11 +7,20 @@ import cccev.f2.unit.query.DataUnitGetByIdentifierFunction
 import cccev.f2.unit.query.DataUnitGetFunction
 import f2.client.F2Client
 import f2.client.function
+import f2.client.ktor.F2ClientBuilder
 import f2.dsl.fnc.F2SupplierSingle
+import f2.dsl.fnc.f2SupplierSingle
 import kotlin.js.JsExport
 
-expect fun F2Client.dataUnitClient(): F2SupplierSingle<DataUnitClient>
-expect fun dataUnitClient(urlBase: String): F2SupplierSingle<DataUnitClient>
+fun F2Client.dataUnitClient(): F2SupplierSingle<DataUnitClient> = f2SupplierSingle {
+    DataUnitClient(this)
+}
+
+fun dataUnitClient(urlBase: String): F2SupplierSingle<DataUnitClient> = f2SupplierSingle {
+    DataUnitClient(
+        F2ClientBuilder.get(urlBase)
+    )
+}
 
 @JsExport
 open class DataUnitClient constructor(private val client: F2Client): DataUnitApi {

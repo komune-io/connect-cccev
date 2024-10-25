@@ -1,15 +1,12 @@
 package cccev.test.f2.requirement.data
 
 import cccev.core.requirement.model.RequirementKind
+import org.springframework.context.annotation.Configuration
 import s2.bdd.data.parser.EntryParser
-import kotlin.reflect.jvm.jvmName
 
-private val dataUnitTypeParser = EntryParser(
-    parseErrorMessage = "Requirement kind must be in ${RequirementKind::class.jvmName} values",
-    parser = String::toRequirementKind
+@Configuration
+class RequirementKindParser: EntryParser<RequirementKind>(
+    output = RequirementKind::class,
+    parseErrorMessage = "Expected ${RequirementKind::class.simpleName} value",
+    parser = RequirementKind::valueOf
 )
-
-fun Map<String, String>.extractRequirementKind(key: String) = dataUnitTypeParser.single(this, key)
-fun Map<String, String>.extractRequirementKindList(key: String) = dataUnitTypeParser.list(this, key)
-
-fun String.toRequirementKind() = RequirementKind.valueOf(this)

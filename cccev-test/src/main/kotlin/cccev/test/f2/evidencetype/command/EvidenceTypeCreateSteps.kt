@@ -96,7 +96,7 @@ class EvidenceTypeCreateSteps: En, CccevCucumberStepsDefinition() {
     private fun evidenceTypeCreateParams(entry: Map<String, String>?) = EvidenceTypeCreateParams(
         identifier = entry?.get("identifier").orRandom(),
         name = entry?.get("name").orRandom(),
-        concepts = entry?.extractList("concepts").orEmpty()
+        concepts = entry?.extractList<InformationConceptKey>("concepts").orEmpty()
     )
 
     private data class EvidenceTypeCreateParams(
@@ -108,7 +108,7 @@ class EvidenceTypeCreateSteps: En, CccevCucumberStepsDefinition() {
     private fun evidenceTypeAssertParams(entry: Map<String, String>) = EvidenceTypeAssertParams(
         identifier = entry["identifier"] ?: context.evidenceTypeIds.lastUsedKey,
         name = entry["name"],
-        concepts = entry.extractList("concepts").orEmpty().takeIf { "concepts" in entry }
+        concepts = entry.extractList<InformationConceptKey>("concepts").orEmpty().takeIf { "concepts" in entry }
     )
 
     private data class EvidenceTypeAssertParams(

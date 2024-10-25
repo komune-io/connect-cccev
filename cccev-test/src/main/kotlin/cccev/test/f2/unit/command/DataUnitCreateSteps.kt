@@ -6,7 +6,6 @@ import cccev.core.unit.model.DataUnitType
 import cccev.f2.unit.DataUnitEndpoint
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.f2.unit.data.dataUnit
-import cccev.test.f2.unit.data.extractDataUnitType
 import f2.dsl.fnc.invokeWith
 import io.cucumber.datatable.DataTable
 import io.cucumber.java8.En
@@ -14,6 +13,7 @@ import org.assertj.core.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.data.TestContextKey
+import s2.bdd.data.parser.extract
 
 class DataUnitCreateSteps: En, CccevCucumberStepsDefinition() {
 
@@ -105,7 +105,7 @@ class DataUnitCreateSteps: En, CccevCucumberStepsDefinition() {
         name = entry?.get("name").orRandom(),
         description = entry?.get("description").orRandom(),
         notation = entry?.get("notation"),
-        type = entry?.extractDataUnitType("type") ?: DataUnitType.NUMBER
+        type = entry?.extract("type") ?: DataUnitType.NUMBER
     )
 
     private data class DataUnitCreateParams(
@@ -121,7 +121,7 @@ class DataUnitCreateSteps: En, CccevCucumberStepsDefinition() {
         name = entry["name"],
         description = entry["description"],
         notation = entry["notation"],
-        type = entry.extractDataUnitType("type")
+        type = entry.extract("type")
     )
 
     private data class DataUnitAssertParams(

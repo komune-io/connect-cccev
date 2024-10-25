@@ -1,7 +1,7 @@
 import { ErrorOutline, Upload } from '@mui/icons-material'
 import { Paper, Stack, styled, Typography } from '@mui/material'
-import { Tooltip } from '@smartb/g2-notifications'
-import { useTheme } from '@smartb/g2-themes'
+import { Tooltip } from '@komune-io/g2-notifications'
+import { useTheme } from '@komune-io/g2-themes'
 import { useCallback } from 'react'
 import { DeleteIcon, PdfIcon, ViewFileIcon } from '../../icons'
 import { useTranslation } from "react-i18next"

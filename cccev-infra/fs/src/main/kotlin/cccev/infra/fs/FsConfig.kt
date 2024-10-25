@@ -1,6 +1,6 @@
 package cccev.infra.fs
 
-import city.smartb.fs.s2.file.client.FileClient
+import io.komune.fs.s2.file.client.FileClient
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.auth.Auth

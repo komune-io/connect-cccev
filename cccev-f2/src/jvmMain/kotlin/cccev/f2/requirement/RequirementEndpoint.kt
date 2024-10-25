@@ -11,22 +11,23 @@ import cccev.core.requirement.command.RequirementRemoveEvidenceTypesFunction
 import cccev.core.requirement.command.RequirementRemoveRequirementsFunction
 import cccev.core.requirement.command.RequirementUpdateFunction
 import cccev.f2.CccevFlatGraph
+import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.requirement.model.flattenTo
 import cccev.f2.requirement.query.RequirementGetByIdentifierFunction
 import cccev.f2.requirement.query.RequirementGetByIdentifierResult
 import cccev.f2.requirement.query.RequirementGetFunction
 import cccev.f2.requirement.query.RequirementGetResult
 import f2.dsl.fnc.f2Function
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import s2.spring.utils.logger.Logger
 
 @Configuration
 class RequirementEndpoint(
     private val requirementAggregateService: RequirementAggregateService,
     private val requirementFinderService: RequirementFinderService,
 ): RequirementApi {
-    private val logger by Logger()
+    private val logger = LoggerFactory.getLogger(InformationConceptEndpoint::class.java)
 
     @Bean
     override fun requirementGet(): RequirementGetFunction = f2Function { query ->

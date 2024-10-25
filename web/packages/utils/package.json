@@ -1,10 +1,10 @@
 {
   "name": "utils",
   "version": "1.0.0",
-  "description": "Plateform utils",
-  "author": "SmartB",
+  "description": "Platform utils",
+  "author": "Komune",
   "license": "",
-  "repository": "SmartB/utils",
+  "repository": "Komune/utils",
   "main": "src/index.ts",
   "source": "src/index.ts",
   "types": "src/index.ts"

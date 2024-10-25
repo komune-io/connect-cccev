@@ -1,5 +1,5 @@
 plugins {
-	id("city.smartb.fixers.gradle.kotlin.jvm")
+	id("io.komune.fixers.gradle.kotlin.jvm")
 	kotlin("plugin.spring")
 }
 
@@ -9,7 +9,9 @@ dependencies {
 	implementation(project(Modules.cccev.core))
 	implementation(project(Modules.cccev.f2))
 
+	Dependencies.Jvm.neo4j(::api)
 	Dependencies.Jvm.f2Http(::api)
+	Dependencies.Jvm.f2Auth(::api)
 	Dependencies.Jvm.s2Bdd(::api)
 	Dependencies.Jvm.Test.dataFaker(::implementation)
 

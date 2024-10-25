@@ -1,12 +1,12 @@
-import city.smartb.gradle.dependencies.FixersDependencies
-import city.smartb.gradle.dependencies.FixersPluginVersions
-import city.smartb.gradle.dependencies.FixersVersions
-import city.smartb.gradle.dependencies.Scope
-import city.smartb.gradle.dependencies.add
+import io.komune.gradle.dependencies.FixersDependencies
+import io.komune.gradle.dependencies.FixersPluginVersions
+import io.komune.gradle.dependencies.FixersVersions
+import io.komune.gradle.dependencies.Scope
+import io.komune.gradle.dependencies.add
 
 object Framework {
 	val fixers = FixersPluginVersions.fixers
-	val connect = "0.15.0-RC1"
+	val connect = "0.21.0-SNAPSHOT"
 }
 
 object PluginVersions {
@@ -18,6 +18,8 @@ object PluginVersions {
 
 object Versions {
 	val fs = Framework.connect
+	val f2 =  Framework.fixers
+	val s2 =  Framework.fixers
 	val springBoot = PluginVersions.springBoot
 
 	const val cucumber = FixersVersions.Test.cucumber
@@ -26,36 +28,36 @@ object Versions {
 	const val datafaker = "1.8.1"
 	const val javaSnapshotTesting = "4.0.7"
 	const val jsonAssert = "1.5.1"
-	const val neo4jOgm = "4.0.3"
+	const val neo4jOgm = "4.0.11"
 }
 
 object Repo {
 	val snapshot: List<String> = listOf(
 		// For fixers
-		"https://oss.sonatype.org/content/repositories/snapshots",
+		"https://s01.oss.sonatype.org/content/repositories/snapshots",
 	)
 }
 
 object Dependencies {
 	object Jvm {
 		fun s2Bdd(scope: Scope) = scope.add(
-			"city.smartb.s2:s2-test-bdd:${Framework.fixers}",
+			"io.komune.s2:s2-test-bdd:${Versions.s2}",
 			"org.springframework.boot:spring-boot-starter-test:${PluginVersions.springBoot}"
 		).also(::cucumber)
 			.also(::junit)
 
 		fun f2(scope: Scope) = scope.add(
-			"city.smartb.f2:f2-spring-boot-starter-function:${Framework.fixers}",
-			"city.smartb.f2:f2-spring-boot-exception-http:${Framework.fixers}"
+			"io.komune.f2:f2-spring-boot-starter-function:${Versions.f2}",
+			"io.komune.f2:f2-spring-boot-exception-http:${Versions.f2}"
+		)
+
+		fun f2Auth(scope: Scope) = scope.add(
+			"io.komune.f2:f2-spring-boot-starter-auth-tenant:${Versions.f2}"
 		)
 
 		fun f2Http(scope: Scope) = scope.add(
-			"city.smartb.f2:f2-spring-boot-starter-function-http:${Framework.fixers}",
-			"city.smartb.f2:f2-spring-boot-openapi:${Framework.fixers}"
-		)
-
-		fun s2Logger(scope: Scope) = scope.add(
-			"city.smartb.s2:s2-spring-boot-starter-utils-logger:${Framework.fixers}"
+			"io.komune.f2:f2-spring-boot-starter-function-http:${Versions.f2}",
+			"io.komune.f2:f2-spring-boot-openapi:${Versions.f2}"
 		)
 
 		fun jackson(scope: Scope) = FixersDependencies.Jvm.Json.jackson(scope)
@@ -74,8 +76,8 @@ object Dependencies {
 
 		object Fs {
 			fun client(scope: Scope) = scope.add(
-				"city.smartb.fs:fs-file-client:${Versions.fs}",
-				"city.smartb.fs:fs-spring-utils:${Versions.fs}",
+				"io.komune.fs:fs-file-client:${Versions.fs}",
+				"io.komune.fs:fs-spring-utils:${Versions.fs}",
 				"io.ktor:ktor-utils:${Versions.ktor}"
 			)
 		}
@@ -97,18 +99,18 @@ object Dependencies {
 	}
 	object Mpp {
 		fun f2(scope: Scope) = scope.add(
-			"city.smartb.f2:f2-dsl-cqrs:${Framework.fixers}",
-			"city.smartb.f2:f2-dsl-function:${Framework.fixers}"
+			"io.komune.f2:f2-dsl-cqrs:${Framework.fixers}",
+			"io.komune.f2:f2-dsl-function:${Framework.fixers}"
 		)
 
 		fun f2Client(scope: Scope) = scope.add(
-			"city.smartb.f2:f2-client-ktor:${Framework.fixers}",
+			"io.komune.f2:f2-client-ktor:${Framework.fixers}",
 			"io.ktor:ktor-client-auth:${Versions.ktor}",
 			"io.ktor:ktor-client-logging:${Versions.ktor}",
 		)
 
 		fun fs(scope: Scope) = scope.add(
-			"city.smartb.fs:fs-file-domain:${Versions.fs}"
+			"io.komune.fs:fs-file-domain:${Versions.fs}"
 		)
 	}
 }

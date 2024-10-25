@@ -5,13 +5,14 @@ import cccev.core.evidencetype.EvidenceTypeAggregateService
 import cccev.core.evidencetype.EvidenceTypeFinderService
 import cccev.core.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.CccevFlatGraph
+import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.evidencetype.model.flattenTo
 import cccev.f2.evidencetype.query.EvidenceTypeGetFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetResult
 import f2.dsl.fnc.f2Function
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import s2.spring.utils.logger.Logger
 
 /**
  * @d2 service
@@ -22,7 +23,7 @@ class EvidenceTypeEndpoint(
     private val evidenceTypeAggregateService: EvidenceTypeAggregateService,
     private val evidenceTypeFinderService: EvidenceTypeFinderService
 ): EvidenceTypeApi {
-    private val logger by Logger()
+    private val logger = LoggerFactory.getLogger(InformationConceptEndpoint::class.java)
 
     @Bean
     override fun evidenceTypeCreate(): EvidenceTypeCreateFunction = f2Function { command ->

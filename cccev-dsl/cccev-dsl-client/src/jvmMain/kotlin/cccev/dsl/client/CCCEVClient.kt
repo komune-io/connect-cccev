@@ -11,9 +11,7 @@ import cccev.f2.unit.client.dataUnitClient
 import cccev.s2.requirement.client.RequirementClient
 import cccev.s2.requirement.client.requirementClient
 import f2.client.ktor.F2ClientBuilder
-import f2.client.ktor.get
-import f2.client.ktor.http.F2ClientConfigLambda
-import kotlinx.serialization.json.Json
+import f2.client.ktor.common.F2ClientConfigLambda
 
 class CCCEVClient(
     val evidenceTypeClient: EvidenceTypeClient,
@@ -26,10 +24,9 @@ class CCCEVClient(
     companion object {
         suspend operator fun invoke(
             url: String,
-            json: Json? = null,
-            config: F2ClientConfigLambda? = null
+            config: F2ClientConfigLambda<*>? = null
         ): CCCEVClient {
-            val f2Client = F2ClientBuilder.get(url, json, config = config)
+            val f2Client = F2ClientBuilder.get(url, config = config)
             val evidenceTypeClient = f2Client.evidenceTypeClient().invoke()
             val informationConceptClient = f2Client.informationConceptClient().invoke()
             val certificationClient =  f2Client.certificationClient().invoke()

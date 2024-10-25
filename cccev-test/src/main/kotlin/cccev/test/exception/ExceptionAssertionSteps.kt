@@ -41,7 +41,7 @@ class ExceptionAssertionSteps: En, S2CucumberStepsDefinition()  {
     }
 
     private fun exceptionAssertionParams(entry: Map<String, String>) = ExceptionAssertionParams(
-        code = entry.safeExtract("code").toInt(),
+        code = entry.safeExtract<Int>("code"),
         times = entry["times"]?.toInt() ?: 1
     )
 

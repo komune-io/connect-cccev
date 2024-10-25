@@ -111,14 +111,14 @@ class CertificationCreateSteps: En, CccevCucumberStepsDefinition() {
 
     private fun certificationCreateParams(entry: Map<String, String>?) = CertificationCreateParams(
         identifier = entry?.get("identifier").orRandom(),
-        requirements = entry?.extractList("requirements").orEmpty()
+        requirements = entry?.extractList<RequirementKey>("requirements").orEmpty()
     )
 
     private fun requirementCertificationAssertParams(entry: Map<String, String>) = RequirementCertificationAssertParams(
         certification = entry["certification"] ?: context.certificationIds.lastUsedKey,
         requirement = entry.safeExtract("requirement"),
-        subCertifications = entry.extractList("subCertifications").orEmpty().takeIf { "subCertifications" in entry },
-        values = entry.extractList("values").orEmpty().takeIf { "values" in entry },
+        subCertifications = entry.extractList<RequirementKey>("subCertifications").orEmpty().takeIf { "subCertifications" in entry },
+        values = entry.extractList<RequirementKey>("values").orEmpty().takeIf { "values" in entry },
         isEnabled = entry["isEnabled"]?.toBoolean(),
         isValidated = entry["isValidated"]?.toBoolean(),
         hasAllValues = entry["hasAllValues"]?.toBoolean(),

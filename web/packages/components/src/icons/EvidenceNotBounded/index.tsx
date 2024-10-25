@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent } from './EvidenceNotBounded.svg'
 import { MergeReactElementProps } from 'utils'
-import { useTheme } from '@smartb/g2-themes'
+import { useTheme } from '@komune-io/g2-themes'
 
 interface EvidenceNotBoundedBasicProps {
   color?: string

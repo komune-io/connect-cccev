@@ -1,5 +1,5 @@
 import { ThemeOptions } from "@mui/material";
-import { Theme as AruiTheme } from "@smartb/g2";
+import { Theme as AruiTheme } from "@komune-io/g2";
 
 
 type DeepPartial<T> = {

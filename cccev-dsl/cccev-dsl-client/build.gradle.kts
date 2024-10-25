@@ -1,6 +1,6 @@
 plugins {
-    id("city.smartb.fixers.gradle.kotlin.mpp")
-    id("city.smartb.fixers.gradle.publish")
+    id("io.komune.fixers.gradle.kotlin.mpp")
+    id("io.komune.fixers.gradle.publish")
 }
 
 dependencies {
@@ -8,6 +8,7 @@ dependencies {
     commonMainApi(project(Modules.cccev.dsl.model))
 
     jvmMainApi(project(Modules.cccev.f2))
+//    commonMainApi(project(Modules.cccev.f2.commons))
 }
 
 tasks.withType<Test>().configureEach {

@@ -1,4 +1,4 @@
-import { initRedux } from "@smartb/g2";
+import { initRedux } from "@komune-io/g2";
 import { filtersReducer } from "./filters/filters.reducer";
 import thunk from "redux-thunk"
 import { evidenceReducer } from "./evidence/evidence.reducer";

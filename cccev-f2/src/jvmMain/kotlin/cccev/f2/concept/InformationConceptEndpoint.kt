@@ -11,9 +11,9 @@ import cccev.f2.concept.query.InformationConceptGetByIdentifierResult
 import cccev.f2.concept.query.InformationConceptGetFunction
 import cccev.f2.concept.query.InformationConceptGetResult
 import f2.dsl.fnc.f2Function
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import s2.spring.utils.logger.Logger
 
 /**
  * @d2 service
@@ -24,7 +24,7 @@ class InformationConceptEndpoint(
     private val informationConceptAggregateService: InformationConceptAggregateService,
     private val informationConceptFinderService: InformationConceptFinderService
 ): InformationConceptApi {
-    private val logger by Logger()
+    private val logger = LoggerFactory.getLogger(InformationConceptEndpoint::class.java)
 
     @Bean
     override fun conceptGet(): InformationConceptGetFunction = f2Function { query ->

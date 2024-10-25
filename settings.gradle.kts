@@ -2,16 +2,15 @@ pluginManagement {
 	repositories {
 		gradlePluginPortal()
 		mavenCentral()
-		maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
-		maven { url = uri("https://repo.spring.io/milestone") }
+		maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
 	}
 }
 
-rootProject.name = "cccev"
+rootProject.name = "connect-cccev"
 
 include(
 	"cccev-dsl:cccev-dsl-model",
-	"cccev-dsl:cccev-dsl-client",
+//	"cccev-dsl:cccev-dsl-client",
 )
 
 include(

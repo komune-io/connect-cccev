@@ -4,7 +4,7 @@ import cccev.commons.utils.parseJsonTo
 import cccev.commons.utils.toJson
 import cccev.core.unit.model.DataUnitOptionId
 import cccev.core.unit.model.DataUnitOptionIdentifier
-import city.smartb.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePath
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Version

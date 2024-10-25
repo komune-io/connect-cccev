@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { Filters, FiltersField, useFilters, Option } from "@smartb/g2-forms"
+import { Filters, FiltersField, useFilters, Option } from "@komune-io/g2-forms"
 import { EvidenceTypeDTO } from 'datahub'
 import { useEffect, useMemo } from 'react'
 import { useTranslation } from "react-i18next"

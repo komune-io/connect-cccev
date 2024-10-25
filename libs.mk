@@ -1,0 +1,17 @@
+VERSION = $(shell cat VERSION)
+
+.PHONY: lint build test publish promote
+
+lint:
+	@echo 'No Lint'
+
+build:
+	./gradlew build publishToMavenLocal -Dorg.gradle.parallel=true -x test
+test:
+	@echo 'No Tests'
+
+publish:
+	VERSION=$(VERSION) PKG_MAVEN_REPO=github ./gradlew publish -Dorg.gradle.parallel=true --info
+
+promote:
+	VERSION=$(VERSION) PKG_MAVEN_REPO=sonatype_oss ./gradlew publish

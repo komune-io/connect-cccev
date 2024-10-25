@@ -1,5 +1,7 @@
 package cccev.f2.certification
 
+import org.slf4j.LoggerFactory
+
 import cccev.core.certification.CertificationAggregateService
 import cccev.core.certification.CertificationFinderService
 import cccev.core.certification.command.CertificationAddRequirementsFunction
@@ -10,12 +12,11 @@ import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.model.flattenTo
 import cccev.f2.certification.query.CertificationGetFunction
 import cccev.f2.certification.query.CertificationGetResult
-import city.smartb.fs.s2.file.client.FileClient
+import io.komune.fs.s2.file.client.FileClient
 import f2.dsl.fnc.f2Function
 import org.springframework.context.annotation.Bean
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import s2.spring.utils.logger.Logger
 
 /**
  * @d2 api
@@ -28,7 +29,7 @@ class CertificationEndpoint(
     private val certificationAggregateService: CertificationAggregateService,
     private val certificationFinderService: CertificationFinderService
 ): CertificationApi {
-    private val logger by Logger()
+    private val logger = LoggerFactory.getLogger(CertificationEndpoint::class.java)
 
     @Bean
     override fun certificationGet(): CertificationGetFunction = f2Function { query ->

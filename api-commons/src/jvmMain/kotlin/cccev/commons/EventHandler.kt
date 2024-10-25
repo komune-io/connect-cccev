@@ -3,12 +3,12 @@ package cccev.commons
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.slf4j.LoggerFactory
 import org.springframework.dao.OptimisticLockingFailureException
-import s2.spring.utils.logger.Logger
 
 open class EventHandler {
 
-    protected val logger by Logger()
+    protected val logger = LoggerFactory.getLogger(EventHandler::class.java)
 
     fun handleEvent(
         logMessage: String, retryOnOptimisticLockFailure: Int = 5,

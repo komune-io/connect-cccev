@@ -1,7 +1,7 @@
 import { Help } from '@mui/icons-material'
 import { Stack, Typography } from '@mui/material'
-import { useTheme } from '@smartb/g2-themes'
-import { Tooltip } from '@smartb/g2-notifications'
+import { useTheme } from '@komune-io/g2-themes'
+import { Tooltip } from '@komune-io/g2-notifications'
 import { useTranslation } from "react-i18next"
 
 

@@ -5,15 +5,16 @@ import cccev.core.unit.DataUnitFinderService
 import cccev.core.unit.command.DataUnitCreateFunction
 import cccev.core.unit.command.DataUnitUpdateFunction
 import cccev.f2.CccevFlatGraph
+import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.unit.model.flattenTo
 import cccev.f2.unit.query.DataUnitGetByIdentifierFunction
 import cccev.f2.unit.query.DataUnitGetByIdentifierResult
 import cccev.f2.unit.query.DataUnitGetFunction
 import cccev.f2.unit.query.DataUnitGetResult
 import f2.dsl.fnc.f2Function
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import s2.spring.utils.logger.Logger
 
 /**
  * @d2 api
@@ -24,7 +25,7 @@ class DataUnitEndpoint(
     private val dataUnitAggregateService: DataUnitAggregateService,
     private val dataUnitFinderService: DataUnitFinderService
 ): DataUnitApi {
-    private val logger by Logger()
+    private val logger = LoggerFactory.getLogger(DataUnitEndpoint::class.java)
 
     @Bean
     override fun dataUnitGet(): DataUnitGetFunction = f2Function { query ->

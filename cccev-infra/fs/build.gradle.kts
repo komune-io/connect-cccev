@@ -1,6 +1,5 @@
 plugins {
-	id("city.smartb.fixers.gradle.kotlin.jvm")
-	id("city.smartb.fixers.gradle.publish")
+	id("io.komune.fixers.gradle.kotlin.jvm")
 	kotlin("plugin.spring")
 	kotlin("plugin.serialization")
 	kotlin("kapt")

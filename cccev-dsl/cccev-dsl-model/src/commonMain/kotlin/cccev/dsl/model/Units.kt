@@ -1,6 +1,6 @@
 package cccev.dsl.model
 
-import city.smartb.fs.s2.file.domain.model.FilePath
+import io.komune.fs.s2.file.domain.model.FilePath
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName

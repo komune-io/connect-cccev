@@ -13,11 +13,20 @@ import cccev.f2.requirement.query.RequirementGetByIdentifierFunction
 import cccev.f2.requirement.query.RequirementGetFunction
 import f2.client.F2Client
 import f2.client.function
+import f2.client.ktor.F2ClientBuilder
 import f2.dsl.fnc.F2SupplierSingle
+import f2.dsl.fnc.f2SupplierSingle
 import kotlin.js.JsExport
 
-expect fun F2Client.requirementClient(): F2SupplierSingle<RequirementClient>
-expect fun requirementClient(urlBase: String): F2SupplierSingle<RequirementClient>
+fun F2Client.requirementClient(): F2SupplierSingle<RequirementClient> = f2SupplierSingle {
+    RequirementClient(this)
+}
+
+fun requirementClient(urlBase: String): F2SupplierSingle<RequirementClient> = f2SupplierSingle {
+    RequirementClient(
+        F2ClientBuilder.get(urlBase)
+    )
+}
 
 @JsExport
 open class RequirementClient constructor(private val client: F2Client): RequirementApi {
