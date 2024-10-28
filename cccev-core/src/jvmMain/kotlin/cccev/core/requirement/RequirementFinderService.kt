@@ -2,8 +2,8 @@ package cccev.core.requirement
 
 import cccev.core.requirement.entity.Requirement
 import cccev.core.requirement.entity.RequirementRepository
-import cccev.core.requirement.model.RequirementId
-import cccev.core.requirement.model.RequirementIdentifier
+import cccev.f2.requirement.model.RequirementId
+import cccev.f2.requirement.model.RequirementIdentifier
 import f2.spring.exception.NotFoundException
 import org.springframework.stereotype.Service
 

@@ -1,6 +1,6 @@
 package cccev.core.certification.entity
 
-import cccev.core.certification.model.SupportedValueId
+import cccev.f2.certification.model.SupportedValueId
 import cccev.core.concept.entity.InformationConcept
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity

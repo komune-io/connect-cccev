@@ -1,9 +1,9 @@
 package cccev.core.unit
 
-import cccev.core.unit.command.DataUnitCreateCommand
-import cccev.core.unit.command.DataUnitCreatedEvent
-import cccev.core.unit.command.DataUnitUpdateCommand
-import cccev.core.unit.command.DataUnitUpdatedEvent
+import cccev.f2.unit.command.DataUnitCreateCommand
+import cccev.f2.unit.command.DataUnitCreatedEvent
+import cccev.f2.unit.command.DataUnitUpdateCommand
+import cccev.f2.unit.command.DataUnitUpdatedEvent
 import cccev.core.unit.entity.DataUnit
 import cccev.core.unit.entity.DataUnitOption
 import cccev.infra.neo4j.removeSeveredRelations

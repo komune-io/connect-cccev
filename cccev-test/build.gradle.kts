@@ -7,7 +7,7 @@ dependencies {
 	implementation(project(Modules.api.config))
 	implementation(project(Modules.cccev.dsl.model))
 	implementation(project(Modules.cccev.core))
-	implementation(project(Modules.cccev.f2))
+	implementation(project(Modules.cccev.f2.api))
 
 	Dependencies.Jvm.neo4j(::api)
 	Dependencies.Jvm.f2Http(::api)

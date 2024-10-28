@@ -2,8 +2,8 @@ package cccev.core.unit.entity
 
 import cccev.commons.utils.parseJsonTo
 import cccev.commons.utils.toJson
-import cccev.core.unit.model.DataUnitOptionId
-import cccev.core.unit.model.DataUnitOptionIdentifier
+import cccev.f2.unit.model.DataUnitOptionId
+import cccev.f2.unit.model.DataUnitOptionIdentifier
 import io.komune.fs.s2.file.domain.model.FilePath
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity

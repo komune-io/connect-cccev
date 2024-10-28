@@ -1,8 +1,8 @@
 package cccev.core.evidencetype
 
 import cccev.core.concept.entity.InformationConceptRepository
-import cccev.core.evidencetype.command.EvidenceTypeCreateCommand
-import cccev.core.evidencetype.command.EvidenceTypeCreatedEvent
+import cccev.f2.evidencetype.command.EvidenceTypeCreateCommand
+import cccev.f2.evidencetype.command.EvidenceTypeCreatedEvent
 import cccev.core.evidencetype.entity.EvidenceType
 import cccev.infra.neo4j.checkNotExists
 import cccev.infra.neo4j.session

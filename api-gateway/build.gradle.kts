@@ -12,7 +12,7 @@ dependencies {
     implementation(project(Modules.api.config))
 
     implementation(project(Modules.cccev.core))
-    implementation(project(Modules.cccev.f2))
+    implementation(project(Modules.cccev.f2.api))
 }
 
 tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {}

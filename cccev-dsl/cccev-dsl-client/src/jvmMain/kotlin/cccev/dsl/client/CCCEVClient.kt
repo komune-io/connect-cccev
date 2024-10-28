@@ -1,15 +1,15 @@
 package cccev.dsl.client
 
-import cccev.f2.certification.client.CertificationClient
-import cccev.f2.certification.client.certificationClient
-import cccev.f2.concept.client.InformationConceptClient
-import cccev.f2.concept.client.informationConceptClient
-import cccev.f2.evidence.type.client.EvidenceTypeClient
-import cccev.f2.evidence.type.client.evidenceTypeClient
-import cccev.f2.unit.client.DataUnitClient
-import cccev.f2.unit.client.dataUnitClient
-import cccev.s2.requirement.client.RequirementClient
-import cccev.s2.requirement.client.requirementClient
+import cccev.client.CertificationClient
+import cccev.client.DataUnitClient
+import cccev.client.EvidenceTypeClient
+import cccev.client.InformationConceptClient
+import cccev.client.RequirementClient
+import cccev.client.certificationClient
+import cccev.client.dataUnitClient
+import cccev.client.evidenceTypeClient
+import cccev.client.informationConceptClient
+import cccev.client.requirementClient
 import f2.client.ktor.F2ClientBuilder
 import f2.client.ktor.common.F2ClientConfigLambda
 

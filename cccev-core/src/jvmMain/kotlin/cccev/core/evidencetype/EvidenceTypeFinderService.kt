@@ -2,7 +2,7 @@ package cccev.core.evidencetype
 
 import cccev.core.evidencetype.entity.EvidenceType
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
-import cccev.core.evidencetype.model.EvidenceTypeId
+import cccev.f2.evidencetype.model.EvidenceTypeId
 import f2.spring.exception.NotFoundException
 import org.springframework.stereotype.Service
 

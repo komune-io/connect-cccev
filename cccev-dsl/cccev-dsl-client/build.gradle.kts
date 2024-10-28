@@ -7,7 +7,7 @@ dependencies {
     commonMainApi(project(Modules.cccev.client))
     commonMainApi(project(Modules.cccev.dsl.model))
 
-    jvmMainApi(project(Modules.cccev.f2))
+    jvmMainApi(project(Modules.cccev.f2.domain))
 //    commonMainApi(project(Modules.cccev.f2.commons))
 }
 

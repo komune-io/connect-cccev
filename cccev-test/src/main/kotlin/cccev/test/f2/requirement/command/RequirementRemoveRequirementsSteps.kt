@@ -1,6 +1,6 @@
 package cccev.test.f2.requirement.command
 
-import cccev.core.requirement.command.RequirementRemoveRequirementsCommand
+import cccev.f2.requirement.command.RequirementRemoveRequirementsCommand
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.f2.requirement.RequirementEndpoint
 import cccev.test.CccevCucumberStepsDefinition

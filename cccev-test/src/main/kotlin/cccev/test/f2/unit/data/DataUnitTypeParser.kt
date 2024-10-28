@@ -1,6 +1,6 @@
 package cccev.test.f2.unit.data
 
-import cccev.core.unit.model.DataUnitType
+import cccev.f2.unit.model.DataUnitType
 import org.springframework.context.annotation.Configuration
 import s2.bdd.data.parser.EntryParser
 

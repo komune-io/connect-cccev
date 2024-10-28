@@ -1,9 +1,9 @@
 package cccev.client
 
-import cccev.core.certification.command.CertificationAddRequirementsFunction
-import cccev.core.certification.command.CertificationCreateFunction
-import cccev.core.certification.command.CertificationFillValuesFunction
-import cccev.core.certification.command.CertificationRemoveRequirementsFunction
+import cccev.f2.certification.command.CertificationAddRequirementsFunction
+import cccev.f2.certification.command.CertificationCreateFunction
+import cccev.f2.certification.command.CertificationFillValuesFunction
+import cccev.f2.certification.command.CertificationRemoveRequirementsFunction
 import cccev.f2.certification.CertificationApi
 import cccev.f2.certification.query.CertificationGetFunction
 import f2.client.F2Client

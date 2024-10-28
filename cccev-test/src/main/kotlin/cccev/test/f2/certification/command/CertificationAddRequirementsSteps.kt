@@ -1,6 +1,6 @@
 package cccev.test.f2.certification.command
 
-import cccev.core.certification.command.CertificationAddRequirementsCommand
+import cccev.f2.certification.command.CertificationAddRequirementsCommand
 import cccev.core.certification.entity.CertificationRepository
 import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.CertificationEndpoint

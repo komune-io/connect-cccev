@@ -1,13 +1,13 @@
 package cccev.core.certification
 
-import cccev.core.certification.command.CertificationAddRequirementsCommand
-import cccev.core.certification.command.CertificationAddedRequirementsEvent
-import cccev.core.certification.command.CertificationCreateCommand
-import cccev.core.certification.command.CertificationCreatedEvent
-import cccev.core.certification.command.CertificationFillValuesCommand
-import cccev.core.certification.command.CertificationFilledValuesEvent
-import cccev.core.certification.command.CertificationRemoveRequirementsCommand
-import cccev.core.certification.command.CertificationRemovedRequirementsEvent
+import cccev.f2.certification.command.CertificationAddRequirementsCommand
+import cccev.f2.certification.command.CertificationAddedRequirementsEvent
+import cccev.f2.certification.command.CertificationCreateCommand
+import cccev.f2.certification.command.CertificationCreatedEvent
+import cccev.f2.certification.command.CertificationFillValuesCommand
+import cccev.f2.certification.command.CertificationFilledValuesEvent
+import cccev.f2.certification.command.CertificationRemoveRequirementsCommand
+import cccev.f2.certification.command.CertificationRemovedRequirementsEvent
 import cccev.core.certification.entity.Certification
 import cccev.core.certification.entity.CertificationRepository
 import cccev.core.certification.entity.RequirementCertification
@@ -15,7 +15,7 @@ import cccev.core.certification.entity.isFulfilled
 import cccev.core.certification.service.CertificationValuesFillerService
 import cccev.core.requirement.entity.Requirement
 import cccev.core.requirement.entity.RequirementRepository
-import cccev.core.requirement.model.RequirementIdentifier
+import cccev.f2.requirement.model.RequirementIdentifier
 import cccev.infra.neo4j.checkNotExists
 import cccev.infra.neo4j.session
 import f2.spring.exception.NotFoundException
@@ -82,12 +82,12 @@ class CertificationAggregateService(
             certification.requirementCertifications.addAll(requirementCertifications)
             certificationRepository.save(certification)
         } else {
-            if (!certificationRepository.hasRequirementCertification(command.id, command.parentId)) {
+            if (!certificationRepository.hasRequirementCertification(command.id, command.parentId as String)) {
                 throw NotFoundException("RequirementCertification [${command.parentId}] in Certification", command.id)
             }
 
             val parentRequirementCertification = session.load(RequirementCertification::class.java, command.parentId as String, 0)
-                ?: throw NotFoundException("RequirementCertification", command.parentId)
+                ?: throw NotFoundException("RequirementCertification", command.parentId!!)
             parentRequirementCertification.subCertifications.addAll(requirementCertifications)
             certificationRepository.save(parentRequirementCertification)
         }

@@ -1,8 +1,8 @@
 package cccev.core.requirement.entity
 
 import cccev.core.concept.entity.InformationConcept
-import cccev.core.requirement.model.RequirementId
-import cccev.core.requirement.model.RequirementIdentifier
+import cccev.f2.requirement.model.RequirementId
+import cccev.f2.requirement.model.RequirementIdentifier
 import cccev.infra.neo4j.session
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.stereotype.Service

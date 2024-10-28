@@ -2,8 +2,8 @@ package cccev.core.unit
 
 import cccev.core.unit.entity.DataUnit
 import cccev.core.unit.entity.DataUnitRepository
-import cccev.core.unit.model.DataUnitId
-import cccev.core.unit.model.DataUnitIdentifier
+import cccev.f2.unit.model.DataUnitId
+import cccev.f2.unit.model.DataUnitIdentifier
 import f2.spring.exception.NotFoundException
 import org.springframework.stereotype.Service
 

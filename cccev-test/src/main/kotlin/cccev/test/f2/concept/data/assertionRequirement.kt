@@ -2,8 +2,8 @@ package cccev.test.f2.concept.data
 
 import cccev.core.concept.entity.InformationConcept
 import cccev.core.concept.entity.InformationConceptRepository
-import cccev.core.concept.model.InformationConceptId
-import cccev.core.unit.model.DataUnitId
+import cccev.f2.concept.model.InformationConceptId
+import cccev.f2.unit.model.DataUnitId
 import org.assertj.core.api.Assertions
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.repository.AssertionApiEntity

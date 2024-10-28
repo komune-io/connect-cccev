@@ -1,7 +1,7 @@
 package cccev.core.concept.entity
 
-import cccev.core.concept.model.InformationConceptId
-import cccev.core.concept.model.InformationConceptIdentifier
+import cccev.f2.concept.model.InformationConceptId
+import cccev.f2.concept.model.InformationConceptIdentifier
 import cccev.core.unit.entity.DataUnit
 import cccev.infra.neo4j.session
 import org.neo4j.ogm.session.SessionFactory

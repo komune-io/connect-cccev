@@ -1,13 +1,13 @@
 package cccev.client
 
-import cccev.core.requirement.command.RequirementAddConceptsFunction
-import cccev.core.requirement.command.RequirementAddEvidenceTypesFunction
-import cccev.core.requirement.command.RequirementAddRequirementsFunction
-import cccev.core.requirement.command.RequirementCreateFunction
-import cccev.core.requirement.command.RequirementRemoveConceptsFunction
-import cccev.core.requirement.command.RequirementRemoveEvidenceTypesFunction
-import cccev.core.requirement.command.RequirementRemoveRequirementsFunction
-import cccev.core.requirement.command.RequirementUpdateFunction
+import cccev.f2.requirement.command.RequirementAddConceptsFunction
+import cccev.f2.requirement.command.RequirementAddEvidenceTypesFunction
+import cccev.f2.requirement.command.RequirementAddRequirementsFunction
+import cccev.f2.requirement.command.RequirementCreateFunction
+import cccev.f2.requirement.command.RequirementRemoveConceptsFunction
+import cccev.f2.requirement.command.RequirementRemoveEvidenceTypesFunction
+import cccev.f2.requirement.command.RequirementRemoveRequirementsFunction
+import cccev.f2.requirement.command.RequirementUpdateFunction
 import cccev.f2.requirement.RequirementApi
 import cccev.f2.requirement.query.RequirementGetByIdentifierFunction
 import cccev.f2.requirement.query.RequirementGetFunction

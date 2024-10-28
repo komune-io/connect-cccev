@@ -2,7 +2,7 @@ package cccev.core.concept
 
 import cccev.core.concept.entity.InformationConcept
 import cccev.core.concept.entity.InformationConceptRepository
-import cccev.core.concept.model.InformationConceptId
+import cccev.f2.concept.model.InformationConceptId
 import f2.spring.exception.NotFoundException
 import org.springframework.stereotype.Service
 

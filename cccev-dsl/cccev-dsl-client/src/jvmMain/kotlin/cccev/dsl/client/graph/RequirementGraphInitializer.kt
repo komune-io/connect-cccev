@@ -1,10 +1,9 @@
 package cccev.dsl.client.graph
 
-import cccev.core.requirement.model.RequirementId
+import cccev.client.RequirementClient
 import cccev.dsl.model.Requirement
+import cccev.dsl.model.RequirementId
 import cccev.dsl.model.RequirementIdentifier
-import cccev.f2.requirement.domain.query.RequirementGetByIdentifierQueryDTOBase
-import cccev.s2.requirement.client.RequirementClient
 import f2.dsl.fnc.invokeWith
 
 class RequirementGraphInitializer(

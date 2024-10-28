@@ -1,7 +1,7 @@
 package cccev.client
 
-import cccev.core.unit.command.DataUnitCreateFunction
-import cccev.core.unit.command.DataUnitUpdateFunction
+import cccev.f2.unit.command.DataUnitCreateFunction
+import cccev.f2.unit.command.DataUnitUpdateFunction
 import cccev.f2.unit.DataUnitApi
 import cccev.f2.unit.query.DataUnitGetByIdentifierFunction
 import cccev.f2.unit.query.DataUnitGetFunction

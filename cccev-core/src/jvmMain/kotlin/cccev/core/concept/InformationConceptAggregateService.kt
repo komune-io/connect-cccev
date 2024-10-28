@@ -1,9 +1,9 @@
 package cccev.core.concept
 
-import cccev.core.concept.command.InformationConceptCreateCommand
-import cccev.core.concept.command.InformationConceptCreatedEvent
-import cccev.core.concept.command.InformationConceptUpdateCommand
-import cccev.core.concept.command.InformationConceptUpdatedEvent
+import cccev.f2.concept.command.InformationConceptCreateCommand
+import cccev.f2.concept.command.InformationConceptCreatedEvent
+import cccev.f2.concept.command.InformationConceptUpdateCommand
+import cccev.f2.concept.command.InformationConceptUpdatedEvent
 import cccev.core.concept.entity.InformationConcept
 import cccev.core.unit.entity.DataUnit
 import cccev.infra.neo4j.findSafeShallowAllById

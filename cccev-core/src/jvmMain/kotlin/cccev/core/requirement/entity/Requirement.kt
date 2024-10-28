@@ -4,8 +4,8 @@ import cccev.commons.utils.parseJsonTo
 import cccev.commons.utils.toJson
 import cccev.core.concept.entity.InformationConcept
 import cccev.core.evidencetype.entity.EvidenceType
-import cccev.core.requirement.model.RequirementId
-import cccev.core.requirement.model.RequirementKind
+import cccev.f2.requirement.model.RequirementId
+import cccev.f2.requirement.model.RequirementKind
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship

@@ -1,7 +1,7 @@
 package cccev.core.evidencetype.entity
 
 import cccev.core.concept.entity.InformationConcept
-import cccev.core.evidencetype.model.EvidenceTypeId
+import cccev.f2.evidencetype.model.EvidenceTypeId
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship

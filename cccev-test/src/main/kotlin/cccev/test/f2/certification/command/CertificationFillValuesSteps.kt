@@ -1,6 +1,6 @@
 package cccev.test.f2.certification.command
 
-import cccev.core.certification.command.CertificationFillValuesCommand
+import cccev.f2.certification.command.CertificationFillValuesCommand
 import cccev.f2.certification.CertificationEndpoint
 import cccev.test.CccevCucumberStepsDefinition
 import f2.dsl.fnc.invokeWith

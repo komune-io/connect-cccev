@@ -1,8 +1,8 @@
 package cccev.test.f2.unit.command
 
-import cccev.core.unit.command.DataUnitCreateCommand
+import cccev.f2.unit.command.DataUnitCreateCommand
 import cccev.core.unit.entity.DataUnitRepository
-import cccev.core.unit.model.DataUnitType
+import cccev.f2.unit.model.DataUnitType
 import cccev.f2.unit.DataUnitEndpoint
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.f2.unit.data.dataUnit
