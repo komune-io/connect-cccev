@@ -4,8 +4,8 @@ import cccev.dsl.model.EvidenceTypeListId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.RequirementId
 import cccev.dsl.model.RequirementIdentifier
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 @JsExport
 interface RequirementFlatDTO {

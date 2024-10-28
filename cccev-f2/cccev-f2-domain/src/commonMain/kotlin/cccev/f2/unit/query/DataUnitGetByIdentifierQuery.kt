@@ -6,9 +6,9 @@ import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.unit.model.DataUnitFlat
 import cccev.f2.unit.model.DataUnitFlatDTO
 import f2.dsl.fnc.F2Function
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlinx.serialization.Serializable
 
 /**
  * Get a data unit by its identifier.

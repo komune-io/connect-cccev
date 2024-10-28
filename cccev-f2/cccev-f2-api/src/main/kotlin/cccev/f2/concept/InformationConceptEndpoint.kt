@@ -2,9 +2,9 @@ package cccev.f2.concept
 
 import cccev.core.concept.InformationConceptAggregateService
 import cccev.core.concept.InformationConceptFinderService
+import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.command.InformationConceptCreateFunction
 import cccev.f2.concept.command.InformationConceptUpdateFunction
-import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.model.flattenTo
 import cccev.f2.concept.query.InformationConceptGetByIdentifierFunction
 import cccev.f2.concept.query.InformationConceptGetByIdentifierResult

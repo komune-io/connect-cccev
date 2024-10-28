@@ -3,15 +3,15 @@ package cccev.infra.neo4j
 import cccev.commons.utils.mapAsync
 import f2.spring.exception.ConflictException
 import f2.spring.exception.NotFoundException
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
+import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.withContext
 import org.neo4j.ogm.session.Session
 import org.neo4j.ogm.session.SessionFactory
 import org.neo4j.ogm.transaction.Transaction
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
-import kotlin.coroutines.coroutineContext
 
 @OptIn(ExperimentalCoroutinesApi::class)
 suspend fun <T> SessionFactory.session(additionalContext: CoroutineContext = EmptyCoroutineContext, execute: suspend (Session) -> T): T {

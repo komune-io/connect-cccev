@@ -4,9 +4,9 @@ import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeIdentifier
 import cccev.dsl.model.InformationConceptIdentifier
 import f2.dsl.fnc.F2Function
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlinx.serialization.Serializable
 
 /**
  * Create an evidence type

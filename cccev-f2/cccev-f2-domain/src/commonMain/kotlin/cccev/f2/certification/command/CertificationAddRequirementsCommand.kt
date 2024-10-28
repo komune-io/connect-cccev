@@ -4,9 +4,9 @@ import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.certification.model.CertificationId
 import cccev.f2.certification.model.RequirementCertificationId
 import f2.dsl.fnc.F2Function
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlinx.serialization.Serializable
 
 /**
  * Add requirements to fulfill in a certification.

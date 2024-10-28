@@ -1,9 +1,9 @@
 package cccev.test.f2.certification.command
 
-import cccev.f2.certification.command.CertificationAddRequirementsCommand
 import cccev.core.certification.entity.CertificationRepository
 import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.CertificationEndpoint
+import cccev.f2.certification.command.CertificationAddRequirementsCommand
 import cccev.f2.certification.model.flattenTo
 import cccev.test.CccevCucumberStepsDefinition
 import f2.dsl.fnc.invokeWith

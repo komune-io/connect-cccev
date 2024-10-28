@@ -1,8 +1,5 @@
 package cccev.dsl.client.model
 
-import cccev.f2.CccevFlatGraph
-import cccev.f2.certification.query.CertificationGetResult
-
 
 //fun CertificationGetResult.toCertificationFlatGraph() = certification?.let {
 //    CccevFlatGraph().also { graph ->

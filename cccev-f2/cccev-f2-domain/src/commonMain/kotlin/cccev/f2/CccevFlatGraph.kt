@@ -7,15 +7,15 @@ import cccev.dsl.model.DataUnitOptionIdentifier
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.RequirementIdentifier
-import cccev.f2.certification.model.CertificationId
-import cccev.f2.certification.model.RequirementCertificationId
-import cccev.f2.certification.model.SupportedValueId
 import cccev.f2.certification.model.CertificationFlat
 import cccev.f2.certification.model.CertificationFlatDTO
+import cccev.f2.certification.model.CertificationId
 import cccev.f2.certification.model.RequirementCertificationFlat
 import cccev.f2.certification.model.RequirementCertificationFlatDTO
+import cccev.f2.certification.model.RequirementCertificationId
 import cccev.f2.certification.model.SupportedValueFlat
 import cccev.f2.certification.model.SupportedValueFlatDTO
+import cccev.f2.certification.model.SupportedValueId
 import cccev.f2.concept.model.InformationConceptFlat
 import cccev.f2.concept.model.InformationConceptFlatDTO
 import cccev.f2.evidencetype.model.EvidenceTypeFlat
@@ -24,8 +24,8 @@ import cccev.f2.requirement.model.RequirementFlat
 import cccev.f2.requirement.model.RequirementFlatDTO
 import cccev.f2.unit.model.DataUnitFlat
 import cccev.f2.unit.model.DataUnitFlatDTO
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 @JsExport
 interface CccevFlatGraphDTO {

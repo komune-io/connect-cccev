@@ -4,8 +4,8 @@ import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeIdentifier
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.f2.evidencetype.D2EvidenceTypePage
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 /**
  * @d2 model

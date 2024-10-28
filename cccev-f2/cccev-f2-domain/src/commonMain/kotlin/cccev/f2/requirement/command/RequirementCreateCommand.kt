@@ -6,8 +6,8 @@ import cccev.dsl.model.RequirementId
 import cccev.f2.requirement.D2RequirementPage
 import cccev.f2.requirement.model.RequirementKind
 import f2.dsl.fnc.F2Function
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 /**
  * Create a new requirement.

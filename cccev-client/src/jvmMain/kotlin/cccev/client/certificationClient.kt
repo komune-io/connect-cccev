@@ -1,11 +1,6 @@
 package cccev.client
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import f2.client.F2Client
-import f2.client.ktor.F2ClientBuilder
-import f2.client.ktor.get
-import f2.dsl.fnc.F2SupplierSingle
-import f2.dsl.fnc.f2SupplierSingle
 import io.ktor.client.request.forms.FormPart
 import io.ktor.client.request.forms.formData
 import io.ktor.http.Headers

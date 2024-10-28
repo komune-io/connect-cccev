@@ -1,8 +1,8 @@
 package cccev.dsl.model
 
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlinx.serialization.Serializable
 
 typealias InformationConceptId = String
 typealias InformationConceptIdentifier = String

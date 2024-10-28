@@ -1,7 +1,7 @@
 package cccev.client
 
-import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.evidencetype.EvidenceTypeApi
+import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetFunction
 import f2.client.F2Client

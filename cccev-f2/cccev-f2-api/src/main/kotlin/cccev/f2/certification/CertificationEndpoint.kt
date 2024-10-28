@@ -1,19 +1,18 @@
 package cccev.f2.certification
 
-import org.slf4j.LoggerFactory
-
 import cccev.core.certification.CertificationAggregateService
 import cccev.core.certification.CertificationFinderService
+import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.command.CertificationAddRequirementsFunction
 import cccev.f2.certification.command.CertificationCreateFunction
 import cccev.f2.certification.command.CertificationFillValuesFunction
 import cccev.f2.certification.command.CertificationRemoveRequirementsFunction
-import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.model.flattenTo
 import cccev.f2.certification.query.CertificationGetFunction
 import cccev.f2.certification.query.CertificationGetResult
-import io.komune.fs.s2.file.client.FileClient
 import f2.dsl.fnc.f2Function
+import io.komune.fs.s2.file.client.FileClient
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

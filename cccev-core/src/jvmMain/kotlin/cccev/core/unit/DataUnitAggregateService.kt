@@ -1,18 +1,18 @@
 package cccev.core.unit
 
+import cccev.core.unit.entity.DataUnit
+import cccev.core.unit.entity.DataUnitOption
 import cccev.f2.unit.command.DataUnitCreateCommand
 import cccev.f2.unit.command.DataUnitCreatedEvent
 import cccev.f2.unit.command.DataUnitUpdateCommand
 import cccev.f2.unit.command.DataUnitUpdatedEvent
-import cccev.core.unit.entity.DataUnit
-import cccev.core.unit.entity.DataUnitOption
 import cccev.infra.neo4j.removeSeveredRelations
 import cccev.infra.neo4j.transaction
 import f2.spring.exception.NotFoundException
+import java.util.UUID
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import java.util.UUID
 
 @Service
 class DataUnitAggregateService(

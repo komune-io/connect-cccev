@@ -1,7 +1,7 @@
 package cccev.test.f2.certification.command
 
-import cccev.f2.certification.command.CertificationFillValuesCommand
 import cccev.f2.certification.CertificationEndpoint
+import cccev.f2.certification.command.CertificationFillValuesCommand
 import cccev.test.CccevCucumberStepsDefinition
 import f2.dsl.fnc.invokeWith
 import io.cucumber.datatable.DataTable

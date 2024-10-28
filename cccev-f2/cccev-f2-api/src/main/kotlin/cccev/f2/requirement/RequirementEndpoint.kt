@@ -2,6 +2,8 @@ package cccev.f2.requirement
 
 import cccev.core.requirement.RequirementAggregateService
 import cccev.core.requirement.RequirementFinderService
+import cccev.f2.CccevFlatGraph
+import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.requirement.command.RequirementAddConceptsFunction
 import cccev.f2.requirement.command.RequirementAddEvidenceTypesFunction
 import cccev.f2.requirement.command.RequirementAddRequirementsFunction
@@ -10,8 +12,6 @@ import cccev.f2.requirement.command.RequirementRemoveConceptsFunction
 import cccev.f2.requirement.command.RequirementRemoveEvidenceTypesFunction
 import cccev.f2.requirement.command.RequirementRemoveRequirementsFunction
 import cccev.f2.requirement.command.RequirementUpdateFunction
-import cccev.f2.CccevFlatGraph
-import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.requirement.model.flattenTo
 import cccev.f2.requirement.query.RequirementGetByIdentifierFunction
 import cccev.f2.requirement.query.RequirementGetByIdentifierResult

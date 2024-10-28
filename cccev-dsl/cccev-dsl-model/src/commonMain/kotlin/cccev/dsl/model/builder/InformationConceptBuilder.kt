@@ -8,7 +8,6 @@ import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.InformationConceptRef
 import cccev.dsl.model.XSDString
-import com.benasher44.uuid.Uuid
 import com.benasher44.uuid.uuid4
 
 class InformationConceptListBuilder {

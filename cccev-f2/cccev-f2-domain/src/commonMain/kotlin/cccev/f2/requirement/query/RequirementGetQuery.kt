@@ -6,8 +6,8 @@ import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.requirement.model.RequirementFlat
 import cccev.f2.requirement.model.RequirementFlatDTO
 import f2.dsl.fnc.F2Function
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 typealias RequirementGetFunction = F2Function<RequirementGetQuery, RequirementGetResult>
 

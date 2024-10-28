@@ -3,8 +3,8 @@ package cccev.f2.concept.model
 import cccev.dsl.model.DataUnitIdentifier
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 /**
  * @d2 model

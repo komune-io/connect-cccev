@@ -1,8 +1,8 @@
 package cccev.client
 
+import cccev.f2.concept.InformationConceptApi
 import cccev.f2.concept.command.InformationConceptCreateFunction
 import cccev.f2.concept.command.InformationConceptUpdateFunction
-import cccev.f2.concept.InformationConceptApi
 import cccev.f2.concept.query.InformationConceptGetByIdentifierFunction
 import cccev.f2.concept.query.InformationConceptGetFunction
 import f2.client.F2Client

@@ -2,9 +2,9 @@ package cccev.f2.evidencetype
 
 import cccev.core.evidencetype.EvidenceTypeAggregateService
 import cccev.core.evidencetype.EvidenceTypeFinderService
-import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.InformationConceptEndpoint
+import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.evidencetype.model.flattenTo
 import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierResult

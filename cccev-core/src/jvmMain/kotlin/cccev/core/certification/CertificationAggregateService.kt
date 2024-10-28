@@ -1,13 +1,5 @@
 package cccev.core.certification
 
-import cccev.f2.certification.command.CertificationAddRequirementsCommand
-import cccev.f2.certification.command.CertificationAddedRequirementsEvent
-import cccev.f2.certification.command.CertificationCreateCommand
-import cccev.f2.certification.command.CertificationCreatedEvent
-import cccev.f2.certification.command.CertificationFillValuesCommand
-import cccev.f2.certification.command.CertificationFilledValuesEvent
-import cccev.f2.certification.command.CertificationRemoveRequirementsCommand
-import cccev.f2.certification.command.CertificationRemovedRequirementsEvent
 import cccev.core.certification.entity.Certification
 import cccev.core.certification.entity.CertificationRepository
 import cccev.core.certification.entity.RequirementCertification
@@ -16,13 +8,21 @@ import cccev.core.certification.service.CertificationValuesFillerService
 import cccev.core.requirement.entity.Requirement
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.dsl.model.RequirementIdentifier
+import cccev.f2.certification.command.CertificationAddRequirementsCommand
+import cccev.f2.certification.command.CertificationAddedRequirementsEvent
+import cccev.f2.certification.command.CertificationCreateCommand
+import cccev.f2.certification.command.CertificationCreatedEvent
+import cccev.f2.certification.command.CertificationFillValuesCommand
+import cccev.f2.certification.command.CertificationFilledValuesEvent
+import cccev.f2.certification.command.CertificationRemoveRequirementsCommand
+import cccev.f2.certification.command.CertificationRemovedRequirementsEvent
 import cccev.infra.neo4j.checkNotExists
 import cccev.infra.neo4j.session
 import f2.spring.exception.NotFoundException
+import java.util.UUID
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import java.util.UUID
 
 @Service("CertificationAggregateService2")
 class CertificationAggregateService(

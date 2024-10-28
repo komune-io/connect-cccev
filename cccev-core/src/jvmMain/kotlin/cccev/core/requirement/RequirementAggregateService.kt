@@ -3,6 +3,7 @@ package cccev.core.requirement
 import cccev.commons.utils.mapAsync
 import cccev.core.concept.entity.InformationConcept
 import cccev.core.evidencetype.entity.EvidenceType
+import cccev.core.requirement.entity.Requirement
 import cccev.f2.requirement.command.RequirementAddConceptsCommand
 import cccev.f2.requirement.command.RequirementAddEvidenceTypesCommand
 import cccev.f2.requirement.command.RequirementAddRequirementsCommand
@@ -19,16 +20,15 @@ import cccev.f2.requirement.command.RequirementRemovedEvidenceTypesEvent
 import cccev.f2.requirement.command.RequirementRemovedRequirementsEvent
 import cccev.f2.requirement.command.RequirementUpdateCommand
 import cccev.f2.requirement.command.RequirementUpdatedEvent
-import cccev.core.requirement.entity.Requirement
 import cccev.infra.neo4j.findSafeShallowAllById
 import cccev.infra.neo4j.removeRelation
 import cccev.infra.neo4j.removeSeveredRelations
 import cccev.infra.neo4j.transaction
 import f2.spring.exception.NotFoundException
+import java.util.UUID
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import java.util.UUID
 
 @Service
 class RequirementAggregateService(

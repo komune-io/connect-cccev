@@ -4,8 +4,8 @@ import cccev.dsl.model.DataUnitOptionId
 import cccev.dsl.model.DataUnitOptionIdentifier
 import io.komune.fs.s2.file.domain.model.FilePath
 import io.komune.fs.s2.file.domain.model.FilePathDTO
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 @JsExport
 interface DataUnitOptionCommandDTO {

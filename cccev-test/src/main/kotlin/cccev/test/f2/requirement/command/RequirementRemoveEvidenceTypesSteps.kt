@@ -1,8 +1,8 @@
 package cccev.test.f2.requirement.command
 
-import cccev.f2.requirement.command.RequirementRemoveEvidenceTypesCommand
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.f2.requirement.RequirementEndpoint
+import cccev.f2.requirement.command.RequirementRemoveEvidenceTypesCommand
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.EvidenceTypeKey
 import cccev.test.RequirementKey

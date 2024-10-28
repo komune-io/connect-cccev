@@ -3,8 +3,8 @@ package cccev.f2.unit.model
 import cccev.dsl.model.DataUnitId
 import cccev.dsl.model.DataUnitIdentifier
 import cccev.dsl.model.DataUnitOptionIdentifier
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 /**
  * See [cccev.s2.unit.domain.model.DataUnit]

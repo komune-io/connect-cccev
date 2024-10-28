@@ -1,8 +1,8 @@
 package cccev.f2.certification.model
 
 import cccev.dsl.model.RequirementIdentifier
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 /**
  * TODO

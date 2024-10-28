@@ -6,8 +6,8 @@ import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.concept.model.InformationConceptFlat
 import cccev.f2.concept.model.InformationConceptFlatDTO
 import f2.dsl.fnc.F2Function
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 /**
  * Get an information concept by its id.

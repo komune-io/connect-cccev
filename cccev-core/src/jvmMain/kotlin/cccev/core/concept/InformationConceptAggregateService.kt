@@ -1,20 +1,20 @@
 package cccev.core.concept
 
+import cccev.core.concept.entity.InformationConcept
+import cccev.core.unit.entity.DataUnit
 import cccev.f2.concept.command.InformationConceptCreateCommand
 import cccev.f2.concept.command.InformationConceptCreatedEvent
 import cccev.f2.concept.command.InformationConceptUpdateCommand
 import cccev.f2.concept.command.InformationConceptUpdatedEvent
-import cccev.core.concept.entity.InformationConcept
-import cccev.core.unit.entity.DataUnit
 import cccev.infra.neo4j.findSafeShallowAllById
 import cccev.infra.neo4j.findSafeShallowById
 import cccev.infra.neo4j.removeSeveredRelations
 import cccev.infra.neo4j.transaction
 import f2.spring.exception.NotFoundException
+import java.util.UUID
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import java.util.UUID
 
 @Service
 class InformationConceptAggregateService(
