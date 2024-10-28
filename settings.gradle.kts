@@ -10,7 +10,7 @@ rootProject.name = "connect-cccev"
 
 include(
 	"cccev-dsl:cccev-dsl-model",
-//	"cccev-dsl:cccev-dsl-client",
+	"cccev-dsl:cccev-dsl-client",
 )
 
 include(

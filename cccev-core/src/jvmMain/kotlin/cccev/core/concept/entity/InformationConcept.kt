@@ -1,8 +1,8 @@
 package cccev.core.concept.entity
 
-import cccev.f2.concept.model.InformationConceptId
-import cccev.f2.concept.model.InformationConceptIdentifier
 import cccev.core.unit.entity.DataUnit
+import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.InformationConceptIdentifier
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship

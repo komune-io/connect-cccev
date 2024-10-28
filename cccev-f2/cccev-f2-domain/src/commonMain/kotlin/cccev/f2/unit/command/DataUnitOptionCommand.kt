@@ -1,7 +1,7 @@
 package cccev.f2.unit.command
 
-import cccev.f2.unit.model.DataUnitOptionId
-import cccev.f2.unit.model.DataUnitOptionIdentifier
+import cccev.dsl.model.DataUnitOptionId
+import cccev.dsl.model.DataUnitOptionIdentifier
 import io.komune.fs.s2.file.domain.model.FilePath
 import io.komune.fs.s2.file.domain.model.FilePathDTO
 import kotlinx.serialization.Serializable

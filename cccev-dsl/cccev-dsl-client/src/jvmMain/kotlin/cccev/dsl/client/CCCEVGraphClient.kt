@@ -4,11 +4,41 @@ import cccev.client.DataUnitClient
 import cccev.client.EvidenceTypeClient
 import cccev.client.InformationConceptClient
 import cccev.client.RequirementClient
-import cccev.f2.requirement.model.RequirementIdentifier
+import cccev.dsl.client.graph.InformationConceptGraphInitializer
 import cccev.dsl.client.graph.RequirementGraphInitializer
+import cccev.dsl.client.model.unflatten
+import cccev.dsl.model.DataUnitDTO
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.EvidenceTypeBase
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeListBase
+import cccev.dsl.model.EvidenceTypeListId
+import cccev.dsl.model.InformationConcept
+import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.InformationConceptRef
 import cccev.dsl.model.Requirement
+import cccev.dsl.model.RequirementId
+import cccev.dsl.model.RequirementIdentifier
+import cccev.dsl.model.RequirementRef
+import cccev.f2.CccevFlatGraph
+import cccev.f2.concept.command.InformationConceptCreateCommand
+import cccev.f2.concept.command.InformationConceptUpdateCommand
+import cccev.f2.concept.query.InformationConceptGetByIdentifierQuery
+import cccev.f2.evidencetype.command.EvidenceTypeCreateCommand
+import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierQuery
+import cccev.f2.requirement.command.RequirementAddRequirementsCommand
+import cccev.f2.requirement.command.RequirementCreateCommand
+import cccev.f2.requirement.command.RequirementUpdateCommand
+import cccev.f2.requirement.model.RequirementKind
+import cccev.f2.requirement.query.RequirementGetByIdentifierQuery
+import cccev.f2.unit.command.DataUnitCreateCommand
+import cccev.f2.unit.command.DataUnitOptionCommand
+import cccev.f2.unit.command.DataUnitUpdateCommand
+import cccev.f2.unit.query.DataUnitGetByIdentifierQuery
+import f2.dsl.fnc.invokeWith
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flow
@@ -23,7 +53,7 @@ class CCCEVGraphClient(
     private val informationConceptGraphInitializer = InformationConceptGraphInitializer(informationConceptClient)
     private val requirementGraphInitializer = RequirementGraphInitializer(requirementClient)
 
-    suspend fun save(graph: Flow<Requirement>): Flow<cccev.core.requirement.entity.Requirement> {
+    suspend fun save(graph: Flow<Requirement>): Flow<Requirement> {
         val context = Context()
         val requirements = graph.flatCollect()
 
@@ -43,10 +73,10 @@ class CCCEVGraphClient(
         return context.resultRequirements.asFlow()
     }
 
-    @Deprecated("Use save instead", ReplaceWith("save"))
-    suspend fun create(requirements: Flow<Requirement>): Flow<cccev.core.requirement.entity.Requirement> {
-        return save(requirements)
-    }
+//    @Deprecated("Use save instead", ReplaceWith("save"))
+//    suspend fun create(requirements: Flow<Requirement>): Flow<Requirement> {
+//        return save(requirements)
+//    }
 
     @OptIn(FlowPreview::class)
     private suspend fun Flow<Requirement>.flatCollect(): List<Requirement> {
@@ -93,8 +123,8 @@ class CCCEVGraphClient(
         context.processedRequirements.putAllNew(processedRequirements)
     }
 
-    private suspend fun Requirement.save(context: Context): cccev.core.requirement.entity.Requirement {
-        val getResult = RequirementGetByIdentifierQueryDTOBase(identifier)
+    private suspend fun Requirement.save(context: Context): Requirement {
+        val getResult = RequirementGetByIdentifierQuery(identifier)
             .invokeWith(requirementClient.requirementGetByIdentifier())
 
         val existingRequirement = getResult.item?.unflatten(getResult.graph as CccevFlatGraph)
@@ -117,7 +147,7 @@ class CCCEVGraphClient(
                 requirementIds = listOf(requirementId)
             ).invokeWith(requirementClient.requirementAddRequirements())
         }
-        return RequirementGetByIdentifierQueryDTOBase(
+        return RequirementGetByIdentifierQuery(
             identifier = this.identifier
         ).invokeWith(requirementClient.requirementGetByIdentifier()).let {
             it.item!!.unflatten(it.graph as CccevFlatGraph)
@@ -128,7 +158,7 @@ class CCCEVGraphClient(
         requirement: Requirement,
         context: Context
     ): RequirementId {
-        return RequirementCreateCommandDTOBase(
+        return RequirementCreateCommand(
             identifier = requirement.identifier,
             name = requirement.name,
             description = requirement.description,
@@ -136,7 +166,7 @@ class CCCEVGraphClient(
             evidenceTypeIds = requirement.hasEvidenceTypeList?.map { context.processedEvidenceTypeLists[it.identifier]!! }
                 .orEmpty(),
             subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! }.orEmpty(),
-            kind = requirement.kind,
+            kind = RequirementKind.valueOf(requirement.kind),
             type = requirement.type?.toString(),
             enablingCondition = requirement.enablingCondition,
             enablingConditionDependencies = requirement.enablingConditionDependencies.map { context.processedConcepts[it]!! },
@@ -168,7 +198,8 @@ class CCCEVGraphClient(
             validatingCondition = requirement.validatingCondition,
             validatingConditionDependencies = requirement.validatingConditionDependencies.map { context.processedConcepts[it]!! },
             order = requirement.order,
-            properties = requirement.properties
+            properties = requirement.properties,
+            evidenceValidatingCondition = requirement.evidenceValidatingCondition,
         ).invokeWith(requirementClient.requirementUpdate()).id
     }
 
@@ -183,24 +214,24 @@ class CCCEVGraphClient(
                     context.processedEvidenceTypes[et.identifier] = evidenceTypeId
                 }
             }
-
-            val evidenceTypeListId = etl.save(context)
-            context.processedEvidenceTypeLists[etl.identifier] = evidenceTypeListId
+            TODO()
+//            val evidenceTypeListId = etl.save(context)
+//            context.processedEvidenceTypeLists[etl.identifier] = evidenceTypeListId
         }
     }
 
     private suspend fun DataUnitDTO.save(): DataUnitId {
-        val existingUnit = DataUnitGetByIdentifierQueryDTOBase(
+        val existingUnit = DataUnitGetByIdentifierQuery(
             identifier = identifier
         ).invokeWith(dataUnitClient.dataUnitGetByIdentifier()).item
 
         if (existingUnit != null) {
-            return DataUnitUpdateCommandDTOBase(
+            return DataUnitUpdateCommand(
                 id = existingUnit.id,
                 name = name,
                 description = description,
                 notation = notation,
-                type = type.name.uppercase(),
+//                type = type.name.uppercase(),
                 options = options?.map { option ->
                     DataUnitOptionCommand(
                         id = null,
@@ -215,12 +246,12 @@ class CCCEVGraphClient(
             ).invokeWith(dataUnitClient.dataUnitUpdate()).id
         }
 
-        return DataUnitCreateCommandDTOBase(
+        return DataUnitCreateCommand(
             identifier = identifier,
             name = name,
             description = description,
             notation = notation,
-            type = type.name.uppercase(),
+            type = type,
             options = options?.map { option ->
                 DataUnitOptionCommand(
                     id = null,
@@ -236,7 +267,7 @@ class CCCEVGraphClient(
     }
 
     private suspend fun InformationConcept.save(context: Context): InformationConceptId {
-        val existingConcept = InformationConceptGetByIdentifierQueryDTOBase(
+        val existingConcept = InformationConceptGetByIdentifierQuery(
             identifier = identifier
         ).invokeWith(informationConceptClient.conceptGetByIdentifier()).item
 
@@ -266,28 +297,28 @@ class CCCEVGraphClient(
     }
 
     private suspend fun EvidenceTypeBase.save(): EvidenceTypeId {
-        return EvidenceTypeGetByIdentifierQueryDTOBase(
+        return EvidenceTypeGetByIdentifierQuery(
             identifier = identifier
         ).invokeWith(evidenceTypeClient.evidenceTypeGetByIdentifier()).item?.id
             ?: EvidenceTypeCreateCommand(
             identifier = identifier,
             name = name,
-            description = "",
-            validityPeriodConstraint = null
+//            description = "",
+//            validityPeriodConstraint = null
         ).invokeWith(evidenceTypeClient.evidenceTypeCreate()).id
     }
 
-    private suspend fun EvidenceTypeListBase.save(context: Context): EvidenceTypeListId {
-        return EvidenceTypeListGetByIdentifierQueryDTOBase(
-            identifier = identifier
-        ).invokeWith(evidenceTypeClient.evidenceTypeListGetByIdentifier()).item?.id
-            ?:  EvidenceTypeListCreateCommand(
-            identifier = identifier,
-            name = name,
-            description = description,
-            specifiesEvidenceType = specifiesEvidenceType.map { context.processedEvidenceTypes[it.identifier]!! }
-        ).invokeWith(evidenceTypeClient.evidenceTypeListCreate()).id
-    }
+//    private suspend fun EvidenceTypeListBase.save(context: Context): EvidenceTypeListId {
+//        return EvidenceTypeListGetByIdentifierQuery(
+//            identifier = identifier
+//        ).invokeWith(evidenceTypeClient.evidenceTypeListGetByIdentifier()).item?.id
+//            ?:  EvidenceTypeListCreateCommand(
+//            identifier = identifier,
+//            name = name,
+//            description = description,
+//            specifiesEvidenceType = specifiesEvidenceType.map { context.processedEvidenceTypes[it.identifier]!! }
+//        ).invokeWith(evidenceTypeClient.evidenceTypeListCreate()).id
+//    }
 
     private fun <K, V> MutableMap<K, V>.putAllNew(map: Map<K, V>) {
         map.forEach { (key, value) ->
@@ -304,6 +335,6 @@ class CCCEVGraphClient(
         val processedRequirements = mutableMapOf<RequirementIdentifier, RequirementId>()
         val processedUnits = mutableMapOf<String, DataUnitId>()
 
-        val resultRequirements = mutableListOf<cccev.core.requirement.entity.Requirement>()
+        val resultRequirements = mutableListOf<Requirement>()
     }
 }

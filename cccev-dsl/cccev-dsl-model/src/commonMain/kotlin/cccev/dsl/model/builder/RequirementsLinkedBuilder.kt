@@ -5,6 +5,7 @@ import cccev.dsl.model.Constraint
 import cccev.dsl.model.Criterion
 import cccev.dsl.model.InformationRequirement
 import cccev.dsl.model.Requirement
+import com.benasher44.uuid.uuid4
 
 class RequirementsLinkedBuilder {
 
@@ -68,6 +69,8 @@ class CriterionBuilder : AbstractRequirementBuilder<Criterion>() {
         validatingConditionDependencies = validatingConditionDependencies,
         order = order,
         properties = properties,
+        evidenceValidatingCondition = evidenceValidatingCondition,
+        id = uuid4().toString()
     )
 }
 
@@ -90,6 +93,8 @@ class InformationRequirementBuilder : RequirementBuilder<InformationRequirement>
         validatingConditionDependencies = validatingConditionDependencies,
         order = order,
         properties = properties,
+        id = uuid4().toString(),
+        evidenceValidatingCondition = evidenceValidatingCondition
     )
 }
 
@@ -111,5 +116,7 @@ class ConstraintBuilder: RequirementBuilder<Constraint>, AbstractRequirementBuil
         validatingConditionDependencies = validatingConditionDependencies,
         order = order,
         properties = properties,
+        id = uuid4().toString(),
+        evidenceValidatingCondition = evidenceValidatingCondition
     )
 }

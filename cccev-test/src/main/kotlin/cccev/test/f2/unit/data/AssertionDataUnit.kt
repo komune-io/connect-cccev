@@ -2,8 +2,8 @@ package cccev.test.f2.unit.data
 
 import cccev.core.unit.entity.DataUnit
 import cccev.core.unit.entity.DataUnitRepository
-import cccev.f2.unit.model.DataUnitId
-import cccev.f2.unit.model.DataUnitType
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.DataUnitType
 import org.assertj.core.api.Assertions
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.repository.AssertionApiEntity

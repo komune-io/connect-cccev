@@ -2,9 +2,9 @@ package cccev.test.f2.certification.data
 
 import cccev.core.certification.entity.CertificationRepository
 import cccev.core.certification.entity.RequirementCertification
+import cccev.dsl.model.RequirementId
 import cccev.f2.certification.model.RequirementCertificationId
 import cccev.f2.certification.model.SupportedValueId
-import cccev.f2.requirement.model.RequirementId
 import org.assertj.core.api.Assertions
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.repository.AssertionApiEntity

@@ -13,14 +13,14 @@ object Methodology {
 val LocalConsultation = informationRequirement {
     identifier = "LocalConsultation"
     name = "Loc"
-    type = Methodology.LocalConsultation
+    type = Methodology.LocalConsultation.toString()
 }
 
 val REDDPlus = informationRequirement {
     identifier = "REDD+"
     name = "REDD+"
     description = "La description Ici"
-    type = Methodology.REDDPlus
+    type = Methodology.REDDPlus.toString()
 
 }
 
@@ -28,5 +28,5 @@ val VERRAVCS = informationRequirement {
     identifier = "VERRAVCS"
     name = "VERRA VCS"
     description = ""
-    type = Methodology.VERRAVCS
+    type = Methodology.VERRAVCS.toString()
 }

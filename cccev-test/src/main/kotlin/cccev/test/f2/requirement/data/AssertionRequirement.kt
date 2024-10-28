@@ -1,10 +1,10 @@
 package cccev.test.f2.requirement.data
 
-import cccev.f2.concept.model.InformationConceptId
-import cccev.f2.evidencetype.model.EvidenceTypeId
 import cccev.core.requirement.entity.Requirement
 import cccev.core.requirement.entity.RequirementRepository
-import cccev.f2.requirement.model.RequirementId
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.RequirementId
 import cccev.f2.requirement.model.RequirementKind
 import org.assertj.core.api.Assertions
 import s2.bdd.assertion.AssertionBdd

@@ -1,8 +1,8 @@
 package cccev.f2.concept.command
 
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.InformationConceptId
 import cccev.f2.concept.D2InformationConceptPage
-import cccev.f2.concept.model.InformationConceptId
-import cccev.f2.unit.model.DataUnitId
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport

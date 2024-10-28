@@ -14,8 +14,8 @@ typealias RequirementCertificationId = String
 class RequirementCertification(
     val id: RequirementCertificationId,
     val requirement: Requirement,
-    val subCertifications: MutableList<RequirementCertification> = mutableListOf(),
-    val values: MutableList<SupportedValue> = mutableListOf(),
+    val subCertifications: List<RequirementCertification>,
+    val values: List<SupportedValue>,
     val isEnabled: Boolean = false,
     val isValidated: Boolean = false,
     val hasAllValues: Boolean = false,

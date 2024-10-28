@@ -1,8 +1,8 @@
 package cccev.core.unit.entity
 
-import cccev.f2.unit.model.DataUnitId
-import cccev.f2.unit.model.DataUnitIdentifier
-import cccev.f2.unit.model.DataUnitType
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.DataUnitIdentifier
+import cccev.dsl.model.DataUnitType
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship

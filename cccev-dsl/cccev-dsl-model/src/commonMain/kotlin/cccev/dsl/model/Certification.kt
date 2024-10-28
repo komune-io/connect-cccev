@@ -13,6 +13,6 @@ typealias CertificationId = String
 
 @Serializable
 data class Certification(
-    val id: String,
-    val requirementCertifications: MutableList<RequirementCertification> = mutableListOf()
+    val id: CertificationId,
+    val requirementCertifications: List<RequirementCertification> = mutableListOf()
 )

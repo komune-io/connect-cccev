@@ -1,6 +1,6 @@
 package cccev.f2.evidencetype.query
 
-import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeIdentifier
 import cccev.f2.evidencetype.D2EvidenceTypePage
 import cccev.f2.CccevFlatGraph
 import cccev.f2.CccevFlatGraphDTO
@@ -12,39 +12,39 @@ import kotlin.js.JsExport
 import kotlin.js.JsName
 
 /**
- * Get an evidence type by its id.
+ * Get an evidence type by its identifier.
  * @d2 function
  * @parent [D2EvidenceTypePage]
  */
-typealias EvidenceTypeGetFunction = F2Function<EvidenceTypeGetQuery, EvidenceTypeGetResult>
+typealias EvidenceTypeGetByIdentifierFunction = F2Function<EvidenceTypeGetByIdentifierQuery, EvidenceTypeGetByIdentifierResult>
 
 /**
  * @d2 query
  * @parent [EvidenceTypeGetFunction]
  */
 @JsExport
-@JsName("EvidenceTypeGetQueryDTO")
-interface EvidenceTypeGetQueryDTO {
+@JsName("EvidenceTypeGetByIdentifierQueryDTO")
+interface EvidenceTypeGetByIdentifierQueryDTO {
     /**
      * Identifier of the data unit to get.
      */
-    val id: EvidenceTypeId
+    val identifier: EvidenceTypeIdentifier
 }
 
 /**
  * @d2 inherit
  */
 @Serializable
-data class EvidenceTypeGetQuery(
-    override val id: EvidenceTypeId
-): EvidenceTypeGetQueryDTO
+data class EvidenceTypeGetByIdentifierQuery(
+    override val identifier: EvidenceTypeIdentifier
+): EvidenceTypeGetByIdentifierQueryDTO
 
 /**
  * @d2 result
  * @parent [EvidenceTypeGetFunction]
  */
 @JsExport
-interface EvidenceTypeGetResultDTO {
+interface EvidenceTypeGetByIdentifierResultDTO {
     val item: EvidenceTypeFlatDTO?
     val graph: CccevFlatGraphDTO
 }
@@ -53,7 +53,7 @@ interface EvidenceTypeGetResultDTO {
  * @d2 inherit
  */
 @Serializable
-data class EvidenceTypeGetResult(
+data class EvidenceTypeGetByIdentifierResult(
     override val item: EvidenceTypeFlat?,
     override val graph: CccevFlatGraph
-): EvidenceTypeGetResultDTO
+): EvidenceTypeGetByIdentifierResultDTO

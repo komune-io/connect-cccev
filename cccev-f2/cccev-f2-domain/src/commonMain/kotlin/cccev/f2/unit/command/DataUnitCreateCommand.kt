@@ -1,8 +1,8 @@
 package cccev.f2.unit.command
 
-import cccev.f2.unit.model.DataUnitId
-import cccev.f2.unit.model.DataUnitIdentifier
-import cccev.f2.unit.model.DataUnitType
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.DataUnitIdentifier
+import cccev.dsl.model.DataUnitType
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 
@@ -52,7 +52,7 @@ data class DataUnitCreateCommand(
     /**
      * @ref [cccev.s2.unit.domain.model.DataUnit.options]
      */
-    val options: List<DataUnitOptionCommand>
+    val options: List<DataUnitOptionCommand>?
 )
 
 /**

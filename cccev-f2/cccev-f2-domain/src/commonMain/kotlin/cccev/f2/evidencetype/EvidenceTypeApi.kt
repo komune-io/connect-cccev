@@ -1,6 +1,7 @@
 package cccev.f2.evidencetype
 
 import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
+import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetFunction
 
 /**
@@ -15,4 +16,5 @@ interface EvidenceTypeCommandApi {
 
 interface EvidenceTypeQueryApi {
     fun evidenceTypeGet(): EvidenceTypeGetFunction
+    fun evidenceTypeGetByIdentifier(): EvidenceTypeGetByIdentifierFunction
 }

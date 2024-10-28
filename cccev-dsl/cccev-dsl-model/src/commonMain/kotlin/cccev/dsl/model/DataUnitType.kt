@@ -1,6 +1,4 @@
-package cccev.f2.unit.model
-
-import cccev.f2.unit.D2DataUnitPage
+package cccev.dsl.model
 
 /**
  * Type of a data. <br/>

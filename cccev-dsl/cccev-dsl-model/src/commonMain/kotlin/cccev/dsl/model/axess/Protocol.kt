@@ -13,18 +13,18 @@ object ProtocolStep {
 val ProtocolPreparation = informationRequirement {
     identifier = "ProtocolPreparation"
     name = "Protocol Preparation"
-    type = cccev.dsl.model.axess.ProtocolStep.Preparation
+    type = ProtocolStep.Preparation.toString()
 }
 
 
 val ProtocolValidation = informationRequirement {
     identifier = "ProtocolValidation"
     name = "Protocol Validation"
-    type = cccev.dsl.model.axess.ProtocolStep.Validation
+    type = ProtocolStep.Validation.toString()
 }
 
 val ProtocolCertification = informationRequirement {
     identifier = "ProtocolCertification"
     name = "Protocol Certification"
-    type = cccev.dsl.model.axess.ProtocolStep.Certification
+    type = ProtocolStep.Certification.toString()
 }

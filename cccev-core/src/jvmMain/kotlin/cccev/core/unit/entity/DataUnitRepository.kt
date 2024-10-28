@@ -1,7 +1,7 @@
 package cccev.core.unit.entity
 
-import cccev.f2.unit.model.DataUnitId
-import cccev.f2.unit.model.DataUnitIdentifier
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.DataUnitIdentifier
 import cccev.infra.neo4j.session
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.stereotype.Service

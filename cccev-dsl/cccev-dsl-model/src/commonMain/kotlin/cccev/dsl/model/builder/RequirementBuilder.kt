@@ -12,8 +12,9 @@ import kotlinx.datetime.Clock
 interface RequirementBuilder<T : Requirement> {
     var identifier: RequirementIdentifier
     var description: String?
+    var evidenceValidatingCondition: String?
     var name: String?
-    var type: Code?
+    var type: String?
 
     var hasConcept: MutableList<InformationConcept>
     var hasEvidenceTypeList: List<EvidenceTypeListBase>?
@@ -43,10 +44,11 @@ interface RequirementBuilder<T : Requirement> {
     fun build(): Requirement
 }
 abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<T> {
+    override var evidenceValidatingCondition: String? = null
     override var description: String? = null
     override var identifier: RequirementIdentifier = "req_${Clock.System.now().toEpochMilliseconds()}"
     override var name: String? = null
-    override var type: Code? = null
+    override var type: String? = null
     override var hasConcept: MutableList<InformationConcept> = mutableListOf()
     override var hasEvidenceTypeList: List<EvidenceTypeListBase>? = null
 

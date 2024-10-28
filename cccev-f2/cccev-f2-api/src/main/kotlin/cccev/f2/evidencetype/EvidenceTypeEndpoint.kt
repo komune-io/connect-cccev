@@ -6,6 +6,8 @@ import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.evidencetype.model.flattenTo
+import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierFunction
+import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierResult
 import cccev.f2.evidencetype.query.EvidenceTypeGetFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetResult
 import f2.dsl.fnc.f2Function
@@ -38,6 +40,18 @@ class EvidenceTypeEndpoint(
         val graph = CccevFlatGraph().also { evidenceType?.flattenTo(it) }
 
         EvidenceTypeGetResult(
+            item = graph.evidenceTypes[evidenceType?.id],
+            graph = graph
+        )
+    }
+
+    override fun evidenceTypeGetByIdentifier(): EvidenceTypeGetByIdentifierFunction = f2Function { query ->
+        logger.info("evidenceTypeGetByIdentifier: $query")
+
+        val evidenceType = evidenceTypeFinderService.getOrNullByIdentifier(query.identifier)
+        val graph = CccevFlatGraph().also { evidenceType?.flattenTo(it) }
+
+        EvidenceTypeGetByIdentifierResult(
             item = graph.evidenceTypes[evidenceType?.id],
             graph = graph
         )

@@ -22,6 +22,15 @@ typealias EvidenceTypeListId = String
  */
 typealias EvidenceTypeId = String
 
+/**
+ * The unique id of the evidence type.
+ * @visual json "TheEvidenceTypeIdentifier"
+ * @parent [EvidenceType]
+ * @title EvidenceTypeId
+ * @d2 model
+ */
+typealias EvidenceTypeIdentifier = String
+
 @JsExport
 @JsName("EvidenceTypeList")
 interface EvidenceTypeList {
@@ -43,17 +52,19 @@ open class EvidenceTypeListBase(
 interface EvidenceType {
 	val identifier: EvidenceTypeId
 	val name: String
-	val evidenceTypeClassification: Code
+	val supportConcept: List<InformationConcept>
+	val evidenceTypeClassification: Code?
 	val validityPeriodConstraint: PeriodOfTime?
 	val issuingPlace: CoreLocationLocation?
 }
 @Serializable
 open class EvidenceTypeBase(
-    override val identifier: EvidenceTypeId,
-    override val name: String,
-    override val evidenceTypeClassification: Code,
-    override val validityPeriodConstraint: PeriodOfTime? = null,
-    override val issuingPlace: CoreLocationLocation? = null
+	override val identifier: EvidenceTypeId,
+	override val name: String,
+	override val supportConcept: List<InformationConcept>,
+	override val evidenceTypeClassification: Code? = null,
+	override val validityPeriodConstraint: PeriodOfTime? = null,
+	override val issuingPlace: CoreLocationLocation? = null,
 ): EvidenceType
 @Serializable
 @JsExport

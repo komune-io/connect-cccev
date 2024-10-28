@@ -1,9 +1,9 @@
 package cccev.f2.requirement.model
 
-import cccev.f2.concept.model.InformationConceptIdentifier
-import cccev.f2.evidencetype.model.EvidenceTypeListId
-import cccev.f2.requirement.model.RequirementId
-import cccev.f2.requirement.model.RequirementIdentifier
+import cccev.dsl.model.EvidenceTypeListId
+import cccev.dsl.model.InformationConceptIdentifier
+import cccev.dsl.model.RequirementId
+import cccev.dsl.model.RequirementIdentifier
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
@@ -22,6 +22,7 @@ interface RequirementFlatDTO {
     val enablingConditionDependencies: List<InformationConceptIdentifier>
     val required: Boolean
     val validatingCondition: String?
+    val evidenceValidatingCondition: String?
     val validatingConditionDependencies: List<InformationConceptIdentifier>
     val order: Int?
     val properties: Map<String, String>?
@@ -42,6 +43,7 @@ data class RequirementFlat(
     override val enablingConditionDependencies: List<InformationConceptIdentifier>,
     override val required: Boolean,
     override val validatingCondition: String?,
+    override val evidenceValidatingCondition: String?,
     override val validatingConditionDependencies: List<InformationConceptIdentifier>,
     override val order: Int?,
     override val properties: Map<String, String>?

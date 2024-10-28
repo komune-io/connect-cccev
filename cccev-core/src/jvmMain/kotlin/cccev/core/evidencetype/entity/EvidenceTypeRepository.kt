@@ -18,4 +18,15 @@ class EvidenceTypeRepository(
             mapOf("id" to id)
         )
     }
+
+    suspend fun findByIdentifier(identifier: String): EvidenceType? = sessionFactory.session { session ->
+        session.queryForObject(
+            EvidenceType::class.java,
+            "MATCH (c:${EvidenceType.LABEL} {identifier: \$identifier})" +
+                    "\nCALL apoc.path.subgraphAll(c, {})" +
+                    "\nYIELD nodes, relationships" +
+                    "\nRETURN nodes, relationships",
+            mapOf("identifier" to identifier)
+        )
+    }
 }

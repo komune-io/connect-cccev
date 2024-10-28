@@ -1,8 +1,8 @@
 package cccev.core.concept.entity
 
-import cccev.f2.concept.model.InformationConceptId
-import cccev.f2.concept.model.InformationConceptIdentifier
 import cccev.core.unit.entity.DataUnit
+import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.InformationConceptIdentifier
 import cccev.infra.neo4j.session
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.stereotype.Service

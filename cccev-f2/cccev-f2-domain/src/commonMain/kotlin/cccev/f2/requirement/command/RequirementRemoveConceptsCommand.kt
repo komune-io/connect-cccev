@@ -1,7 +1,7 @@
 package cccev.f2.requirement.command
 
-import cccev.f2.concept.model.InformationConceptId
-import cccev.f2.requirement.model.RequirementId
+import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.RequirementId
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 

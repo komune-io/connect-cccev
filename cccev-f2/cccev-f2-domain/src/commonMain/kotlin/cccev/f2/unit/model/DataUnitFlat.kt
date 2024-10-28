@@ -1,8 +1,8 @@
 package cccev.f2.unit.model
 
-import cccev.f2.unit.model.DataUnitId
-import cccev.f2.unit.model.DataUnitIdentifier
-import cccev.f2.unit.model.DataUnitOptionIdentifier
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.DataUnitIdentifier
+import cccev.dsl.model.DataUnitOptionIdentifier
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 

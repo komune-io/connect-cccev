@@ -4,6 +4,7 @@ import cccev.client.RequirementClient
 import cccev.dsl.model.Requirement
 import cccev.dsl.model.RequirementId
 import cccev.dsl.model.RequirementIdentifier
+import cccev.f2.requirement.query.RequirementGetByIdentifierQuery
 import f2.dsl.fnc.invokeWith
 
 class RequirementGraphInitializer(
@@ -20,7 +21,7 @@ class RequirementGraphInitializer(
     }
 
     override suspend fun tryLoadingExternalNode(nodeReference: RequirementIdentifier): RequirementId? {
-        return RequirementGetByIdentifierQueryDTOBase(nodeReference)
+        return RequirementGetByIdentifierQuery(nodeReference)
             .invokeWith(informationConceptClient.requirementGetByIdentifier())
             .item
             ?.id

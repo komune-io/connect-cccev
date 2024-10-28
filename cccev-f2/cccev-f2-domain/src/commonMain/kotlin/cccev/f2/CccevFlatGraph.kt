@@ -1,13 +1,15 @@
 package cccev.f2
 
+import cccev.dsl.model.DataUnitIdentifier
+import cccev.dsl.model.DataUnitOption
+import cccev.dsl.model.DataUnitOptionDTO
+import cccev.dsl.model.DataUnitOptionIdentifier
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.InformationConceptIdentifier
+import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.certification.model.CertificationId
 import cccev.f2.certification.model.RequirementCertificationId
 import cccev.f2.certification.model.SupportedValueId
-import cccev.f2.concept.model.InformationConceptIdentifier
-import cccev.f2.evidencetype.model.EvidenceTypeId
-import cccev.f2.requirement.model.RequirementIdentifier
-import cccev.f2.unit.model.DataUnitIdentifier
-import cccev.f2.unit.model.DataUnitOptionIdentifier
 import cccev.f2.certification.model.CertificationFlat
 import cccev.f2.certification.model.CertificationFlatDTO
 import cccev.f2.certification.model.RequirementCertificationFlat
@@ -22,8 +24,6 @@ import cccev.f2.requirement.model.RequirementFlat
 import cccev.f2.requirement.model.RequirementFlatDTO
 import cccev.f2.unit.model.DataUnitFlat
 import cccev.f2.unit.model.DataUnitFlatDTO
-import cccev.f2.unit.model.DataUnitOption
-import cccev.f2.unit.model.DataUnitOptionDTO
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 

@@ -12,14 +12,14 @@ object Methodology {
 val LocalConsultation = informationRequirement {
     identifier = "LocalConsultation"
     name = "Loc"
-    type = cccev.dsl.model.axess.Methodology.LocalConsultation
+    type = Methodology.LocalConsultation.toString()
 }
 
 val REDDPlus = informationRequirement {
     identifier = "REDD+"
     name = "REDD+"
     description = "La description Ici"
-    type = cccev.dsl.model.axess.Methodology.REDDPlus
+    type = Methodology.REDDPlus.toString()
 
 }
 
@@ -27,5 +27,5 @@ val VERRAVCS = informationRequirement {
     identifier = "VERRAVCS"
     name = "VERRA VCS"
     description = ""
-    type = cccev.dsl.model.axess.Methodology.VERRAVCS
+    type = Methodology.VERRAVCS.toString()
 }

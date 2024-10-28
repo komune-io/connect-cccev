@@ -10,7 +10,8 @@ typealias InformationConceptIdentifier = String
 @JsExport
 @JsName("InformationConcept")
 interface InformationConcept {
-	val identifier: InformationConceptId
+	val id: InformationConceptId
+	val identifier: InformationConceptIdentifier
 	val name: String
 	val unit: DataUnitDTO
 	val type: Code?
@@ -21,6 +22,7 @@ interface InformationConcept {
 
 @Serializable
 open class InformationConceptBase(
+    override val id: InformationConceptId,
     override val identifier: InformationConceptIdentifier,
     override val name: String,
     override val unit: DataUnit,
@@ -32,7 +34,8 @@ open class InformationConceptBase(
 
 @Serializable
 class InformationConceptRef(
-    override val identifier: InformationConceptId
+    override val id: InformationConceptId,
+    override val identifier: InformationConceptIdentifier
 ): InformationConcept {
     override val name: String = ""
     override val unit: DataUnit = XSDString

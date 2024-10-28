@@ -1,6 +1,6 @@
 package cccev.f2.concept.query
 
-import cccev.f2.concept.model.InformationConceptId
+import cccev.dsl.model.InformationConceptId
 import cccev.f2.CccevFlatGraph
 import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.concept.model.InformationConceptFlat

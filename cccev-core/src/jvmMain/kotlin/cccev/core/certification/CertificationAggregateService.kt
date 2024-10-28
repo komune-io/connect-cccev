@@ -15,7 +15,7 @@ import cccev.core.certification.entity.isFulfilled
 import cccev.core.certification.service.CertificationValuesFillerService
 import cccev.core.requirement.entity.Requirement
 import cccev.core.requirement.entity.RequirementRepository
-import cccev.f2.requirement.model.RequirementIdentifier
+import cccev.dsl.model.RequirementIdentifier
 import cccev.infra.neo4j.checkNotExists
 import cccev.infra.neo4j.session
 import f2.spring.exception.NotFoundException

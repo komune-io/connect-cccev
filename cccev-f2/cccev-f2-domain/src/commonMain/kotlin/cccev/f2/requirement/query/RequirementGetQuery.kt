@@ -1,6 +1,6 @@
 package cccev.f2.requirement.query
 
-import cccev.f2.requirement.model.RequirementId
+import cccev.dsl.model.RequirementId
 import cccev.f2.CccevFlatGraph
 import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.requirement.model.RequirementFlat

@@ -1,7 +1,7 @@
 package cccev.f2.unit.command
 
+import cccev.dsl.model.DataUnitId
 import cccev.f2.unit.D2DataUnitPage
-import cccev.f2.unit.model.DataUnitId
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 
@@ -45,7 +45,7 @@ data class DataUnitUpdateCommand(
     /**
      * @ref [cccev.s2.unit.domain.model.DataUnit.options]
      */
-    val options: List<DataUnitOptionCommand>
+    val options: List<DataUnitOptionCommand>?
 )
 
 /**

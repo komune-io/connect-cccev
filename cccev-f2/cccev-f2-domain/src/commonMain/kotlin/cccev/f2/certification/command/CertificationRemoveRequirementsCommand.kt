@@ -1,7 +1,7 @@
 package cccev.f2.certification.command
 
+import cccev.dsl.model.RequirementId
 import cccev.f2.certification.model.CertificationId
-import cccev.f2.requirement.model.RequirementId
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport

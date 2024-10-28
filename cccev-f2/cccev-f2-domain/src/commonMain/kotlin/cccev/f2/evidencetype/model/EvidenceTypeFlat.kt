@@ -1,6 +1,8 @@
 package cccev.f2.evidencetype.model
 
-import cccev.f2.concept.model.InformationConceptIdentifier
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeIdentifier
+import cccev.dsl.model.InformationConceptIdentifier
 import cccev.f2.evidencetype.D2EvidenceTypePage
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
@@ -16,6 +18,10 @@ interface EvidenceTypeFlatDTO {
      * Identifier of the evidence type.
      */
     val id: EvidenceTypeId
+    /**
+     * Identifier of the evidence type.
+     */
+    val identifier: EvidenceTypeId
 
     /**
      * Name of the evidence type.
@@ -32,6 +38,7 @@ interface EvidenceTypeFlatDTO {
 @Serializable
 data class EvidenceTypeFlat(
     override val id: EvidenceTypeId,
+    override val identifier: EvidenceTypeIdentifier,
     override val name: String,
     override val conceptIdentifiers: List<InformationConceptIdentifier>
 ): EvidenceTypeFlatDTO

@@ -1,7 +1,8 @@
 package cccev.f2.evidencetype.command
 
-import cccev.f2.concept.model.InformationConceptIdentifier
-import cccev.f2.evidencetype.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeIdentifier
+import cccev.dsl.model.InformationConceptIdentifier
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
@@ -21,9 +22,14 @@ typealias EvidenceTypeCreateFunction = F2Function<EvidenceTypeCreateCommand, Evi
 @JsName("EvidenceTypeCreateCommandDTO")
 interface EvidenceTypeCreateCommandDTO {
     /**
-     * Custom unique identifier for the evidence type. If null, a random id will be generated.
+     * Custom unique id for the evidence type. If null, a random id will be generated.
      */
     val id: EvidenceTypeId?
+
+    /**
+     * Custom unique identifier for the evidence type. If null, a random id will be generated.
+     */
+    val identifier: EvidenceTypeIdentifier?
 
     /**
      * Name of the evidence type
@@ -43,6 +49,7 @@ interface EvidenceTypeCreateCommandDTO {
 @Serializable
 data class EvidenceTypeCreateCommand(
     override val id: EvidenceTypeId? = null,
+    override val identifier: EvidenceTypeIdentifier? = null,
     override val name: String,
     override val conceptIdentifiers: List<InformationConceptIdentifier> = emptyList()
 ): EvidenceTypeCreateCommandDTO

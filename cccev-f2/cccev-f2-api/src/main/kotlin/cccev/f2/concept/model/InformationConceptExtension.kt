@@ -1,6 +1,7 @@
 package cccev.f2.concept.model
 
 import cccev.core.concept.entity.InformationConcept
+import cccev.dsl.model.InformationConceptIdentifier
 import cccev.f2.CccevFlatGraph
 import cccev.f2.unit.model.flattenTo
 

@@ -1,6 +1,7 @@
 package cccev.f2.requirement.model
 
 import cccev.core.requirement.entity.Requirement
+import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.model.flattenTo
 import cccev.f2.evidencetype.model.flattenTo
@@ -22,7 +23,8 @@ fun Requirement.flattenTo(graph: CccevFlatGraph): RequirementIdentifier {
         validatingCondition = validatingCondition,
         validatingConditionDependencies = validatingConditionDependencies.map { it.flattenTo(graph) },
         order = order,
-        properties = properties
+        properties = properties,
+        evidenceValidatingCondition = evidenceValidatingCondition
     )
     return identifier
 }

@@ -1,6 +1,6 @@
 package cccev.f2.unit.query
 
-import cccev.f2.unit.model.DataUnitIdentifier
+import cccev.dsl.model.DataUnitIdentifier
 import cccev.f2.CccevFlatGraph
 import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.unit.model.DataUnitFlat
