@@ -8,7 +8,7 @@ import cccev.f2.requirement.query.RequirementGetByIdentifierQuery
 import f2.dsl.fnc.invokeWith
 
 class RequirementGraphInitializer(
-    private val informationConceptClient: RequirementClient
+    private val requirementClient: RequirementClient
 ): DependencyAwareGraphInitializer<Requirement, RequirementIdentifier, RequirementId>() {
 
     override fun getNodeReference(node: Requirement) = node.identifier
@@ -22,7 +22,7 @@ class RequirementGraphInitializer(
 
     override suspend fun tryLoadingExternalNode(nodeReference: RequirementIdentifier): RequirementId? {
         return RequirementGetByIdentifierQuery(nodeReference)
-            .invokeWith(informationConceptClient.requirementGetByIdentifier())
+            .invokeWith(requirementClient.requirementGetByIdentifier())
             .item
             ?.id
     }

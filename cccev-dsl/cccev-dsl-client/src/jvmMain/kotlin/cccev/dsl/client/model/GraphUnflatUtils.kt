@@ -18,13 +18,22 @@ import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.model.CertificationFlat
 import cccev.f2.certification.model.RequirementCertificationFlat
 import cccev.f2.certification.model.SupportedValueFlat
+import cccev.f2.certification.query.CertificationGetResult
 import cccev.f2.concept.model.InformationConceptFlat
+import cccev.f2.concept.query.InformationConceptGetByIdentifierResult
 import cccev.f2.evidencetype.model.EvidenceTypeFlat
 import cccev.f2.requirement.model.RequirementFlat
 import cccev.f2.requirement.model.RequirementKind
+import cccev.f2.requirement.query.RequirementGetByIdentifierResult
+import cccev.f2.requirement.query.RequirementGetQuery
+import cccev.f2.requirement.query.RequirementGetResult
 import cccev.f2.unit.model.DataUnitFlat
 
-class NotFoundException(msg: String, id: String): Exception()
+class NotFoundException(msg: String, id: String): Exception("$msg with id $id not found")
+
+fun CertificationGetResult.unflatten(): Certification? {
+    return certification?.unflatten(graph)
+}
 
 fun CertificationFlat.unflatten(graph: CccevFlatGraph): Certification {
     val requirementCertifications =  requirementCertificationIds.map { requirementCertificationId ->
@@ -81,6 +90,11 @@ fun SupportedValueFlat.unflatten(graph: CccevFlatGraph): SupportedValue {
     )
 }
 
+fun InformationConceptGetByIdentifierResult.unflatten(): InformationConcept {
+    return item?.unflatten(graph)
+        ?: throw NotFoundException("InformationConcept", item?.id!!)
+}
+
 fun InformationConceptFlat.unflatten(graph: CccevFlatGraph): InformationConcept {
     val unit = graph.units[unitIdentifier]
         ?.unflatten(graph)
@@ -101,6 +115,17 @@ fun InformationConceptFlat.unflatten(graph: CccevFlatGraph): InformationConcept 
         dependsOn = dependencies
     )
 }
+
+fun RequirementGetResult.unflatten(): Requirement {
+    return item?.unflatten(graph)
+        ?: throw NotFoundException("Requirement", item?.id!!)
+}
+
+fun RequirementGetByIdentifierResult.unflatten(): Requirement {
+    return item?.unflatten(graph)
+        ?: throw NotFoundException("Requirement", item?.id!!)
+}
+
 
 fun RequirementFlat.unflatten(graph: CccevFlatGraph): Requirement {
     val subRequirements = subRequirementIds.map {
@@ -230,7 +255,7 @@ fun EvidenceTypeFlat.unflatten(graph: CccevFlatGraph): EvidenceType {
         name = name,
         supportConcept = conceptIdentifiers.map {
             graph.concepts[it]?.unflatten(graph)
-                ?: throw NotFoundException("InformationConcept", it)
+                ?: throw NotFoundException("EvidenceType", it)
         }
     )
 }
