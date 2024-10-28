@@ -13,18 +13,18 @@ object Protocol {
 val ProtocolPreparation = informationRequirement {
     identifier = "ProtocolPreparation"
     name = "Protocol Preparation"
-    type = Protocol.Preparation
+    type = Protocol.Preparation.toString()
 }
 
 
 val ProtocolValidation = informationRequirement {
     identifier = "ProtocolValidation"
     name = "Protocol Validation"
-    type = Protocol.Validation
+    type = Protocol.Validation.toString()
 }
 
 val ProtocolCertification = informationRequirement {
     identifier = "ProtocolCertification"
     name = "Protocol Certification"
-    type = Protocol.Certification
+    type = Protocol.Certification.toString()
 }

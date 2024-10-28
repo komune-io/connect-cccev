@@ -10,7 +10,7 @@ rootProject.name = "connect-cccev"
 
 include(
 	"cccev-dsl:cccev-dsl-model",
-//	"cccev-dsl:cccev-dsl-client",
+	"cccev-dsl:cccev-dsl-client",
 )
 
 include(
@@ -19,13 +19,12 @@ include(
 	"api-gateway",
 	"cccev-client",
 	"cccev-core",
-	"cccev-f2",
 	"cccev-test",
 )
 
 include(
-	"cccev-f2:evidence-f2:cccev-evidence-f2-api",
-	"cccev-f2:evidence-f2:cccev-evidence-f2-domain",
+	"cccev-f2:cccev-f2-api",
+	"cccev-f2:cccev-f2-domain",
 )
 
 include(

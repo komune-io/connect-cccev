@@ -1,7 +1,8 @@
 package cccev.client
 
-import cccev.core.evidencetype.command.EvidenceTypeCreateFunction
 import cccev.f2.evidencetype.EvidenceTypeApi
+import cccev.f2.evidencetype.command.EvidenceTypeCreateFunction
+import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierFunction
 import cccev.f2.evidencetype.query.EvidenceTypeGetFunction
 import f2.client.F2Client
 import f2.client.function
@@ -26,4 +27,6 @@ open class EvidenceTypeClient constructor(private val client: F2Client): Evidenc
         = client.function(this::evidenceTypeCreate.name)
     override fun evidenceTypeGet(): EvidenceTypeGetFunction
         = client.function(this::evidenceTypeGet.name)
+    override fun evidenceTypeGetByIdentifier(): EvidenceTypeGetByIdentifierFunction
+        = client.function(this::evidenceTypeGetByIdentifier.name)
 }

@@ -1,8 +1,8 @@
 package cccev.test.f2.requirement.command
 
-import cccev.core.requirement.command.RequirementAddRequirementsCommand
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.f2.requirement.RequirementEndpoint
+import cccev.f2.requirement.command.RequirementAddRequirementsCommand
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.f2.requirement.data.requirement
 import f2.dsl.fnc.invokeWith

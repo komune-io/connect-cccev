@@ -1,8 +1,8 @@
 @file:Suppress("MatchingDeclarationName")
 package cccev.dsl.model
 
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 @JsExport
 @Serializable

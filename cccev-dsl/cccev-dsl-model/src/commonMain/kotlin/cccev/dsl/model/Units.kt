@@ -1,14 +1,25 @@
 package cccev.dsl.model
 
-import io.komune.fs.s2.file.domain.model.FilePath
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.js.JsName
+import kotlinx.serialization.Serializable
+
+/**
+ * @d2 hidden
+ * @visual json "aeb2c258-9eab-4e55-9e52-77db89aaabfb"
+ */
+typealias DataUnitId = String
+
+/**
+ * @d2 hidden
+ * @visual json "TheDataUnitIdentifier"
+ */
+typealias DataUnitIdentifier = String
 
 @JsExport
 @JsName("DataUnitDTO")
 interface DataUnitDTO {
-    val identifier: String
+    val identifier: DataUnitIdentifier
     val name: String
     val description: String
     val notation: String?
@@ -18,7 +29,7 @@ interface DataUnitDTO {
 
 @Serializable
 open class DataUnit(
-    override val identifier: String,
+    override val identifier: DataUnitIdentifier,
     override val name: String,
     override val description: String,
     override val notation: String? = null,
@@ -26,54 +37,40 @@ open class DataUnit(
     override val options: List<DataUnitOption>? = null
 ): DataUnitDTO
 
-@Serializable
-open class DataUnitOption(
-    val identifier: String,
-    val name: String,
-    val value: String,
-    val order: Int,
-    val icon: FilePath?,
-    val color: String?
-)
-
-@Suppress("EnumNaming")
-enum class DataUnitType {
-    boolean, date, number, string
-}
 
 object XSDDate: DataUnit(
     identifier = "xsdDate",
     name = "XSDDate",
     description = "Date",
-    type = DataUnitType.date
+    type = DataUnitType.DATE
 )
 
 object XSDDouble: DataUnit(
     identifier = "xsdDouble",
     name = "XSDDouble",
     description = "Nombre réel quelconque",
-    type = DataUnitType.number
+    type = DataUnitType.NUMBER
 )
 
 object XSDInt: DataUnit(
     identifier = "xsdInt",
     name = "XSDInt",
     description = "Nombre entier quelconque",
-    type = DataUnitType.number
+    type = DataUnitType.NUMBER
 )
 
 object XSDString: DataUnit(
     identifier = "xsdString",
     name = "XSDString",
     description = "Chaîne de caractères quelconque",
-    type = DataUnitType.string
+    type = DataUnitType.STRING
 )
 
 object XSDBoolean: DataUnit(
     identifier = "xsdBoolean",
     name = "XSDBoolean",
     description = "Vrai ou faux",
-    type = DataUnitType.boolean
+    type = DataUnitType.BOOLEAN
 )
 
 object Duration {
@@ -82,14 +79,14 @@ object Duration {
         name = "Durée en heures",
         description = "Durée en heures",
         notation = "h",
-        type = DataUnitType.number
+        type = DataUnitType.NUMBER
     )
     object Year: DataUnit(
         identifier = "yearDuration",
         name = "Durée en années",
         description = "Durée en années",
         notation = "an(s)",
-        type = DataUnitType.number
+        type = DataUnitType.NUMBER
     )
 }
 
@@ -98,7 +95,7 @@ object Ratio: DataUnit(
     name = "Ration",
     description = "Ratio entre deux valeurs",
     notation = "%",
-    type = DataUnitType.number
+    type = DataUnitType.NUMBER
 )
 
 object SquareMeter: DataUnit(
@@ -106,7 +103,7 @@ object SquareMeter: DataUnit(
     name = "Mètre carré",
     description = "Mètre carré",
     notation = "m²",
-    type = DataUnitType.number
+    type = DataUnitType.NUMBER
 )
 
 object CubicMeter: DataUnit(
@@ -114,5 +111,5 @@ object CubicMeter: DataUnit(
     name = "Mètre cube",
     description = "Mètre cube",
     notation = "m³",
-    type = DataUnitType.number
+    type = DataUnitType.NUMBER
 )

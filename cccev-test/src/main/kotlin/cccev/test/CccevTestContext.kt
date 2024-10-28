@@ -1,13 +1,13 @@
 package cccev.test
 
-import cccev.core.certification.model.CertificationId
-import cccev.core.certification.model.EvidenceId
-import cccev.core.certification.model.RequirementCertificationId
-import cccev.core.certification.model.SupportedValueId
-import cccev.core.concept.model.InformationConceptId
-import cccev.core.evidencetype.model.EvidenceTypeId
-import cccev.core.requirement.model.RequirementId
-import cccev.core.unit.model.DataUnitId
+import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.RequirementId
+import cccev.f2.certification.model.CertificationId
+import cccev.f2.certification.model.EvidenceId
+import cccev.f2.certification.model.RequirementCertificationId
+import cccev.f2.certification.model.SupportedValueId
 import org.springframework.stereotype.Component
 import s2.bdd.data.TestContext
 import s2.bdd.data.TestContextKey

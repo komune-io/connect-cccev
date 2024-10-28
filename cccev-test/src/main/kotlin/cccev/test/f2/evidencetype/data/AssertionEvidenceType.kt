@@ -1,9 +1,9 @@
 package cccev.test.f2.evidencetype.data
 
-import cccev.core.concept.model.InformationConceptId
 import cccev.core.evidencetype.entity.EvidenceType
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
-import cccev.core.evidencetype.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.InformationConceptId
 import org.assertj.core.api.Assertions
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.repository.AssertionApiEntity

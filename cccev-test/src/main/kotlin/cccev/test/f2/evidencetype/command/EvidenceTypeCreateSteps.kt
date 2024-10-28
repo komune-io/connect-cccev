@@ -1,8 +1,8 @@
 package cccev.test.f2.evidencetype.command
 
-import cccev.core.evidencetype.command.EvidenceTypeCreateCommand
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
 import cccev.f2.evidencetype.EvidenceTypeEndpoint
+import cccev.f2.evidencetype.command.EvidenceTypeCreateCommand
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.EvidenceTypeKey
 import cccev.test.InformationConceptKey

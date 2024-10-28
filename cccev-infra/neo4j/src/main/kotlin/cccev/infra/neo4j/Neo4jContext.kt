@@ -1,7 +1,7 @@
 package cccev.infra.neo4j
 
-import org.neo4j.ogm.session.Session
 import kotlin.coroutines.CoroutineContext
+import org.neo4j.ogm.session.Session
 
 data class Neo4jContext(
     val session: Session

@@ -1,10 +1,10 @@
 package cccev.test.f2.certification.command
 
 import cccev.commons.utils.mapAsync
-import cccev.core.certification.command.CertificationCreateCommand
 import cccev.core.certification.entity.CertificationRepository
 import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.CertificationEndpoint
+import cccev.f2.certification.command.CertificationCreateCommand
 import cccev.f2.certification.model.flattenTo
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.CertificationKey

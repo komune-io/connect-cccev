@@ -131,10 +131,14 @@ object Modules {
 			const val fs = ":cccev-infra:fs"
 			const val neo4j = ":cccev-infra:neo4j"
 		}
+		object f2 {
+			const val api = ":cccev-f2:cccev-f2-api"
+			const val domain = ":cccev-f2:cccev-f2-domain"
+		}
 
 		const val client = ":cccev-client"
 		const val core = ":cccev-core"
-		const val f2 = ":cccev-f2"
+//		const val f2 = ":cccev-f2"
 		const val test = ":cccev-test"
 	}
 }

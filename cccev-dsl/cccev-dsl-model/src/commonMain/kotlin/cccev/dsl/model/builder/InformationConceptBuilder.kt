@@ -8,6 +8,7 @@ import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.InformationConceptRef
 import cccev.dsl.model.XSDString
+import com.benasher44.uuid.uuid4
 
 class InformationConceptListBuilder {
 
@@ -29,7 +30,8 @@ class InformationConceptListBuilder {
 }
 
 class InformationConceptBuilder {
-    var identifier: InformationConceptId? = null
+    var id: InformationConceptId? = null
+    var identifier: InformationConceptIdentifier? = null
     var name: String? = null
     var unit: DataUnit = XSDString
     var type: Code? = null
@@ -37,6 +39,7 @@ class InformationConceptBuilder {
     var expressionOfExpectedValue: String? = null
 
     fun build() = InformationConceptBase(
+        id = id ?: uuid4().toString(),
         identifier = identifier!!,
         name = name!!,
         unit = unit,
@@ -49,4 +52,4 @@ class InformationConceptBuilder {
 fun informationConcept(init: InformationConceptBuilder.() -> Unit): InformationConcept
     = InformationConceptBuilder().apply(init).build()
 
-fun informationConceptRef(identifier: InformationConceptIdentifier) = InformationConceptRef(identifier)
+fun informationConceptRef(id: InformationConceptId, identifier: InformationConceptIdentifier) = InformationConceptRef(id, identifier)

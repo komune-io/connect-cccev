@@ -5,7 +5,7 @@ import cccev.dsl.model.informationRequirement
 
 fun localConsultationProtocolPreparation(init: InformationRequirementBuilder.() -> Unit) =
     InformationRequirementBuilder().apply {
-        type = ProtocolStep.Preparation
+        type = ProtocolStep.Preparation.toString()
         isRequirementOf {
             +ProtocolPreparation
             +LocalConsultation

@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
-	commonMainApi(project(Modules.cccev.f2))
+	commonMainApi(project(Modules.cccev.f2.domain))
 	Dependencies.Mpp.f2Client(::commonMainApi)
+	Dependencies.Jvm.jackson(::jvmMainApi)
 }

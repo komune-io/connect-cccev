@@ -1,8 +1,8 @@
 package cccev.test.f2.concept.command
 
-import cccev.core.concept.command.InformationConceptCreateCommand
 import cccev.core.concept.entity.InformationConceptRepository
 import cccev.f2.concept.InformationConceptEndpoint
+import cccev.f2.concept.command.InformationConceptCreateCommand
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.f2.concept.data.informationConcept
 import f2.dsl.fnc.invokeWith

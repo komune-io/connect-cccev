@@ -2,7 +2,7 @@ package cccev.core.evidencetype
 
 import cccev.core.evidencetype.entity.EvidenceType
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
-import cccev.core.evidencetype.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeId
 import f2.spring.exception.NotFoundException
 import org.springframework.stereotype.Service
 
@@ -12,6 +12,9 @@ class EvidenceTypeFinderService(
 ) {
     suspend fun getOrNull(id: EvidenceTypeId): EvidenceType? {
         return evidenceTypeRepository.findById(id)
+    }
+    suspend fun getOrNullByIdentifier(identifier: EvidenceTypeId): EvidenceType? {
+        return evidenceTypeRepository.findByIdentifier(identifier)
     }
 
     suspend fun get(id: EvidenceTypeId): EvidenceType {

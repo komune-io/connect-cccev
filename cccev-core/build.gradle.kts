@@ -8,6 +8,7 @@ plugins {
 dependencies {
 	Dependencies.Mpp.fs(::commonMainApi)
 
+	jvmMainApi(project(Modules.cccev.f2.domain))
 	jvmMainApi(project(Modules.api.commons))
 	jvmMainApi(project(Modules.cccev.dsl.model))
 	jvmMainApi(project(Modules.cccev.infra.neo4j))
