@@ -2,7 +2,7 @@ package cccev.core.certification
 
 import cccev.core.certification.entity.Certification
 import cccev.core.certification.entity.CertificationRepository
-import cccev.f2.certification.model.CertificationId
+import cccev.dsl.model.CertificationId
 import f2.spring.exception.NotFoundException
 import org.springframework.stereotype.Service
 

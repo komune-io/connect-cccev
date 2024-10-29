@@ -87,6 +87,7 @@ class EvidenceTypeCreateSteps: En, CccevCucumberStepsDefinition() {
 
     private suspend fun createEvidenceType(params: EvidenceTypeCreateParams) = context.evidenceTypeIds.register(params.identifier) {
         command = EvidenceTypeCreateCommand(
+            id = params.identifier,
             name = params.name,
             conceptIdentifiers = params.concepts
         )

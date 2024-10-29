@@ -1,6 +1,7 @@
 package cccev.f2.certification.model
 
 import cccev.dsl.model.InformationConceptIdentifier
+import cccev.dsl.model.SupportedValueId
 import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
 

@@ -1,6 +1,7 @@
 package cccev.f2.certification.model
 
 import cccev.core.certification.entity.RequirementCertification
+import cccev.dsl.model.RequirementCertificationId
 import cccev.f2.CccevFlatGraph
 import cccev.f2.requirement.model.flattenTo
 

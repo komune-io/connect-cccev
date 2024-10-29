@@ -3,6 +3,7 @@ package cccev.core.requirement.entity
 import cccev.core.concept.entity.InformationConcept
 import cccev.dsl.model.RequirementId
 import cccev.dsl.model.RequirementIdentifier
+import cccev.infra.neo4j.returnWholeEntity
 import cccev.infra.neo4j.session
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.stereotype.Service
@@ -13,10 +14,8 @@ class RequirementRepository(
 ) {
     suspend fun findById(id: RequirementId): Requirement? = sessionFactory.session { session ->
         session.query(
-            "MATCH (requirement:${Requirement.LABEL} {id: \$id})" +
-                    "\nCALL apoc.path.subgraphAll(requirement, {})" +
-                    "\nYIELD nodes, relationships" +
-                    "\nRETURN requirement, nodes, relationships",
+            "MATCH (requirement:${Requirement.LABEL} {id: \$id})"
+                .returnWholeEntity("requirement"),
             mapOf("id" to id)
         ).map { it["requirement"] as Requirement }
             .firstOrNull()
@@ -24,10 +23,8 @@ class RequirementRepository(
 
     suspend fun findByIdentifier(identifier: RequirementIdentifier): Requirement? = sessionFactory.session { session ->
         session.query(
-            "MATCH (requirement:${Requirement.LABEL} {identifier: \$identifier})" +
-                    "\nCALL apoc.path.subgraphAll(requirement, {})" +
-                    "\nYIELD nodes, relationships" +
-                    "\nRETURN requirement, nodes, relationships",
+            "MATCH (requirement:${Requirement.LABEL} {identifier: \$identifier})"
+                .returnWholeEntity("requirement"),
             mapOf("identifier" to identifier)
         ).map { it["requirement"] as Requirement }
             .firstOrNull()

@@ -1,7 +1,7 @@
 package cccev.core.certification.entity
 
 import cccev.core.requirement.entity.Requirement
-import cccev.f2.certification.model.RequirementCertificationId
+import cccev.dsl.model.RequirementCertificationId
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
@@ -13,6 +13,7 @@ class RequirementCertification {
         const val LABEL = "RequirementCertification"
 
         const val CERTIFIES = "CERTIFIES"
+        const val HAS_EVIDENCE = "HAS_EVIDENCE"
         const val IS_CERTIFIED_BY = "IS_CERTIFIED_BY"
         const val USES_VALUE = "USES_VALUE"
     }
@@ -28,6 +29,9 @@ class RequirementCertification {
 
     @Relationship(USES_VALUE)
     var values: MutableList<SupportedValue> = mutableListOf()
+
+    @Relationship(HAS_EVIDENCE)
+    var evidences: MutableList<Evidence> = mutableListOf()
 
     /**
      * Result of the requirement's enablingCondition, or true if the requirement has no enablingCondition.
@@ -45,7 +49,12 @@ class RequirementCertification {
     var hasAllValues: Boolean = false
 
     /**
-     * True if the requirement is enabled, validated, has values for all its information concepts,
+     * Result of the requirement's evidenceValidatingCondition, or true if the requirement has no evidenceValidatingCondition.
+     */
+    var areEvidencesProvided: Boolean = false
+
+    /**
+     * True if the requirement is enabled, validated, has values for all its information concepts, evidences are provided
      * and all its sub-requirements are fulfilled or disabled.
      */
     var isFulfilled: Boolean = false

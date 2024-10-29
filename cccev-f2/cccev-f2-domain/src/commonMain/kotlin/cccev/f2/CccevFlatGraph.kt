@@ -1,21 +1,21 @@
 package cccev.f2
 
+import cccev.dsl.model.CertificationId
 import cccev.dsl.model.DataUnitIdentifier
 import cccev.dsl.model.DataUnitOption
 import cccev.dsl.model.DataUnitOptionDTO
 import cccev.dsl.model.DataUnitOptionIdentifier
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptIdentifier
+import cccev.dsl.model.RequirementCertificationId
 import cccev.dsl.model.RequirementIdentifier
+import cccev.dsl.model.SupportedValueId
 import cccev.f2.certification.model.CertificationFlat
 import cccev.f2.certification.model.CertificationFlatDTO
-import cccev.f2.certification.model.CertificationId
 import cccev.f2.certification.model.RequirementCertificationFlat
 import cccev.f2.certification.model.RequirementCertificationFlatDTO
-import cccev.f2.certification.model.RequirementCertificationId
 import cccev.f2.certification.model.SupportedValueFlat
 import cccev.f2.certification.model.SupportedValueFlatDTO
-import cccev.f2.certification.model.SupportedValueId
 import cccev.f2.concept.model.InformationConceptFlat
 import cccev.f2.concept.model.InformationConceptFlatDTO
 import cccev.f2.evidencetype.model.EvidenceTypeFlat

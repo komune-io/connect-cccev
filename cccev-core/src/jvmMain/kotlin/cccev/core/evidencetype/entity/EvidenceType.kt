@@ -3,6 +3,7 @@ package cccev.core.evidencetype.entity
 import cccev.core.concept.entity.InformationConcept
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeIdentifier
+import java.util.UUID
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
@@ -17,7 +18,7 @@ class EvidenceType {
     @Id
     lateinit var id: EvidenceTypeId
 
-    lateinit var identifier: EvidenceTypeIdentifier
+    var identifier: EvidenceTypeIdentifier = UUID.randomUUID().toString()
 
     lateinit var name: String
 

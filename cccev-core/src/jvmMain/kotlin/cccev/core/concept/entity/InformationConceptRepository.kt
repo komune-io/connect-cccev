@@ -3,6 +3,7 @@ package cccev.core.concept.entity
 import cccev.core.unit.entity.DataUnit
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
+import cccev.infra.neo4j.returnWholeEntity
 import cccev.infra.neo4j.session
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.stereotype.Service
@@ -13,10 +14,8 @@ class InformationConceptRepository(
 ) {
     suspend fun findById(id: InformationConceptId): InformationConcept? = sessionFactory.session { session ->
         session.query(
-            "MATCH (ic:${InformationConcept.LABEL} {id: \$id})" +
-                    "\nCALL apoc.path.subgraphAll(ic, {})" +
-                    "\nYIELD nodes, relationships" +
-                    "\nRETURN ic, nodes, relationships",
+            "MATCH (ic:${InformationConcept.LABEL} {id: \$id})"
+                .returnWholeEntity("ic"),
             mapOf("id" to id)
         ).map { it["ic"] as InformationConcept }
             .firstOrNull()
@@ -24,10 +23,8 @@ class InformationConceptRepository(
 
     suspend fun findByIdentifier(identifier: InformationConceptIdentifier): InformationConcept? = sessionFactory.session { session ->
         session.query(
-            "MATCH (ic:${InformationConcept.LABEL} {identifier: \$identifier})" +
-                    "\nCALL apoc.path.subgraphAll(ic, {})" +
-                    "\nYIELD nodes, relationships" +
-                    "\nRETURN ic, nodes, relationships",
+            "MATCH (ic:${InformationConcept.LABEL} {identifier: \$identifier})"
+                .returnWholeEntity("ic"),
             mapOf("identifier" to identifier)
         ).map { it["ic"] as InformationConcept }
             .firstOrNull()

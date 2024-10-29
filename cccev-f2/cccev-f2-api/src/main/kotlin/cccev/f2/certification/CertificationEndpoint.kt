@@ -2,6 +2,8 @@ package cccev.f2.certification
 
 import cccev.core.certification.CertificationAggregateService
 import cccev.core.certification.CertificationFinderService
+import cccev.f2.certification.command.CertificationAddEvidenceCommand
+import cccev.f2.certification.command.CertificationAddedEvidenceEvent
 import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.command.CertificationAddRequirementsFunction
 import cccev.f2.certification.command.CertificationCreateFunction
@@ -12,9 +14,13 @@ import cccev.f2.certification.query.CertificationGetFunction
 import cccev.f2.certification.query.CertificationGetResult
 import f2.dsl.fnc.f2Function
 import io.komune.fs.s2.file.client.FileClient
+import io.komune.fs.spring.utils.contentByteArray
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
+import org.springframework.http.codec.multipart.FilePart
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
 
 /**
@@ -79,15 +85,14 @@ class CertificationEndpoint(
         certificationAggregateService.fillValues(command)
     }
 
-//    /** Add an evidence to a certification */
-//    @PostMapping("/certificationAddEvidence")
-//    suspend fun certificationAddEvidence(
-//        @RequestPart("command") command: CertificationAddEvidenceCommandDTOBase,
-//        @RequestPart("file", required = false) file: FilePart?,
-//    ): CertificationAddedEvidenceEvent {
-//        logger.info("certificationAddEvidence: $command")
-//        return certificationAggregateService.addEvidence(command, file)
-//    }
+    @PostMapping("/certificationAddEvidence")
+    suspend fun certificationAddEvidence(
+        @RequestPart("command") command: CertificationAddEvidenceCommand,
+        @RequestPart("file") file: FilePart,
+    ): CertificationAddedEvidenceEvent {
+        logger.info("certificationAddEvidence: $command")
+        return certificationAggregateService.addEvidence(command, file.contentByteArray(), file.filename())
+    }
 
 //    @Bean
 //    override fun certificationRemoveEvidence(): CertificationRemoveEvidenceFunction = f2Function { command ->
