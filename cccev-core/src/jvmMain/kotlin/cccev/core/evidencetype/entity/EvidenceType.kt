@@ -18,6 +18,7 @@ class EvidenceType {
     @Id
     lateinit var id: EvidenceTypeId
 
+    // TODO This is a temporary solution to avoid breaking the tests
     var identifier: EvidenceTypeIdentifier = UUID.randomUUID().toString()
 
     lateinit var name: String
