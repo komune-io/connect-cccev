@@ -9,7 +9,7 @@ plugins {
 	id("io.komune.fixers.gradle.config") version PluginVersions.fixers
 	id("io.komune.fixers.gradle.d2") version PluginVersions.d2
 	id("io.komune.fixers.gradle.publish") version PluginVersions.fixers apply false
-//	id("io.komune.fixers.gradle.check") version PluginVersions.fixers
+	id("io.komune.fixers.gradle.check") version PluginVersions.fixers
 }
 
 allprojects {
@@ -36,5 +36,9 @@ fixers {
 	}
 	kt2Ts {
 		outputDirectory = "web/kotlin"
+	}
+	sonar {
+		organization = "komune-io"
+		projectKey = "komune-io_connect-cccev"
 	}
 }
