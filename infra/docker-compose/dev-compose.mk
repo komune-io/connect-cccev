@@ -19,13 +19,6 @@ dev:
 
 dev-envsubst:
 	mkdir -p $(DOCKER_COMPOSE_PATH)/config/build
-	envsubst < $(DOCKER_COMPOSE_PATH)/config/im-init.json > $(DOCKER_COMPOSE_PATH)/config/build/im-init.json
-	# KC_REALM_TEST
-	KC_REALM=${KC_REALM_TEST} envsubst < $(DOCKER_COMPOSE_PATH)/config/space-config.json > $(DOCKER_COMPOSE_PATH)/config/build/space-config.test.json
-	KC_REALM=${KC_REALM_TEST} envsubst < $(DOCKER_COMPOSE_PATH)/config/space-create.json > $(DOCKER_COMPOSE_PATH)/config/build/space-create.test.json
-	# KC_REALM_DEV
-	KC_REALM=${KC_REALM_DEV} envsubst < $(DOCKER_COMPOSE_PATH)/config/space-config.json > $(DOCKER_COMPOSE_PATH)/config/build/space-config.dev.json
-	KC_REALM=${KC_REALM_DEV} envsubst < $(DOCKER_COMPOSE_PATH)/config/space-create.json > $(DOCKER_COMPOSE_PATH)/config/build/space-create.dev.json
 
 exec-common:
 	@if ! docker network ls | grep -q $(DOCKER_NETWORK); then \
