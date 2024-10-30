@@ -24,10 +24,9 @@ class InformationConceptAggregateService(
     suspend fun create(command: InformationConceptCreateCommand) = sessionFactory.transaction { session, _ ->
         val dependencies = session.findSafeShallowAllById<InformationConcept>(command.dependsOn, InformationConcept.LABEL)
         val unit = session.findSafeShallowById<DataUnit>(command.hasUnit, DataUnit.LABEL)
-
         val concept = InformationConcept().apply {
             id = UUID.randomUUID().toString()
-            identifier = (command.identifier ?: id).replace(Regex("[^a-zA-Z0-9]"), "_")
+            identifier = (command.identifier ?: id.replace(Regex("[^a-zA-Z0-9]"), "_"))
             name = command.name
             this.unit = unit
             description = command.description

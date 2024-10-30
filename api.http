@@ -28,3 +28,27 @@ Content-Type: application/json
 {
   "identifier": "P1"
 }
+
+###
+POST {{urlbase}}/conceptGetByIdentifier
+Content-Type: application/json
+
+{
+  "identifier": "c1_868878a5_e5e9_491b_b7fb_d0bda188aadb"
+}
+
+###
+POST {{urlbase}}/conceptGetByIdentifier
+Content-Type: application/json
+
+{
+  "identifier": "c1_ac556160-4387-4a4f-a05f-7057d37cc6ff"
+}
+
+###
+POST {{urlbase}}/conceptGetByIdentifier
+Content-Type: application/json
+
+{
+  "identifier": "c1_ac556160_4387_4a4f_a05f_7057d37cc6ff"
+}

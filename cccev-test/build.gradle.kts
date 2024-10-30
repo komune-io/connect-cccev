@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
 	implementation(project(Modules.api.config))
-	implementation(project(Modules.cccev.dsl.model))
+	implementation(project(Modules.cccev.dsl.client))
 	implementation(project(Modules.cccev.core))
 	implementation(project(Modules.cccev.f2.api))
 

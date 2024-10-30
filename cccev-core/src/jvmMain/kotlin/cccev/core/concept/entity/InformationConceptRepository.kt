@@ -26,8 +26,9 @@ class InformationConceptRepository(
             "MATCH (ic:${InformationConcept.LABEL} {identifier: \$identifier})"
                 .returnWholeEntity("ic"),
             mapOf("identifier" to identifier)
-        ).map { it["ic"] as InformationConcept }
-            .firstOrNull()
+        ).map {
+            it["ic"] as InformationConcept
+        }.firstOrNull()
     }
 
     suspend fun findShallowByIdentifier(identifier: InformationConceptIdentifier): InformationConcept? = sessionFactory.session { session ->
