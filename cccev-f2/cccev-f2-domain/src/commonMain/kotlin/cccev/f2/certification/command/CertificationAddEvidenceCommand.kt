@@ -10,13 +10,16 @@ import io.komune.fs.s2.file.domain.model.FilePathDTO
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
+
+data class  EvidenceFile(val byteArray: ByteArray, val filename: String)
+
 /**
  * Provide data for the information concepts specified in the requirements a certification has to fulfill.
  * @d2 function
  * @parent [cccev.core.certification.D2CertificationPage]
  * @order 40
  */
-typealias CertificationAddEvidenceFunction = F2Function<CertificationAddEvidenceCommand, CertificationAddedEvidenceEvent>
+typealias CertificationAddEvidenceFunction = F2Function<Pair<EvidenceFile,CertificationAddEvidenceCommand>, CertificationAddedEvidenceEvent>
 
 /**
  * @d2 command
