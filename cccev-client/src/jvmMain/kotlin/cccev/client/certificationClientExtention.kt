@@ -1,24 +1,29 @@
 package cccev.client
 
+import cccev.f2.certification.command.CertificationAddEvidenceFunction
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import f2.client.ktor.http.HttpF2Client
+import f2.dsl.fnc.F2Function
+import io.ktor.client.call.body
 import io.ktor.client.request.forms.FormPart
 import io.ktor.client.request.forms.formData
+import io.ktor.client.request.forms.submitFormWithBinaryData
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
+import kotlinx.coroutines.flow.map
 
-
-//fun CertificationClient.certificationAddEvidence(): CertificationAddEvidenceFunction = F2Function { msgs ->
-//    msgs.map { (cmd, file) ->
-//        val httpF2Client = (client as HttpF2Client)
-//        httpF2Client.httpClient.submitFormWithBinaryData(
-//            url = "${httpF2Client.urlBase}/certificationAddEvidence",
-//            formData = FormDataBodyBuilder().apply {
-//                param("command", cmd)
-//                file("file", file, cmd.name)
-//            }.toFormData()
-//        ).body()
-//    }
-//}
+fun CertificationClient.certificationAddEvidence(): CertificationAddEvidenceFunction = F2Function { messages ->
+    messages.map { (file, cmd) ->
+        val httpF2Client = (client as HttpF2Client)
+        httpF2Client.httpClient.submitFormWithBinaryData(
+            url = "${httpF2Client.urlBase}/certificationAddEvidence",
+            formData = FormDataBodyBuilder().apply {
+                param("command", cmd)
+                file("file", file.byteArray, file.filename)
+            }.toFormData()
+        ).body()
+    }
+}
 
 class FormDataBodyBuilder {
     private val formParts = mutableListOf<FormPart<*>>()
