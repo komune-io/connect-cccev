@@ -1,15 +1,20 @@
 package cccev.test.f2.concept.command
 
+import cccev.client.InformationConceptClient
+import cccev.client.informationConceptClient
 import cccev.core.concept.entity.InformationConceptRepository
 import cccev.f2.concept.InformationConceptEndpoint
 import cccev.f2.concept.command.InformationConceptCreateCommand
+import cccev.f2.concept.query.InformationConceptGetByIdentifierQuery
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.f2.concept.data.informationConcept
 import f2.dsl.fnc.invokeWith
 import io.cucumber.datatable.DataTable
 import io.cucumber.java8.En
+import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.data.TestContextKey
 import s2.bdd.data.parser.extractList
@@ -18,6 +23,15 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
 
     @Autowired
     private lateinit var informationConceptEndpoint: InformationConceptEndpoint
+
+
+    @Value("\${server.port}")
+    private lateinit var randomServerPort: String
+
+    fun informationConceptClient(): InformationConceptClient = runBlocking {
+        informationConceptClient("http://localhost:${randomServerPort}").invoke()
+    }
+
 
     @Autowired
     private lateinit var informationConceptRepository: InformationConceptRepository
@@ -62,6 +76,15 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
         Then("The information concept should be created") {
             step {
                 val conceptId = context.conceptIds.lastUsed
+
+                val concept = informationConceptRepository.findById(conceptId)
+                Assertions.assertThat(concept).isNotNull
+
+                val conceptByIdentifier = informationConceptRepository.findByIdentifier(concept!!.identifier)
+                Assertions.assertThat(conceptByIdentifier).isNotNull
+                val conceptByIdentifier2 = InformationConceptGetByIdentifierQuery(concept.identifier).invokeWith(informationConceptEndpoint.conceptGetByIdentifier()).item
+                Assertions.assertThat(conceptByIdentifier2).isNotNull
+
                 AssertionBdd.informationConcept(informationConceptRepository).assertThatId(conceptId).hasFields(
                     name = command.name,
                     unit = command.hasUnit,
@@ -77,6 +100,10 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
                 val conceptId = context.conceptIds.safeGet(params.identifier)
                 val concept = informationConceptRepository.findById(conceptId)
                 Assertions.assertThat(concept).isNotNull
+
+
+                val conceptByIdentifier = InformationConceptGetByIdentifierQuery(params.identifier).invokeWith(informationConceptEndpoint.conceptGetByIdentifier()).item
+                Assertions.assertThat(conceptByIdentifier).isNotNull
 
                 AssertionBdd.informationConcept(informationConceptRepository).assertThat(concept!!).hasFields(
                     name = params.name ?: concept.name,

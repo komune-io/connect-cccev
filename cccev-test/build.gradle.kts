@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
 	implementation(project(Modules.api.config))
-	implementation(project(Modules.cccev.dsl.model))
+	implementation(project(Modules.cccev.dsl.client))
 	implementation(project(Modules.cccev.core))
 	implementation(project(Modules.cccev.f2.api))
 
@@ -13,6 +13,7 @@ dependencies {
 	Dependencies.Jvm.f2Http(::api)
 	Dependencies.Jvm.f2Auth(::api)
 	Dependencies.Jvm.s2Bdd(::api)
+	Dependencies.Jvm.Fs.client(::implementation)
 	Dependencies.Jvm.Test.dataFaker(::implementation)
 
 	implementation("io.github.origin-energy:java-snapshot-testing-core:${Versions.javaSnapshotTesting}")

@@ -1,10 +1,10 @@
 package cccev.f2.certification.query
 
+import cccev.dsl.model.CertificationId
 import cccev.f2.CccevFlatGraph
 import cccev.f2.CccevFlatGraphDTO
 import cccev.f2.certification.model.CertificationFlat
 import cccev.f2.certification.model.CertificationFlatDTO
-import cccev.f2.certification.model.CertificationId
 import f2.dsl.fnc.F2Function
 import kotlin.js.JsExport
 import kotlin.js.JsName

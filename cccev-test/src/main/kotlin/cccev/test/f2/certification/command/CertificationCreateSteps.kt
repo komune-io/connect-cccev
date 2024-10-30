@@ -105,6 +105,7 @@ class CertificationCreateSteps: En, CccevCucumberStepsDefinition() {
                 isEnabled = params.isEnabled ?: requirementCertification.isEnabled,
                 isValidated = params.isValidated ?: requirementCertification.isValidated,
                 hasAllValues = params.hasAllValues ?: requirementCertification.hasAllValues,
+                areEvidencesProvided = params.areEvidencesProvided ?: requirementCertification.areEvidencesProvided,
                 isFulfilled = params.isFulfilled ?: requirementCertification.isFulfilled
             )
     }
@@ -122,6 +123,7 @@ class CertificationCreateSteps: En, CccevCucumberStepsDefinition() {
         isEnabled = entry["isEnabled"]?.toBoolean(),
         isValidated = entry["isValidated"]?.toBoolean(),
         hasAllValues = entry["hasAllValues"]?.toBoolean(),
+        areEvidencesProvided = entry["areEvidencesProvided"]?.toBoolean(),
         isFulfilled = entry["isFulfilled"]?.toBoolean()
     )
 
@@ -138,6 +140,7 @@ class CertificationCreateSteps: En, CccevCucumberStepsDefinition() {
         val isEnabled: Boolean?,
         val isValidated: Boolean?,
         val hasAllValues: Boolean?,
+        val areEvidencesProvided: Boolean?,
         val isFulfilled: Boolean?
     )
 }

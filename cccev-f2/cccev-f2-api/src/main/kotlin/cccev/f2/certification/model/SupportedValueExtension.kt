@@ -1,6 +1,7 @@
 package cccev.f2.certification.model
 
 import cccev.core.certification.entity.SupportedValue
+import cccev.dsl.model.SupportedValueId
 import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.model.flattenTo
 

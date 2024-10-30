@@ -1,8 +1,8 @@
 package cccev.f2.certification.command
 
+import cccev.dsl.model.CertificationId
+import cccev.dsl.model.RequirementCertificationId
 import cccev.dsl.model.RequirementIdentifier
-import cccev.f2.certification.model.CertificationId
-import cccev.f2.certification.model.RequirementCertificationId
 import f2.dsl.fnc.F2Function
 import kotlin.js.JsExport
 import kotlin.js.JsName

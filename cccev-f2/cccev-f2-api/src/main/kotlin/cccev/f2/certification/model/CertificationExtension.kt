@@ -1,6 +1,7 @@
 package cccev.f2.certification.model
 
 import cccev.core.certification.entity.Certification
+import cccev.dsl.model.CertificationId
 import cccev.f2.CccevFlatGraph
 
 fun Certification.flattenTo(graph: CccevFlatGraph): CertificationId {
