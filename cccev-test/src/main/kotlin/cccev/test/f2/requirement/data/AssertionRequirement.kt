@@ -1,6 +1,6 @@
 package cccev.test.f2.requirement.data
 
-import cccev.core.requirement.entity.Requirement
+import cccev.core.requirement.entity.RequirementEntity
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptId
@@ -14,13 +14,13 @@ fun AssertionBdd.requirement(conceptRepository: RequirementRepository) = Asserti
 
 class AssertionRequirement(
     private val repository: RequirementRepository
-): AssertionApiEntity<Requirement, RequirementId, AssertionRequirement.RequirementAssert>() {
+): AssertionApiEntity<RequirementEntity, RequirementId, AssertionRequirement.RequirementAssert>() {
 
-    override suspend fun findById(id: RequirementId): Requirement? = repository.findById(id)
-    override suspend fun assertThat(entity: Requirement) = RequirementAssert(entity)
+    override suspend fun findById(id: RequirementId): RequirementEntity? = repository.findById(id)
+    override suspend fun assertThat(entity: RequirementEntity) = RequirementAssert(entity)
 
     inner class RequirementAssert(
-        private val requirement: Requirement
+        private val requirement: RequirementEntity
     ) {
         fun hasFields(
             id: RequirementId = requirement.id,

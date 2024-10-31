@@ -1,7 +1,7 @@
 package cccev.test.f2.certification.data
 
 import cccev.core.certification.entity.CertificationRepository
-import cccev.core.certification.entity.Evidence
+import cccev.core.certification.entity.EvidenceEntity
 import cccev.dsl.model.EvidenceId
 import cccev.dsl.model.EvidenceTypeId
 import io.komune.fs.s2.file.domain.model.FilePath
@@ -13,13 +13,13 @@ fun AssertionBdd.evidence(repository: CertificationRepository) = AssertionEviden
 
 class AssertionEvidence(
     private val repository: CertificationRepository
-): AssertionApiEntity<Evidence, EvidenceId, AssertionEvidence.EvidenceAssert>() {
+): AssertionApiEntity<EvidenceEntity, EvidenceId, AssertionEvidence.EvidenceAssert>() {
 
     override suspend fun findById(id: EvidenceId) = repository.findEvidenceById(id)
-    override suspend fun assertThat(entity: Evidence) = EvidenceAssert(entity)
+    override suspend fun assertThat(entity: EvidenceEntity) = EvidenceAssert(entity)
 
     inner class EvidenceAssert(
-        private val evidence: Evidence
+        private val evidence: EvidenceEntity
     ) {
         fun hasFields(
             id: EvidenceId = evidence.id,

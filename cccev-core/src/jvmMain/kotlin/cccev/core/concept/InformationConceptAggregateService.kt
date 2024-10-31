@@ -1,7 +1,7 @@
 package cccev.core.concept
 
-import cccev.core.concept.entity.InformationConcept
-import cccev.core.unit.entity.DataUnit
+import cccev.core.concept.entity.InformationConceptEntity
+import cccev.core.unit.entity.DataUnitEntity
 import cccev.f2.concept.command.InformationConceptCreateCommand
 import cccev.f2.concept.command.InformationConceptCreatedEvent
 import cccev.f2.concept.command.InformationConceptUpdateCommand
@@ -22,9 +22,9 @@ class InformationConceptAggregateService(
     private val sessionFactory: SessionFactory
 ) {
     suspend fun create(command: InformationConceptCreateCommand) = sessionFactory.transaction { session, _ ->
-        val dependencies = session.findSafeShallowAllById<InformationConcept>(command.dependsOn, InformationConcept.LABEL)
-        val unit = session.findSafeShallowById<DataUnit>(command.hasUnit, DataUnit.LABEL)
-        val concept = InformationConcept().apply {
+        val dependencies = session.findSafeShallowAllById<InformationConceptEntity>(command.dependsOn, InformationConceptEntity.LABEL)
+        val unit = session.findSafeShallowById<DataUnitEntity>(command.hasUnit, DataUnitEntity.LABEL)
+        val concept = InformationConceptEntity().apply {
             id = UUID.randomUUID().toString()
             identifier = (command.identifier ?: id.replace(Regex("[^a-zA-Z0-9]"), "_"))
             name = command.name
@@ -39,13 +39,13 @@ class InformationConceptAggregateService(
     }
 
     suspend fun update(command: InformationConceptUpdateCommand) = sessionFactory.transaction { session, _ ->
-        val concept = session.load(InformationConcept::class.java, command.id as String, 1)
+        val concept = session.load(InformationConceptEntity::class.java, command.id as String, 1)
             ?: throw NotFoundException("InformationConcept", command.id)
 
-        val dependencies = session.findSafeShallowAllById<InformationConcept>(command.dependsOn, InformationConcept.LABEL)
+        val dependencies = session.findSafeShallowAllById<InformationConceptEntity>(command.dependsOn, InformationConceptEntity.LABEL)
 
         session.removeSeveredRelations(
-            InformationConcept.LABEL, command.id, InformationConcept.DEPENDS_ON, InformationConcept.LABEL,
+            InformationConceptEntity.LABEL, command.id, InformationConceptEntity.DEPENDS_ON, InformationConceptEntity.LABEL,
             concept.dependencies.map { it.id }, command.dependsOn.toSet()
         )
 

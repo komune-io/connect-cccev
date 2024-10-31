@@ -2,14 +2,14 @@ package cccev.core.certification
 
 import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.f2.certification.command.CertificationAddedEvidenceEvent
-import cccev.core.certification.entity.Certification
+import cccev.core.certification.entity.CertificationEntity
 import cccev.core.certification.entity.CertificationRepository
-import cccev.core.certification.entity.RequirementCertification
+import cccev.core.certification.entity.RequirementCertificationEntity
 import cccev.core.certification.entity.isFulfilled
 import cccev.f2.certification.model.CertificationFsPath
 import cccev.core.certification.service.CertificationEvidenceService
 import cccev.core.certification.service.CertificationValuesFillerService
-import cccev.core.requirement.entity.Requirement
+import cccev.core.requirement.entity.RequirementEntity
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.certification.command.CertificationAddRequirementsCommand
@@ -42,7 +42,7 @@ class CertificationAggregateService(
 ) {
     suspend fun create(command: CertificationCreateCommand): CertificationCreatedEvent = sessionFactory.session { session ->
         command.id?.let { id ->
-            session.checkNotExists<Certification>(id, "Certification")
+            session.checkNotExists<CertificationEntity>(id, "Certification")
         }
 
         val requirements = command.requirementIdentifiers.map { requirementIdentifier ->
@@ -50,7 +50,7 @@ class CertificationAggregateService(
                 ?: throw NotFoundException("Requirement", requirementIdentifier)
         }
 
-        val certification = Certification().apply {
+        val certification = CertificationEntity().apply {
             id = command.id ?: UUID.randomUUID().toString()
             requirementCertifications = requirements.map { it.toEmptyCertification() }.toMutableList()
         }
@@ -108,7 +108,7 @@ class CertificationAggregateService(
         val requirementCertifications = requirements.map { it.toEmptyCertification() }
 
         if (command.parentId == null) {
-            val certification = session.load(Certification::class.java, command.id as String, 0)
+            val certification = session.load(CertificationEntity::class.java, command.id as String, 0)
                 ?: throw NotFoundException("Certification", command.id)
             certification.requirementCertifications.addAll(requirementCertifications)
             certificationRepository.save(certification)
@@ -117,7 +117,7 @@ class CertificationAggregateService(
                 throw NotFoundException("RequirementCertification [${command.parentId}] in Certification", command.id)
             }
 
-            val parentRequirementCertification = session.load(RequirementCertification::class.java, command.parentId as String, 0)
+            val parentRequirementCertification = session.load(RequirementCertificationEntity::class.java, command.parentId as String, 0)
                 ?: throw NotFoundException("RequirementCertification", command.parentId!!)
             parentRequirementCertification.subCertifications.addAll(requirementCertifications)
             certificationRepository.save(parentRequirementCertification)
@@ -134,11 +134,11 @@ class CertificationAggregateService(
         TODO()
     }
 
-    private suspend fun Requirement.toEmptyCertification(
-        existingCertifications: MutableMap<RequirementIdentifier, RequirementCertification> = mutableMapOf()
-    ): RequirementCertification {
+    private suspend fun RequirementEntity.toEmptyCertification(
+        existingCertifications: MutableMap<RequirementIdentifier, RequirementCertificationEntity> = mutableMapOf()
+    ): RequirementCertificationEntity {
         return existingCertifications[identifier]
-            ?: RequirementCertification().also { certification ->
+            ?: RequirementCertificationEntity().also { certification ->
                 existingCertifications[identifier] = certification
 
                 certification.id = UUID.randomUUID().toString()

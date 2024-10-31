@@ -1,7 +1,7 @@
 package cccev.test.f2.certification.data
 
 import cccev.core.certification.entity.CertificationRepository
-import cccev.core.certification.entity.RequirementCertification
+import cccev.core.certification.entity.RequirementCertificationEntity
 import cccev.dsl.model.RequirementCertificationId
 import cccev.dsl.model.RequirementId
 import cccev.dsl.model.SupportedValueId
@@ -13,13 +13,13 @@ fun AssertionBdd.requirementCertification(repository: CertificationRepository) =
 
 class AssertionRequirementCertification(
     private val repository: CertificationRepository
-): AssertionApiEntity<RequirementCertification, RequirementCertificationId, AssertionRequirementCertification.RequirementCertificationAssert>() {
+): AssertionApiEntity<RequirementCertificationEntity, RequirementCertificationId, AssertionRequirementCertification.RequirementCertificationAssert>() {
 
     override suspend fun findById(id: RequirementCertificationId) = repository.findRequirementCertificationById(id)
-    override suspend fun assertThat(entity: RequirementCertification) = RequirementCertificationAssert(entity)
+    override suspend fun assertThat(entity: RequirementCertificationEntity) = RequirementCertificationAssert(entity)
 
     inner class RequirementCertificationAssert(
-        private val certification: RequirementCertification
+        private val certification: RequirementCertificationEntity
     ) {
         fun hasFields(
             id: RequirementCertificationId = certification.id,

@@ -1,7 +1,7 @@
 package cccev.test.f2.certification.data
 
 import cccev.core.certification.entity.CertificationRepository
-import cccev.core.certification.entity.SupportedValue
+import cccev.core.certification.entity.SupportedValueEntity
 import cccev.dsl.model.EvidenceId
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.SupportedValueId
@@ -13,13 +13,13 @@ fun AssertionBdd.supportedValue(repository: CertificationRepository) = Assertion
 
 class AssertionSupportedValue(
     private val repository: CertificationRepository
-): AssertionApiEntity<SupportedValue, SupportedValueId, AssertionSupportedValue.SupportedValueAssert>() {
+): AssertionApiEntity<SupportedValueEntity, SupportedValueId, AssertionSupportedValue.SupportedValueAssert>() {
 
     override suspend fun findById(id: SupportedValueId) = repository.findSupportedValueById(id)
-    override suspend fun assertThat(entity: SupportedValue) = SupportedValueAssert(entity)
+    override suspend fun assertThat(entity: SupportedValueEntity) = SupportedValueAssert(entity)
 
     inner class SupportedValueAssert(
-        private val supportedValue: SupportedValue
+        private val supportedValue: SupportedValueEntity
     ) {
         fun hasFields(
             id: SupportedValueId = supportedValue.id,

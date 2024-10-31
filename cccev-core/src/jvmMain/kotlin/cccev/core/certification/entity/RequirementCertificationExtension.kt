@@ -1,6 +1,6 @@
 package cccev.core.certification.entity
 
-fun RequirementCertification.isFulfilled() = isEnabled
+fun RequirementCertificationEntity.isFulfilled() = isEnabled
         && isValidated
         && hasAllValues
         && areEvidencesProvided

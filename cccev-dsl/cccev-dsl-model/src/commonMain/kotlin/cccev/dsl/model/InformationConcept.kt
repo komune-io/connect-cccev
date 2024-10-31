@@ -10,6 +10,7 @@ typealias InformationConceptIdentifier = String
 @JsExport
 @JsName("InformationConcept")
 interface InformationConcept {
+    //TODO FIND A WAY TO REMOVE All Id from the model dsl
 	val id: InformationConceptId
 	val identifier: InformationConceptIdentifier
 	val name: String

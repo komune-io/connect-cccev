@@ -1,6 +1,6 @@
 package cccev.core.evidencetype.entity
 
-import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.entity.InformationConceptEntity
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeIdentifier
 import java.util.UUID
@@ -9,8 +9,8 @@ import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
 import org.neo4j.ogm.annotation.Version
 
-@NodeEntity(EvidenceType.LABEL)
-class EvidenceType {
+@NodeEntity(EvidenceTypeEntity.LABEL)
+class EvidenceTypeEntity {
     companion object {
         const val LABEL = "EvidenceType"
         const val SUPPORTS_CONCEPT = "SUPPORTS_CONCEPT"
@@ -24,7 +24,7 @@ class EvidenceType {
     lateinit var name: String
 
     @Relationship(SUPPORTS_CONCEPT)
-    var concepts: MutableList<InformationConcept> = mutableListOf()
+    var concepts: MutableList<InformationConceptEntity> = mutableListOf()
 
     @Version
     var version: Long? = null

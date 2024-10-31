@@ -9,19 +9,19 @@ import org.springframework.stereotype.Service
 class EvidenceTypeRepository(
     private val sessionFactory: SessionFactory
 ) {
-    suspend fun findById(id: String): EvidenceType? = sessionFactory.session { session ->
+    suspend fun findById(id: String): EvidenceTypeEntity? = sessionFactory.session { session ->
         session.query(
-            "MATCH (et:${EvidenceType.LABEL} {id: \$id})"
+            "MATCH (et:${EvidenceTypeEntity.LABEL} {id: \$id})"
                 .returnWholeEntity("et"),
             mapOf("id" to id)
-        ).map { it["et"] as EvidenceType }
+        ).map { it["et"] as EvidenceTypeEntity }
             .firstOrNull()
     }
 
-    suspend fun findByIdentifier(identifier: String): EvidenceType? = sessionFactory.session { session ->
+    suspend fun findByIdentifier(identifier: String): EvidenceTypeEntity? = sessionFactory.session { session ->
         session.queryForObject(
-            EvidenceType::class.java,
-            "MATCH (c:${EvidenceType.LABEL} {identifier: \$identifier})" +
+            EvidenceTypeEntity::class.java,
+            "MATCH (c:${EvidenceTypeEntity.LABEL} {identifier: \$identifier})" +
                     "\nCALL apoc.path.subgraphAll(c, {})" +
                     "\nYIELD nodes, relationships" +
                     "\nRETURN nodes, relationships",

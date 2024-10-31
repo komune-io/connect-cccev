@@ -1,11 +1,11 @@
 package cccev.f2.concept.model
 
-import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.entity.InformationConceptEntity
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.f2.CccevFlatGraph
 import cccev.f2.unit.model.flattenTo
 
-fun InformationConcept.flattenTo(graph: CccevFlatGraph): InformationConceptIdentifier {
+fun InformationConceptEntity.flattenTo(graph: CccevFlatGraph): InformationConceptIdentifier {
     graph.concepts[identifier] = InformationConceptFlat(
         id = id,
         identifier = identifier,
