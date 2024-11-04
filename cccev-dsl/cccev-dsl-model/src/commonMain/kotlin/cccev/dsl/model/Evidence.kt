@@ -37,10 +37,6 @@ typealias EvidenceIdentifier = String
 @JsName("EvidenceDTO")
 interface EvidenceDTO {
     /**
-     * The unique id of the evidence.
-     */
-    val id: EvidenceId
-    /**
      * The unique identifier of the evidence.
      */
     val identifier: EvidenceIdentifier
@@ -79,7 +75,6 @@ interface EvidenceDTO {
  */
 @Serializable
 open class Evidence(
-    override val id: EvidenceId,
     override val identifier: EvidenceIdentifier,
     override val isConformantTo: List<EvidenceTypeId> = emptyList(),
     override val supportsValue: List<SupportedValueId> = emptyList(),
