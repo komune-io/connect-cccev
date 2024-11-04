@@ -5,8 +5,8 @@ import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
 import org.neo4j.ogm.annotation.Version
 
-@NodeEntity(Certification.LABEL)
-class Certification {
+@NodeEntity(CertificationEntity.LABEL)
+class CertificationEntity {
     companion object {
         const val LABEL = "Certification"
         const val IS_CERTIFIED_BY = "IS_CERTIFIED_BY"
@@ -16,7 +16,7 @@ class Certification {
     lateinit var id: String
 
     @Relationship(IS_CERTIFIED_BY)
-    var requirementCertifications: MutableList<RequirementCertification> = mutableListOf()
+    var requirementCertifications: MutableList<RequirementCertificationEntity> = mutableListOf()
 
     @Version
     var version: Long? = null

@@ -1,14 +1,14 @@
 package cccev.core.certification.entity
 
-import cccev.core.requirement.entity.Requirement
+import cccev.core.requirement.entity.RequirementEntity
 import cccev.dsl.model.RequirementCertificationId
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
 import org.neo4j.ogm.annotation.Version
 
-@NodeEntity(RequirementCertification.LABEL)
-class RequirementCertification {
+@NodeEntity(RequirementCertificationEntity.LABEL)
+class RequirementCertificationEntity {
     companion object {
         const val LABEL = "RequirementCertification"
 
@@ -22,16 +22,16 @@ class RequirementCertification {
     lateinit var id: RequirementCertificationId
 
     @Relationship(CERTIFIES)
-    lateinit var requirement: Requirement
+    lateinit var requirement: RequirementEntity
 
     @Relationship(IS_CERTIFIED_BY)
-    var subCertifications: MutableList<RequirementCertification> = mutableListOf()
+    var subCertifications: MutableList<RequirementCertificationEntity> = mutableListOf()
 
     @Relationship(USES_VALUE)
-    var values: MutableList<SupportedValue> = mutableListOf()
+    var values: MutableList<SupportedValueEntity> = mutableListOf()
 
     @Relationship(HAS_EVIDENCE)
-    var evidences: MutableList<Evidence> = mutableListOf()
+    var evidences: MutableList<EvidenceEntity> = mutableListOf()
 
     /**
      * Result of the requirement's enablingCondition, or true if the requirement has no enablingCondition.

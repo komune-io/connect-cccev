@@ -1,12 +1,12 @@
 package cccev.f2.requirement.model
 
-import cccev.core.requirement.entity.Requirement
+import cccev.core.requirement.entity.RequirementEntity
 import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.CccevFlatGraph
 import cccev.f2.concept.model.flattenTo
 import cccev.f2.evidencetype.model.flattenTo
 
-fun Requirement.flattenTo(graph: CccevFlatGraph): RequirementIdentifier {
+fun RequirementEntity.flattenTo(graph: CccevFlatGraph): RequirementIdentifier {
     graph.requirements[identifier] = RequirementFlat(
         id = id,
         identifier = identifier,

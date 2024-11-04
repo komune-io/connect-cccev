@@ -1,12 +1,12 @@
 package cccev.f2.unit.model
 
-import cccev.core.unit.entity.DataUnit
-import cccev.core.unit.entity.DataUnitOption
+import cccev.core.unit.entity.DataUnitEntity
+import cccev.core.unit.entity.DataUnitOptionEntity
 import cccev.dsl.model.DataUnitIdentifier
 import cccev.dsl.model.DataUnitOptionIdentifier
 import cccev.f2.CccevFlatGraph
 
-fun DataUnit.flattenTo(graph: CccevFlatGraph): DataUnitIdentifier {
+fun DataUnitEntity.flattenTo(graph: CccevFlatGraph): DataUnitIdentifier {
     graph.units[identifier] = DataUnitFlat(
         id = id,
         identifier = identifier,
@@ -19,7 +19,7 @@ fun DataUnit.flattenTo(graph: CccevFlatGraph): DataUnitIdentifier {
     return identifier
 }
 
-fun DataUnitOption.flattenTo(graph: CccevFlatGraph): DataUnitOptionIdentifier {
+fun DataUnitOptionEntity.flattenTo(graph: CccevFlatGraph): DataUnitOptionIdentifier {
     graph.unitOptions[identifier] = cccev.dsl.model.DataUnitOption(
 //        id = id,
         identifier = identifier,

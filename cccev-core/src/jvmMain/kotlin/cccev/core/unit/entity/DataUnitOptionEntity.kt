@@ -9,8 +9,8 @@ import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Version
 
-@NodeEntity(DataUnitOption.LABEL)
-class DataUnitOption {
+@NodeEntity(DataUnitOptionEntity.LABEL)
+class DataUnitOptionEntity {
     companion object {
         const val LABEL = "DataUnitOption"
     }

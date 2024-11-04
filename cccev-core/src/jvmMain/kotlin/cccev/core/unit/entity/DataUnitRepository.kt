@@ -11,21 +11,21 @@ import org.springframework.stereotype.Service
 class DataUnitRepository(
     private val sessionFactory: SessionFactory
 ) {
-    suspend fun findById(id: DataUnitId): DataUnit? = sessionFactory.session { session ->
+    suspend fun findById(id: DataUnitId): DataUnitEntity? = sessionFactory.session { session ->
         session.query(
-            "MATCH (unit:${DataUnit.LABEL} {id: \$id})"
+            "MATCH (unit:${DataUnitEntity.LABEL} {id: \$id})"
                 .returnWholeEntity("unit"),
             mapOf("id" to id)
-        ).map { it["unit"] as DataUnit }
+        ).map { it["unit"] as DataUnitEntity }
             .firstOrNull()
     }
 
-    suspend fun findByIdentifier(identifier: DataUnitIdentifier): DataUnit? = sessionFactory.session { session ->
+    suspend fun findByIdentifier(identifier: DataUnitIdentifier): DataUnitEntity? = sessionFactory.session { session ->
         session.query(
-            "MATCH (unit:${DataUnit.LABEL} {identifier: \$identifier})"
+            "MATCH (unit:${DataUnitEntity.LABEL} {identifier: \$identifier})"
                 .returnWholeEntity("unit"),
             mapOf("identifier" to identifier)
-        ).map { it["unit"] as DataUnit }
+        ).map { it["unit"] as DataUnitEntity }
             .firstOrNull()
     }
 }

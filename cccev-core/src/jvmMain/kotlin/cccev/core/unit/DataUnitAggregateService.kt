@@ -1,7 +1,7 @@
 package cccev.core.unit
 
-import cccev.core.unit.entity.DataUnit
-import cccev.core.unit.entity.DataUnitOption
+import cccev.core.unit.entity.DataUnitEntity
+import cccev.core.unit.entity.DataUnitOptionEntity
 import cccev.f2.unit.command.DataUnitCreateCommand
 import cccev.f2.unit.command.DataUnitCreatedEvent
 import cccev.f2.unit.command.DataUnitUpdateCommand
@@ -20,7 +20,7 @@ class DataUnitAggregateService(
     private val sessionFactory: SessionFactory
 ) {
     suspend fun create(command: DataUnitCreateCommand): DataUnitCreatedEvent = sessionFactory.transaction { session, _ ->
-        val unit = DataUnit().apply {
+        val unit = DataUnitEntity().apply {
             id = UUID.randomUUID().toString()
             identifier = command.identifier
             name = command.name
@@ -28,7 +28,7 @@ class DataUnitAggregateService(
             notation = command.notation
             type = command.type
             options = command.options?.map { option ->
-                DataUnitOption().apply {
+                DataUnitOptionEntity().apply {
                     id = UUID.randomUUID().toString()
                     identifier = option.identifier
                     name = option.name
@@ -46,12 +46,12 @@ class DataUnitAggregateService(
     }
 
     suspend fun update(command: DataUnitUpdateCommand): DataUnitUpdatedEvent = sessionFactory.transaction { session, _ ->
-        val unit = session.load(DataUnit::class.java, command.id as String, 1)
+        val unit = session.load(DataUnitEntity::class.java, command.id as String, 1)
             ?: throw NotFoundException("DataUnit", command.id)
 
-        val existingOptions = unit.options.associateBy(DataUnitOption::id)
+        val existingOptions = unit.options.associateBy(DataUnitOptionEntity::id)
         session.removeSeveredRelations(
-            DataUnit.LABEL, command.id, DataUnit.HAS_OPTION, DataUnitOption.LABEL,
+            DataUnitEntity.LABEL, command.id, DataUnitEntity.HAS_OPTION, DataUnitOptionEntity.LABEL,
             existingOptions.keys, command.options?.mapNotNull { it.id }?.toSet() ?: emptySet()
         )
 
@@ -61,7 +61,7 @@ class DataUnitAggregateService(
             notation = command.notation
             options = command.options?.map { option ->
                 val optionToMutate = existingOptions[option.id]
-                    ?: DataUnitOption().apply { id = UUID.randomUUID().toString() }
+                    ?: DataUnitOptionEntity().apply { id = UUID.randomUUID().toString() }
                 optionToMutate.apply {
                     identifier = option.identifier
                     name = option.name

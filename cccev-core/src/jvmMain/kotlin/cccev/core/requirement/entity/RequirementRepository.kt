@@ -1,6 +1,6 @@
 package cccev.core.requirement.entity
 
-import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.entity.InformationConceptEntity
 import cccev.dsl.model.RequirementId
 import cccev.dsl.model.RequirementIdentifier
 import cccev.infra.neo4j.returnWholeEntity
@@ -12,36 +12,36 @@ import org.springframework.stereotype.Service
 class RequirementRepository(
     private val sessionFactory: SessionFactory
 ) {
-    suspend fun findById(id: RequirementId): Requirement? = sessionFactory.session { session ->
+    suspend fun findById(id: RequirementId): RequirementEntity? = sessionFactory.session { session ->
         session.query(
-            "MATCH (requirement:${Requirement.LABEL} {id: \$id})"
+            "MATCH (requirement:${RequirementEntity.LABEL} {id: \$id})"
                 .returnWholeEntity("requirement"),
             mapOf("id" to id)
-        ).map { it["requirement"] as Requirement }
+        ).map { it["requirement"] as RequirementEntity }
             .firstOrNull()
     }
 
-    suspend fun findByIdentifier(identifier: RequirementIdentifier): Requirement? = sessionFactory.session { session ->
+    suspend fun findByIdentifier(identifier: RequirementIdentifier): RequirementEntity? = sessionFactory.session { session ->
         session.query(
-            "MATCH (requirement:${Requirement.LABEL} {identifier: \$identifier})"
+            "MATCH (requirement:${RequirementEntity.LABEL} {identifier: \$identifier})"
                 .returnWholeEntity("requirement"),
             mapOf("identifier" to identifier)
-        ).map { it["requirement"] as Requirement }
+        ).map { it["requirement"] as RequirementEntity }
             .firstOrNull()
     }
 
     suspend fun loadRequirementOnlyGraph(
         rootRequirementIdentifier: RequirementIdentifier
-    ): Requirement? = sessionFactory.session { session ->
+    ): RequirementEntity? = sessionFactory.session { session ->
         val query = """
-            MATCH (root:${Requirement.LABEL})
-            -[has_requirement:${Requirement.HAS_REQUIREMENT}*0..]->(children:${Requirement.LABEL})
-            WHERE root.${Requirement::identifier.name} = ${'$'}identifier
+            MATCH (root:${RequirementEntity.LABEL})
+            -[has_requirement:${RequirementEntity.HAS_REQUIREMENT}*0..]->(children:${RequirementEntity.LABEL})
+            WHERE root.${RequirementEntity::identifier.name} = ${'$'}identifier
             RETURN root, collect(has_requirement), collect(children)
         """.trimIndent()
 
         session.query(query, mapOf("identifier" to rootRequirementIdentifier))
-            .map { it["root"] as Requirement }
+            .map { it["root"] as RequirementEntity }
             .firstOrNull()
     }
 
@@ -49,8 +49,8 @@ class RequirementRepository(
         session.queryForObject(
             java.lang.Boolean::class.java,
             "RETURN EXISTS( " +
-                    "(:${Requirement.LABEL} {identifier: \$identifier})" +
-                    "-[:${Requirement.HAS_CONCEPT}]->(:${InformationConcept.LABEL})" +
+                    "(:${RequirementEntity.LABEL} {identifier: \$identifier})" +
+                    "-[:${RequirementEntity.HAS_CONCEPT}]->(:${InformationConceptEntity.LABEL})" +
                     ")",
             mapOf("identifier" to requirementIdentifier)
         ).booleanValue()

@@ -1,6 +1,6 @@
 package cccev.test.f2.concept.data
 
-import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.entity.InformationConceptEntity
 import cccev.core.concept.entity.InformationConceptRepository
 import cccev.dsl.model.DataUnitId
 import cccev.dsl.model.InformationConceptId
@@ -12,13 +12,13 @@ fun AssertionBdd.informationConcept(conceptRepository: InformationConceptReposit
 
 class AssertionInformationConcept(
     private val repository: InformationConceptRepository
-): AssertionApiEntity<InformationConcept, InformationConceptId, AssertionInformationConcept.InformationConceptAssert>() {
+): AssertionApiEntity<InformationConceptEntity, InformationConceptId, AssertionInformationConcept.InformationConceptAssert>() {
 
     override suspend fun findById(id: InformationConceptId) = repository.findById(id)
-    override suspend fun assertThat(entity: InformationConcept) = InformationConceptAssert(entity)
+    override suspend fun assertThat(entity: InformationConceptEntity) = InformationConceptAssert(entity)
 
     inner class InformationConceptAssert(
-        private val concept: InformationConcept
+        private val concept: InformationConceptEntity
     ) {
         fun hasFields(
             id: InformationConceptId = concept.id,

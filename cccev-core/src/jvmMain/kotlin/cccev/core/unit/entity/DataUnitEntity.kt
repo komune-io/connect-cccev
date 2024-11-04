@@ -8,8 +8,8 @@ import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
 import org.neo4j.ogm.annotation.Version
 
-@NodeEntity(DataUnit.LABEL)
-class DataUnit {
+@NodeEntity(DataUnitEntity.LABEL)
+class DataUnitEntity {
     companion object {
         const val LABEL = "DataUnit"
         const val HAS_OPTION = "HAS_OPTION"
@@ -29,7 +29,7 @@ class DataUnit {
     lateinit var type: DataUnitType
 
     @Relationship(HAS_OPTION)
-    var options: MutableList<DataUnitOption> = mutableListOf()
+    var options: MutableList<DataUnitOptionEntity> = mutableListOf()
 
     @Version
     var version: Long? = null

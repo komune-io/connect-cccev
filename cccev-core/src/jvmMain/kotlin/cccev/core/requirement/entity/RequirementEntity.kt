@@ -2,8 +2,8 @@ package cccev.core.requirement.entity
 
 import cccev.commons.utils.parseJsonTo
 import cccev.commons.utils.toJson
-import cccev.core.concept.entity.InformationConcept
-import cccev.core.evidencetype.entity.EvidenceType
+import cccev.core.concept.entity.InformationConceptEntity
+import cccev.core.evidencetype.entity.EvidenceTypeEntity
 import cccev.dsl.model.RequirementId
 import cccev.f2.requirement.model.RequirementKind
 import org.neo4j.ogm.annotation.Id
@@ -11,8 +11,8 @@ import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
 import org.neo4j.ogm.annotation.Version
 
-@NodeEntity(Requirement.LABEL)
-class Requirement {
+@NodeEntity(RequirementEntity.LABEL)
+class RequirementEntity {
     companion object {
         const val LABEL = "Requirement"
         const val HAS_REQUIREMENT = "HAS_REQUIREMENT"
@@ -36,25 +36,25 @@ class Requirement {
     var type: String? = null
 
     @Relationship(HAS_REQUIREMENT)
-    var subRequirements: MutableList<Requirement> = mutableListOf()
+    var subRequirements: MutableList<RequirementEntity> = mutableListOf()
 
     @Relationship(HAS_CONCEPT)
-    var concepts: MutableList<InformationConcept> = mutableListOf()
+    var concepts: MutableList<InformationConceptEntity> = mutableListOf()
 
     @Relationship(HAS_EVIDENCE_TYPE)
-    var evidenceTypes: MutableList<EvidenceType> = mutableListOf()
+    var evidenceTypes: MutableList<EvidenceTypeEntity> = mutableListOf()
 
     var enablingCondition: String? = null
 
     @Relationship(ENABLING_DEPENDS_ON)
-    var enablingConditionDependencies: MutableList<InformationConcept> = mutableListOf()
+    var enablingConditionDependencies: MutableList<InformationConceptEntity> = mutableListOf()
 
     var required: Boolean = true
 
     var validatingCondition: String? = null
 
     @Relationship(VALIDATION_DEPENDS_ON)
-    var validatingConditionDependencies: MutableList<InformationConcept> = mutableListOf()
+    var validatingConditionDependencies: MutableList<InformationConceptEntity> = mutableListOf()
 
     var evidenceValidatingCondition: String? = null
 

@@ -2,10 +2,10 @@ package cccev.core.certification.service
 
 import cccev.commons.utils.mapAsync
 import cccev.core.certification.entity.CertificationRepository
-import cccev.core.certification.entity.RequirementCertification
-import cccev.core.certification.entity.SupportedValue
+import cccev.core.certification.entity.RequirementCertificationEntity
+import cccev.core.certification.entity.SupportedValueEntity
 import cccev.core.certification.entity.isFulfilled
-import cccev.core.concept.entity.InformationConcept
+import cccev.core.concept.entity.InformationConceptEntity
 import cccev.core.concept.entity.InformationConceptRepository
 import cccev.dsl.model.CertificationId
 import cccev.dsl.model.DataUnitType
@@ -52,7 +52,7 @@ class CertificationValuesFillerService(
         computeValuesOfConsumersOf(values.keys, context)
     }
 
-    private suspend fun List<RequirementCertification>.fillValue(
+    private suspend fun List<RequirementCertificationEntity>.fillValue(
         informationConceptIdentifier: InformationConceptIdentifier, value: String?
     ) {
         println("fill value: [$informationConceptIdentifier]: [$value]")
@@ -63,7 +63,7 @@ class CertificationValuesFillerService(
         // will throw if conversion is impossible
         value.convertTo(informationConcept.unit.type)
 
-        val supportedValue = SupportedValue().also { supportedValue ->
+        val supportedValue = SupportedValueEntity().also { supportedValue ->
             supportedValue.id = UUID.randomUUID().toString()
             supportedValue.value = value
             supportedValue.concept = informationConcept
@@ -72,8 +72,8 @@ class CertificationValuesFillerService(
         this.fillValue(informationConceptIdentifier, supportedValue)
     }
 
-    private suspend fun List<RequirementCertification>.fillValue(
-        informationConceptIdentifier: InformationConceptIdentifier, supportedValue: SupportedValue
+    private suspend fun List<RequirementCertificationEntity>.fillValue(
+        informationConceptIdentifier: InformationConceptIdentifier, supportedValue: SupportedValueEntity
     ) = sessionFactory.session { session ->
         println("fill value: [$informationConceptIdentifier]: [$supportedValue]")
         this.onEach { requirementCertification ->
@@ -101,12 +101,12 @@ class CertificationValuesFillerService(
         val consumers = informationConceptIdentifiers.mapAsync { informationConceptIdentifier ->
             informationConceptRepository.findDependingOn(informationConceptIdentifier)
         }.flatten()
-            .distinctBy(InformationConcept::identifier)
+            .distinctBy(InformationConceptEntity::identifier)
 
         consumers.computeValues(context)
     }
 
-    private suspend fun List<InformationConcept>.computeValues(context: Context) {
+    private suspend fun List<InformationConceptEntity>.computeValues(context: Context) {
         val computableConcepts = this.filter { concept ->
             concept.expressionOfExpectedValue != null
                     && concept.dependencies.all { it.identifier in context.knownValues }
@@ -127,7 +127,7 @@ class CertificationValuesFillerService(
                 .getValue(expressionContext, concept.unit.type.klass())
                 .also { context.knownValues[concept.identifier] = it }
                 .let {
-                    SupportedValue().also { supportedValue ->
+                    SupportedValueEntity().also { supportedValue ->
                         supportedValue.id = UUID.randomUUID().toString()
                         supportedValue.value = it.toString()
                         supportedValue.concept = concept
@@ -138,7 +138,7 @@ class CertificationValuesFillerService(
         }
     }
 
-    private suspend fun RequirementCertification.updateFulfillment() {
+    private suspend fun RequirementCertificationEntity.updateFulfillment() {
         println("update fulfillment: [$id] (requirement: [${requirement.identifier}])")
         var changed: Boolean
 
@@ -151,13 +151,13 @@ class CertificationValuesFillerService(
 
         isEnabled = evaluateBooleanExpression(
             requirement.enablingCondition,
-            requirement.enablingConditionDependencies.map(InformationConcept::identifier).toSet(),
+            requirement.enablingConditionDependencies.map(InformationConceptEntity::identifier).toSet(),
             mappedValues
         ).also { changed = changed || it != isEnabled }
 
         isValidated = evaluateBooleanExpression(
             requirement.validatingCondition,
-            requirement.validatingConditionDependencies.map(InformationConcept::identifier).toSet(),
+            requirement.validatingConditionDependencies.map(InformationConceptEntity::identifier).toSet(),
             mappedValues
         ).also { changed = changed || it != isValidated }
 

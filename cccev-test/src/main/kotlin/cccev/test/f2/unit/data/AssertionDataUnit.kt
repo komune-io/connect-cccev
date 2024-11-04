@@ -1,6 +1,6 @@
 package cccev.test.f2.unit.data
 
-import cccev.core.unit.entity.DataUnit
+import cccev.core.unit.entity.DataUnitEntity
 import cccev.core.unit.entity.DataUnitRepository
 import cccev.dsl.model.DataUnitId
 import cccev.dsl.model.DataUnitType
@@ -12,13 +12,13 @@ fun AssertionBdd.dataUnit(unitRepository: DataUnitRepository) = AssertionDataUni
 
 class AssertionDataUnit(
     private val repository: DataUnitRepository
-): AssertionApiEntity<DataUnit, DataUnitId, AssertionDataUnit.DataUnitAssert>() {
+): AssertionApiEntity<DataUnitEntity, DataUnitId, AssertionDataUnit.DataUnitAssert>() {
 
     override suspend fun findById(id: DataUnitId) = repository.findById(id)
-    override suspend fun assertThat(entity: DataUnit) = DataUnitAssert(entity)
+    override suspend fun assertThat(entity: DataUnitEntity) = DataUnitAssert(entity)
 
     inner class DataUnitAssert(
-        private val unit: DataUnit
+        private val unit: DataUnitEntity
     ) {
         fun hasFields(
             id: DataUnitId = unit.id,

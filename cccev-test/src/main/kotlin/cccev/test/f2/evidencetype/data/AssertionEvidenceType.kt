@@ -1,6 +1,6 @@
 package cccev.test.f2.evidencetype.data
 
-import cccev.core.evidencetype.entity.EvidenceType
+import cccev.core.evidencetype.entity.EvidenceTypeEntity
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptId
@@ -12,13 +12,13 @@ fun AssertionBdd.evidenceType(repository: EvidenceTypeRepository) = AssertionEvi
 
 class AssertionEvidenceType(
     private val repository: EvidenceTypeRepository
-): AssertionApiEntity<EvidenceType, EvidenceTypeId, AssertionEvidenceType.EvidenceTypeAssert>() {
+): AssertionApiEntity<EvidenceTypeEntity, EvidenceTypeId, AssertionEvidenceType.EvidenceTypeAssert>() {
 
     override suspend fun findById(id: EvidenceTypeId) = repository.findById(id)
-    override suspend fun assertThat(entity: EvidenceType) = EvidenceTypeAssert(entity)
+    override suspend fun assertThat(entity: EvidenceTypeEntity) = EvidenceTypeAssert(entity)
 
     inner class EvidenceTypeAssert(
-        private val evidenceType: EvidenceType
+        private val evidenceType: EvidenceTypeEntity
     ) {
         fun hasFields(
             id: EvidenceTypeId = evidenceType.id,

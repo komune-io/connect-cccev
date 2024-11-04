@@ -2,8 +2,8 @@ package cccev.core.certification.service
 
 import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.core.certification.entity.CertificationRepository
-import cccev.core.certification.entity.Evidence
-import cccev.core.certification.entity.RequirementCertification
+import cccev.core.certification.entity.EvidenceEntity
+import cccev.core.certification.entity.RequirementCertificationEntity
 import cccev.core.certification.entity.isFulfilled
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
 import cccev.dsl.model.EvidenceId
@@ -45,7 +45,7 @@ class CertificationEvidenceService(
             command.id, command.rootRequirementCertificationId, command.evidenceTypeId
         )
 
-        val evidence = Evidence().also { evidence ->
+        val evidence = EvidenceEntity().also { evidence ->
             evidence.id = UUID.randomUUID().toString()
             evidence.evidenceType = evidenceType
             evidence.file = filePath
@@ -60,7 +60,7 @@ class CertificationEvidenceService(
         evidence.id
     }
 
-    private suspend fun RequirementCertification.addEvidence(evidence: Evidence) = sessionFactory.session { session ->
+    private suspend fun RequirementCertificationEntity.addEvidence(evidence: EvidenceEntity) = sessionFactory.session { session ->
         val existingEvidence = evidences
             .firstOrNull { it.evidenceType.id == evidence.evidenceType.id }
 
@@ -75,7 +75,7 @@ class CertificationEvidenceService(
         updateFulfillment()
     }
 
-    private suspend fun RequirementCertification.updateFulfillment() {
+    private suspend fun RequirementCertificationEntity.updateFulfillment() {
         var changed: Boolean
 
         val evaluationResult = requirement.evidenceValidatingCondition?.let { expression ->
@@ -101,8 +101,8 @@ class CertificationEvidenceService(
         }
     }
 
-    private suspend fun Evidence.linkWithValuesOf(
-        requirementCertifications: Collection<RequirementCertification>
+    private suspend fun EvidenceEntity.linkWithValuesOf(
+        requirementCertifications: Collection<RequirementCertificationEntity>
     ) = sessionFactory.session { session ->
         val supportedValues = certificationRepository.findSupportedValuesSupportedByEvidenceType(
             evidenceTypeId = evidenceType.id,

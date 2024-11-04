@@ -1,7 +1,7 @@
 package cccev.core.evidencetype
 
 import cccev.core.concept.entity.InformationConceptRepository
-import cccev.core.evidencetype.entity.EvidenceType
+import cccev.core.evidencetype.entity.EvidenceTypeEntity
 import cccev.f2.evidencetype.command.EvidenceTypeCreateCommand
 import cccev.f2.evidencetype.command.EvidenceTypeCreatedEvent
 import cccev.infra.neo4j.checkNotExists
@@ -18,7 +18,7 @@ class EvidenceTypeAggregateService(
 ) {
     suspend fun create(command: EvidenceTypeCreateCommand): EvidenceTypeCreatedEvent = sessionFactory.session { session ->
         command.id?.let { id ->
-            session.checkNotExists<EvidenceType>(id, "EvidenceType")
+            session.checkNotExists<EvidenceTypeEntity>(id, "EvidenceType")
         }
 
         val shallowConcepts = command.conceptIdentifiers.map { identifier ->
@@ -26,7 +26,7 @@ class EvidenceTypeAggregateService(
                 ?: throw NotFoundException("InformationConcept", identifier)
         }
 
-        val evidenceType = EvidenceType().apply {
+        val evidenceType = EvidenceTypeEntity().apply {
             id = command.id ?: UUID.randomUUID().toString()
             name = command.name
             concepts = shallowConcepts.toMutableList()
