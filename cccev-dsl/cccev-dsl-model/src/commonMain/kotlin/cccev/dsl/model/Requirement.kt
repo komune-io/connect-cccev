@@ -32,7 +32,7 @@ sealed interface Requirement {
     val hasRequirement: List<Requirement>?
     var isRequirementOf: List<Requirement>?
     val hasConcept: List<InformationConcept>?
-    val hasEvidenceTypeList: List<EvidenceTypeListBase>?
+    val hasEvidenceTypeList: List<EvidenceTypeList>?
     val enablingCondition: String?
     val enablingConditionDependencies: List<InformationConceptIdentifier>
     val required: Boolean
@@ -97,7 +97,7 @@ open class InformationRequirement(
     override val type: String? = null,
     override val hasConcept: List<InformationConcept>? = emptyList(),
     override val hasRequirement: List<Requirement>? = emptyList(),
-    override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
+    override val hasEvidenceTypeList: List<EvidenceTypeList>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
     override val enablingCondition: String?,
