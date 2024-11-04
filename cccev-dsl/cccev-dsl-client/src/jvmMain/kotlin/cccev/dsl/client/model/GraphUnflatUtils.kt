@@ -6,9 +6,7 @@ import cccev.dsl.model.Criterion
 import cccev.dsl.model.DataUnit
 import cccev.dsl.model.DataUnitOption
 import cccev.dsl.model.DataUnitType
-import cccev.dsl.model.EvidenceType
 import cccev.dsl.model.EvidenceTypeBase
-import cccev.dsl.model.EvidenceTypeList
 import cccev.dsl.model.EvidenceTypeListBase
 import cccev.dsl.model.InformationConcept
 import cccev.dsl.model.InformationConceptBase
@@ -244,7 +242,7 @@ private fun RequirementFlat.asConstant(
     enablingConditionDependencies: List<InformationConceptId>,
     validatingConditionDependencies: List<InformationConceptId>,
     subRequirements: List<Requirement>,
-    concepts: List<InformationConcept>
+    concepts: List<InformationConcept>,
     evidenceTypeLists: List<EvidenceTypeListBase>
 ) = Constraint(
     id = id,
