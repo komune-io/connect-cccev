@@ -72,7 +72,7 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
                     type = command.type,
                     hasRequirement = command.subRequirementIds,
                     hasConcept = command.conceptIds,
-                    hasEvidenceType = command.evidenceTypeIds,
+                    hasEvidenceType = command.evidenceTypeListIds,
                 )
             }
         }
@@ -107,7 +107,7 @@ class RequirementCreateSteps: En, CccevCucumberStepsDefinition() {
             type = params.type,
             subRequirementIds = params.hasRequirement.map { context.requirementIds[it] ?: it },
             conceptIds = params.hasConcept.map { context.conceptIds[it] ?: it },
-            evidenceTypeIds = params.hasEvidenceType.map { context.evidenceTypeIds[it] ?: it },
+            evidenceTypeListIds = params.hasEvidenceType.map { context.evidenceTypeIds[it] ?: it },
             validatingCondition = params.validatingCondition,
             validatingConditionDependencies = params.validatingConditionDependencies.map { context.conceptIds[it] ?: it },
             evidenceValidatingCondition = params.evidenceValidatingCondition,

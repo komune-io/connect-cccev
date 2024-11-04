@@ -22,7 +22,7 @@ fun evidenceTypeClient(urlBase: String): F2SupplierSingle<EvidenceTypeClient> = 
 }
 
 @JsExport
-open class EvidenceTypeClient constructor(private val client: F2Client): EvidenceTypeApi {
+open class EvidenceTypeClient(private val client: F2Client): EvidenceTypeApi {
     override fun evidenceTypeCreate(): EvidenceTypeCreateFunction
         = client.function(this::evidenceTypeCreate.name)
     override fun evidenceTypeGet(): EvidenceTypeGetFunction

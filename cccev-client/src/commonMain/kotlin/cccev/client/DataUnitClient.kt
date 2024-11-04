@@ -23,7 +23,7 @@ fun dataUnitClient(urlBase: String): F2SupplierSingle<DataUnitClient> = f2Suppli
 }
 
 @JsExport
-open class DataUnitClient constructor(private val client: F2Client): DataUnitApi {
+open class DataUnitClient(private val client: F2Client): DataUnitApi {
     override fun dataUnitGet(): DataUnitGetFunction = client.function(this::dataUnitGet.name)
     override fun dataUnitGetByIdentifier(): DataUnitGetByIdentifierFunction
             = client.function(this::dataUnitGetByIdentifier.name)

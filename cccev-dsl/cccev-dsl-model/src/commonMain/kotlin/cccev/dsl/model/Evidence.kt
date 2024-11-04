@@ -13,6 +13,14 @@ import kotlinx.serialization.Serializable
 typealias EvidenceId = String
 
 /**
+ * The unique identifier of the evidence.
+ * @visual json "0d33dee4-4c31-410a-b54f-e57d18e9c10b"
+ * @title DSL/EvidenceId
+ * @d2 model
+ */
+typealias EvidenceIdentifier = String
+
+/**
  * Proof that a Requirement is met.
  *
  * The class Evidence provides the means to support responses to Criteria or to a concrete Information Requirement
@@ -28,7 +36,14 @@ typealias EvidenceId = String
 @JsExport
 @JsName("EvidenceDTO")
 interface EvidenceDTO {
-    val identifier: EvidenceId
+    /**
+     * The unique id of the evidence.
+     */
+    val id: EvidenceId
+    /**
+     * The unique identifier of the evidence.
+     */
+    val identifier: EvidenceIdentifier
     /**
      * Evidence Type that specifies characteristics of the Evidence.
      */
@@ -64,7 +79,8 @@ interface EvidenceDTO {
  */
 @Serializable
 open class Evidence(
-    override val identifier: EvidenceId,
+    override val id: EvidenceId,
+    override val identifier: EvidenceIdentifier,
     override val isConformantTo: List<EvidenceTypeId> = emptyList(),
     override val supportsValue: List<SupportedValueId> = emptyList(),
     override val supportsConcept: List<InformationConceptId> = emptyList(),

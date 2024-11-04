@@ -3,6 +3,7 @@ package cccev.f2.requirement.command
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.RequirementId
+import cccev.dsl.model.RequirementIdentifier
 import cccev.f2.requirement.D2RequirementPage
 import cccev.f2.requirement.model.RequirementKind
 import f2.dsl.fnc.F2Function
@@ -26,7 +27,7 @@ interface RequirementCreateCommandDTO {
      * A custom identifier for the requirement
      * @example [cccev.core.requirement.model.Requirement.identifier]
      */
-    val identifier: String?
+    val identifier: RequirementIdentifier?
 
     /**
      * Subtype used for the requirement.
@@ -55,19 +56,19 @@ interface RequirementCreateCommandDTO {
      * Sub-requirements that must be fulfilled for the requirement to be validated.
      * @example [cccev.core.requirement.model.Requirement.hasRequirement]
      */
-    val subRequirementIds: List<RequirementId>
+    val subRequirementIds: List<RequirementId>?
 
     /**
      * Concepts used by the requirement
      * @example [cccev.core.requirement.model.Requirement.hasConcept]
      */
-    val conceptIds: List<InformationConceptId>
+    val conceptIds: List<InformationConceptId>?
 
     /**
      * Evidences that must be provided for the requirement to be validated. <br/>
      * @example [cccev.core.requirement.model.Requirement.hasEvidenceTypeList]
      */
-    val evidenceTypeIds: List<EvidenceTypeId>
+    val evidenceTypeListIds: List<EvidenceTypeId>?
 
     /**
      * @ref [cccev.core.requirement.model.Requirement.enablingCondition]
@@ -77,7 +78,7 @@ interface RequirementCreateCommandDTO {
     /**
      * @ref [cccev.core.requirement.model.Requirement.enablingConditionDependencies]
      */
-    val enablingConditionDependencies: List<InformationConceptId>
+    val enablingConditionDependencies: List<InformationConceptId>?
 
     /**
      * @ref [cccev.core.requirement.model.Requirement.required]
@@ -92,7 +93,7 @@ interface RequirementCreateCommandDTO {
     /**
      * @ref [cccev.core.requirement.model.Requirement.validatingConditionDependencies]
      */
-    val validatingConditionDependencies: List<InformationConceptId>
+    val validatingConditionDependencies: List<InformationConceptId>?
 
     val evidenceValidatingCondition: String?
 
@@ -117,14 +118,14 @@ data class RequirementCreateCommand(
     override val name: String? = null,
     override val description: String? = null,
     override val type: String? = null,
-    override val subRequirementIds: List<RequirementId> = emptyList(),
-    override val conceptIds: List<InformationConceptId> = emptyList(),
-    override val evidenceTypeIds: List<EvidenceTypeId> = emptyList(),
+    override val subRequirementIds: List<RequirementId>? = null,
+    override val conceptIds: List<InformationConceptId>? = null,
+    override val evidenceTypeListIds: List<EvidenceTypeId>? = null,
     override val enablingCondition: String? = null,
-    override val enablingConditionDependencies: List<InformationConceptId> = emptyList(),
+    override val enablingConditionDependencies: List<InformationConceptId>? = null,
     override val required: Boolean = true,
     override val validatingCondition: String? = null,
-    override val validatingConditionDependencies: List<InformationConceptId> = emptyList(),
+    override val validatingConditionDependencies: List<InformationConceptId>? = null,
     override val evidenceValidatingCondition: String? = null,
     override val order: Int? = null,
     override val properties: Map<String, String>? = null,

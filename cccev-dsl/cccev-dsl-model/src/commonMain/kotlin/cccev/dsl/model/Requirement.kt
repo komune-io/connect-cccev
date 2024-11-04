@@ -32,13 +32,13 @@ sealed interface Requirement {
     val hasRequirement: List<Requirement>?
     var isRequirementOf: List<Requirement>?
     val hasConcept: List<InformationConcept>?
-    val hasEvidenceTypeList: List<EvidenceTypeListBase>?
+    val hasEvidenceTypeList: List<EvidenceTypeList>?
     val enablingCondition: String?
-    val enablingConditionDependencies: List<InformationConceptIdentifier>
+    val enablingConditionDependencies: List<InformationConceptIdentifier>?
     val required: Boolean
     val validatingCondition: String?
     val evidenceValidatingCondition: String?
-    val validatingConditionDependencies: List<InformationConceptIdentifier>
+    val validatingConditionDependencies: List<InformationConceptIdentifier>?
     val order: Int?
     val properties: Map<String, String>?
 }
@@ -60,10 +60,10 @@ open class Criterion(
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
     override val enablingCondition: String?,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>,
+    override val enablingConditionDependencies: List<InformationConceptIdentifier>?,
     override val required: Boolean,
     override val validatingCondition: String?,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>,
+    override val validatingConditionDependencies: List<InformationConceptIdentifier>?,
     override val order: Int?,
     override val properties: Map<String, String>?,
     override val evidenceValidatingCondition: String?,
@@ -97,14 +97,14 @@ open class InformationRequirement(
     override val type: String? = null,
     override val hasConcept: List<InformationConcept>? = emptyList(),
     override val hasRequirement: List<Requirement>? = emptyList(),
-    override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = emptyList(),
+    override val hasEvidenceTypeList: List<EvidenceTypeList>? = emptyList(),
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
     override val enablingCondition: String?,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>,
+    override val enablingConditionDependencies: List<InformationConceptIdentifier>?,
     override val required: Boolean,
     override val validatingCondition: String?,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>,
+    override val validatingConditionDependencies: List<InformationConceptIdentifier>?,
     override val order: Int?,
     override val properties: Map<String, String>?,
     override val evidenceValidatingCondition: String?,
@@ -138,10 +138,10 @@ open class Constraint(
     override val isDerivedFrom: List<ReferenceFramework>? = emptyList(),
     override var isRequirementOf: List<Requirement>? = emptyList(),
     override val enablingCondition: String?,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>,
+    override val enablingConditionDependencies: List<InformationConceptIdentifier>?,
     override val required: Boolean,
     override val validatingCondition: String?,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>,
+    override val validatingConditionDependencies: List<InformationConceptIdentifier>?,
     override val order: Int?,
     override val properties: Map<String, String>?,
     override val evidenceValidatingCondition: String?,

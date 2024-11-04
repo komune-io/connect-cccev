@@ -29,7 +29,7 @@ fun requirementClient(urlBase: String): F2SupplierSingle<RequirementClient> = f2
 }
 
 @JsExport
-open class RequirementClient constructor(private val client: F2Client): RequirementApi {
+open class RequirementClient(private val client: F2Client): RequirementApi {
     override fun requirementGet(): RequirementGetFunction = client.function(this::requirementGet.name)
     override fun requirementGetByIdentifier(): RequirementGetByIdentifierFunction
             = client.function(this::requirementGetByIdentifier.name)

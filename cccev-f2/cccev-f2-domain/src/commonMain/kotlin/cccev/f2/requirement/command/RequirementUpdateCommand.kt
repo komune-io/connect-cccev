@@ -40,14 +40,14 @@ interface RequirementUpdateCommandDTO {
     val description: String?
 
     val type: String?
-    val conceptIds: List<InformationConceptId>
-    val evidenceTypeIds: List<EvidenceTypeId>
-    val subRequirementIds: List<RequirementId>
+    val conceptIds: List<InformationConceptId>?
+    val evidenceTypeIds: List<EvidenceTypeId>?
+    val subRequirementIds: List<RequirementId>?
     val enablingCondition: String?
-    val enablingConditionDependencies: List<InformationConceptId>
+    val enablingConditionDependencies: List<InformationConceptId>?
     val required: Boolean
     val validatingCondition: String?
-    val validatingConditionDependencies: List<InformationConceptId>
+    val validatingConditionDependencies: List<InformationConceptId>?
     val evidenceValidatingCondition: String?
     val order: Int?
     val properties: Map<String, String>?
@@ -62,14 +62,14 @@ data class RequirementUpdateCommand(
     override val name: String?,
     override val description: String?,
     override val type: String?,
-    override val conceptIds: List<InformationConceptId>,
-    override val evidenceTypeIds: List<EvidenceTypeId>,
-    override val subRequirementIds: List<RequirementId>,
+    override val conceptIds: List<InformationConceptId>?,
+    override val evidenceTypeIds: List<EvidenceTypeId>?,
+    override val subRequirementIds: List<RequirementId>?,
     override val enablingCondition: String?,
-    override val enablingConditionDependencies: List<InformationConceptId>,
+    override val enablingConditionDependencies: List<InformationConceptId>?,
     override val required: Boolean,
     override val validatingCondition: String?,
-    override val validatingConditionDependencies: List<InformationConceptId>,
+    override val validatingConditionDependencies: List<InformationConceptId>?,
     override val evidenceValidatingCondition: String?,
     override val order: Int?,
     override val properties: Map<String, String>?

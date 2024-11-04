@@ -8,6 +8,7 @@ import cccev.client.RequirementClient
 import cccev.client.certificationClient
 import cccev.client.dataUnitClient
 import cccev.client.evidenceTypeClient
+import cccev.client.evidenceTypeListClient
 import cccev.client.informationConceptClient
 import cccev.client.requirementClient
 import f2.client.ktor.F2ClientBuilder
@@ -27,6 +28,7 @@ class CCCEVClient(
             config: F2ClientConfigLambda<*>? = null
         ): CCCEVClient {
             val f2Client = F2ClientBuilder.get(url, config = config)
+            val evidenceTypeListClient = f2Client.evidenceTypeListClient().invoke()
             val evidenceTypeClient = f2Client.evidenceTypeClient().invoke()
             val informationConceptClient = f2Client.informationConceptClient().invoke()
             val certificationClient =  f2Client.certificationClient().invoke()
@@ -38,7 +40,9 @@ class CCCEVClient(
                 certificationClient = certificationClient,
                 requirementClient = requirementClient,
                 dataUnitClient = dataUnitClient,
-                CCCEVGraphClient(evidenceTypeClient = evidenceTypeClient,
+                CCCEVGraphClient(
+                    evidenceTypeListClient = evidenceTypeListClient,
+                    evidenceTypeClient = evidenceTypeClient,
                     informationConceptClient = informationConceptClient,
                     requirementClient = requirementClient,
                     dataUnitClient = dataUnitClient,
