@@ -21,7 +21,7 @@ interface EvidenceTypeFlatDTO {
     /**
      * Identifier of the evidence type.
      */
-    val identifier: EvidenceTypeId
+    val identifier: EvidenceTypeIdentifier
 
     /**
      * Name of the evidence type.

@@ -6,6 +6,7 @@ import cccev.dsl.model.DataUnitOption
 import cccev.dsl.model.DataUnitOptionDTO
 import cccev.dsl.model.DataUnitOptionIdentifier
 import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeListId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.RequirementCertificationId
 import cccev.dsl.model.RequirementIdentifier
@@ -20,6 +21,8 @@ import cccev.f2.concept.model.InformationConceptFlat
 import cccev.f2.concept.model.InformationConceptFlatDTO
 import cccev.f2.evidencetype.model.EvidenceTypeFlat
 import cccev.f2.evidencetype.model.EvidenceTypeFlatDTO
+import cccev.f2.evidencetypelist.model.EvidenceTypeListFlat
+import cccev.f2.evidencetypelist.model.EvidenceTypeListFlatDTO
 import cccev.f2.requirement.model.RequirementFlat
 import cccev.f2.requirement.model.RequirementFlatDTO
 import cccev.f2.unit.model.DataUnitFlat
@@ -33,6 +36,7 @@ interface CccevFlatGraphDTO {
     val requirementCertifications: Map<RequirementCertificationId, RequirementCertificationFlatDTO>
     val requirements: Map<RequirementIdentifier, RequirementFlatDTO>
     val concepts: Map<InformationConceptIdentifier, InformationConceptFlatDTO>
+    val evidenceListTypes: Map<EvidenceTypeListId, EvidenceTypeListFlatDTO>
     val evidenceTypes: Map<EvidenceTypeId, EvidenceTypeFlatDTO>
     val units: Map<DataUnitIdentifier, DataUnitFlatDTO>
     val unitOptions: Map<DataUnitOptionIdentifier, DataUnitOptionDTO>
@@ -45,6 +49,7 @@ class CccevFlatGraph: CccevFlatGraphDTO {
     override val requirementCertifications: MutableMap<RequirementCertificationId, RequirementCertificationFlat> = mutableMapOf()
     override val requirements: MutableMap<RequirementIdentifier, RequirementFlat> = mutableMapOf()
     override val concepts: MutableMap<InformationConceptIdentifier, InformationConceptFlat> = mutableMapOf()
+    override val evidenceListTypes: MutableMap<EvidenceTypeListId, EvidenceTypeListFlat> = mutableMapOf()
     override val evidenceTypes: MutableMap<EvidenceTypeId, EvidenceTypeFlat> = mutableMapOf()
     override val units: MutableMap<DataUnitIdentifier, DataUnitFlat> = mutableMapOf()
     override val unitOptions: MutableMap<DataUnitOptionIdentifier, DataUnitOption> = mutableMapOf()

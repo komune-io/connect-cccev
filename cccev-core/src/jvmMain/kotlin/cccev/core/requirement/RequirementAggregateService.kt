@@ -42,7 +42,7 @@ class RequirementAggregateService(
         val concepts = session.findSafeShallowAllById<InformationConceptEntity>(conceptIds, "InformationConcept")
             .associateBy(InformationConceptEntity::id)
 
-        val evidenceTypes = session.findSafeShallowAllById<EvidenceTypeEntity>(command.evidenceTypeIds, "EvidenceType")
+        val evidenceTypes = session.findSafeShallowAllById<EvidenceTypeEntity>(command.evidenceTypeListIds, "EvidenceType")
 
         val requirement = RequirementEntity().also { requirement ->
             requirement.id = UUID.randomUUID().toString()

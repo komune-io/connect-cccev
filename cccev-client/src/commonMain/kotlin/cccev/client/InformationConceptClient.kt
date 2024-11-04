@@ -23,7 +23,7 @@ fun informationConceptClient(urlBase: String): F2SupplierSingle<InformationConce
 }
 
 @JsExport
-open class InformationConceptClient constructor(private val client: F2Client): InformationConceptApi {
+open class InformationConceptClient(private val client: F2Client): InformationConceptApi {
     override fun conceptCreate(): InformationConceptCreateFunction = client.function(this::conceptCreate.name)
     override fun conceptUpdate(): InformationConceptUpdateFunction = client.function(this::conceptUpdate.name)
     override fun conceptGet(): InformationConceptGetFunction = client.function(this::conceptGet.name)

@@ -26,7 +26,7 @@ fun certificationClient(
 }
 
 @JsExport
-open class CertificationClient constructor(val client: F2Client): CertificationApi {
+open class CertificationClient(val client: F2Client): CertificationApi {
     override fun certificationGet(): CertificationGetFunction
         = client.function(this::certificationGet.name)
     override fun certificationCreate(): CertificationCreateFunction

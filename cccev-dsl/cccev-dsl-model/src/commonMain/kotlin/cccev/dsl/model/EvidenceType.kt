@@ -14,6 +14,15 @@ import kotlinx.serialization.Serializable
 typealias EvidenceTypeListId = String
 
 /**
+ * The unique id of the evidence type list.
+ * @visual json "TheEvidenceTypeListIdentifier"
+ * @parent [EvidenceTypeList]
+ * @title EvidenceTypeId
+ * @d2 model
+ */
+typealias EvidenceTypeListIdentifier = String
+
+/**
  * The unique id of the evidence type.
  * @visual json "082f9b5b-4ffa-4e95-8288-2de2972cade5"
  * @parent [EvidenceType]

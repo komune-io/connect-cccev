@@ -2,6 +2,7 @@ package cccev.dsl.client
 
 import cccev.client.DataUnitClient
 import cccev.client.EvidenceTypeClient
+import cccev.client.EvidenceTypeListClient
 import cccev.client.InformationConceptClient
 import cccev.client.RequirementClient
 import cccev.dsl.client.graph.InformationConceptGraphInitializer
@@ -9,8 +10,10 @@ import cccev.dsl.client.graph.RequirementGraphInitializer
 import cccev.dsl.client.model.unflatten
 import cccev.dsl.model.DataUnitDTO
 import cccev.dsl.model.DataUnitId
+import cccev.dsl.model.EvidenceType
 import cccev.dsl.model.EvidenceTypeBase
 import cccev.dsl.model.EvidenceTypeId
+import cccev.dsl.model.EvidenceTypeList
 import cccev.dsl.model.EvidenceTypeListBase
 import cccev.dsl.model.EvidenceTypeListId
 import cccev.dsl.model.InformationConcept
@@ -26,6 +29,8 @@ import cccev.f2.concept.command.InformationConceptUpdateCommand
 import cccev.f2.concept.query.InformationConceptGetByIdentifierQuery
 import cccev.f2.evidencetype.command.EvidenceTypeCreateCommand
 import cccev.f2.evidencetype.query.EvidenceTypeGetByIdentifierQuery
+import cccev.f2.evidencetypelist.command.EvidenceTypeListCreateCommand
+import cccev.f2.evidencetypelist.query.EvidenceTypeListGetByIdentifierQuery
 import cccev.f2.requirement.command.RequirementAddRequirementsCommand
 import cccev.f2.requirement.command.RequirementCreateCommand
 import cccev.f2.requirement.command.RequirementUpdateCommand
@@ -45,6 +50,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.toList
 
 class CCCEVGraphClient(
+    private val evidenceTypeListClient: EvidenceTypeListClient,
     private val evidenceTypeClient: EvidenceTypeClient,
     private val informationConceptClient: InformationConceptClient,
     private val requirementClient: RequirementClient,
@@ -163,7 +169,7 @@ class CCCEVGraphClient(
             name = requirement.name,
             description = requirement.description,
             conceptIds = requirement.hasConcept?.map { context.processedConcepts[it.identifier]!! }.orEmpty(),
-            evidenceTypeIds = requirement.hasEvidenceTypeList?.map { context.processedEvidenceTypeLists[it.identifier]!! }
+            evidenceTypeListIds = requirement.hasEvidenceTypeList?.map { context.processedEvidenceTypeLists[it.identifier]!! }
                 .orEmpty(),
             subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! }.orEmpty(),
             kind = RequirementKind.valueOf(requirement.kind),
@@ -191,7 +197,7 @@ class CCCEVGraphClient(
             evidenceTypeIds = requirement.hasEvidenceTypeList?.map { context.processedEvidenceTypeLists[it.identifier]!! }
                 .orEmpty(),
             subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! }.orEmpty(),
-            type = requirement.type?.toString(),
+            type = requirement.type,
             enablingCondition = requirement.enablingCondition,
             enablingConditionDependencies = requirement.enablingConditionDependencies.map { context.processedConcepts[it]!! },
             required = requirement.required,
@@ -204,19 +210,18 @@ class CCCEVGraphClient(
     }
 
     private suspend fun initEvidenceTypeList(
-        etl: EvidenceTypeListBase,
+        etl: EvidenceTypeList,
         context: Context
     ) {
         if (etl.identifier !in context.processedEvidenceTypeLists) {
             etl.specifiesEvidenceType.forEach { et ->
                 if (et.identifier !in context.processedEvidenceTypes) {
-                    val evidenceTypeId = et.save()
+                    val evidenceTypeId = et.save(context)
                     context.processedEvidenceTypes[et.identifier] = evidenceTypeId
                 }
             }
-            TODO()
-//            val evidenceTypeListId = etl.save(context)
-//            context.processedEvidenceTypeLists[etl.identifier] = evidenceTypeListId
+            val evidenceTypeListId = etl.save(context)
+            context.processedEvidenceTypeLists[etl.identifier] = evidenceTypeListId
         }
     }
 
@@ -296,29 +301,28 @@ class CCCEVGraphClient(
         ).invokeWith(informationConceptClient.conceptUpdate()).id
     }
 
-    private suspend fun EvidenceTypeBase.save(): EvidenceTypeId {
+    private suspend fun EvidenceType.save(context: Context): EvidenceTypeId {
         return EvidenceTypeGetByIdentifierQuery(
             identifier = identifier
         ).invokeWith(evidenceTypeClient.evidenceTypeGetByIdentifier()).item?.id
             ?: EvidenceTypeCreateCommand(
             identifier = identifier,
             name = name,
-//            description = "",
-//            validityPeriodConstraint = null
+            conceptIdentifiers = supportConcept.map { context.processedConcepts[it.id]!! }
         ).invokeWith(evidenceTypeClient.evidenceTypeCreate()).id
     }
 
-//    private suspend fun EvidenceTypeListBase.save(context: Context): EvidenceTypeListId {
-//        return EvidenceTypeListGetByIdentifierQuery(
-//            identifier = identifier
-//        ).invokeWith(evidenceTypeClient.evidenceTypeListGetByIdentifier()).item?.id
-//            ?:  EvidenceTypeListCreateCommand(
-//            identifier = identifier,
-//            name = name,
-//            description = description,
-//            specifiesEvidenceType = specifiesEvidenceType.map { context.processedEvidenceTypes[it.identifier]!! }
-//        ).invokeWith(evidenceTypeClient.evidenceTypeListCreate()).id
-//    }
+    private suspend fun EvidenceTypeList.save(context: Context): EvidenceTypeListId {
+        return EvidenceTypeListGetByIdentifierQuery(
+            identifier = identifier
+        ).invokeWith(evidenceTypeListClient.evidenceTypeListGetByIdentifier()).item?.id
+            ?:  EvidenceTypeListCreateCommand(
+            identifier = identifier,
+            name = name,
+            description = description,
+            specifiesEvidenceType = specifiesEvidenceType.map { context.processedEvidenceTypes[it.identifier]!! }
+        ).invokeWith(evidenceTypeListClient.evidenceTypeListCreate()).id
+    }
 
     private fun <K, V> MutableMap<K, V>.putAllNew(map: Map<K, V>) {
         map.forEach { (key, value) ->

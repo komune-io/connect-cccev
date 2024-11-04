@@ -68,7 +68,7 @@ interface RequirementCreateCommandDTO {
      * Evidences that must be provided for the requirement to be validated. <br/>
      * @example [cccev.core.requirement.model.Requirement.hasEvidenceTypeList]
      */
-    val evidenceTypeIds: List<EvidenceTypeId>
+    val evidenceTypeListIds: List<EvidenceTypeId>
 
     /**
      * @ref [cccev.core.requirement.model.Requirement.enablingCondition]
@@ -120,7 +120,7 @@ data class RequirementCreateCommand(
     override val type: String? = null,
     override val subRequirementIds: List<RequirementId> = emptyList(),
     override val conceptIds: List<InformationConceptId> = emptyList(),
-    override val evidenceTypeIds: List<EvidenceTypeId> = emptyList(),
+    override val evidenceTypeListIds: List<EvidenceTypeId> = emptyList(),
     override val enablingCondition: String? = null,
     override val enablingConditionDependencies: List<InformationConceptId> = emptyList(),
     override val required: Boolean = true,
