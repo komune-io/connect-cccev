@@ -131,32 +131,36 @@ fun RequirementFlat.unflatten(graph: CccevFlatGraph): Requirement {
     val subRequirements = subRequirementIds.map {
         graph.requirements[it]?.unflatten(graph)
             ?: throw NotFoundException("Requirement", it)
-    }
+    }.ifEmpty { null }
     val concepts = conceptIdentifiers.map {
         graph.concepts[it]?.unflatten(graph)
             ?: throw NotFoundException("InformationConcept", it)
-    }
+    }.ifEmpty { null }
     val evidenceTypes = evidenceTypeIds.map {
         graph.evidenceTypes[it]?.unflatten(graph)
             ?: throw NotFoundException("EvidenceType", it)
-    }
+    }.ifEmpty { null }
 
-    val evidenceTypeLists = listOf(EvidenceTypeListBase(
-        name = "default",
-        description = "default",
-        identifier = "default",
-        specifiesEvidenceType = evidenceTypes
-    ))
+
+    val evidenceTypeLists =  if(!evidenceTypes.isNullOrEmpty()) {
+        listOf(EvidenceTypeListBase(
+            name = "default",
+            description = "default",
+            identifier = "default",
+            specifiesEvidenceType = evidenceTypes
+        ))
+    } else null
+
 
 
     val enablingConditionDependencies = enablingConditionDependencies.map {
         graph.concepts[it]?.unflatten(graph)
             ?: throw NotFoundException("InformationConcept", it)
-    }.map { it.id }
+    }.map { it.id }.ifEmpty { null }
     val validatingConditionDependencies = validatingConditionDependencies.map {
         graph.concepts[it]?.unflatten(graph)
             ?: throw NotFoundException("InformationConcept", it)
-    }.map { it.id }
+    }.map { it.id }.ifEmpty { null }
     return when(RequirementKind.valueOf(kind)) {
         RequirementKind.CONSTRAINT -> asConstant(
             enablingConditionDependencies,
@@ -183,11 +187,11 @@ fun RequirementFlat.unflatten(graph: CccevFlatGraph): Requirement {
 }
 
 private fun RequirementFlat.asInformationRequirement(
-    enablingConditionDependencies: List<InformationConceptId>,
-    validatingConditionDependencies: List<InformationConceptId>,
-    subRequirements: List<Requirement>,
-    concepts: List<InformationConcept>,
-    evidenceTypeLists: List<EvidenceTypeListBase>
+    enablingConditionDependencies: List<InformationConceptId>?,
+    validatingConditionDependencies: List<InformationConceptId>?,
+    subRequirements: List<Requirement>?,
+    concepts: List<InformationConcept>?,
+    evidenceTypeLists: List<EvidenceTypeListBase>?
 ) = InformationRequirement(
     id = id,
     identifier = identifier,
@@ -212,11 +216,11 @@ private fun RequirementFlat.asInformationRequirement(
 )
 
 private fun RequirementFlat.asCriterion(
-    enablingConditionDependencies: List<InformationConceptId>,
-    validatingConditionDependencies: List<InformationConceptId>,
-    subRequirements: List<Requirement>,
-    concepts: List<InformationConcept>,
-    evidenceTypeLists: List<EvidenceTypeListBase>
+    enablingConditionDependencies: List<InformationConceptId>?,
+    validatingConditionDependencies: List<InformationConceptId>?,
+    subRequirements: List<Requirement>?,
+    concepts: List<InformationConcept>?,
+    evidenceTypeLists: List<EvidenceTypeListBase>?
 ) = Criterion(
     id = id,
     identifier = identifier,
@@ -239,11 +243,11 @@ private fun RequirementFlat.asCriterion(
 )
 
 private fun RequirementFlat.asConstant(
-    enablingConditionDependencies: List<InformationConceptId>,
-    validatingConditionDependencies: List<InformationConceptId>,
-    subRequirements: List<Requirement>,
-    concepts: List<InformationConcept>,
-    evidenceTypeLists: List<EvidenceTypeListBase>
+    enablingConditionDependencies: List<InformationConceptId>?,
+    validatingConditionDependencies: List<InformationConceptId>?,
+    subRequirements: List<Requirement>?,
+    concepts: List<InformationConcept>?,
+    evidenceTypeLists: List<EvidenceTypeListBase>?
 ) = Constraint(
     id = id,
     identifier = identifier,

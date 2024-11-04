@@ -46,14 +46,14 @@ interface EvidenceTypeList {
 	val description: String
 	val identifier: EvidenceTypeListId
 	val name: String
-	val specifiesEvidenceType: List<EvidenceType>
+	val specifiesEvidenceType: List<EvidenceType>?
 }
 @Serializable
 open class EvidenceTypeListBase(
     override val description: String,
     override val identifier: EvidenceTypeListId,
     override val name: String,
-    override val specifiesEvidenceType: List<EvidenceTypeBase> = emptyList()
+    override val specifiesEvidenceType: List<EvidenceTypeBase>? = null
 ): EvidenceTypeList
 
 @JsExport

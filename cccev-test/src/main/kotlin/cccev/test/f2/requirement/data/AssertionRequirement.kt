@@ -28,9 +28,9 @@ class AssertionRequirement(
             name: String? = requirement.name,
             description: String? = requirement.description,
             type: String? = requirement.type,
-            hasRequirement: List<RequirementId> = requirement.subRequirements.map { it.id },
-            hasConcept: List<InformationConceptId> = requirement.concepts.map { it.id },
-            hasEvidenceType: List<EvidenceTypeId> = requirement.evidenceTypes.map { it.id },
+            hasRequirement: List<RequirementId>? = requirement.subRequirements.map { it.id },
+            hasConcept: List<InformationConceptId>? = requirement.concepts.map { it.id },
+            hasEvidenceType: List<EvidenceTypeId>? = requirement.evidenceTypes.map { it.id },
         ) = also {
             Assertions.assertThat(requirement.id).isEqualTo(id)
             Assertions.assertThat(requirement.kind).isEqualTo(kind)

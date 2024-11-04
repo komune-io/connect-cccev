@@ -11,10 +11,8 @@ import cccev.dsl.client.model.unflatten
 import cccev.dsl.model.DataUnitDTO
 import cccev.dsl.model.DataUnitId
 import cccev.dsl.model.EvidenceType
-import cccev.dsl.model.EvidenceTypeBase
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeList
-import cccev.dsl.model.EvidenceTypeListBase
 import cccev.dsl.model.EvidenceTypeListId
 import cccev.dsl.model.InformationConcept
 import cccev.dsl.model.InformationConceptId
@@ -66,7 +64,7 @@ class CCCEVGraphClient(
         val requirementNodes = requirements.groupBy(Requirement::identifier)
             .mapValues { (_, requirements) -> requirements.firstOrNull { it !is RequirementRef } ?: requirements.first() }
 
-        val informationConceptNodes = requirements.flatMap { requirement -> requirement.hasConcept.orEmpty() }
+        val informationConceptNodes = requirements.flatMap { requirement -> requirement.hasConcept ?: emptyList() }
             .groupBy(InformationConcept::identifier)
             .mapValues { (_, concepts) -> concepts.firstOrNull { it !is InformationConceptRef } ?: concepts.first() }
 
@@ -168,17 +166,17 @@ class CCCEVGraphClient(
             identifier = requirement.identifier,
             name = requirement.name,
             description = requirement.description,
-            conceptIds = requirement.hasConcept?.map { context.processedConcepts[it.identifier]!! }.orEmpty(),
+            conceptIds = requirement.hasConcept?.map { context.processedConcepts[it.identifier]!! },
             evidenceTypeListIds = requirement.hasEvidenceTypeList?.map { context.processedEvidenceTypeLists[it.identifier]!! }
-                .orEmpty(),
-            subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! }.orEmpty(),
+                ,
+            subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! },
             kind = RequirementKind.valueOf(requirement.kind),
             type = requirement.type?.toString(),
             enablingCondition = requirement.enablingCondition,
-            enablingConditionDependencies = requirement.enablingConditionDependencies.map { context.processedConcepts[it]!! },
+            enablingConditionDependencies = requirement.enablingConditionDependencies?.map { context.processedConcepts[it]!! },
             required = requirement.required,
             validatingCondition = requirement.validatingCondition,
-            validatingConditionDependencies = requirement.validatingConditionDependencies.map { context.processedConcepts[it]!! },
+            validatingConditionDependencies = requirement.validatingConditionDependencies?.map { context.processedConcepts[it]!! },
             order = requirement.order,
             properties = requirement.properties
         ).invokeWith(requirementClient.requirementCreate()).id
@@ -193,16 +191,16 @@ class CCCEVGraphClient(
             id = id,
             name = requirement.name,
             description = requirement.description,
-            conceptIds = requirement.hasConcept?.map { context.processedConcepts[it.identifier]!! }.orEmpty(),
+            conceptIds = requirement.hasConcept?.map { context.processedConcepts[it.identifier]!! },
             evidenceTypeIds = requirement.hasEvidenceTypeList?.map { context.processedEvidenceTypeLists[it.identifier]!! }
-                .orEmpty(),
-            subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! }.orEmpty(),
+                ,
+            subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! },
             type = requirement.type,
             enablingCondition = requirement.enablingCondition,
-            enablingConditionDependencies = requirement.enablingConditionDependencies.map { context.processedConcepts[it]!! },
+            enablingConditionDependencies = requirement.enablingConditionDependencies?.map { context.processedConcepts[it]!! },
             required = requirement.required,
             validatingCondition = requirement.validatingCondition,
-            validatingConditionDependencies = requirement.validatingConditionDependencies.map { context.processedConcepts[it]!! },
+            validatingConditionDependencies = requirement.validatingConditionDependencies?.map { context.processedConcepts[it]!! },
             order = requirement.order,
             properties = requirement.properties,
             evidenceValidatingCondition = requirement.evidenceValidatingCondition,
@@ -214,7 +212,7 @@ class CCCEVGraphClient(
         context: Context
     ) {
         if (etl.identifier !in context.processedEvidenceTypeLists) {
-            etl.specifiesEvidenceType.forEach { et ->
+            etl.specifiesEvidenceType?.forEach { et ->
                 if (et.identifier !in context.processedEvidenceTypes) {
                     val evidenceTypeId = et.save(context)
                     context.processedEvidenceTypes[et.identifier] = evidenceTypeId
@@ -320,7 +318,7 @@ class CCCEVGraphClient(
             identifier = identifier,
             name = name,
             description = description,
-            specifiesEvidenceType = specifiesEvidenceType.map { context.processedEvidenceTypes[it.identifier]!! }
+            specifiesEvidenceType = specifiesEvidenceType?.map { context.processedEvidenceTypes[it.identifier]!! }
         ).invokeWith(evidenceTypeListClient.evidenceTypeListCreate()).id
     }
 
