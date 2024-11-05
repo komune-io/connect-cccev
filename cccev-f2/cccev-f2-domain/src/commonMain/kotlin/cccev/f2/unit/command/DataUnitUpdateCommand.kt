@@ -34,7 +34,7 @@ data class DataUnitUpdateCommand(
      * The description of the data unit.
      * @example [cccev.s2.unit.domain.model.DataUnit.description]
      */
-    val description: String,
+    val description: String? = null,
 
     /**
      * The notation of the data unit.
@@ -45,7 +45,7 @@ data class DataUnitUpdateCommand(
     /**
      * @ref [cccev.s2.unit.domain.model.DataUnit.options]
      */
-    val options: List<DataUnitOptionCommand>?
+    val options: List<DataUnitOptionCommand>? = null,
 )
 
 /**

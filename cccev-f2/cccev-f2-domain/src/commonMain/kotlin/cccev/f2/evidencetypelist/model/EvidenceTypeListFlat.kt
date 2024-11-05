@@ -51,5 +51,5 @@ data class EvidenceTypeListFlat(
     override val identifier: EvidenceTypeIdentifier,
     override val name: String,
     override val description: String,
-    override val specifiesEvidenceType: List<EvidenceTypeListIdentifier>?,
+    override val specifiesEvidenceType: List<EvidenceTypeListIdentifier>? = null,
 ): EvidenceTypeListFlatDTO

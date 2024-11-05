@@ -59,14 +59,14 @@ open class Criterion(
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = null,
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
-    override val enablingCondition: String?,
+    override val enablingCondition: String? = null,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
-    override val validatingCondition: String?,
+    override val validatingCondition: String? = null,
     override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
-    override val order: Int?,
-    override val properties: Map<String, String>?,
-    override val evidenceValidatingCondition: String?,
+    override val order: Int? = null,
+    override val properties: Map<String, String>? = null,
+    override val evidenceValidatingCondition: String? = null,
 ) : Requirement {
     override val kind: String = "CRITERION"
     override fun toString(): String {
@@ -100,14 +100,14 @@ open class InformationRequirement(
     override val hasEvidenceTypeList: List<EvidenceTypeList>? = null,
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
-    override val enablingCondition: String?,
+    override val enablingCondition: String? = null,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
-    override val validatingCondition: String?,
+    override val validatingCondition: String? = null,
     override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
-    override val order: Int?,
-    override val properties: Map<String, String>?,
-    override val evidenceValidatingCondition: String?,
+    override val order: Int? = null,
+    override val properties: Map<String, String>? = null,
+    override val evidenceValidatingCondition: String? = null,
 ) : Requirement {
     override val kind: String = "INFORMATION"
     override fun toString(): String {
@@ -174,7 +174,7 @@ open class RequirementRef(
     override val hasRequirement: List<Requirement>? = null
     override var isRequirementOf: List<Requirement>? = null
     override val hasConcept: List<InformationConcept>? = null
-    override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = null
+    override val hasEvidenceTypeList: List<EvidenceTypeList>? = null
     override val enablingCondition: String? = null
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null
     override val required: Boolean = true
@@ -195,22 +195,22 @@ open class PartialRequirement(
     override val id: RequirementId,
     override val identifier: RequirementIdentifier,
     override val description: String?,
-    override val name: String?,
-    override val type: String?,
+    override val name: String? = null,
+    override val type: String? = null,
     val minRequirementsToMeet: Int,
     override val hasConcept: List<InformationConceptBase>? = null,
     override val hasRequirement: List<Requirement>? = null,
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = null,
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
-    override val enablingCondition: String?,
+    override val enablingCondition: String? = null,
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
-    override val validatingCondition: String?,
+    override val validatingCondition: String? = null,
     override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
-    override val order: Int?,
-    override val properties: Map<String, String>?,
-    override val evidenceValidatingCondition: String?,
+    override val order: Int? = null,
+    override val properties: Map<String, String>? = null,
+    override val evidenceValidatingCondition: String? = null,
 ): Requirement {
     override val kind: String = "PARTIAL"
 }
