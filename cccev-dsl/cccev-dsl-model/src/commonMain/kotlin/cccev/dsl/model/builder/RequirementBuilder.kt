@@ -22,7 +22,7 @@ interface RequirementBuilder<T : Requirement> {
     var enablingConditionDependencies: List<InformationConceptIdentifier>
     var required: Boolean
     var validatingCondition: String?
-    var validatingConditionDependencies: List<InformationConceptIdentifier>
+    var validatingConditionDependencies: List<InformationConcept>
     var order: Int?
     var properties: Map<String, String>?
 
@@ -60,7 +60,7 @@ abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<
     override var enablingConditionDependencies: List<InformationConceptIdentifier> = mutableListOf()
     override var required: Boolean = true
     override var validatingCondition: String? = null
-    override var validatingConditionDependencies: List<InformationConceptIdentifier> = mutableListOf()
+    override var validatingConditionDependencies: List<InformationConcept> = mutableListOf()
     override var order: Int? = null
     override var properties: Map<String, String>? = null
 

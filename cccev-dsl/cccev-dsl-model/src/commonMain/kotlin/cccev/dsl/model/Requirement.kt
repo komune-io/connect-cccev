@@ -38,7 +38,7 @@ sealed interface Requirement {
     val required: Boolean
     val validatingCondition: String?
     val evidenceValidatingCondition: String?
-    val validatingConditionDependencies: List<InformationConceptIdentifier>?
+    val validatingConditionDependencies: List<InformationConcept>?
     val order: Int?
     val properties: Map<String, String>?
 }
@@ -63,7 +63,7 @@ open class Criterion(
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
     override val validatingCondition: String? = null,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val validatingConditionDependencies: List<InformationConcept>? = null,
     override val order: Int? = null,
     override val properties: Map<String, String>? = null,
     override val evidenceValidatingCondition: String? = null,
@@ -104,7 +104,7 @@ open class InformationRequirement(
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
     override val validatingCondition: String? = null,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val validatingConditionDependencies: List<InformationConcept>? = null,
     override val order: Int? = null,
     override val properties: Map<String, String>? = null,
     override val evidenceValidatingCondition: String? = null,
@@ -141,7 +141,7 @@ open class Constraint(
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
     override val validatingCondition: String?,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val validatingConditionDependencies: List<InformationConcept>? = null,
     override val order: Int?,
     override val properties: Map<String, String>?,
     override val evidenceValidatingCondition: String?,
@@ -179,7 +179,7 @@ open class RequirementRef(
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null
     override val required: Boolean = true
     override val validatingCondition: String? = null
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null
+    override val validatingConditionDependencies: List<InformationConcept>? = null
     override val order: Int? = null
     override val properties: Map<String, String>? = null
     override val kind: String = "REFERENCE"
@@ -207,7 +207,7 @@ open class PartialRequirement(
     override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
     override val required: Boolean,
     override val validatingCondition: String? = null,
-    override val validatingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val validatingConditionDependencies: List<InformationConcept>? = null,
     override val order: Int? = null,
     override val properties: Map<String, String>? = null,
     override val evidenceValidatingCondition: String? = null,

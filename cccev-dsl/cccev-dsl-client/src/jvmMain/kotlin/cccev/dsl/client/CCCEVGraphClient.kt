@@ -171,12 +171,12 @@ class CCCEVGraphClient(
                 ,
             subRequirementIds = requirement.hasRequirement?.map { context.processedRequirements[it.identifier]!! },
             kind = RequirementKind.valueOf(requirement.kind),
-            type = requirement.type?.toString(),
+            type = requirement.type,
             enablingCondition = requirement.enablingCondition,
             enablingConditionDependencies = requirement.enablingConditionDependencies?.map { context.processedConcepts[it]!! },
             required = requirement.required,
             validatingCondition = requirement.validatingCondition,
-            validatingConditionDependencies = requirement.validatingConditionDependencies?.map { context.processedConcepts[it]!! },
+            validatingConditionDependencies = requirement.validatingConditionDependencies?.map { context.processedConcepts[it.identifier]!! },
             order = requirement.order,
             properties = requirement.properties
         ).invokeWith(requirementClient.requirementCreate()).id
@@ -200,7 +200,7 @@ class CCCEVGraphClient(
             enablingConditionDependencies = requirement.enablingConditionDependencies?.map { context.processedConcepts[it]!! },
             required = requirement.required,
             validatingCondition = requirement.validatingCondition,
-            validatingConditionDependencies = requirement.validatingConditionDependencies?.map { context.processedConcepts[it]!! },
+            validatingConditionDependencies = requirement.validatingConditionDependencies?.map { context.processedConcepts[it.identifier]!! },
             order = requirement.order,
             properties = requirement.properties,
             evidenceValidatingCondition = requirement.evidenceValidatingCondition,

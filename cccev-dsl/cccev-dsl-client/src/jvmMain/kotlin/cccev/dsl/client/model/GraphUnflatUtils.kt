@@ -161,7 +161,7 @@ fun RequirementFlat.unflatten(graph: CccevFlatGraph): Requirement {
     val validatingConditionDependencies = validatingConditionDependencies.map {
         graph.concepts[it]?.unflatten(graph)
             ?: throw NotFoundException("InformationConcept", it)
-    }.map { it.id }.ifEmpty { null }
+    }
     return when(RequirementKind.valueOf(kind)) {
         RequirementKind.CONSTRAINT -> asConstant(
             enablingConditionDependencies,
@@ -189,7 +189,7 @@ fun RequirementFlat.unflatten(graph: CccevFlatGraph): Requirement {
 
 private fun RequirementFlat.asInformationRequirement(
     enablingConditionDependencies: List<InformationConceptId>?,
-    validatingConditionDependencies: List<InformationConceptId>?,
+    validatingConditionDependencies: List<InformationConcept>?,
     subRequirements: List<Requirement>?,
     concepts: List<InformationConcept>?,
     evidenceTypeLists: List<EvidenceTypeListBase>?
@@ -218,7 +218,7 @@ private fun RequirementFlat.asInformationRequirement(
 
 private fun RequirementFlat.asCriterion(
     enablingConditionDependencies: List<InformationConceptId>?,
-    validatingConditionDependencies: List<InformationConceptId>?,
+    validatingConditionDependencies: List<InformationConcept>?,
     subRequirements: List<Requirement>?,
     concepts: List<InformationConcept>?,
     evidenceTypeLists: List<EvidenceTypeListBase>?
@@ -245,7 +245,7 @@ private fun RequirementFlat.asCriterion(
 
 private fun RequirementFlat.asConstant(
     enablingConditionDependencies: List<InformationConceptId>?,
-    validatingConditionDependencies: List<InformationConceptId>?,
+    validatingConditionDependencies: List<InformationConcept>?,
     subRequirements: List<Requirement>?,
     concepts: List<InformationConcept>?,
     evidenceTypeLists: List<EvidenceTypeListBase>?
