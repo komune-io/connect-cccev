@@ -43,19 +43,19 @@ interface EvidenceDTO {
     /**
      * Evidence Type that specifies characteristics of the Evidence.
      */
-    val isConformantTo: List<EvidenceTypeId>
+    val isConformantTo: List<EvidenceTypeId>?
     /**
      * Supported Value that the Evidence contains.
      */
-    val supportsValue: List<SupportedValueId>
+    val supportsValue: List<SupportedValueId>?
     /**
      * Information Concept providing facts found/inferred from the Evidence.
      */
-    val supportsConcept: List<InformationConceptId>
+    val supportsConcept: List<InformationConceptId>?
     /**
      * Requirement for which the Evidence provides proof.
      */
-    val supportsRequirement: List<RequirementId>
+    val supportsRequirement: List<RequirementId>?
     /**
      * Period of Time during which the Evidence holds true or has force.
      */
@@ -76,10 +76,10 @@ interface EvidenceDTO {
 @Serializable
 open class Evidence(
     override val identifier: EvidenceIdentifier,
-    override val isConformantTo: List<EvidenceTypeId> = emptyList(),
-    override val supportsValue: List<SupportedValueId> = emptyList(),
-    override val supportsConcept: List<InformationConceptId> = emptyList(),
-    override val supportsRequirement: List<RequirementId> = emptyList(),
+    override val isConformantTo: List<EvidenceTypeId>? = null,
+    override val supportsValue: List<SupportedValueId>? = null,
+    override val supportsConcept: List<InformationConceptId>? = null,
+    override val supportsRequirement: List<RequirementId>? = null,
     override val validityPeriod: PeriodOfTime? = null,
     override val name: String = "",
     override val file: String? = null

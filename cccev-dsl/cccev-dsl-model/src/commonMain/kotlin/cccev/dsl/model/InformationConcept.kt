@@ -18,7 +18,7 @@ interface InformationConcept {
 	val type: Code?
 	val description: String?
 	val expressionOfExpectedValue: String?
-	val dependsOn: List<InformationConceptId>
+	val dependsOn: List<InformationConceptId>?
 }
 
 @Serializable
@@ -30,7 +30,7 @@ open class InformationConceptBase(
     override val type: Code? = null,
     override val description: String? = null,
     override val expressionOfExpectedValue: String? = null,
-    override val dependsOn: List<InformationConceptId> = emptyList()
+    override val dependsOn: List<InformationConceptId>? = null
 ): InformationConcept
 
 @Serializable
@@ -43,5 +43,5 @@ class InformationConceptRef(
     override val type: Code? = null
     override val description: String? = null
     override val expressionOfExpectedValue: String? = null
-    override val dependsOn: List<InformationConceptId> = emptyList()
+    override val dependsOn: List<InformationConceptId>? = null
 }
