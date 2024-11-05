@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
 
   cli-init-ssm.bc-coop.bclan:
