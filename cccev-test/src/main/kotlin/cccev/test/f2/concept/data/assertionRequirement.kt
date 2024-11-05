@@ -33,7 +33,7 @@ class AssertionInformationConcept(
             Assertions.assertThat(concept.unit.id).isEqualTo(unit)
             Assertions.assertThat(concept.description).isEqualTo(description)
             Assertions.assertThat(concept.expressionOfExpectedValue).isEqualTo(expressionOfExpectedValue)
-            Assertions.assertThat(concept.dependencies.map { it.id }).containsExactlyInAnyOrderElementsOf(dependencies)
+            Assertions.assertThat(concept.dependencies.map { it.id }).containsExactlyInAnyOrderElementsOf(dependencies ?: emptyList())
         }
     }
 }
