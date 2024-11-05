@@ -19,7 +19,7 @@ interface RequirementBuilder<T : Requirement> {
     var hasEvidenceTypeList: List<EvidenceTypeListBase>?
 
     var enablingCondition: String?
-    var enablingConditionDependencies: List<InformationConceptIdentifier>
+    var enablingConditionDependencies: List<InformationConcept>
     var required: Boolean
     var validatingCondition: String?
     var validatingConditionDependencies: List<InformationConcept>
@@ -57,7 +57,7 @@ abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<
     protected var hasQualifiedRelation = mutableMapOf<String, List<Requirement>>()
 
     override var enablingCondition: String? = null
-    override var enablingConditionDependencies: List<InformationConceptIdentifier> = mutableListOf()
+    override var enablingConditionDependencies: List<InformationConcept> = mutableListOf()
     override var required: Boolean = true
     override var validatingCondition: String? = null
     override var validatingConditionDependencies: List<InformationConcept> = mutableListOf()

@@ -34,7 +34,7 @@ sealed interface Requirement {
     val hasConcept: List<InformationConcept>?
     val hasEvidenceTypeList: List<EvidenceTypeList>?
     val enablingCondition: String?
-    val enablingConditionDependencies: List<InformationConceptIdentifier>?
+    val enablingConditionDependencies: List<InformationConcept>?
     val required: Boolean
     val validatingCondition: String?
     val evidenceValidatingCondition: String?
@@ -60,7 +60,7 @@ open class Criterion(
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
     override val enablingCondition: String? = null,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val enablingConditionDependencies: List<InformationConcept>? = null,
     override val required: Boolean,
     override val validatingCondition: String? = null,
     override val validatingConditionDependencies: List<InformationConcept>? = null,
@@ -101,7 +101,7 @@ open class InformationRequirement(
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
     override val enablingCondition: String? = null,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val enablingConditionDependencies: List<InformationConcept>? = null,
     override val required: Boolean,
     override val validatingCondition: String? = null,
     override val validatingConditionDependencies: List<InformationConcept>? = null,
@@ -138,7 +138,7 @@ open class Constraint(
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
     override val enablingCondition: String?,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val enablingConditionDependencies: List<InformationConcept>? = null,
     override val required: Boolean,
     override val validatingCondition: String?,
     override val validatingConditionDependencies: List<InformationConcept>? = null,
@@ -176,7 +176,7 @@ open class RequirementRef(
     override val hasConcept: List<InformationConcept>? = null
     override val hasEvidenceTypeList: List<EvidenceTypeList>? = null
     override val enablingCondition: String? = null
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null
+    override val enablingConditionDependencies: List<InformationConcept>? = null
     override val required: Boolean = true
     override val validatingCondition: String? = null
     override val validatingConditionDependencies: List<InformationConcept>? = null
@@ -204,7 +204,7 @@ open class PartialRequirement(
     override val isDerivedFrom: List<ReferenceFramework>? = null,
     override var isRequirementOf: List<Requirement>? = null,
     override val enablingCondition: String? = null,
-    override val enablingConditionDependencies: List<InformationConceptIdentifier>? = null,
+    override val enablingConditionDependencies: List<InformationConcept>? = null,
     override val required: Boolean,
     override val validatingCondition: String? = null,
     override val validatingConditionDependencies: List<InformationConcept>? = null,
