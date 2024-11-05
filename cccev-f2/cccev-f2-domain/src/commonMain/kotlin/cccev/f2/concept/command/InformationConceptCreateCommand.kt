@@ -57,7 +57,7 @@ interface InformationConceptCreateCommandDTO {
      * A list of information concepts the one depends on for auto-computation, if applicable.
      * @example [cccev.s2.concept.domain.model.InformationConcept.dependsOn]
      */
-    val dependsOn: List<InformationConceptId>
+    val dependsOn: List<InformationConceptId>?
 }
 
 /**
@@ -70,7 +70,7 @@ data class InformationConceptCreateCommand(
     override val hasUnit: DataUnitId,
     override val description: String?,
     override val expressionOfExpectedValue: String?,
-    override val dependsOn: List<InformationConceptId>
+    override val dependsOn: List<InformationConceptId>?
 ): InformationConceptCreateCommandDTO
 
 /**

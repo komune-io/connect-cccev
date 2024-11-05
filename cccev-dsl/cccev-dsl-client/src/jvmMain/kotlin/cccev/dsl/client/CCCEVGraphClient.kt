@@ -286,7 +286,7 @@ class CCCEVGraphClient(
                 hasUnit = context.processedUnits[unit.identifier]!!,
                 description = description,
                 expressionOfExpectedValue = expressionOfExpectedValue,
-                dependsOn = dependsOn.map { context.processedConcepts[it]!! }
+                dependsOn = dependsOn?.map { context.processedConcepts[it]!! }
             ).invokeWith(informationConceptClient.conceptCreate()).id
         }
 
@@ -295,7 +295,7 @@ class CCCEVGraphClient(
             name = name,
             description = description,
             expressionOfExpectedValue = expressionOfExpectedValue,
-            dependsOn = dependsOn.map { context.processedConcepts[it]!! }
+            dependsOn = dependsOn?.map { context.processedConcepts[it]!! }
         ).invokeWith(informationConceptClient.conceptUpdate()).id
     }
 

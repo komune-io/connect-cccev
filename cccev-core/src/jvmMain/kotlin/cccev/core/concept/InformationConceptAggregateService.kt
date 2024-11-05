@@ -22,7 +22,7 @@ class InformationConceptAggregateService(
     private val sessionFactory: SessionFactory
 ) {
     suspend fun create(command: InformationConceptCreateCommand) = sessionFactory.transaction { session, _ ->
-        val dependencies = session.findSafeShallowAllById<InformationConceptEntity>(command.dependsOn, InformationConceptEntity.LABEL)
+        val dependencies = session.findSafeShallowAllById<InformationConceptEntity>(command.dependsOn.orEmpty(), InformationConceptEntity.LABEL)
         val unit = session.findSafeShallowById<DataUnitEntity>(command.hasUnit, DataUnitEntity.LABEL)
         val concept = InformationConceptEntity().apply {
             id = UUID.randomUUID().toString()
@@ -42,11 +42,11 @@ class InformationConceptAggregateService(
         val concept = session.load(InformationConceptEntity::class.java, command.id as String, 1)
             ?: throw NotFoundException("InformationConcept", command.id)
 
-        val dependencies = session.findSafeShallowAllById<InformationConceptEntity>(command.dependsOn, InformationConceptEntity.LABEL)
+        val dependencies = session.findSafeShallowAllById<InformationConceptEntity>(command.dependsOn.orEmpty(), InformationConceptEntity.LABEL)
 
         session.removeSeveredRelations(
             InformationConceptEntity.LABEL, command.id, InformationConceptEntity.DEPENDS_ON, InformationConceptEntity.LABEL,
-            concept.dependencies.map { it.id }, command.dependsOn.toSet()
+            concept.dependencies.map { it.id }, command.dependsOn.orEmpty().toSet()
         )
 
         concept.apply {

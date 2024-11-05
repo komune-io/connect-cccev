@@ -210,9 +210,9 @@ private fun RequirementFlat.asInformationRequirement(
     validatingConditionDependencies = validatingConditionDependencies,
     evidenceValidatingCondition = evidenceValidatingCondition,
     hasRequirement = subRequirements,
-    isDerivedFrom = emptyList(),
+    isDerivedFrom = null,
     hasEvidenceTypeList = evidenceTypeLists,
-    isRequirementOf = emptyList(),
+    isRequirementOf = null,
 )
 
 private fun RequirementFlat.asCriterion(
@@ -237,8 +237,8 @@ private fun RequirementFlat.asCriterion(
     validatingConditionDependencies = validatingConditionDependencies,
     hasRequirement = subRequirements,
     hasEvidenceTypeList = evidenceTypeLists,
-    isDerivedFrom = emptyList(),
-    isRequirementOf = emptyList(),
+    isDerivedFrom = null,
+    isRequirementOf = null,
     evidenceValidatingCondition = evidenceValidatingCondition
 )
 
@@ -262,10 +262,10 @@ private fun RequirementFlat.asConstant(
     validatingCondition = validatingCondition,
     validatingConditionDependencies = validatingConditionDependencies,
     hasRequirement = subRequirements,
-    isDerivedFrom = emptyList(),
+    isDerivedFrom = null,
     hasConcept = concepts,
     hasEvidenceTypeList = evidenceTypeLists,
-    isRequirementOf = emptyList(),
+    isRequirementOf = null,
     evidenceValidatingCondition = evidenceValidatingCondition
 )
 
