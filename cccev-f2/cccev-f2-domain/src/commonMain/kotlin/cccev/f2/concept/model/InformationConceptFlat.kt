@@ -46,7 +46,7 @@ interface InformationConceptFlatDTO {
     /**
      * @ref [InformationConceptDTO.dependsOn]
      */
-    val dependsOn: List<InformationConceptIdentifier>
+    val dependsOn: List<InformationConceptIdentifier>?
 }
 
 /**
@@ -60,5 +60,5 @@ data class InformationConceptFlat(
     override val unitIdentifier: DataUnitIdentifier,
     override val description: String?,
     override val expressionOfExpectedValue: String?,
-    override val dependsOn: List<InformationConceptIdentifier>
+    override val dependsOn: List<InformationConceptIdentifier>?
 ): InformationConceptFlatDTO
