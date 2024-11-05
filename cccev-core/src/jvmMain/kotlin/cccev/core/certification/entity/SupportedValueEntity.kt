@@ -2,6 +2,7 @@ package cccev.core.certification.entity
 
 import cccev.core.concept.entity.InformationConceptEntity
 import cccev.dsl.model.SupportedValueId
+import cccev.dsl.model.SupportedValueIdentifier
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship
@@ -16,6 +17,8 @@ class SupportedValueEntity {
     }
     @Id
     lateinit var id: SupportedValueId
+
+    lateinit var identifier: SupportedValueIdentifier
 
     var value: String? = null
 

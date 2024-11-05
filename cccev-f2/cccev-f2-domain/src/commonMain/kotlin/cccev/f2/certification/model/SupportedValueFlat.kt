@@ -2,6 +2,7 @@ package cccev.f2.certification.model
 
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.SupportedValueId
+import cccev.dsl.model.SupportedValueIdentifier
 import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
 
@@ -14,6 +15,7 @@ import kotlinx.serialization.Serializable
 @JsExport
 interface SupportedValueFlatDTO {
     val id: SupportedValueId
+    val identifier: SupportedValueIdentifier
     val value: String?
     val conceptIdentifier: InformationConceptIdentifier
 }
@@ -21,6 +23,7 @@ interface SupportedValueFlatDTO {
 @Serializable
 data class SupportedValueFlat(
     override val id: SupportedValueId,
+    override val identifier: SupportedValueIdentifier,
     override val value: String?,
     override val conceptIdentifier: InformationConceptIdentifier
 ): SupportedValueFlatDTO
