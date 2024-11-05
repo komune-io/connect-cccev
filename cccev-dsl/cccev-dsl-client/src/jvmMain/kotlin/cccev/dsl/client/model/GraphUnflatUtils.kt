@@ -101,11 +101,11 @@ fun InformationConceptFlat.unflatten(graph: CccevFlatGraph): InformationConcept 
         ?.unflatten(graph)
         ?: throw NotFoundException("DataUnit", unitIdentifier)
 
-    val dependencies = dependsOn.map { dependencyIdentifier ->
+    val dependencies = dependsOn?.map { dependencyIdentifier ->
         graph.concepts[dependencyIdentifier]
             ?.unflatten(graph)
             ?: throw NotFoundException("InformationConcept", dependencyIdentifier)
-    }.map { it.id }
+    }?.map { it.id }.nullIfEmpty()
     return InformationConceptBase(
         id = id,
         identifier = identifier,

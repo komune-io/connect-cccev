@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   cccev-fs:
     container_name: cccev-fs

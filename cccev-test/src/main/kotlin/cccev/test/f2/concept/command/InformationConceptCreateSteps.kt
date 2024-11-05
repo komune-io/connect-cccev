@@ -123,7 +123,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
             hasUnit = context.unitIds[params.unit] ?: params.unit,
             description = params.description,
             expressionOfExpectedValue = params.expressionOfExpectedValue,
-            dependsOn = params.dependsOn.map(context.conceptIds::safeGet)
+            dependsOn = params.dependsOn?.map(context.conceptIds::safeGet)
         )
         command.invokeWith(informationConceptEndpoint.conceptCreate()).id
     }
@@ -134,7 +134,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
         unit = entry?.get("unit") ?: context.unitIds.lastUsedKey,
         description = entry?.get("description").orRandom(),
         expressionOfExpectedValue = entry?.get("expressionOfExpectedValue"),
-        dependsOn = entry?.extractList("dependsOn") ?: emptyList()
+        dependsOn = entry?.extractList("dependsOn")
     )
 
     private data class InformationConceptCreateParams(
@@ -143,7 +143,7 @@ class InformationConceptCreateSteps: En, CccevCucumberStepsDefinition() {
         val unit: TestContextKey,
         val description: String,
         val expressionOfExpectedValue: String?,
-        val dependsOn: List<TestContextKey>
+        val dependsOn: List<TestContextKey>?
     )
 
     private fun informationConceptAssertParams(entry: Map<String, String>) = InformationConceptAssertParams(
