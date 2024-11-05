@@ -5,6 +5,7 @@ import cccev.dsl.model.Constraint
 import cccev.dsl.model.Criterion
 import cccev.dsl.model.InformationRequirement
 import cccev.dsl.model.Requirement
+import cccev.dsl.model.nullIfEmpty
 import com.benasher44.uuid.uuid4
 
 class RequirementsLinkedBuilder {
@@ -120,6 +121,3 @@ class ConstraintBuilder: RequirementBuilder<Constraint>, AbstractRequirementBuil
         evidenceValidatingCondition = evidenceValidatingCondition
     )
 }
-
-fun <T> List<T>?.nullIfEmpty(): List<T>? = this?.takeIf { it.isNotEmpty() }
-fun <T, R> Map<T, R>?.nullIfEmpty(): Map<T, R>? = this?.takeIf { it.isNotEmpty() }

@@ -23,7 +23,7 @@ class AssertionDataUnit(
         fun hasFields(
             id: DataUnitId = unit.id,
             name: String = unit.name,
-            description: String = unit.description,
+            description: String? = unit.description,
             notation: String? = unit.notation,
             type: DataUnitType = unit.type
         ) = also {

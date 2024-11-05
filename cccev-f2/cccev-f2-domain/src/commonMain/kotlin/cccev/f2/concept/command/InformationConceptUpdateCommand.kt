@@ -61,8 +61,8 @@ data class InformationConceptUpdateCommand(
     override val id: InformationConceptId,
     override val name: String,
     override val description: String?,
-    override val expressionOfExpectedValue: String?,
-    override val dependsOn: List<InformationConceptId>?
+    override val expressionOfExpectedValue: String? = null,
+    override val dependsOn: List<InformationConceptId>? = null
 ): InformationConceptUpdateCommandDTO
 
 /**

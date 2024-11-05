@@ -21,7 +21,7 @@ typealias DataUnitIdentifier = String
 interface DataUnitDTO {
     val identifier: DataUnitIdentifier
     val name: String
-    val description: String
+    val description: String?
     val notation: String?
     val type: DataUnitType
     val options: List<DataUnitOption>?
@@ -31,7 +31,7 @@ interface DataUnitDTO {
 open class DataUnit(
     override val identifier: DataUnitIdentifier,
     override val name: String,
-    override val description: String,
+    override val description: String? = null,
     override val notation: String? = null,
     override val type: DataUnitType,
     override val options: List<DataUnitOption>? = null

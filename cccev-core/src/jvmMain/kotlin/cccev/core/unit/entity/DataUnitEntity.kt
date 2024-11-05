@@ -22,7 +22,7 @@ class DataUnitEntity {
 
     lateinit var name: String
 
-    lateinit var description: String
+    var description: String? = null
 
     var notation: String? = null
 

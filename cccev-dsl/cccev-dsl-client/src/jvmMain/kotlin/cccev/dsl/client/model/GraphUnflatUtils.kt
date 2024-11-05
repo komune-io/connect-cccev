@@ -15,6 +15,7 @@ import cccev.dsl.model.InformationRequirement
 import cccev.dsl.model.Requirement
 import cccev.dsl.model.RequirementCertification
 import cccev.dsl.model.SupportedValue
+import cccev.dsl.model.nullIfEmpty
 import cccev.f2.CccevFlatGraph
 import cccev.f2.certification.model.CertificationFlat
 import cccev.f2.certification.model.RequirementCertificationFlat
@@ -276,10 +277,10 @@ fun DataUnitFlat.unflatten(graph: CccevFlatGraph): DataUnit {
         description = description,
         notation = notation,
         type = DataUnitType.valueOf(type),
-        options = optionIdentifiers.map {
+        options = optionIdentifiers?.map {
             graph.unitOptions[it]?.unflatten()
                 ?: throw NotFoundException("DataUnitOption", it)
-        }
+        }.nullIfEmpty()
     )
 }
 
