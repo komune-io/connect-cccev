@@ -2,6 +2,7 @@ package cccev.dsl.model.builder
 
 import cccev.dsl.model.EvidenceTypeListBase
 import cccev.dsl.model.InformationConcept
+import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.ReferenceFramework
 import cccev.dsl.model.Requirement
@@ -19,10 +20,10 @@ interface RequirementBuilder<T : Requirement> {
     var hasEvidenceTypeList: List<EvidenceTypeListBase>?
 
     var enablingCondition: String?
-    var enablingConditionDependencies: List<InformationConcept>
+    var enablingConditionDependencies: List<InformationConceptIdentifier>
     var required: Boolean
     var validatingCondition: String?
-    var validatingConditionDependencies: List<InformationConcept>
+    var validatingConditionDependencies: List<InformationConceptIdentifier>
     var order: Int?
     var properties: Map<String, String>?
 
@@ -57,10 +58,10 @@ abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<
     protected var hasQualifiedRelation = mutableMapOf<String, List<Requirement>>()
 
     override var enablingCondition: String? = null
-    override var enablingConditionDependencies: List<InformationConcept> = mutableListOf()
+    override var enablingConditionDependencies: List<InformationConceptIdentifier> = mutableListOf()
     override var required: Boolean = true
     override var validatingCondition: String? = null
-    override var validatingConditionDependencies: List<InformationConcept> = mutableListOf()
+    override var validatingConditionDependencies: List<InformationConceptIdentifier> = mutableListOf()
     override var order: Int? = null
     override var properties: Map<String, String>? = null
 

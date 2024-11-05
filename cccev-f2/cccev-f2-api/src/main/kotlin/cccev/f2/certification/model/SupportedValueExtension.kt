@@ -8,6 +8,7 @@ import cccev.f2.concept.model.flattenTo
 fun SupportedValueEntity.flattenTo(graph: CccevFlatGraph): SupportedValueId {
     graph.supportedValues[id] = SupportedValueFlat(
         id = id,
+        identifier = identifier,
         value = value,
         conceptIdentifier = concept.flattenTo(graph),
     )
