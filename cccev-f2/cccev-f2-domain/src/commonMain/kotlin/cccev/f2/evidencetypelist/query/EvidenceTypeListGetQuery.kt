@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 /**
  * Get an evidence type by its id.
  * @d2 function
- * @parent [D2EvidenceTypePage]
+ * @parent [cccev.f2.evidencetype.D2EvidenceTypePage]
  */
 typealias EvidenceTypeListGetFunction = F2Function<EvidenceTypeListGetQuery, EvidenceTypeListGetResult>
 

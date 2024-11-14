@@ -10,12 +10,13 @@ import kotlinx.serialization.Serializable
 /**
  * Create an evidence type
  * @d2 function
- * @parent [D2EvidenceTypePage]
+ * @parent [cccev.f2.evidencetype.D2EvidenceTypePage]
  */
 typealias EvidenceTypeListCreateFunction = F2Function<EvidenceTypeListCreateCommand, EvidenceTypeListCreatedEvent>
 
 /**
  * @d2 command
+ * @parent [EvidenceTypeListCreateFunction]
  */
 @JsExport
 @JsName("EvidenceTypeListCreateCommandDTO")
@@ -52,6 +53,7 @@ data class EvidenceTypeListCreateCommand(
 
 /**
  * @d2 event
+ * @parent [EvidenceTypeListCreateFunction]
  */
 @JsExport
 @JsName("EvidenceTypeListCreatedEventDTO")

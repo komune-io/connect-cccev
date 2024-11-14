@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 /**
  * Remove requirements to fulfill from a certification.
  * @d2 function
- * @parent [cccev.f2.certification.domain.D2CertificationApiPage]
+ * @parent [cccev.f2.certification.D2CertificationPage]
  * @child [cccev.core.certification.command.CertificationRemoveRequirementsCommandDTO]
  * @child [cccev.core.certification.command.CertificationRemovedRequirementsEventDTO]
  * @order 21

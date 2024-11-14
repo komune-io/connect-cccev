@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * Add a list of evidence types to a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 70
  */
 typealias RequirementAddEvidenceTypesFunction = F2Function<RequirementAddEvidenceTypesCommand, RequirementAddedEvidenceTypesEvent>

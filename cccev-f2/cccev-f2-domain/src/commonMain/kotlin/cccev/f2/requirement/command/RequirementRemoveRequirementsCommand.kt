@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 /**
  * Remove a list of sub-requirement from a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 40
  */
 typealias RequirementRemoveRequirementsFunction = F2Function<RequirementRemoveRequirementsCommand, RequirementRemovedRequirementsEvent>

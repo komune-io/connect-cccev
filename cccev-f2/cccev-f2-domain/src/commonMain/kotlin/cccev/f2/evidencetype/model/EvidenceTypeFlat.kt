@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * @d2 model
- * @parent [D2EvidenceTypePage]
+ * @parent [cccev.f2.evidencetype.D2EvidenceTypePage]
  * @order 10
  */
 @JsExport
@@ -25,7 +25,7 @@ interface EvidenceTypeFlatDTO {
 
     /**
      * Name of the evidence type.
-     * @example [cccev.s2.evidence.domain.model.EvidenceType.name]
+     * @example [cccev.dsl.model.EvidenceType.name]
      */
     val name: String
 

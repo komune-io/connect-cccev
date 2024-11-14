@@ -6,10 +6,14 @@ import kotlinx.serialization.Serializable
 
 typealias InformationConceptId = String
 typealias InformationConceptIdentifier = String
-
+/**
+ * The InformationConcept defines a type of information that can be collected.
+ * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
+ */
 @JsExport
-@JsName("InformationConcept")
-interface InformationConcept {
+@JsName("InformationConceptDTO")
+interface InformationConceptDTO {
     //TODO FIND A WAY TO REMOVE All Id from the model dsl
 	val id: InformationConceptId
 	val identifier: InformationConceptIdentifier
@@ -22,7 +26,7 @@ interface InformationConcept {
 }
 
 @Serializable
-open class InformationConceptBase(
+open class InformationConcept(
     override val id: InformationConceptId,
     override val identifier: InformationConceptIdentifier,
     override val name: String,
@@ -31,13 +35,13 @@ open class InformationConceptBase(
     override val description: String? = null,
     override val expressionOfExpectedValue: String? = null,
     override val dependsOn: List<InformationConceptId>? = null
-): InformationConcept
+): InformationConceptDTO
 
 @Serializable
 class InformationConceptRef(
     override val id: InformationConceptId,
     override val identifier: InformationConceptIdentifier
-): InformationConcept {
+): InformationConceptDTO {
     override val name: String = ""
     override val unit: DataUnit = XSDString
     override val type: Code? = null

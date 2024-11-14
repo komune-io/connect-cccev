@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * Add a list of sub-requirement to a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 30
  */
 typealias RequirementAddRequirementsFunction = F2Function<RequirementAddRequirementsCommand, RequirementAddedRequirementsEvent>

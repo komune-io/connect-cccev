@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 /**
  * Remove a list of information concept from a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 60
  */
 typealias RequirementRemoveConceptsFunction = F2Function<RequirementRemoveConceptsCommand, RequirementRemovedConceptsEvent>

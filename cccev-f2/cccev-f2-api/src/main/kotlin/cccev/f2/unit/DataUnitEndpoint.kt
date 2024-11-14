@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration
 
 /**
  * @d2 api
- * @parent [cccev.core.unit.D2DataUnitPage]
+ * @parent [cccev.f2.unit.D2DataUnitPage]
  */
 @Configuration
 class DataUnitEndpoint(

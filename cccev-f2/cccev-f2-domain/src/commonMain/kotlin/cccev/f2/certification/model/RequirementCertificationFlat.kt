@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * TODO
  * @d2 model
- * @parent [cccev.f2.certification.domain.D2CertificationApiPage]
+ * @parent [cccev.f2.certification.D2CertificationPage]
  * @order 20
  */
 @JsExport

@@ -2,8 +2,8 @@ package cccev.dsl.model.builder
 
 import cccev.dsl.model.Code
 import cccev.dsl.model.DataUnit
+import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConcept
-import cccev.dsl.model.InformationConceptBase
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.InformationConceptRef
@@ -12,9 +12,9 @@ import com.benasher44.uuid.uuid4
 
 class InformationConceptListBuilder {
 
-    var informationConcepts = mutableListOf<InformationConcept>()
+    var informationConcepts = mutableListOf<InformationConceptDTO>()
 
-    operator fun InformationConcept.unaryPlus() {
+    operator fun InformationConceptDTO.unaryPlus() {
         informationConcepts.add(this)
     }
 
@@ -22,11 +22,11 @@ class InformationConceptListBuilder {
         informationConcepts.add(this.build())
     }
 
-    operator fun List<InformationConcept>.unaryPlus() {
+    operator fun List<InformationConceptDTO>.unaryPlus() {
         informationConcepts.addAll(this)
     }
 
-    fun build(): List<InformationConcept> = informationConcepts.toList()
+    fun build(): List<InformationConceptDTO> = informationConcepts.toList()
 }
 
 class InformationConceptBuilder {
@@ -38,7 +38,7 @@ class InformationConceptBuilder {
     var description: String? = null
     var expressionOfExpectedValue: String? = null
 
-    fun build() = InformationConceptBase(
+    fun build() = InformationConcept(
         id = id ?: uuid4().toString(),
         identifier = identifier!!,
         name = name!!,
@@ -49,7 +49,7 @@ class InformationConceptBuilder {
     )
 }
 
-fun informationConcept(init: InformationConceptBuilder.() -> Unit): InformationConcept
+fun informationConcept(init: InformationConceptBuilder.() -> Unit): InformationConceptDTO
     = InformationConceptBuilder().apply(init).build()
 
 fun informationConceptRef(id: InformationConceptId, identifier: InformationConceptIdentifier) = InformationConceptRef(id, identifier)

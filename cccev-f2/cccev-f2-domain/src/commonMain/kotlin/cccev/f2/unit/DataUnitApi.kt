@@ -7,7 +7,7 @@ import cccev.f2.unit.query.DataUnitGetFunction
 
 /**
  * @d2 api
- * @parent [cccev.core.unit.D2DataUnitPage]
+ * @parent [cccev.f2.unit.D2DataUnitPage]
  */
 interface DataUnitApi: DataUnitCommandApi, DataUnitQueryApi
 

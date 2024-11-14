@@ -8,9 +8,8 @@ import cccev.dsl.model.DataUnitOption
 import cccev.dsl.model.DataUnitType
 import cccev.dsl.model.EvidenceTypeBase
 import cccev.dsl.model.EvidenceTypeListBase
+import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConcept
-import cccev.dsl.model.InformationConceptBase
-import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.InformationRequirement
 import cccev.dsl.model.Requirement
@@ -92,12 +91,12 @@ fun SupportedValueFlat.unflatten(graph: CccevFlatGraph): SupportedValue {
     )
 }
 
-fun InformationConceptGetByIdentifierResult.unflatten(): InformationConcept {
+fun InformationConceptGetByIdentifierResult.unflatten(): InformationConceptDTO {
     return item?.unflatten(graph)
         ?: throw NotFoundException("InformationConcept", item?.id!!)
 }
 
-fun InformationConceptFlat.unflatten(graph: CccevFlatGraph): InformationConcept {
+fun InformationConceptFlat.unflatten(graph: CccevFlatGraph): InformationConceptDTO {
     val unit = graph.units[unitIdentifier]
         ?.unflatten(graph)
         ?: throw NotFoundException("DataUnit", unitIdentifier)
@@ -107,7 +106,7 @@ fun InformationConceptFlat.unflatten(graph: CccevFlatGraph): InformationConcept 
             ?.unflatten(graph)
             ?: throw NotFoundException("InformationConcept", dependencyIdentifier)
     }?.map { it.id }
-    return InformationConceptBase(
+    return InformationConcept(
         id = id,
         identifier = identifier,
         name = name,
@@ -192,7 +191,7 @@ private fun RequirementFlat.asInformationRequirement(
     enablingConditionDependencies: List<InformationConceptIdentifier>?,
     validatingConditionDependencies: List<InformationConceptIdentifier>?,
     subRequirements: List<Requirement>?,
-    concepts: List<InformationConcept>?,
+    concepts: List<InformationConceptDTO>?,
     evidenceTypeLists: List<EvidenceTypeListBase>?
 ) = InformationRequirement(
     id = id,
@@ -221,7 +220,7 @@ private fun RequirementFlat.asCriterion(
     enablingConditionDependencies: List<InformationConceptIdentifier>?,
     validatingConditionDependencies: List<InformationConceptIdentifier>?,
     subRequirements: List<Requirement>?,
-    concepts: List<InformationConcept>?,
+    concepts: List<InformationConceptDTO>?,
     evidenceTypeLists: List<EvidenceTypeListBase>?
 ) = Criterion(
     id = id,
@@ -248,7 +247,7 @@ private fun RequirementFlat.asConstant(
     enablingConditionDependencies: List<InformationConceptIdentifier>?,
     validatingConditionDependencies: List<InformationConceptIdentifier>?,
     subRequirements: List<Requirement>?,
-    concepts: List<InformationConcept>?,
+    concepts: List<InformationConceptDTO>?,
     evidenceTypeLists: List<EvidenceTypeListBase>?
 ) = Constraint(
     id = id,

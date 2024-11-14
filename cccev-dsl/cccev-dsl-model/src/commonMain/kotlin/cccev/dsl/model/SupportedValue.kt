@@ -7,6 +7,11 @@ import kotlinx.serialization.Serializable
 typealias SupportedValueId = String
 typealias SupportedValueIdentifier = String
 
+/**
+ * The SupportedValue defines a value that can be collected.
+ * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
+ */
 @JsExport
 @JsName("SupportedValueDTO")
 interface SupportedValueDTO {

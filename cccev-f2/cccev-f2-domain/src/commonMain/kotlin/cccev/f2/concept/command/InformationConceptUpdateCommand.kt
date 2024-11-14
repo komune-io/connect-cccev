@@ -22,19 +22,19 @@ typealias InformationConceptUpdateFunction = F2Function<InformationConceptUpdate
 interface InformationConceptUpdateCommandDTO {
     /**
      * Id of the information concept.
-     * @example [cccev.s2.concept.domain.model.InformationConcept.id]
+     * @example [cccev.dsl.model.InformationConceptDTO.id]
      */
     val id: InformationConceptId
 
     /**
      * The name of the information concept.
-     * @example [cccev.s2.concept.domain.model.InformationConcept.name]
+     * @example [cccev.dsl.model.InformationConceptDTO.name]
      */
     val name: String
 
     /**
      * The description of the information concept.
-     * @example [cccev.s2.concept.domain.model.InformationConcept.description]
+     * @example [cccev.dsl.model.InformationConceptDTO.description]
      */
     val description: String?
 
@@ -42,13 +42,13 @@ interface InformationConceptUpdateCommandDTO {
      * Expression to evaluate in order to auto-compute the SupportedValue associated with the information concept, if applicable. <br />
      * For now, the expression will be evaluated using a Kotlin engine. <br />
      * The expression may contain other known information concepts, identified by their id. They must be declared in the `dependsOn` field.
-     * @example [cccev.s2.concept.domain.model.InformationConcept.expressionOfExpectedValue]
+     * @example [cccev.dsl.model.InformationConceptDTO.expressionOfExpectedValue]
      */
     val expressionOfExpectedValue: String?
 
     /**
      * A list of information concepts the one depends on for auto-computation, if applicable.
-     * @example [cccev.s2.concept.domain.model.InformationConcept.dependsOn]
+     * @example [cccev.dsl.model.InformationConceptDTO.dependsOn]
      */
     val dependsOn: List<InformationConceptId>?
 }

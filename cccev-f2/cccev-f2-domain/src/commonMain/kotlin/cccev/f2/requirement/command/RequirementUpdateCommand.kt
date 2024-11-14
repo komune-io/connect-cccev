@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 /**
  * Update a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 10
  */
 typealias RequirementUpdateFunction = F2Function<RequirementUpdateCommand, RequirementUpdatedEvent>
@@ -29,13 +29,13 @@ interface RequirementUpdateCommandDTO {
 
     /**
      * Name of the requirement.
-     * @example [cccev.core.requirement.model.Requirement.name]
+     * @example [cccev.dsl.model.Requirement.name]
      */
     val name: String?
 
     /**
      * Description of the requirement.
-     * @example [cccev.core.requirement.model.Requirement.description]
+     * @example [cccev.dsl.model.Requirement.description]
      */
     val description: String?
 

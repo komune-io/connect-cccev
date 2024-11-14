@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * Add a list of information concept to a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 50
  */
 typealias RequirementAddConceptsFunction = F2Function<RequirementAddConceptsCommand, RequirementAddedConceptsEvent>

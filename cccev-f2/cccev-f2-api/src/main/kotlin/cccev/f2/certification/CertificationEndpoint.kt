@@ -23,10 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
 
-/**
- * @d2 api
- * @parent [D2RequestApiPage]
- */
 @RestController
 @RequestMapping
 class CertificationEndpoint(

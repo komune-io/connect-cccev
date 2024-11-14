@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 /**
  * Create a new requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.f2.requirement.D2RequirementPage]
  * @order 10
  */
 typealias RequirementCreateFunction = F2Function<RequirementCreateCommand, RequirementCreatedEvent>
@@ -25,85 +25,88 @@ typealias RequirementCreateFunction = F2Function<RequirementCreateCommand, Requi
 interface RequirementCreateCommandDTO {
     /**
      * A custom identifier for the requirement
-     * @example [cccev.core.requirement.model.Requirement.identifier]
+     * @example [cccev.dsl.model.Requirement.identifier]
      */
     val identifier: RequirementIdentifier?
 
     /**
      * Subtype used for the requirement.
-     * @example [cccev.core.requirement.model.Requirement.kind]
+     * @example [cccev.dsl.model.Requirement.kind]
      */
     val kind: RequirementKind
 
     /**
      * Name of the requirement.
-     * @example [cccev.core.requirement.model.Requirement.name]
+     * @example [cccev.dsl.model.Requirement.name]
      */
     val name: String?
 
     /**
      * Description of the requirement.
-     * @example [cccev.core.requirement.model.Requirement.description]
+     * @example [cccev.dsl.model.Requirement.description]
      */
     val description: String?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.type]
+     * @ref [cccev.dsl.model.Requirement.type]
      */
     val type: String?
 
     /**
      * Sub-requirements that must be fulfilled for the requirement to be validated.
-     * @example [cccev.core.requirement.model.Requirement.hasRequirement]
+     * @example [cccev.dsl.model.Requirement.hasRequirement]
      */
     val subRequirementIds: List<RequirementId>?
 
     /**
      * Concepts used by the requirement
-     * @example [cccev.core.requirement.model.Requirement.hasConcept]
+     * @example [cccev.dsl.model.Requirement.hasConcept]
      */
     val conceptIds: List<InformationConceptId>?
 
     /**
      * Evidences that must be provided for the requirement to be validated. <br/>
-     * @example [cccev.core.requirement.model.Requirement.hasEvidenceTypeList]
+     * @example [cccev.dsl.model.Requirement.hasEvidenceTypeList]
      */
     val evidenceTypeListIds: List<EvidenceTypeId>?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.enablingCondition]
+     * @ref [cccev.dsl.model.Requirement.enablingCondition]
      */
     val enablingCondition: String?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.enablingConditionDependencies]
+     * @ref [cccev.dsl.model.Requirement.enablingConditionDependencies]
      */
     val enablingConditionDependencies: List<InformationConceptId>?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.required]
+     * @ref [cccev.dsl.model.Requirement.required]
      */
     val required: Boolean
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.validatingCondition]
+     * @ref [cccev.dsl.model.Requirement.validatingCondition]
      */
     val validatingCondition: String?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.validatingConditionDependencies]
+     * @ref [cccev.dsl.model.Requirement.validatingConditionDependencies]
      */
     val validatingConditionDependencies: List<InformationConceptId>?
 
+    /**
+     * @ref [cccev.dsl.model.Requirement.evidenceValidatingCondition]
+     */
     val evidenceValidatingCondition: String?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.order]
+     * @ref [cccev.dsl.model.Requirement.order]
      */
     val order: Int?
 
     /**
-     * @ref [cccev.core.requirement.model.Requirement.properties]
+     * @ref [cccev.dsl.model.Requirement.properties]
      */
     val properties: Map<String, String>?
 }

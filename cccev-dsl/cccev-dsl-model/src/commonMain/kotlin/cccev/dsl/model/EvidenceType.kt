@@ -40,6 +40,11 @@ typealias EvidenceTypeId = String
  */
 typealias EvidenceTypeIdentifier = String
 
+/**
+ * The EvidenceTypeList defines a list of EvidenceTypes.
+ * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
+ */
 @JsExport
 @JsName("EvidenceTypeList")
 interface EvidenceTypeList {
@@ -48,6 +53,10 @@ interface EvidenceTypeList {
 	val name: String
 	val specifiesEvidenceType: List<EvidenceType>?
 }
+
+/**
+ * @d2 inherit
+ */
 @Serializable
 open class EvidenceTypeListBase(
     override val description: String,
@@ -56,12 +65,17 @@ open class EvidenceTypeListBase(
     override val specifiesEvidenceType: List<EvidenceTypeBase>? = null
 ): EvidenceTypeList
 
+/**
+ * The EvidenceType defines a type of evidence required to support specific Information Concepts.
+ * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
+ */
 @JsExport
 @JsName("EvidenceType")
 interface EvidenceType {
 	val identifier: EvidenceTypeId
 	val name: String
-	val supportConcept: List<InformationConcept>
+	val supportConcept: List<InformationConceptDTO>
 	val evidenceTypeClassification: Code?
 	val validityPeriodConstraint: PeriodOfTime?
 	val issuingPlace: CoreLocationLocation?
@@ -70,7 +84,7 @@ interface EvidenceType {
 open class EvidenceTypeBase(
 	override val identifier: EvidenceTypeId,
 	override val name: String,
-	override val supportConcept: List<InformationConcept>,
+	override val supportConcept: List<InformationConceptDTO>,
 	override val evidenceTypeClassification: Code? = null,
 	override val validityPeriodConstraint: PeriodOfTime? = null,
 	override val issuingPlace: CoreLocationLocation? = null,

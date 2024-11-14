@@ -9,6 +9,7 @@ import kotlinx.serialization.Serializable
  * @visual json "0d33dee4-4c31-410a-b54f-e57d18e9c10b"
  * @title DSL/EvidenceId
  * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
  */
 typealias EvidenceId = String
 
@@ -17,6 +18,7 @@ typealias EvidenceId = String
  * @visual json "0d33dee4-4c31-410a-b54f-e57d18e9c10b"
  * @title DSL/EvidenceId
  * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
  */
 typealias EvidenceIdentifier = String
 
@@ -32,6 +34,7 @@ typealias EvidenceIdentifier = String
  * format or medium used to exchange it: a pdf document, a video, a recording, etc.
  * @title DSL/Evidence
  * @d2 model
+ * @parent [cccev.dsl.model.D2DslModelPage]
  */
 @JsExport
 @JsName("EvidenceDTO")

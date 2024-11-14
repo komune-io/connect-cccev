@@ -1,8 +1,7 @@
 package cccev.dsl.model.builder
 
 import cccev.dsl.model.EvidenceTypeListBase
-import cccev.dsl.model.InformationConcept
-import cccev.dsl.model.InformationConceptId
+import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.ReferenceFramework
 import cccev.dsl.model.Requirement
@@ -16,7 +15,7 @@ interface RequirementBuilder<T : Requirement> {
     var name: String?
     var type: String?
 
-    var hasConcept: MutableList<InformationConcept>
+    var hasConcept: MutableList<InformationConceptDTO>
     var hasEvidenceTypeList: List<EvidenceTypeListBase>?
 
     var enablingCondition: String?
@@ -49,7 +48,7 @@ abstract class AbstractRequirementBuilder<T : Requirement> : RequirementBuilder<
     override var identifier: RequirementIdentifier = "req_${Clock.System.now().toEpochMilliseconds()}"
     override var name: String? = null
     override var type: String? = null
-    override var hasConcept: MutableList<InformationConcept> = mutableListOf()
+    override var hasConcept: MutableList<InformationConceptDTO> = mutableListOf()
     override var hasEvidenceTypeList: List<EvidenceTypeListBase>? = null
 
     protected var isDerivedFrom = mutableListOf<ReferenceFramework>()
