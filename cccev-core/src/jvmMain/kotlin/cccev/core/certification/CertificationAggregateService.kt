@@ -30,7 +30,7 @@ import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 
-@Service("CertificationAggregateService2")
+@Service("CertificationAggregateService")
 class CertificationAggregateService(
     private val applicationEventPublisher: ApplicationEventPublisher,
     private val certificationEvidenceService: CertificationEvidenceService,
@@ -137,7 +137,7 @@ class CertificationAggregateService(
     private suspend fun RequirementEntity.toEmptyCertification(
         existingCertifications: MutableMap<RequirementIdentifier, RequirementCertificationEntity> = mutableMapOf()
     ): RequirementCertificationEntity {
-        return existingCertifications[identifier]
+        val requirementCertification = existingCertifications[identifier]
             ?: RequirementCertificationEntity().also { certification ->
                 existingCertifications[identifier] = certification
 
@@ -152,5 +152,7 @@ class CertificationAggregateService(
                 certification.areEvidencesProvided = evidenceValidatingCondition == null
                 certification.isFulfilled = certification.isFulfilled()
             }
+        certificationRepository.save(requirementCertification)
+        return certificationRepository.findRequirementCertificationById(requirementCertification.id)!!
     }
 }
