@@ -1,0 +1,46 @@
+
+
+
+### Command
+
+Type: `CertificationAddEvidenceCommandDTO`
+
+---
+
+***id*** `String`
+
+Id of the certification for which to add the evidence.
+
+
+
+---
+
+***rootRequirementCertificationId*** `String?`
+
+Optional RequirementCertification id in which to add the evidence. <br /> The given evidence will only be used to fill the EvidenceTypes under it. If null, the whole certification will be filled.
+
+
+
+---
+
+***evidenceTypeId*** `String`
+
+The evidence type to which the evidence conforms.
+
+
+
+---
+
+***filePath*** `FilePathDTO?`
+
+The path at which to upload the evidence. If null, it will be uploaded to a default path.
+
+
+
+---
+
+***vectorize*** `Boolean`
+
+Whether to store the evidence file in a vector store.
+
+

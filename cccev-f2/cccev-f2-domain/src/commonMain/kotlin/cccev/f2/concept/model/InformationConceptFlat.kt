@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * @d2 model
- * @parent [cccev.f2.concept.D2InformationConceptPage]
+ * @parent [cccev.dsl.model.d2.D2InformationConceptPage]
  * @order 10
  */
 @JsExport

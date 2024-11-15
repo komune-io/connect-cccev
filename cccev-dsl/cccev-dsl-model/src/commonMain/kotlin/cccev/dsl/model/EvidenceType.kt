@@ -18,7 +18,7 @@ typealias EvidenceTypeListId = String
  * @visual json "TheEvidenceTypeListIdentifier"
  * @parent [EvidenceTypeList]
  * @title EvidenceTypeId
- * @d2 model
+ * @d2 hidden
  */
 typealias EvidenceTypeListIdentifier = String
 
@@ -27,7 +27,7 @@ typealias EvidenceTypeListIdentifier = String
  * @visual json "082f9b5b-4ffa-4e95-8288-2de2972cade5"
  * @parent [EvidenceType]
  * @title EvidenceTypeId
- * @d2 model
+ * @d2 hidden
  */
 typealias EvidenceTypeId = String
 
@@ -43,7 +43,7 @@ typealias EvidenceTypeIdentifier = String
 /**
  * The EvidenceTypeList defines a list of EvidenceTypes.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @parent [cccev.dsl.model.d2.D2EvidenceTypeListPage]
  */
 @JsExport
 @JsName("EvidenceTypeList")
@@ -68,7 +68,8 @@ open class EvidenceTypeListBase(
 /**
  * The EvidenceType defines a type of evidence required to support specific Information Concepts.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/EvidenceType
+ * @parent [cccev.dsl.model.d2.D2EvidenceTypePage]
  */
 @JsExport
 @JsName("EvidenceType")

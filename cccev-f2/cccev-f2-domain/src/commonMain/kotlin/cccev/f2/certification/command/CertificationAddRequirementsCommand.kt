@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 /**
  * Add requirements to fulfill in a certification.
  * @d2 function
- * @parent [cccev.f2.certification.D2CertificationPage]
+ * @parent [cccev.dsl.model.d2.D2CertificationPage]
  * @order 20
  */
 typealias CertificationAddRequirementsFunction = F2Function<CertificationAddRequirementsCommand, CertificationAddedRequirementsEvent>

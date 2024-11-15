@@ -17,8 +17,10 @@ typealias DataUnitId = String
 typealias DataUnitIdentifier = String
 
 /**
+ * @order 1
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/DataUnit
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 @JsExport
 @JsName("DataUnitDTO")

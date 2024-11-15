@@ -1,25 +1,12 @@
-import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
-import RequirementCreateCommandIndex from '../requirement-create-command/index.mdx'
+import RequirementCreateCommandDTOIndex from '../requirement-create-command-d-t-o/index.mdx'
 import RequirementCreateFunctionDesc from './desc.mdx'
-import RequirementCreateFunctionVisualJson from './visualJson.json'
-import RequirementCreatedEventIndex from '../requirement-created-event/index.mdx'
+import RequirementCreatedEventDTOIndex from '../requirement-created-event-d-t-o/index.mdx'
 
-<SegmentedContainer
-  leftElement={<RequirementCreateFunctionDesc />}
-  leftContainerProps={{}}
-  rightElement={
-    <CodeHighlighter
-      object={RequirementCreateFunctionVisualJson}
-      language={"json"}
-      title={"Requirement Create"}
-    />
-  }
-  rightContainerProps={{}}
-/>
+<RequirementCreateFunctionDesc />
 
-<RequirementCreateCommandIndex />
+<RequirementCreateCommandDTOIndex />
 
-<RequirementCreatedEventIndex />
+<RequirementCreatedEventDTOIndex />
 
 <div
   class={"spacer"}

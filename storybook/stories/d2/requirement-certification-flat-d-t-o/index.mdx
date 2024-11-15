@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import RequirementCertificationFlatDTODesc from './desc.mdx'
+import RequirementCertificationFlatDTOVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<RequirementCertificationFlatDTODesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={RequirementCertificationFlatDTOVisualJson}
+      language={"json"}
+      title={"RequirementCertificationFlatDTO"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

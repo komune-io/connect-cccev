@@ -1,0 +1,186 @@
+
+
+
+## Criterion
+
+Type: `Criterion`
+
+A Criterion.
+
+
+
+---
+
+***kind*** `String`
+
+A string specifying the kind or category of the requirement.
+
+
+
+---
+
+***id*** `String`
+
+The unique identifier for a specific requirement. This variable is used to distinguish and reference individual requirements within a system, ensuring that each requirement can be uniquely identified and accessed.
+
+
+
+---
+
+***identifier*** `String`
+
+A unique identifier used to represent a specific requirement in the system. This identifier is utilized to track, reference, and manage requirements throughout the application's lifecycle.
+
+
+
+---
+
+***description*** `String?`
+
+Description of the item or entity. This variable may hold a brief text that explains or provides more information about the item, entity, or process it is associated with.
+
+
+
+The variable is nullable, which means it can hold a null value indicating the absence of a description.
+
+
+
+---
+
+***name*** `String?`
+
+The name of an entity which can be null. Represents the identification label for the entity, such as a user or an item, and may be absent in some cases.
+
+
+
+---
+
+***type*** `String?`
+
+Holds information about the type of a variable or object. This can be `null` if the type is not specified or unknown.
+
+
+
+---
+
+***bias*** `Double?`
+
+---
+
+***weight*** `Double?`
+
+---
+
+***weightingConsiderationDescription*** `String?`
+
+---
+
+***weightingType*** `Code?`
+
+---
+
+***hasConcept*** [`List<InformationConceptDTO>?`](/docs/api-information-concept--docs#dsl-informationconcept)
+
+Represents a list of InformationConceptDTO objects related to the requirement. Can be null if there are no related InformationConceptDTOs.
+
+
+
+---
+
+***hasRequirement*** [`List<Requirement>?`](#dsl-requirement)
+
+---
+
+***hasEvidenceTypeList*** [`List<EvidenceTypeList>?`](/docs/api-evidence-type--docs#evidencetypelist)
+
+A list of `EvidenceTypeList` associated with the requirement, specifying the types of evidence that are relevant or necessary to meet the requirement. The list may be null if no specific types of evidence are required.
+
+
+
+---
+
+***isDerivedFrom*** [`List<ReferenceFramework>?`](/docs/api-reference-framework--docs#dsl-referenceframework)
+
+List of reference frameworks from which this requirement is derived. Each item in the list represents a framework providing context or standards related to the requirement. Can be null if no reference frameworks are specified.
+
+
+
+---
+
+***isRequirementOf*** [`List<Requirement>?`](#dsl-requirement)
+
+Represents a list of requirements that are dependent on this specific requirement.
+
+
+
+---
+
+***enablingCondition*** `String?`
+
+Represents the condition that enables a particular requirement. This condition must be satisfied for the requirement to be considered active or valid. The value is a string that can describe the condition, or it can be null if there is no specific enabling condition.
+
+
+
+---
+
+***enablingConditionDependencies*** `List<InformationConceptIdentifier>?`
+
+A list of identifiers representing the dependencies required to enable a certain condition.
+
+
+
+This property holds the identifiers of the information concepts that must be present or valid for the enabling condition of the requirement to be considered met. It is used in the context of requirements or rules where certain conditions need to be satisfied based on external dependencies or data points.
+
+
+
+---
+
+***required*** `Boolean`
+
+Indicates whether the requirement is mandatory.
+
+
+
+---
+
+***validatingCondition*** `String?`
+
+Represents a condition that must be validated for the requirement. This variable stores a string that details the specific condition that needs to be met. It can be null if no validating condition is specified.
+
+
+
+---
+
+***validatingConditionDependencies*** `List<InformationConceptIdentifier>?`
+
+Represents a list of dependencies required for validating conditions.
+
+
+
+The list contains identifiers of information concepts that are necessary to validate specific conditions. It can be null if no dependencies are defined.
+
+
+
+---
+
+***order*** `Int?`
+
+Represents the order of the requirement within a sequence. This value is nullable and can be used to prioritize or arrange requirements.
+
+
+
+---
+
+***properties*** `Map<String, String>?`
+
+A map containing properties related to the requirement. Keys are property names and values are property values. Can be null if no properties are defined.
+
+
+
+---
+
+***evidenceValidatingCondition*** `String?`
+
+A condition used to validate evidence in a given process. This variable holds a string that represents a specific condition or criteria that evidence must meet to be considered valid. It is optional and may be null if no specific condition is set.
+
+

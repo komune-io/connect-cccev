@@ -1,6 +1,6 @@
 {
-  "name" : "Meter",
-  "description" : "A unit of length in the International System of Units (SI).",
-  "notation" : "m",
-  "type" : "NUMBER"
+  "type" : "BOOLEAN",
+  "options" : [ {
+    "identifier" : "greatOption"
+  } ]
 }

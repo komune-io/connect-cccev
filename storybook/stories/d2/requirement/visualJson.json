@@ -1,12 +1,28 @@
 {
-  "id" : "5b3cc623-52bc-409f-a048-02a9b5f433d6",
-  "identifier" : "cloudAlt",
-  "kind" : "CONSTRAINT",
-  "name" : "High clouds altitude",
-  "description" : "altitudeInMeters >= 6000",
-  "hasRequirement" : [ "78e1e5f3-6e81-411d-afe6-aa7e6dae59b4" ],
-  "isRequirementOf" : [ "b25975b6-f4ff-4773-b535-9a18192b30de" ],
-  "hasQualifiedRelation" : [ "baee57d9-7f0a-4cb0-92e5-402b80c18c74" ],
-  "hasConcept" : [ "altitudeInMeters" ],
-  "hasEvidenceTypeList" : [ "dc006198-067e-4a58-8672-7d5377ae022b" ]
+  "id" : "082f9b5b-4ffa-4e95-8288-2de2972cade5",
+  "isDerivedFrom" : [ { } ],
+  "hasRequirement" : null,
+  "isRequirementOf" : null,
+  "hasConcept" : [ {
+    "unit" : {
+      "type" : "BOOLEAN",
+      "options" : [ {
+        "identifier" : "greatOption"
+      } ]
+    }
+  } ],
+  "hasEvidenceTypeList" : [ {
+    "identifier" : "bf92ba66-de62-41dc-af93-bd645b4f5bcb",
+    "specifiesEvidenceType" : [ {
+      "identifier" : "082f9b5b-4ffa-4e95-8288-2de2972cade5",
+      "supportConcept" : [ {
+        "unit" : {
+          "type" : "BOOLEAN",
+          "options" : [ {
+            "identifier" : "greatOption"
+          } ]
+        }
+      } ]
+    } ]
+  } ]
 }

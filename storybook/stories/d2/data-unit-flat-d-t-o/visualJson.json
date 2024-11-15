@@ -1,0 +1,6 @@
+{
+  "type" : "BOOLEAN",
+  "optionIdentifiers" : [ {
+    "identifier" : "greatOption"
+  } ]
+}

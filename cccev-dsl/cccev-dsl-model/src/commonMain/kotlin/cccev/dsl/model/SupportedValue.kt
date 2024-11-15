@@ -10,7 +10,8 @@ typealias SupportedValueIdentifier = String
 /**
  * The SupportedValue defines a value that can be collected.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/SupportedValue
+ * @parent [cccev.dsl.model.d2.D2SupportedValuePage]
  */
 @JsExport
 @JsName("SupportedValueDTO")

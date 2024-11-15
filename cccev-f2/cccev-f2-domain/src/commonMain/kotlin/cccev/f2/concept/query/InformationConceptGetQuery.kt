@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 /**
  * Get an information concept by its id.
  * @d2 function
- * @parent [cccev.f2.concept.D2InformationConceptPage]
+ * @parent [cccev.dsl.model.d2.D2InformationConceptPage]
  */
 typealias InformationConceptGetFunction = F2Function<InformationConceptGetQuery, InformationConceptGetResult>
 

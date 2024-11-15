@@ -1,0 +1,93 @@
+import { DocsTable } from '@komune-io/g2-documentation'
+
+
+
+<div
+  class={"spacer"}
+/>
+
+
+
+## Queries
+
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /conceptGet
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`InformationConceptGetQueryDTO`](#information-concept-get)  
+Result: [`InformationConceptGetResultDTO`](#information-concept-get)
+  </div>
+
+  <div>
+
+  
+
+#### POST /conceptGetByIdentifier
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`InformationConceptGetByIdentifierQueryDTO`](#information-concept-get-by-identifier)  
+Result: [`InformationConceptGetByIdentifierResultDTO`](#information-concept-get-by-identifier)
+  </div>
+</DocsTable>
+
+<div
+  class={"spacer"}
+/>
+
+
+
+## Commands
+
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /conceptCreate
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`InformationConceptCreateCommandDTO`](#information-concept-create)  
+Result: [`InformationConceptCreatedEventDTO`](#information-concept-create)
+  </div>
+
+  <div>
+
+  
+
+#### POST /conceptUpdate
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`InformationConceptUpdateCommandDTO`](#information-concept-update)  
+Result: [`InformationConceptUpdatedEventDTO`](#information-concept-update)
+  </div>
+</DocsTable>

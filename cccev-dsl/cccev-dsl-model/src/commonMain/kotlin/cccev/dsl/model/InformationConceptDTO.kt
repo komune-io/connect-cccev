@@ -9,7 +9,8 @@ typealias InformationConceptIdentifier = String
 /**
  * The InformationConcept defines a type of information that can be collected.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/InformationConcept
+ * @parent [cccev.dsl.model.d2.D2InformationConceptPage]
  */
 @JsExport
 @JsName("InformationConceptDTO")

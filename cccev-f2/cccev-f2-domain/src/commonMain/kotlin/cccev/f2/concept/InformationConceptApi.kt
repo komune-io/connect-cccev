@@ -7,7 +7,7 @@ import cccev.f2.concept.query.InformationConceptGetFunction
 
 /**
  * @d2 api
- * @parent [cccev.f2.concept.D2InformationConceptPage]
+ * @parent [cccev.dsl.model.d2.D2InformationConceptPage]
  */
 interface InformationConceptApi: InformationConceptCommandApi,
     InformationConceptQueryApi

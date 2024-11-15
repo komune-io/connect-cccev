@@ -1,14 +1,14 @@
 package cccev.f2.requirement.command
 
 import cccev.dsl.model.RequirementId
-import cccev.f2.requirement.D2RequirementPage
+import cccev.dsl.model.d2.D2RequirementPage
 import f2.dsl.fnc.F2Function
 import kotlinx.serialization.Serializable
 
 /**
  * Remove a list of sub-requirement from a requirement.
  * @d2 function
- * @parent [cccev.f2.requirement.D2RequirementPage]
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  * @order 40
  */
 typealias RequirementRemoveRequirementsFunction = F2Function<RequirementRemoveRequirementsCommand, RequirementRemovedRequirementsEvent>

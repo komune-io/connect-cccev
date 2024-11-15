@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 /**
  * Create a certification.
  * @d2 function
- * @parent [cccev.f2.certification.D2CertificationPage]
+ * @parent [cccev.dsl.model.d2.D2CertificationPage]
  * @order 10
  */
 typealias CertificationCreateFunction = F2Function<CertificationCreateCommand, CertificationCreatedEvent>

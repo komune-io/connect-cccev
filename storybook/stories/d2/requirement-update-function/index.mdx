@@ -1,25 +1,12 @@
-import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
-import RequirementUpdateCommandIndex from '../requirement-update-command/index.mdx'
+import RequirementUpdateCommandDTOIndex from '../requirement-update-command-d-t-o/index.mdx'
 import RequirementUpdateFunctionDesc from './desc.mdx'
-import RequirementUpdateFunctionVisualJson from './visualJson.json'
-import RequirementUpdatedEventIndex from '../requirement-updated-event/index.mdx'
+import RequirementUpdatedEventDTOIndex from '../requirement-updated-event-d-t-o/index.mdx'
 
-<SegmentedContainer
-  leftElement={<RequirementUpdateFunctionDesc />}
-  leftContainerProps={{}}
-  rightElement={
-    <CodeHighlighter
-      object={RequirementUpdateFunctionVisualJson}
-      language={"json"}
-      title={"Requirement Update"}
-    />
-  }
-  rightContainerProps={{}}
-/>
+<RequirementUpdateFunctionDesc />
 
-<RequirementUpdateCommandIndex />
+<RequirementUpdateCommandDTOIndex />
 
-<RequirementUpdatedEventIndex />
+<RequirementUpdatedEventDTOIndex />
 
 <div
   class={"spacer"}

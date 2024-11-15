@@ -15,10 +15,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-/**
- * @d2 service
- * @parent [D2EvidenceTypePage]
- */
 @Configuration
 class EvidenceTypeEndpoint(
     private val evidenceTypeAggregateService: EvidenceTypeAggregateService,

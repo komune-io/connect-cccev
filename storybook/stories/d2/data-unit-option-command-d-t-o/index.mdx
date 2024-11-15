@@ -1,0 +1,16 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import DataUnitOptionCommandDTODesc from './desc.mdx'
+import DataUnitOptionCommandDTOVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<DataUnitOptionCommandDTODesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={DataUnitOptionCommandDTOVisualJson}
+      language={"json"}
+      title={"Command"}
+    />
+  }
+  rightContainerProps={{}}
+/>

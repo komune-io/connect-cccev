@@ -1,0 +1,16 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import RequirementRemoveRequirementsCommandDesc from './desc.mdx'
+import RequirementRemoveRequirementsCommandVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<RequirementRemoveRequirementsCommandDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={RequirementRemoveRequirementsCommandVisualJson}
+      language={"json"}
+      title={"Command"}
+    />
+  }
+  rightContainerProps={{}}
+/>

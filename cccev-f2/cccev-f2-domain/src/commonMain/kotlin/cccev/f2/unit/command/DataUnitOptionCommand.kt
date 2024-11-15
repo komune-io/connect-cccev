@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 /**
  * Represents a command for a data unit option with details such as identifier, name, value, etc.
  * @d2 command
- * @parent [cccev.f2.unit.D2DataUnitPage]
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 @JsExport
 interface DataUnitOptionCommandDTO {

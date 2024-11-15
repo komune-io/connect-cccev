@@ -1,0 +1,16 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import RequirementAddedConceptsEventDesc from './desc.mdx'
+import RequirementAddedConceptsEventVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<RequirementAddedConceptsEventDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={RequirementAddedConceptsEventVisualJson}
+      language={"json"}
+      title={"Event"}
+    />
+  }
+  rightContainerProps={{}}
+/>

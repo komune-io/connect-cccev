@@ -7,7 +7,8 @@ import cccev.f2.unit.query.DataUnitGetFunction
 
 /**
  * @d2 api
- * @parent [cccev.f2.unit.D2DataUnitPage]
+ * @order 50
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 interface DataUnitApi: DataUnitCommandApi, DataUnitQueryApi
 

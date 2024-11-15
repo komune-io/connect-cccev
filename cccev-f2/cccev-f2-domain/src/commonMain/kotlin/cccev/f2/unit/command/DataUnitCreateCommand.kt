@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * Create a new data unit.
  * @d2 function
- * @parent [cccev.f2.unit.D2DataUnitPage]
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 typealias DataUnitCreateFunction = F2Function<DataUnitCreateCommand, DataUnitCreatedEvent>
 

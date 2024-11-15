@@ -3,9 +3,6 @@ package cccev.f2.evidencetypelist.query
 import cccev.dsl.model.EvidenceTypeId
 import cccev.f2.CccevFlatGraph
 import cccev.f2.CccevFlatGraphDTO
-import cccev.f2.evidencetype.D2EvidenceTypePage
-import cccev.f2.evidencetype.model.EvidenceTypeFlat
-import cccev.f2.evidencetype.model.EvidenceTypeFlatDTO
 import cccev.f2.evidencetypelist.model.EvidenceTypeListFlat
 import f2.dsl.fnc.F2Function
 import kotlin.js.JsExport
@@ -15,7 +12,7 @@ import kotlinx.serialization.Serializable
 /**
  * Get an evidence type by its id.
  * @d2 function
- * @parent [cccev.f2.evidencetype.D2EvidenceTypePage]
+ * @parent [cccev.dsl.model.d2.D2EvidenceTypePage]
  */
 typealias EvidenceTypeListGetFunction = F2Function<EvidenceTypeListGetQuery, EvidenceTypeListGetResult>
 

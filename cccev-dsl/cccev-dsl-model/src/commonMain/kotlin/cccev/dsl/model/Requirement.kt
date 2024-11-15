@@ -9,8 +9,7 @@ import kotlinx.serialization.Serializable
  * The unique identifier of the requirement.
  * @example "TheRequirement"
  * @title DSL/RequirementIdentifier
- * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @d2 hidden
  */
 typealias RequirementIdentifier = String
 
@@ -18,8 +17,7 @@ typealias RequirementIdentifier = String
  * The unique id of the requirement.
  * @visual json "082f9b5b-4ffa-4e95-8288-2de2972cade5"
  * @title DSL/RequirementId
- * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @d2 hidden
  */
 typealias RequirementId = String
 
@@ -28,7 +26,7 @@ typealias RequirementId = String
  * A Requirement.
  * @d2 model
  * @title DSL/Requirement
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  */
 sealed interface Requirement {
     /**
@@ -152,7 +150,8 @@ sealed interface Requirement {
 /**
  * A Criterion.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/Criterion
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  */
 @Serializable
 open class Criterion(
@@ -202,7 +201,8 @@ open class Criterion(
 /**
  * An InformationRequirement.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/InformationRequirement
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  */
 @Serializable
 open class InformationRequirement(
@@ -244,7 +244,8 @@ open class InformationRequirement(
 /**
  * An Constraint.
  * @d2 model
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/Constraint
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  */
 @Serializable
 open class Constraint(

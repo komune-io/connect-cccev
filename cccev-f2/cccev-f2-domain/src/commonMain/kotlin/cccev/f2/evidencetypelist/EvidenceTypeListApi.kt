@@ -6,7 +6,7 @@ import cccev.f2.evidencetypelist.query.EvidenceTypeListGetFunction
 
 /**
  * @d2 api
- * @parent [cccev.f2.evidencetype.D2EvidenceTypePage]
+ * @parent [cccev.dsl.model.d2.D2EvidenceTypePage]
  */
 interface EvidenceTypeListApi: EvidenceTypeListCommandApi, EvidenceTypeListQueryApi
 

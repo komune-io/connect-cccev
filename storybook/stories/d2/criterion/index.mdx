@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import CriterionDesc from './desc.mdx'
+import CriterionVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<CriterionDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={CriterionVisualJson}
+      language={"json"}
+      title={"DSL/Criterion"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

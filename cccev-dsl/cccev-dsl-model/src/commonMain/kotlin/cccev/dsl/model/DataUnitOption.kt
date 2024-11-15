@@ -19,9 +19,10 @@ typealias DataUnitOptionId = String
 
 /**
  * Data unit option.
+ * @order 3
  * @d2 model
- * @title DataUnitOption
- * @parent [cccev.dsl.model.D2DslModelPage]
+ * @title DSL/DataUnitOption
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 @JsExport
 interface DataUnitOptionDTO {

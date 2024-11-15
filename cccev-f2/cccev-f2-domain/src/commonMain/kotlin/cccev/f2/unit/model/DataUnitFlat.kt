@@ -7,10 +7,10 @@ import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
 
 /**
- * See [cccev.s2.unit.domain.model.DataUnit]
+ * See [cccev.dsl.model.DataUnit]
  * @d2 model
- * @parent [cccev.f2.unit.D2DataUnitPage]
- * @order 20
+ * @title DataUnitFlat
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 @JsExport
 interface DataUnitFlatDTO {

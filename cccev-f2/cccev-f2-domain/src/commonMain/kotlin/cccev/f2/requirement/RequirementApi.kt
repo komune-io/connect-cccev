@@ -13,7 +13,7 @@ import cccev.f2.requirement.query.RequirementGetFunction
 
 /**
  * @d2 api
- * @parent [cccev.f2.requirement.D2RequirementPage]
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  */
 interface RequirementApi: RequirementQueryApi, RequirementCommandApi
 

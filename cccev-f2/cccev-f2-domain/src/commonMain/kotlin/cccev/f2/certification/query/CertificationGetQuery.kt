@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 /**
  * Get a certification by id, or null if it does not exist. The certification graph will be flattened.
  * @d2 function
- * @parent [cccev.f2.certification.D2CertificationPage]
+ * @parent [cccev.dsl.model.d2.D2CertificationPage]
  */
 typealias CertificationGetFunction = F2Function<CertificationGetQuery, CertificationGetResult>
 

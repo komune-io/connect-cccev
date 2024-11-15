@@ -2,6 +2,12 @@ package cccev.dsl.model
 
 import kotlinx.serialization.Serializable
 
+/**
+ * A reference framework is a set of standards that are used to define the quality of a product.
+ * @title DSL/ReferenceFramework
+ * @d2 model
+ * @parent [cccev.dsl.model.d2.D2ReferenceFrameworkPage]
+ */
 @Serializable
 open class ReferenceFramework(
 	val identifier: String,

@@ -3,7 +3,7 @@ package cccev.f2.requirement.command
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.RequirementId
-import cccev.f2.requirement.D2RequirementPage
+import cccev.dsl.model.d2.D2RequirementPage
 import f2.dsl.fnc.F2Function
 import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 /**
  * Update a requirement.
  * @d2 function
- * @parent [cccev.f2.requirement.D2RequirementPage]
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  * @order 10
  */
 typealias RequirementUpdateFunction = F2Function<RequirementUpdateCommand, RequirementUpdatedEvent>

@@ -1,0 +1,16 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import EvidenceTypeListGetByIdentifierQueryDTODesc from './desc.mdx'
+import EvidenceTypeListGetByIdentifierQueryDTOVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<EvidenceTypeListGetByIdentifierQueryDTODesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={EvidenceTypeListGetByIdentifierQueryDTOVisualJson}
+      language={"json"}
+      title={"Query"}
+    />
+  }
+  rightContainerProps={{}}
+/>

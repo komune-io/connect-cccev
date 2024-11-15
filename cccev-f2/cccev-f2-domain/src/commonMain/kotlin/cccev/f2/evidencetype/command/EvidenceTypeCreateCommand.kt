@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 /**
  * Create an evidence type
  * @d2 function
- * @parent [cccev.f2.evidencetype.D2EvidenceTypePage]
+ * @parent [cccev.dsl.model.d2.D2EvidenceTypePage]
  */
 typealias EvidenceTypeCreateFunction = F2Function<EvidenceTypeCreateCommand, EvidenceTypeCreatedEvent>
 
