@@ -1,3 +1,4 @@
+import { DocsTable } from '@komune-io/g2-documentation'
 
 
 
@@ -9,31 +10,46 @@
 
 ## Queries
 
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /requirementGet
 
 
----
-
-**requirementGet**(query:`RequirementGetQueryDTOBase`):`RequirementGetResultDTOBase`<br/>
 
 Get requirement
 
+*Content-Type: application/json*
+  </div>
 
+  <div>
 
----
+    
+Body: `RequirementGetQuery`  
+Result: `RequirementGetResult`
+  </div>
 
-**getRequirement**(query:[`GetRequirementQueryDTO`](#get-requirement-query)):[`GetRequirementQueryResultDTO`](#get-requirement-query)<br/>
+  <div>
 
-Get Requirement (deprecated)
+  
 
+#### POST /requirementGetByIdentifier
 
+*Content-Type: application/json*
+  </div>
 
----
+  <div>
 
-**requirementsList**(query:[`GetRequirementListQueryDTO`](#get-requirement-list-query)):[`GetRequirementListQueryResultDTO`](#get-requirement-list-query)<br/>
-
-Get Requirement List (deprecated)
-
-
+    
+Body: `RequirementGetByIdentifierQuery`  
+Result: `RequirementGetByIdentifierResult`
+  </div>
+</DocsTable>
 
 <div
   class={"spacer"}
@@ -43,44 +59,167 @@ Get Requirement List (deprecated)
 
 ## Commands
 
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /requirementCreate
 
 
----
-
-**constraintCreate**(cmd:`ConstraintCreateCommandDTOBase`):[`RequirementCreatedEvent`](/docs/core-requirement--page#requirement-create)<br/>
-
-Create a constraint
-
-
-
----
-
-**criterionCreate**(cmd:`CriterionCreateCommandDTOBase`):[`RequirementCreatedEvent`](/docs/core-requirement--page#requirement-create)<br/>
-
-Create a criterion
-
-
-
----
-
-**informationRequirementCreate**(cmd:`InformationRequirementCreateCommandDTOBase`):[`RequirementCreatedEvent`](/docs/core-requirement--page#requirement-create)<br/>
-
-Create an information requirement
-
-
-
----
-
-**requirementCreate**(cmd:`RequirementCreateCommandDTOBase`):[`RequirementCreatedEvent`](/docs/core-requirement--page#requirement-create)<br/>
 
 Create a requirement
 
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementCreateCommandDTO`](#requirement-create)  
+Result: [`RequirementCreatedEventDTO`](#requirement-create)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementUpdate
 
 
----
-
-**requirementUpdate**(cmd:[`RequirementUpdateCommand`](/docs/core-requirement--page#requirement-update)):[`RequirementUpdatedEvent`](/docs/core-requirement--page#requirement-update)<br/>
 
 Update a requirement
 
+*Content-Type: application/json*
+  </div>
 
+  <div>
+
+    
+Body: [`RequirementUpdateCommandDTO`](#requirement-update)  
+Result: [`RequirementUpdatedEventDTO`](#requirement-update)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementAddRequirements
+
+
+
+Add sub-requirements to a requirement
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementAddRequirementsCommandDTO`](#requirement-add-requirements)  
+Result: [`RequirementAddedRequirementsEventDTO`](#requirement-add-requirements)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementRemoveRequirements
+
+
+
+Remove sub-requirements from a requirement
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementRemoveRequirementsCommand`](#requirement-remove-requirements)  
+Result: [`RequirementRemovedRequirementsEvent`](#requirement-remove-requirements)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementAddConcepts
+
+
+
+Add information concepts to a requirement
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementAddConceptsCommand`](#requirement-add-concepts)  
+Result: [`RequirementAddedConceptsEvent`](#requirement-add-concepts)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementRemoveConcepts
+
+
+
+Remove information concepts from a requirement
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementRemoveConceptsCommand`](#requirement-remove-concepts)  
+Result: [`RequirementRemovedConceptsEvent`](#requirement-remove-concepts)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementAddEvidenceTypes
+
+
+
+Add evidence types to a requirement
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementAddEvidenceTypesCommand`](#requirement-add-evidence-types)  
+Result: [`RequirementAddedEvidenceTypesEvent`](#requirement-add-evidence-types)
+  </div>
+
+  <div>
+
+  
+
+#### POST /requirementRemoveEvidenceTypes
+
+
+
+Remove evidence types from a requirement
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`RequirementRemoveEvidenceTypesCommand`](#requirement-remove-evidence-types)  
+Result: [`RequirementRemovedEvidenceTypesEvent`](#requirement-remove-evidence-types)
+  </div>
+</DocsTable>

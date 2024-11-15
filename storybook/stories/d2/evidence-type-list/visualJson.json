@@ -1,9 +1,14 @@
 {
-  "name" : "",
-  "description" : "",
+  "identifier" : "bf92ba66-de62-41dc-af93-bd645b4f5bcb",
   "specifiesEvidenceType" : [ {
-    "name" : "Weather report",
-    "description" : "Detailed report of various weather measurements",
-    "validityPeriodConstraint" : null
+    "identifier" : "082f9b5b-4ffa-4e95-8288-2de2972cade5",
+    "supportConcept" : [ {
+      "unit" : {
+        "type" : "BOOLEAN",
+        "options" : [ {
+          "identifier" : "greatOption"
+        } ]
+      }
+    } ]
   } ]
 }

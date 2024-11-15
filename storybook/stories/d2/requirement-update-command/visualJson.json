@@ -1,8 +1,0 @@
-{
-  "id" : "5b3cc623-52bc-409f-a048-02a9b5f433d6",
-  "name" : "High clouds altitude",
-  "description" : "altitudeInMeters >= 6000",
-  "hasRequirement" : [ "78e1e5f3-6e81-411d-afe6-aa7e6dae59b4" ],
-  "hasConcept" : [ "altitudeInMeters" ],
-  "hasEvidenceTypeList" : [ "dc006198-067e-4a58-8672-7d5377ae022b" ]
-}

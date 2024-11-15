@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import EvidenceTypeListFlatDTODesc from './desc.mdx'
+import EvidenceTypeListFlatDTOVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<EvidenceTypeListFlatDTODesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={EvidenceTypeListFlatDTOVisualJson}
+      language={"json"}
+      title={"EvidenceTypeListFlatDTO"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

@@ -1,0 +1,93 @@
+import { DocsTable } from '@komune-io/g2-documentation'
+
+
+
+<div
+  class={"spacer"}
+/>
+
+
+
+## Queries
+
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /dataUnitGet
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`DataUnitGetQueryDTO`](#data-unit-get)  
+Result: [`DataUnitGetResultDTO`](#data-unit-get)
+  </div>
+
+  <div>
+
+  
+
+#### POST /dataUnitGetByIdentifier
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`DataUnitGetByIdentifierQueryDTO`](#data-unit-get-by-identifier)  
+Result: [`DataUnitGetByIdentifierResultDTO`](#data-unit-get-by-identifier)
+  </div>
+</DocsTable>
+
+<div
+  class={"spacer"}
+/>
+
+
+
+## Commands
+
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /dataUnitCreate
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`DataUnitCreateCommand`](#data-unit-create)  
+Result: [`DataUnitCreatedEvent`](#data-unit-create)
+  </div>
+
+  <div>
+
+  
+
+#### POST /dataUnitUpdate
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`DataUnitUpdateCommand`](#data-unit-update)  
+Result: [`DataUnitUpdatedEvent`](#data-unit-update)
+  </div>
+</DocsTable>

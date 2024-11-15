@@ -15,10 +15,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-/**
- * @d2 api
- * @parent [cccev.core.unit.D2DataUnitPage]
- */
 @Configuration
 class DataUnitEndpoint(
     private val dataUnitAggregateService: DataUnitAggregateService,

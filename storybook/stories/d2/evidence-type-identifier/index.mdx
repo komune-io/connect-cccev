@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import EvidenceTypeIdentifierDesc from './desc.mdx'
+import EvidenceTypeIdentifierVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<EvidenceTypeIdentifierDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={EvidenceTypeIdentifierVisualJson}
+      language={"json"}
+      title={"EvidenceTypeId"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

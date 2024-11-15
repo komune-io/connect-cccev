@@ -1,0 +1,129 @@
+import { DocsTable } from '@komune-io/g2-documentation'
+
+
+
+<div
+  class={"spacer"}
+/>
+
+
+
+## Queries
+
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /certificationGet
+
+
+
+Get certification
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`CertificationGetQueryDTO`](#certification-get)  
+Result: [`CertificationGetResultDTO`](#certification-get)
+  </div>
+</DocsTable>
+
+<div
+  class={"spacer"}
+/>
+
+
+
+## Commands
+
+<DocsTable
+  gridColumnNumber={2}
+>
+
+  <div>
+
+  
+
+#### POST /certificationCreate
+
+
+
+Create a request
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`CertificationCreateCommandDTO`](#certification-create)  
+Result: [`CertificationCreatedEventDTO`](#certification-create)
+  </div>
+
+  <div>
+
+  
+
+#### POST /certificationAddRequirements
+
+
+
+Add requirements to a request
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`CertificationAddRequirementsCommandDTO`](#certification-add-requirements)  
+Result: [`CertificationAddedRequirementsEventDTO`](#certification-add-requirements)
+  </div>
+
+  <div>
+
+  
+
+#### POST /certificationRemoveRequirements
+
+
+
+Remove requirements from a request
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`CertificationRemoveRequirementsCommandDTO`](#certification-remove-requirements)  
+Result: [`CertificationRemovedRequirementsEventDTO`](#certification-remove-requirements)
+  </div>
+
+  <div>
+
+  
+
+#### POST /certificationFillValues
+
+
+
+Add values to a request
+
+*Content-Type: application/json*
+  </div>
+
+  <div>
+
+    
+Body: [`CertificationFillValuesCommandDTO`](#certification-fill-values)  
+Result: [`CertificationFilledValuesEventDTO`](#certification-fill-values)
+  </div>
+</DocsTable>

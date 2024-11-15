@@ -8,7 +8,7 @@ import cccev.f2.certification.query.CertificationGetFunction
 
 /**
  * @d2 api
- * @parent [cccev.core.certification.D2CertificationPage]
+ * @parent [cccev.dsl.model.d2.D2CertificationPage]
  */
 interface CertificationApi: CertificationQueryApi, CertificationCommandApi
 

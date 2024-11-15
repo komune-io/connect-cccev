@@ -7,12 +7,32 @@ Type: `EvidenceTypeCreateCommandDTO`
 
 ---
 
-***description*** `String`
+***id*** `String?`
+
+Custom unique id for the evidence type. If null, a random id will be generated.
+
+
+
+---
+
+***identifier*** [`EvidenceTypeIdentifier?`](#evidencetypeid)
+
+Custom unique identifier for the evidence type. If null, a random id will be generated.
+
+
 
 ---
 
 ***name*** `String`
 
+Name of the evidence type
+
+
+
 ---
 
-***validityPeriodConstraint*** `Long?`
+***conceptIdentifiers*** `List<InformationConceptIdentifier>`
+
+Identifiers of the supported information concepts
+
+

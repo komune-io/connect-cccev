@@ -1,0 +1,142 @@
+
+
+
+### Command
+
+Type: `RequirementCreateCommandDTO`
+
+---
+
+***identifier*** `String?`
+
+A custom identifier for the requirement
+
+
+
+---
+
+***kind*** [`RequirementKind`](#requirementkind)
+
+Subtype used for the requirement.
+
+
+
+---
+
+***name*** `String?`
+
+Name of the requirement.
+
+
+
+---
+
+***description*** `String?`
+
+Description of the requirement.
+
+
+
+---
+
+***type*** `String?`
+
+Holds information about the type of a variable or object. This can be `null` if the type is not specified or unknown.
+
+
+
+---
+
+***subRequirementIds*** `List<String>?`
+
+Sub-requirements that must be fulfilled for the requirement to be validated.
+
+
+
+---
+
+***conceptIds*** `List<InformationConceptId>?`
+
+Concepts used by the requirement
+
+
+
+---
+
+***evidenceTypeListIds*** `List<String>?`
+
+Evidences that must be provided for the requirement to be validated. <br/>
+
+
+
+---
+
+***enablingCondition*** `String?`
+
+Represents the condition that enables a particular requirement. This condition must be satisfied for the requirement to be considered active or valid. The value is a string that can describe the condition, or it can be null if there is no specific enabling condition.
+
+
+
+---
+
+***enablingConditionDependencies*** `List<InformationConceptId>?`
+
+A list of identifiers representing the dependencies required to enable a certain condition.
+
+
+
+This property holds the identifiers of the information concepts that must be present or valid for the enabling condition of the requirement to be considered met. It is used in the context of requirements or rules where certain conditions need to be satisfied based on external dependencies or data points.
+
+
+
+---
+
+***required*** `Boolean`
+
+Indicates whether the requirement is mandatory.
+
+
+
+---
+
+***validatingCondition*** `String?`
+
+Represents a condition that must be validated for the requirement. This variable stores a string that details the specific condition that needs to be met. It can be null if no validating condition is specified.
+
+
+
+---
+
+***validatingConditionDependencies*** `List<InformationConceptId>?`
+
+Represents a list of dependencies required for validating conditions.
+
+
+
+The list contains identifiers of information concepts that are necessary to validate specific conditions. It can be null if no dependencies are defined.
+
+
+
+---
+
+***evidenceValidatingCondition*** `String?`
+
+A condition used to validate evidence in a given process. This variable holds a string that represents a specific condition or criteria that evidence must meet to be considered valid. It is optional and may be null if no specific condition is set.
+
+
+
+---
+
+***order*** `Int?`
+
+Represents the order of the requirement within a sequence. This value is nullable and can be used to prioritize or arrange requirements.
+
+
+
+---
+
+***properties*** `Map<String, String>?`
+
+A map containing properties related to the requirement. Keys are property names and values are property values. Can be null if no properties are defined.
+
+

@@ -1,25 +1,12 @@
-import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
-import EvidenceTypeListCreateCommandIndex from '../evidence-type-list-create-command/index.mdx'
+import EvidenceTypeListCreateCommandDTOIndex from '../evidence-type-list-create-command-d-t-o/index.mdx'
 import EvidenceTypeListCreateFunctionDesc from './desc.mdx'
-import EvidenceTypeListCreateFunctionVisualJson from './visualJson.json'
-import EvidenceTypeListCreatedEventIndex from '../evidence-type-list-created-event/index.mdx'
+import EvidenceTypeListCreatedEventDTOIndex from '../evidence-type-list-created-event-d-t-o/index.mdx'
 
-<SegmentedContainer
-  leftElement={<EvidenceTypeListCreateFunctionDesc />}
-  leftContainerProps={{}}
-  rightElement={
-    <CodeHighlighter
-      object={EvidenceTypeListCreateFunctionVisualJson}
-      language={"json"}
-      title={"Evidence Type List Create"}
-    />
-  }
-  rightContainerProps={{}}
-/>
+<EvidenceTypeListCreateFunctionDesc />
 
-<EvidenceTypeListCreateCommandIndex />
+<EvidenceTypeListCreateCommandDTOIndex />
 
-<EvidenceTypeListCreatedEventIndex />
+<EvidenceTypeListCreatedEventDTOIndex />
 
 <div
   class={"spacer"}

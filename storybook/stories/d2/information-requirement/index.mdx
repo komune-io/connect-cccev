@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import InformationRequirementDesc from './desc.mdx'
+import InformationRequirementVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<InformationRequirementDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={InformationRequirementVisualJson}
+      language={"json"}
+      title={"DSL/InformationRequirement"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

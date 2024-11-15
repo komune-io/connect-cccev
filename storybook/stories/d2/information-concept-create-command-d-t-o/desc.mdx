@@ -7,20 +7,48 @@ Type: `InformationConceptCreateCommandDTO`
 
 ---
 
-***dependsOn*** [`List<InformationConceptId>`](/docs/core-information-concept--page#informationconceptid)
+***identifier*** `String?`
 
----
+Custom identifier of the information concept.
 
-***description*** `String`
 
----
-
-***expressionOfExpectedValue*** `String?`
 
 ---
 
 ***name*** `String`
 
+The name of the information concept.
+
+
+
 ---
 
-***unitId*** `String`
+***hasUnit*** `String`
+
+The data unit used for the information concept.
+
+
+
+---
+
+***description*** `String?`
+
+The description of the information concept.
+
+
+
+---
+
+***expressionOfExpectedValue*** `String?`
+
+Expression to evaluate in order to auto-compute the SupportedValue associated with the information concept, if applicable. <br /> For now, the expression will be evaluated using a Kotlin engine. <br /> The expression may contain other known information concepts, identified by their id. They must be declared in the `dependsOn` field.
+
+
+
+---
+
+***dependsOn*** `List<InformationConceptId>?`
+
+A list of information concepts the one depends on for auto-computation, if applicable.
+
+

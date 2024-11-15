@@ -1,0 +1,8 @@
+{
+  "unitIdentifier" : {
+    "type" : "BOOLEAN",
+    "options" : [ {
+      "identifier" : "greatOption"
+    } ]
+  }
+}

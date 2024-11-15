@@ -1,0 +1,28 @@
+{
+  "id" : "082f9b5b-4ffa-4e95-8288-2de2972cade5",
+  "hasConcept" : [ {
+    "unit" : {
+      "type" : "BOOLEAN",
+      "options" : [ {
+        "identifier" : "greatOption"
+      } ]
+    }
+  } ],
+  "hasRequirement" : null,
+  "hasEvidenceTypeList" : [ {
+    "identifier" : "bf92ba66-de62-41dc-af93-bd645b4f5bcb",
+    "specifiesEvidenceType" : [ {
+      "identifier" : "082f9b5b-4ffa-4e95-8288-2de2972cade5",
+      "supportConcept" : [ {
+        "unit" : {
+          "type" : "BOOLEAN",
+          "options" : [ {
+            "identifier" : "greatOption"
+          } ]
+        }
+      } ]
+    } ]
+  } ],
+  "isDerivedFrom" : [ { } ],
+  "isRequirementOf" : null
+}

@@ -7,7 +7,19 @@ Type: `EvidenceTypeListCreateCommandDTO`
 
 ---
 
-***description*** `String`
+***id*** [`EvidenceTypeListId?`](/docs/api-evidence-type--docs#evidencetypeid)
+
+Custom unique id for the evidence type. If null, a random id will be generated.
+
+
+
+---
+
+***identifier*** `String?`
+
+Custom unique identifier for the evidence type. If null, a random id will be generated.
+
+
 
 ---
 
@@ -15,4 +27,8 @@ Type: `EvidenceTypeListCreateCommandDTO`
 
 ---
 
-***specifiesEvidenceType*** `List<EvidenceTypeId>`
+***description*** `String`
+
+---
+
+***specifiesEvidenceType*** `List<String>?`

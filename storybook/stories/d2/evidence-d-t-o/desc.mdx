@@ -1,7 +1,7 @@
 
 
 
-# Evidence
+## Evidence
 
 Type: `EvidenceDTO`
 
@@ -15,11 +15,15 @@ The class Evidence provides the means to support responses to Criteria or to a c
 
 ---
 
-***identifier*** [`EvidenceId`](/docs/dsl-evidenceid--page#dsl-evidenceid)
+***identifier*** `String`
+
+The unique identifier of the evidence.
+
+
 
 ---
 
-***isConformantTo*** [`List<EvidenceTypeId>`](/docs/evidencetypeid--page#evidencetypeid)
+***isConformantTo*** `List<String>?`
 
 Evidence Type that specifies characteristics of the Evidence.
 
@@ -27,7 +31,7 @@ Evidence Type that specifies characteristics of the Evidence.
 
 ---
 
-***supportsValue*** `List<SupportedValueId>`
+***supportsValue*** `List<SupportedValueId>?`
 
 Supported Value that the Evidence contains.
 
@@ -35,7 +39,7 @@ Supported Value that the Evidence contains.
 
 ---
 
-***supportsConcept*** `List<InformationConceptId>`
+***supportsConcept*** `List<InformationConceptId>?`
 
 Information Concept providing facts found/inferred from the Evidence.
 
@@ -43,7 +47,7 @@ Information Concept providing facts found/inferred from the Evidence.
 
 ---
 
-***supportsRequirement*** [`List<RequirementId>`](/docs/dsl-requirementid--page#dsl-requirementid)
+***supportsRequirement*** `List<String>?`
 
 Requirement for which the Evidence provides proof.
 

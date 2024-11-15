@@ -3,36 +3,32 @@
 
 ## EvidenceType
 
+Type: `EvidenceType`
+
+The EvidenceType defines a type of evidence required to support specific Information Concepts.
+
 
 
 ---
 
-***id*** `String`
-
-Identifier of the evidence type.
-
-
+***identifier*** `String`
 
 ---
 
 ***name*** `String`
 
-Name of the evidence type.
+---
 
-
+***supportConcept*** [`List<InformationConceptDTO>`](/docs/api-information-concept--docs#dsl-informationconcept)
 
 ---
 
-***description*** `String`
-
-Description of the evidence type.
-
-
+***evidenceTypeClassification*** `Code?`
 
 ---
 
-***validityPeriodConstraint*** `Long?`
+***validityPeriodConstraint*** `PeriodOfTime?`
 
-How long (in milliseconds) an evidence of this type is considered as valid after it has been issued, if applicable.
+---
 
-
+***issuingPlace*** `CoreLocationLocation?`

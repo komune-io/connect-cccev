@@ -1,50 +1,30 @@
 
 
 
-# DataUnitDTO
+## DataUnit
 
-
-
-See [cccev.s2.unit.domain.model.DataUnit](/docs/core-data-unit--page#dataunit)
-
-
+Type: `DataUnitDTO`
 
 ---
 
-***id*** `String`
-
-Unique identifier of this data unit.
-
-
+***identifier*** `String`
 
 ---
 
 ***name*** `String`
 
-The name of this data unit.
-
-
-
 ---
 
-***description*** `String`
-
-A description of this data unit.
-
-
+***description*** `String?`
 
 ---
 
 ***notation*** `String?`
 
-The short notation for this data unit, if applicable.
+---
 
-
+***type*** [`DataUnitType`](#dataunittype)
 
 ---
 
-***type*** `String`
-
-The type of data used for this data unit. <br/> See [cccev.s2.unit.domain.model.DataUnitType](/docs/core-data-unit--page#dataunittype)
-
-
+***options*** [`List<DataUnitOptionDTO>?`](#dsl-dataunitoption)

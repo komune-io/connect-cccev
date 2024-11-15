@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import ConstraintDesc from './desc.mdx'
+import ConstraintVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<ConstraintDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={ConstraintVisualJson}
+      language={"json"}
+      title={"DSL/Constraint"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

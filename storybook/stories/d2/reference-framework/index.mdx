@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import ReferenceFrameworkDesc from './desc.mdx'
+import ReferenceFrameworkVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<ReferenceFrameworkDesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={ReferenceFrameworkVisualJson}
+      language={"json"}
+      title={"DSL/ReferenceFramework"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

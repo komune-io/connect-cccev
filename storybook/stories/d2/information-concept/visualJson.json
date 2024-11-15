@@ -1,7 +1,0 @@
-{
-  "id" : "cdfca416-c284-4ef9-8591-31405c8c2acf",
-  "name" : "Altitude",
-  "description" : "Represents the height above sea level",
-  "expressionOfExpectedValue" : "height + groundAltitude",
-  "dependsOn" : [ "height", "groundAltitude" ]
-}

@@ -16,7 +16,7 @@ data class  EvidenceFile(val byteArray: ByteArray, val filename: String)
 /**
  * Provide data for the information concepts specified in the requirements a certification has to fulfill.
  * @d2 function
- * @parent [cccev.core.certification.D2CertificationPage]
+ * @parent [cccev.dsl.model.d2.D2CertificationPage]
  * @order 40
  */
 typealias CertificationAddEvidenceFunction = F2Function<Pair<EvidenceFile,CertificationAddEvidenceCommand>, CertificationAddedEvidenceEvent>

@@ -1,0 +1,30 @@
+
+
+
+### Command
+
+Type: `CertificationFillValuesCommandDTO`
+
+---
+
+***id*** `String`
+
+Id of the certification for which to fill the values.
+
+
+
+---
+
+***rootRequirementCertificationId*** `String?`
+
+Optional RequirementCertification id in which to fill the values. <br /> The given values will only be used to fill the InformationConcepts under it. If null, the whole certification will be filled.
+
+
+
+---
+
+***values*** `Map<InformationConceptIdentifier, String?>`
+
+New values for the certification, mapped by the cccev.s2.concept.domain.model.InformationConcept.identifier of the information concept it provides data for. <br /> If a value had already been provided for one of the information concepts, it will be overwritten with the new specified one.
+
+

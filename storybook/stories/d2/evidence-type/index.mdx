@@ -1,5 +1,6 @@
 import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
 import EvidenceTypeDesc from './desc.mdx'
+import EvidenceTypeIdentifierIndex from '../evidence-type-identifier/index.mdx'
 import EvidenceTypeVisualJson from './visualJson.json'
 
 <SegmentedContainer
@@ -9,7 +10,7 @@ import EvidenceTypeVisualJson from './visualJson.json'
     <CodeHighlighter
       object={EvidenceTypeVisualJson}
       language={"json"}
-      title={"EvidenceType"}
+      title={"DSL/EvidenceType"}
     />
   }
   rightContainerProps={{}}
@@ -20,3 +21,5 @@ import EvidenceTypeVisualJson from './visualJson.json'
 />
 
 
+
+<EvidenceTypeIdentifierIndex />

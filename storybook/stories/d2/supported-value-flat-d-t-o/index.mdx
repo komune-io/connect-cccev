@@ -1,0 +1,22 @@
+import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
+import SupportedValueFlatDTODesc from './desc.mdx'
+import SupportedValueFlatDTOVisualJson from './visualJson.json'
+
+<SegmentedContainer
+  leftElement={<SupportedValueFlatDTODesc />}
+  leftContainerProps={{}}
+  rightElement={
+    <CodeHighlighter
+      object={SupportedValueFlatDTOVisualJson}
+      language={"json"}
+      title={"SupportedValueFlatDTO"}
+    />
+  }
+  rightContainerProps={{}}
+/>
+
+<div
+  class={"spacer"}
+/>
+
+

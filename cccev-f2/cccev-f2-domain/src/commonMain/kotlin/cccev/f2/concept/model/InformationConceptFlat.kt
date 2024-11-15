@@ -8,43 +8,43 @@ import kotlinx.serialization.Serializable
 
 /**
  * @d2 model
- * @parent [cccev.core.concept.D2InformationConceptPage]
+ * @parent [cccev.dsl.model.d2.D2InformationConceptPage]
  * @order 10
  */
 @JsExport
 interface InformationConceptFlatDTO {
     /**
-     * @ref [InformationConceptDTO.id]
+     * @ref [cccev.dsl.model.InformationConceptDTO.id]
      */
     val id: InformationConceptId
 
     /**
-     * @ref [InformationConceptDTO.identifier]
+     * @ref [cccev.dsl.model.InformationConceptDTO.identifier]
      */
     val identifier: InformationConceptIdentifier
 
     /**
-     * @ref [InformationConceptDTO.name]
+     * @ref [cccev.dsl.model.InformationConceptDTO.name]
      */
     val name: String
 
     /**
-     * @ref [InformationConceptDTO.unit]
+     * @ref [cccev.dsl.model.InformationConceptDTO.unit]
      */
     val unitIdentifier: DataUnitIdentifier
 
     /**
-     * @ref [InformationConceptDTO.description]
+     * @ref [cccev.dsl.model.InformationConceptDTO.description]
      */
     val description: String?
 
     /**
-     * @ref [InformationConceptDTO.expressionOfExpectedValue]
+     * @ref [cccev.dsl.model.InformationConceptDTO.expressionOfExpectedValue]
      */
     val expressionOfExpectedValue: String?
 
     /**
-     * @ref [InformationConceptDTO.dependsOn]
+     * @ref [cccev.dsl.model.InformationConceptDTO.dependsOn]
      */
     val dependsOn: List<InformationConceptIdentifier>?
 }

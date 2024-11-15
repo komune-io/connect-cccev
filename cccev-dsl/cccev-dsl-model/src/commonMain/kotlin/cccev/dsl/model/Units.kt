@@ -6,16 +6,22 @@ import kotlinx.serialization.Serializable
 
 /**
  * @d2 hidden
- * @visual json "aeb2c258-9eab-4e55-9e52-77db89aaabfb"
+ * @example "aeb2c258-9eab-4e55-9e52-77db89aaabfb"
  */
 typealias DataUnitId = String
 
 /**
  * @d2 hidden
- * @visual json "TheDataUnitIdentifier"
+ * @example "TheDataUnitIdentifier"
  */
 typealias DataUnitIdentifier = String
 
+/**
+ * @order 1
+ * @d2 model
+ * @title DSL/DataUnit
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
+ */
 @JsExport
 @JsName("DataUnitDTO")
 interface DataUnitDTO {
@@ -27,6 +33,9 @@ interface DataUnitDTO {
     val options: List<DataUnitOption>?
 }
 
+/**
+ * @d2 inherit
+ */
 @Serializable
 open class DataUnit(
     override val identifier: DataUnitIdentifier,

@@ -1,7 +1,7 @@
 package cccev.f2.requirement.command
 
 import cccev.dsl.model.RequirementId
-import cccev.f2.requirement.D2RequirementPage
+import cccev.dsl.model.d2.D2RequirementPage
 import f2.dsl.fnc.F2Function
 import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * Add a list of sub-requirement to a requirement.
  * @d2 function
- * @parent [D2RequirementPage]
+ * @parent [cccev.dsl.model.d2.D2RequirementPage]
  * @order 30
  */
 typealias RequirementAddRequirementsFunction = F2Function<RequirementAddRequirementsCommand, RequirementAddedRequirementsEvent>

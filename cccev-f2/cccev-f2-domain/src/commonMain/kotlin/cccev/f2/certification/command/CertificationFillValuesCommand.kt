@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 /**
  * Provide data for the information concepts specified in the requirements a certification has to fulfill.
  * @d2 function
- * @parent [cccev.f2.certification.domain.D2CertificationApiPage]
+ * @parent [cccev.dsl.model.d2.D2CertificationPage]
  * @order 30
  */
 typealias CertificationFillValuesFunction = F2Function<CertificationFillValuesCommand, CertificationFilledValuesEvent>

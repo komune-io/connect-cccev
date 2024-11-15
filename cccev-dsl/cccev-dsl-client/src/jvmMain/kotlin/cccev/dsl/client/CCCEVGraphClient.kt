@@ -14,7 +14,7 @@ import cccev.dsl.model.EvidenceType
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeList
 import cccev.dsl.model.EvidenceTypeListId
-import cccev.dsl.model.InformationConcept
+import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptRef
 import cccev.dsl.model.Requirement
@@ -65,7 +65,7 @@ class CCCEVGraphClient(
             .mapValues { (_, requirements) -> requirements.firstOrNull { it !is RequirementRef } ?: requirements.first() }
 
         val informationConceptNodes = requirements.flatMap { requirement -> requirement.hasConcept ?: emptyList() }
-            .groupBy(InformationConcept::identifier)
+            .groupBy(InformationConceptDTO::identifier)
             .mapValues { (_, concepts) -> concepts.firstOrNull { it !is InformationConceptRef } ?: concepts.first() }
 
         informationConceptGraphInitializer.dryRun(informationConceptNodes.values) { it.identifier }
@@ -100,8 +100,8 @@ class CCCEVGraphClient(
     }
 
     @JvmName("saveInformationConcepts")
-    private suspend fun Collection<InformationConcept>.save(context: Context) {
-        val dataUnits = mapNotNull(InformationConcept::unit)
+    private suspend fun Collection<InformationConceptDTO>.save(context: Context) {
+        val dataUnits = mapNotNull(InformationConceptDTO::unit)
         context.processedUnits.putAll(dataUnits.associate { it.identifier to it.save() })
 
         val processedConcepts = informationConceptGraphInitializer.initialize(this) { concept, dependencies ->
@@ -269,7 +269,7 @@ class CCCEVGraphClient(
         ).invokeWith(dataUnitClient.dataUnitCreate()).id
     }
 
-    private suspend fun InformationConcept.save(context: Context): InformationConceptId {
+    private suspend fun InformationConceptDTO.save(context: Context): InformationConceptId {
         val existingConcept = InformationConceptGetByIdentifierQuery(
             identifier = identifier
         ).invokeWith(informationConceptClient.conceptGetByIdentifier()).item

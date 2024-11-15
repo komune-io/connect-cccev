@@ -5,19 +5,7 @@
 
 
 
----
-
-***id*** `String`
-
-Identifier of the evidence type.
-
-
-
----
-
-***name*** `String`
-
-Name of the evidence type.
+The EvidenceTypeList defines a list of EvidenceTypes.
 
 
 
@@ -25,10 +13,14 @@ Name of the evidence type.
 
 ***description*** `String`
 
-Description of the evidence type.
+---
 
-
+***identifier*** [`EvidenceTypeListId`](#evidencetypeid)
 
 ---
 
-***specifiesEvidenceType*** [`List<EvidenceType>`](#evidencetype)
+***name*** `String`
+
+---
+
+***specifiesEvidenceType*** [`List<EvidenceType>?`](/docs/api-evidence-type--docs#dsl-evidencetype)

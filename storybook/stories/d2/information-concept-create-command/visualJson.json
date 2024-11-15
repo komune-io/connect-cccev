@@ -1,6 +1,0 @@
-{
-  "name" : "Altitude",
-  "description" : "Represents the height above sea level",
-  "expressionOfExpectedValue" : "height + groundAltitude",
-  "dependsOn" : [ "height", "groundAltitude" ]
-}

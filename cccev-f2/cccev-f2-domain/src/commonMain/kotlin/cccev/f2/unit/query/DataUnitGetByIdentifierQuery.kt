@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 /**
  * Get a data unit by its identifier.
  * @d2 function
- * @parent [cccev.core.unit.D2DataUnitPage]
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 typealias DataUnitGetByIdentifierFunction = F2Function<DataUnitGetByIdentifierQuery, DataUnitGetByIdentifierResult>
 

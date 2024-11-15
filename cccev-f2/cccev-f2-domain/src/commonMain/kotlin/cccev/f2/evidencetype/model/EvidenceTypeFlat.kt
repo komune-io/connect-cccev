@@ -3,13 +3,12 @@ package cccev.f2.evidencetype.model
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.EvidenceTypeIdentifier
 import cccev.dsl.model.InformationConceptIdentifier
-import cccev.f2.evidencetype.D2EvidenceTypePage
 import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
 
 /**
  * @d2 model
- * @parent [D2EvidenceTypePage]
+ * @parent [cccev.dsl.model.d2.D2EvidenceTypePage]
  * @order 10
  */
 @JsExport
@@ -25,7 +24,7 @@ interface EvidenceTypeFlatDTO {
 
     /**
      * Name of the evidence type.
-     * @example [cccev.s2.evidence.domain.model.EvidenceType.name]
+     * @example [cccev.dsl.model.EvidenceType.name]
      */
     val name: String
 

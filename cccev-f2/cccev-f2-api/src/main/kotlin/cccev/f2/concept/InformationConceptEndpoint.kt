@@ -15,10 +15,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-/**
- * @d2 service
- * @parent [cccev.core.concept.D2InformationConceptPage]
- */
 @Configuration
 class InformationConceptEndpoint(
     private val informationConceptAggregateService: InformationConceptAggregateService,

@@ -17,6 +17,13 @@ typealias DataUnitOptionIdentifier = String
  */
 typealias DataUnitOptionId = String
 
+/**
+ * Data unit option.
+ * @order 3
+ * @d2 model
+ * @title DSL/DataUnitOption
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
+ */
 @JsExport
 interface DataUnitOptionDTO {
     val identifier: DataUnitOptionIdentifier
@@ -27,6 +34,9 @@ interface DataUnitOptionDTO {
     val color: String?
 }
 
+/**
+ * @d2 inherit
+ */
 @Serializable
 data class DataUnitOption(
     override val identifier: DataUnitOptionIdentifier,

@@ -7,45 +7,45 @@ import kotlin.js.JsExport
 import kotlinx.serialization.Serializable
 
 /**
- * See [cccev.s2.unit.domain.model.DataUnit]
+ * See [cccev.dsl.model.DataUnit]
  * @d2 model
- * @parent [cccev.core.unit.D2DataUnitPage]
- * @order 20
+ * @title DataUnitFlat
+ * @parent [cccev.dsl.model.d2.D2DataUnitPage]
  */
 @JsExport
 interface DataUnitFlatDTO {
     /**
-     * @ref [DataUnitDTO.id]
+     * The unique id of the evidence.
      */
     val id: DataUnitId
 
     /**
-     * @ref [DataUnitDTO.identifier]
+     * @ref [cccev.dsl.model.DataUnitDTO.identifier]
      */
     val identifier: DataUnitIdentifier
 
     /**
-     * @ref [DataUnitDTO.name]
+     * @ref [cccev.dsl.model.DataUnitDTO.name]
      */
     val name: String
 
     /**
-     * @ref [DataUnitDTO.description]
+     * @ref [cccev.dsl.model.DataUnitDTO.description]
      */
     val description: String?
 
     /**
-     * @ref [DataUnitDTO.notation]
+     * @ref [cccev.dsl.model.DataUnitDTO.notation]
      */
     val notation: String?
 
     /**
-     * @ref [DataUnitDTO.type]
+     * @ref [cccev.dsl.model.DataUnitDTO.type]
      */
     val type: String
 
     /**
-     * @ref [DataUnitDTO.options]
+     * @ref [cccev.dsl.model.DataUnitDTO.options]
      */
     val optionIdentifiers: List<DataUnitOptionIdentifier>?
 }

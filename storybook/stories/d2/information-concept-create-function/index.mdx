@@ -1,23 +1,10 @@
-import { CodeHighlighter, SegmentedContainer } from '@komune-io/g2-documentation'
-import InformationConceptCreateCommandIndex from '../information-concept-create-command/index.mdx'
+import InformationConceptCreateCommandDTOIndex from '../information-concept-create-command-d-t-o/index.mdx'
 import InformationConceptCreateFunctionDesc from './desc.mdx'
-import InformationConceptCreateFunctionVisualJson from './visualJson.json'
 import InformationConceptCreatedEventDTOIndex from '../information-concept-created-event-d-t-o/index.mdx'
 
-<SegmentedContainer
-  leftElement={<InformationConceptCreateFunctionDesc />}
-  leftContainerProps={{}}
-  rightElement={
-    <CodeHighlighter
-      object={InformationConceptCreateFunctionVisualJson}
-      language={"json"}
-      title={"Information Concept Create"}
-    />
-  }
-  rightContainerProps={{}}
-/>
+<InformationConceptCreateFunctionDesc />
 
-<InformationConceptCreateCommandIndex />
+<InformationConceptCreateCommandDTOIndex />
 
 <InformationConceptCreatedEventDTOIndex />
 

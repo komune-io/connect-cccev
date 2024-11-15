@@ -1,58 +1,42 @@
 
 
 
-## InformationConceptDTO
+## InformationConcept
 
+Type: `InformationConceptDTO`
 
-
-See [cccev.s2.concept.domain.model.InformationConcept](/docs/core-information-concept--page#informationconcept)
+The InformationConcept defines a type of information that can be collected.
 
 
 
 ---
 
-***id*** [`InformationConceptId`](/docs/core-information-concept--page#informationconceptid)
+***id*** `String`
 
-Unique identifier of this information concept.
+---
 
-
+***identifier*** `String`
 
 ---
 
 ***name*** `String`
 
-The name of this information concept.
+---
 
-
+***unit*** [`DataUnitDTO`](/docs/api-data-unit--docs#dsl-dataunit)
 
 ---
 
-***unit*** [`DataUnitDTO`](/docs/dataunitdto--page#dataunitdto)
-
-The data unit used for this information concept.
-
-
+***type*** `Code?`
 
 ---
 
-***description*** `String`
-
-The description of this information concept.
-
-
+***description*** `String?`
 
 ---
 
 ***expressionOfExpectedValue*** `String?`
 
-Expression to evaluate in order to auto-compute the SupportedValue associated with this information concept, if applicable. <br /> For now, the expression will be evaluated using a Kotlin engine. <br /> The expression may contain other known information concepts, identified by their id. They must be declared in the `dependsOn` field.
-
-
-
 ---
 
-***dependsOn*** [`List<InformationConceptId>`](/docs/core-information-concept--page#informationconceptid)
-
-A list of information concepts this one depends on for auto-computation, if applicable.
-
-
+***dependsOn*** `List<InformationConceptId>?`
