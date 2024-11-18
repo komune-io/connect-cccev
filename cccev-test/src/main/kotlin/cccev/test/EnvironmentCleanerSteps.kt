@@ -1,10 +1,10 @@
 package cccev.test
 
 import cccev.infra.neo4j.session
+import io.cucumber.java8.En
 import io.komune.fs.s2.file.client.FileClient
 import io.komune.fs.s2.file.domain.features.command.FileDeleteCommand
 import io.komune.fs.s2.file.domain.features.query.FileListQuery
-import io.cucumber.java8.En
 import kotlinx.coroutines.runBlocking
 import org.neo4j.ogm.session.SessionFactory
 import s2.bdd.data.TestContext

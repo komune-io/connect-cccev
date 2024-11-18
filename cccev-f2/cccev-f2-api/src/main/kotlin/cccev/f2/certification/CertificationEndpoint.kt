@@ -2,10 +2,10 @@ package cccev.f2.certification
 
 import cccev.core.certification.CertificationAggregateService
 import cccev.core.certification.CertificationFinderService
-import cccev.f2.certification.command.CertificationAddEvidenceCommand
-import cccev.f2.certification.command.CertificationAddedEvidenceEvent
 import cccev.f2.CccevFlatGraph
+import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.f2.certification.command.CertificationAddRequirementsFunction
+import cccev.f2.certification.command.CertificationAddedEvidenceEvent
 import cccev.f2.certification.command.CertificationCreateFunction
 import cccev.f2.certification.command.CertificationFillValuesFunction
 import cccev.f2.certification.command.CertificationRemoveRequirementsFunction

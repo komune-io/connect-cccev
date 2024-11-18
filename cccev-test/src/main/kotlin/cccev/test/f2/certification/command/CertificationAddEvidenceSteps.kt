@@ -1,8 +1,8 @@
 package cccev.test.f2.certification.command
 
-import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.core.certification.entity.CertificationRepository
 import cccev.f2.certification.CertificationEndpoint
+import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.test.CccevCucumberStepsDefinition
 import cccev.test.CertificationKey
 import cccev.test.EvidenceKey
@@ -10,13 +10,13 @@ import cccev.test.EvidenceTypeKey
 import cccev.test.f2.certification.data.evidence
 import io.cucumber.datatable.DataTable
 import io.cucumber.java8.En
-import io.komune.fs.s2.file.domain.model.FilePath
 import io.komune.fs.s2.file.client.FileClient
+import io.komune.fs.s2.file.domain.model.FilePath
+import java.util.UUID
 import org.assertj.core.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.data.StubFilePart
-import java.util.UUID
 
 class CertificationAddEvidenceSteps: En, CccevCucumberStepsDefinition() {
 

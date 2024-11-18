@@ -1,18 +1,17 @@
 package cccev.core.certification
 
-import cccev.f2.certification.command.CertificationAddEvidenceCommand
-import cccev.f2.certification.command.CertificationAddedEvidenceEvent
 import cccev.core.certification.entity.CertificationEntity
 import cccev.core.certification.entity.CertificationRepository
 import cccev.core.certification.entity.RequirementCertificationEntity
 import cccev.core.certification.entity.isFulfilled
-import cccev.f2.certification.model.CertificationFsPath
 import cccev.core.certification.service.CertificationEvidenceService
 import cccev.core.certification.service.CertificationValuesFillerService
 import cccev.core.requirement.entity.RequirementEntity
 import cccev.core.requirement.entity.RequirementRepository
 import cccev.dsl.model.RequirementIdentifier
+import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.f2.certification.command.CertificationAddRequirementsCommand
+import cccev.f2.certification.command.CertificationAddedEvidenceEvent
 import cccev.f2.certification.command.CertificationAddedRequirementsEvent
 import cccev.f2.certification.command.CertificationCreateCommand
 import cccev.f2.certification.command.CertificationCreatedEvent
@@ -20,11 +19,12 @@ import cccev.f2.certification.command.CertificationFillValuesCommand
 import cccev.f2.certification.command.CertificationFilledValuesEvent
 import cccev.f2.certification.command.CertificationRemoveRequirementsCommand
 import cccev.f2.certification.command.CertificationRemovedRequirementsEvent
+import cccev.f2.certification.model.CertificationFsPath
 import cccev.infra.neo4j.checkNotExists
 import cccev.infra.neo4j.session
+import f2.spring.exception.NotFoundException
 import io.komune.fs.s2.file.client.FileClient
 import io.komune.fs.spring.utils.toUploadCommand
-import f2.spring.exception.NotFoundException
 import java.util.UUID
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.context.ApplicationEventPublisher

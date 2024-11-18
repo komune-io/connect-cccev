@@ -2,8 +2,8 @@ package cccev.dsl.model.builder
 
 import cccev.dsl.model.Code
 import cccev.dsl.model.DataUnit
-import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConcept
+import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.InformationConceptRef

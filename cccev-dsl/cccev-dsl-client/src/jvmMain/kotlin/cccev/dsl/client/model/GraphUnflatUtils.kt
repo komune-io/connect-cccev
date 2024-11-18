@@ -8,8 +8,8 @@ import cccev.dsl.model.DataUnitOption
 import cccev.dsl.model.DataUnitType
 import cccev.dsl.model.EvidenceTypeBase
 import cccev.dsl.model.EvidenceTypeListBase
-import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConcept
+import cccev.dsl.model.InformationConceptDTO
 import cccev.dsl.model.InformationConceptIdentifier
 import cccev.dsl.model.InformationRequirement
 import cccev.dsl.model.Requirement
