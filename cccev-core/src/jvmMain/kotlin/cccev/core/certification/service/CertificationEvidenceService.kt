@@ -1,21 +1,21 @@
 package cccev.core.certification.service
 
-import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.core.certification.entity.CertificationRepository
 import cccev.core.certification.entity.EvidenceEntity
 import cccev.core.certification.entity.RequirementCertificationEntity
 import cccev.core.certification.entity.isFulfilled
 import cccev.core.evidencetype.entity.EvidenceTypeRepository
 import cccev.dsl.model.EvidenceId
+import cccev.f2.certification.command.CertificationAddEvidenceCommand
 import cccev.infra.neo4j.session
 import cccev.infra.neo4j.transaction
 import f2.spring.exception.NotFoundException
 import io.komune.fs.s2.file.domain.model.FilePath
+import java.util.UUID
 import org.neo4j.ogm.session.SessionFactory
 import org.springframework.expression.spel.standard.SpelExpressionParser
 import org.springframework.expression.spel.support.StandardEvaluationContext
 import org.springframework.stereotype.Service
-import java.util.UUID
 
 @Service
 class CertificationEvidenceService(

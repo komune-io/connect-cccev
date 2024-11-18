@@ -7,8 +7,8 @@ import cccev.dsl.model.RequirementCertificationId
 import f2.dsl.fnc.F2Function
 import io.komune.fs.s2.file.domain.model.FilePath
 import io.komune.fs.s2.file.domain.model.FilePathDTO
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlinx.serialization.Serializable
 
 
 data class  EvidenceFile(val byteArray: ByteArray, val filename: String)
