@@ -4,7 +4,7 @@ import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.RequirementId
 import cccev.dsl.model.RequirementIdentifier
-import cccev.f2.requirement.model.RequirementKind
+import cccev.dsl.model.RequirementKind
 import f2.dsl.fnc.F2Function
 import kotlin.js.JsExport
 import kotlinx.serialization.Serializable

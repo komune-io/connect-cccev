@@ -1,4 +1,4 @@
-package cccev.f2.requirement.model
+package cccev.dsl.model
 
 /**
  * Indicate which subtype of requirement is being used. <br/>

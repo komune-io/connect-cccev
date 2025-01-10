@@ -5,7 +5,7 @@ import cccev.commons.utils.toJson
 import cccev.core.concept.entity.InformationConceptEntity
 import cccev.core.evidencetype.entity.EvidenceTypeEntity
 import cccev.dsl.model.RequirementId
-import cccev.f2.requirement.model.RequirementKind
+import cccev.dsl.model.RequirementKind
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.neo4j.ogm.annotation.Relationship

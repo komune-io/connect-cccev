@@ -96,7 +96,7 @@ open class CoreLocationLocation
 
 @JsExport
 @Serializable
-open class PeriodOfTime(
+data class PeriodOfTime(
 	val duration: String? = null,
 	val endTime: Int? = null,
 	val startTime: Int? = null,

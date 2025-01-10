@@ -32,7 +32,7 @@ import cccev.f2.evidencetypelist.query.EvidenceTypeListGetByIdentifierQuery
 import cccev.f2.requirement.command.RequirementAddRequirementsCommand
 import cccev.f2.requirement.command.RequirementCreateCommand
 import cccev.f2.requirement.command.RequirementUpdateCommand
-import cccev.f2.requirement.model.RequirementKind
+import cccev.dsl.model.RequirementKind
 import cccev.f2.requirement.query.RequirementGetByIdentifierQuery
 import cccev.f2.unit.command.DataUnitCreateCommand
 import cccev.f2.unit.command.DataUnitOptionCommand

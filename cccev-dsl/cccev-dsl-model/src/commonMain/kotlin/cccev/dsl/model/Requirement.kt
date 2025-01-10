@@ -147,6 +147,14 @@ sealed interface Requirement {
     val properties: Map<String, String>?
 }
 
+
+interface CriterionDTO: Requirement{
+    val bias: Double?
+    val weight: Double?
+    val weightingConsiderationDescription: String?
+    val weightingType: Code?
+}
+
 /**
  * A Criterion.
  * @d2 model
@@ -160,10 +168,10 @@ open class Criterion(
     override val description: String? = null,
     override val name: String? = null,
     override val type: String? = null,
-    val bias: Double? = null,
-    val weight: Double? = null,
-    val weightingConsiderationDescription: String? = null,
-    val weightingType: Code? = null,
+    override val bias: Double? = null,
+    override val weight: Double? = null,
+    override val weightingConsiderationDescription: String? = null,
+    override val weightingType: Code? = null,
     override val hasConcept: List<InformationConceptDTO>? = null,
     override val hasRequirement: List<Requirement>? = null,
     override val hasEvidenceTypeList: List<EvidenceTypeListBase>? = null,
@@ -177,7 +185,7 @@ open class Criterion(
     override val order: Int? = null,
     override val properties: Map<String, String>? = null,
     override val evidenceValidatingCondition: String? = null,
-) : Requirement {
+) : CriterionDTO {
     override val kind: String = "CRITERION"
     override fun toString(): String {
         return "Criterion(" +
