@@ -25,7 +25,7 @@ import cccev.f2.concept.model.InformationConceptFlat
 import cccev.f2.concept.query.InformationConceptGetByIdentifierResult
 import cccev.f2.evidencetype.model.EvidenceTypeFlat
 import cccev.f2.requirement.model.RequirementFlat
-import cccev.f2.requirement.model.RequirementKind
+import cccev.dsl.model.RequirementKind
 import cccev.f2.requirement.query.RequirementGetByIdentifierResult
 import cccev.f2.requirement.query.RequirementGetResult
 import cccev.f2.unit.model.DataUnitFlat

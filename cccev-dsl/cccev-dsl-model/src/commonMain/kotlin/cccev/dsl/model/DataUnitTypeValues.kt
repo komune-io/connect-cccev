@@ -1,6 +1,5 @@
-package cccev.f2.unit.model
+package cccev.dsl.model
 
-import cccev.dsl.model.DataUnitType
 import kotlin.js.JsExport
 
 @JsExport

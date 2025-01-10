@@ -44,38 +44,64 @@ open class DataUnit(
     override val notation: String? = null,
     override val type: DataUnitType,
     override val options: List<DataUnitOption>? = null
-): DataUnitDTO
+) : DataUnitDTO {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as DataUnit
+
+        if (identifier != other.identifier) return false
+        if (name != other.name) return false
+        if (description != other.description) return false
+        if (notation != other.notation) return false
+        if (type != other.type) return false
+        if (options != other.options) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = identifier.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (notation?.hashCode() ?: 0)
+        result = 31 * result + type.hashCode()
+        result = 31 * result + (options?.hashCode() ?: 0)
+        return result
+    }
+}
 
 
-object XSDDate: DataUnit(
+object XSDDate : DataUnit(
     identifier = "xsdDate",
     name = "XSDDate",
     description = "Date",
     type = DataUnitType.DATE
 )
 
-object XSDDouble: DataUnit(
+object XSDDouble : DataUnit(
     identifier = "xsdDouble",
     name = "XSDDouble",
     description = "Nombre réel quelconque",
     type = DataUnitType.NUMBER
 )
 
-object XSDInt: DataUnit(
+object XSDInt : DataUnit(
     identifier = "xsdInt",
     name = "XSDInt",
     description = "Nombre entier quelconque",
     type = DataUnitType.NUMBER
 )
 
-object XSDString: DataUnit(
+object XSDString : DataUnit(
     identifier = "xsdString",
     name = "XSDString",
     description = "Chaîne de caractères quelconque",
     type = DataUnitType.STRING
 )
 
-object XSDBoolean: DataUnit(
+object XSDBoolean : DataUnit(
     identifier = "xsdBoolean",
     name = "XSDBoolean",
     description = "Vrai ou faux",
@@ -83,14 +109,15 @@ object XSDBoolean: DataUnit(
 )
 
 object Duration {
-    object Hour: DataUnit(
+    object Hour : DataUnit(
         identifier = "hourDuration",
         name = "Durée en heures",
         description = "Durée en heures",
         notation = "h",
         type = DataUnitType.NUMBER
     )
-    object Year: DataUnit(
+
+    object Year : DataUnit(
         identifier = "yearDuration",
         name = "Durée en années",
         description = "Durée en années",
@@ -99,7 +126,7 @@ object Duration {
     )
 }
 
-object Ratio: DataUnit(
+object Ratio : DataUnit(
     identifier = "ration",
     name = "Ration",
     description = "Ratio entre deux valeurs",
@@ -107,7 +134,7 @@ object Ratio: DataUnit(
     type = DataUnitType.NUMBER
 )
 
-object SquareMeter: DataUnit(
+object SquareMeter : DataUnit(
     identifier = "squareMeter",
     name = "Mètre carré",
     description = "Mètre carré",
@@ -115,7 +142,7 @@ object SquareMeter: DataUnit(
     type = DataUnitType.NUMBER
 )
 
-object CubicMeter: DataUnit(
+object CubicMeter : DataUnit(
     identifier = "cubicMeter",
     name = "Mètre cube",
     description = "Mètre cube",

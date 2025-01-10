@@ -5,7 +5,7 @@ import cccev.core.requirement.entity.RequirementRepository
 import cccev.dsl.model.EvidenceTypeId
 import cccev.dsl.model.InformationConceptId
 import cccev.dsl.model.RequirementId
-import cccev.f2.requirement.model.RequirementKind
+import cccev.dsl.model.RequirementKind
 import org.assertj.core.api.Assertions
 import s2.bdd.assertion.AssertionBdd
 import s2.bdd.repository.AssertionApiEntity
