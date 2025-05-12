@@ -1,19 +1,30 @@
 # Core Criterion and Core Evidence Vocabulary Api
 
+The connect-cccev project facilitates managing certification processes. It allows defining complex Requirements based on the standard CCCEV vocabulary, including associated InformationConcepts (specific data points) and needed Evidence (proofs). The system uses a Neo4j graph database to store these interconnected elements and provides an F2 API to create certifications and track their fulfillment by adding evidence and value
 
-## CCCEV
-This document describes the Core Criterion and Core Evidence Vocabulary (CCCEV). Similarly to all the Core Vocabularies, CCCEV is "a context-neutral data model that captures the fundamental characteristics of an entity". A Core Vocabulary specifies a semantic data model covering a set of use cases across domains. The specification consists of terms with a minimal set of constraints (recommended codelists, usage guidelines, etc.).
 
-The Core Criterion and Core Evidence Vocabulary is designed to support the exchange of information between organisations or persons (more generally Agents) defining Requirements and organisations or persons responding to these Requirements by means of structured or unstructured Evidences.
+## The Core Concepts: Building Blocks of CCCEV
 
-CCCEV contains two basic and complementary core concepts:
+CCCEV gives us three main building blocks:
 
-the Requirement, a broad notion encompassing all forms of requests for information, that is often, but not necessarily, made with the objective to use it as a basis for making a judgement or decision; and
-the Evidence, the data proving or disproving that a specific Requirement is met by someone or something, and thus has been fulfilled.
-Using these basic core concepts, CCCEV provides a generic setting to define Criteria, i.e. Requirements with an assessment or evaluation objective in mind. This is a key motivation for the existence of CCCEV.
-Although CCCEV shapes a general framework around these core concepts, implementers have to make decisions on how the framework is actually used by further elaborating the Core Vocabulary to make it applicable in their specific context.
+1.  **Requirement:** This is the rule, the question, or the condition that needs to be met or checked.
+  *   *Analogy:* A question in a form ("Are you over 18?") or a task in a checklist ("Provide proof of address").
+  *   *Example (Youth Pass):* "Applicant must be under 26 years old."
+  *   *CCCEV Definition:* "[A condition or prerequisite that is to be proven by Evidence.](https://semiceu.github.io/CCCEV/releases/2.00/#Requirement)" Requirements can be simple checks (`InformationRequirement`), evaluation criteria (`Criterion`), or specific limitations (`Constraint`). For now, just think of it as the rule.
 
-An explanatory example that helps the reader to better understand this specification can be found here.
+2.  **InformationConcept:** This is the specific *piece of information* that a `Requirement` needs, or that an `Evidence` provides.
+  *   *Analogy:* The specific blank field on a form ("Date of Birth", "City Name", "Annual Income").
+  *   *Example (Youth Pass):* To check the "Under 26" requirement, we need the "Date of Birth". "Date of Birth" is the `InformationConcept`.
+  *   *CCCEV Definition:* "[Piece of information that the Evidence provides or the Requirement needs.](https://semiceu.github.io/CCCEV/releases/2.00/#Information%20Concept)"
+  *   **DataUnit:** Every `InformationConcept` has a specific *type* of data, called a `DataUnit`. This tells us if the information is a date, a number, text, true/false, etc.
+    *   *Example (Youth Pass):* The `InformationConcept` "Date of Birth" has a `DataUnit` of "Date". An `InformationConcept` like "Age" would have a `DataUnit` of "Number".
+    *   *CCCEV Reference:* Although not a direct CCCEV class, it aligns with the `InformationConcept.type` and expected value format. In `connect-cccev`, `DataUnit` provides this structure.
+
+3.  **Evidence:** This is the actual *proof* or *answer* provided to satisfy a `Requirement`.
+  *   *Analogy:* The document you upload (ID scan, certificate PDF) or the answer you type into a form.
+  *   *Example (Youth Pass):* A scan of your national ID card or passport is the `Evidence`. This document contains the "Date of Birth" (`InformationConcept`) needed to verify the "Under 26" (`Requirement`).
+  *   *CCCEV Definition:* "[Proof that a Requirement is met.](https://semiceu.github.io/CCCEV/releases/2.00/#Evidence)"
+
 
 ## Domain
 ![Drag Racing](https://semiceu.github.io/CCCEV/releases/2.00/html/overview.jpg)
